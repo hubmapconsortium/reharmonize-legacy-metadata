@@ -3,7 +3,7 @@
 **Goal:**  
 Evaluate the modified metadata from legacy records to determine whether they have been correctly and accurately transformed according to the current schema.
 
-All modified metadata are in the `output` folder (see the **[README.md](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/blob/main/output/README.md)** for the metadata output structure). Focus on the following four areas:
+All modified metadata are in the [output](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/output) folder (see the **[README.md](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/blob/main/output/README.md)** for the metadata output structure). Focus on the following four areas:
 
 1. Validate **field mappings**  
 2. Validate **value mappings**  
