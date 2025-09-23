@@ -1,0 +1,27 @@
+{
+  "barcode_read": {
+    "Read 1": "Read 1 (R1)",
+    "R2,R1": "Read 2 (R2)",
+    "R1": "Read 1 (R1)",
+    "R2": "Read 2 (R2)",
+    "['I1', 'I2']": null,
+    "['I1, I2']": null,
+    "[I1, I2]": null,
+    "I1,I2": null,
+    "I1": null,
+    "I2": null,
+    "I5": null,
+    "01regCARTIconHEAnm4_featurebcmatrixfiltered.tar": null,
+    "01regCARTIconHEAnm5_featurebcmatrixfiltered.tar": null,
+    "01regCARTIconHEAnm6_featurebcmatrixfiltered.tar": null,
+    "01regCHONDRconHEA_featurebcmatrixfiltered.tar": null,
+    "02regAVASMEconHEAnm1_featurebcmatrixfiltered.tar": null,
+    "02regMENISCconHEAnm2_featurebcmatrixfiltered.tar": null,
+    "02regMENISCconHEAnm3_featurebcmatrixfiltered.tar": null,
+    "02regMENISCconHEAnm4_featurebcmatrixfiltered.tar": null,
+    "02regMENISconHEAnm5_featurebcmatrixfiltered.tar": null,
+    "02regMENISconHEAnm6_featurebcmatrixfiltered.tar": null,
+    "02regMENISconHEAnm7_featurebcmatrixfiltered.tar": null,
+    "03regVASCMEconHEAnm1_featurebcmatrixfiltered.tar": null
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "uuid": "4a69340c702774210d5452a6ae80f3c7",
+  "hubmap_id": "HBM782.XQRG.998",
+  "status": "Published",
+  "group_name": "Stanford TMC",
+  "dataset_type": "ATACseq",
+  "metadata": {
+    "_from_metadatatsv": true,
+    "acquisition_instrument_model": "HiSeq 4000",
+    "acquisition_instrument_vendor": "Illumina",
+    "analyte_class": "DNA",
+    "assay_category": "sequence",
+    "assay_type": "bulkATACseq",
+    "bulk_atac_cell_isolation_protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+    "bulk_transposition_input_number_nuclei": "50000",
+    "collectiontype": "single_metadatatsv",
+    "data_path": ".",
+    "donor_id": "STAN0003",
+    "execution_datetime": "2019-10-04 0:00",
+    "is_targeted": "FALSE",
+    "is_technical_replicate": "TRUE",
+    "library_adapter_sequence": "5'-Adapter:5'-AATGATACGGCGACCACCGAGATCTACACTCGTCGGCAGCGTCAGATGTG-3`,3'-Adapter:5'-CAAGCAGAAGACGGCATACGAGATGCTCAGGAGTCTCGTGGGCTCGGAGATGT-3`",
+    "library_average_fragment_size": "1003",
+    "library_concentration_unit": "nM",
+    "library_concentration_value": "6.1",
+    "library_construction_protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+    "library_creation_date": "2022-01-22",
+    "library_final_yield_unit": "ng",
+    "library_final_yield_value": "608",
+    "library_id": "B001-A-401_B",
+    "library_layout": "paired-end",
+    "library_pcr_cycles": "7",
+    "library_preparation_kit": "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit",
+    "metadata_path": ".",
+    "operator": "Aaron Horning",
+    "operator_email": "ahorning@stanford.edu",
+    "pi": "Michael Snyder",
+    "pi_email": "mpsnyder@stanford.edu",
+    "protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+    "sample_quality_metric": "OK",
+    "sequencing_phix_percent": "5",
+    "sequencing_read_format": "101/8/8/101",
+    "sequencing_read_percent_q30": "84.1",
+    "sequencing_reagent_kit": "HiSeq 3000/4000 PE Cluster Kit PE-410-1001",
+    "tissue_id": "STAN0003-LI-3-1",
+    "transposition_kit_number": "200034197",
+    "transposition_method": "bulkATACseq",
+    "transposition_transposase_source": "Illumina"
+  },
+  "migrated_metadata": [
+    {
+      "parent_sample_id": "STAN0003-LI-3-1",
+      "lab_id": null,
+      "preparation_protocol_doi": "10.17504/protocols.io.bfsnjnde",
+      "dataset_type": "ATACseq",
+      "analyte_class": "DNA",
+      "is_targeted": "No",
+      "acquisition_instrument_vendor": "Illumina",
+      "acquisition_instrument_model": "HiSeq 4000",
+      "source_storage_duration_value": null,
+      "source_storage_duration_unit": null,
+      "time_since_acquisition_instrument_calibration_value": null,
+      "time_since_acquisition_instrument_calibration_unit": null,
+      "contributors_path": null,
+      "data_path": ".",
+      "barcode_offset": "Not applicable",
+      "barcode_read": "Not applicable",
+      "barcode_size": "Not applicable",
+      "umi_offset": "Not applicable",
+      "umi_read": "Not applicable",
+      "umi_size": "Not applicable",
+      "assay_input_entity": "tissue (bulk)",
+      "number_of_input_cells_or_nuclei": "50000",
+      "library_adapter_sequence": "5'-Adapter:5'-AATGATACGGCGACCACCGAGATCTACACTCGTCGGCAGCGTCAGATGTG-3`,3'-Adapter:5'-CAAGCAGAAGACGGCATACGAGATGCTCAGGAGTCTCGTGGGCTCGGAGATGT-3`",
+      "library_average_fragment_size": "1003",
+      "library_input_amount_value": null,
+      "library_input_amount_unit": null,
+      "library_output_amount_value": "608",
+      "library_output_amount_unit": "ng",
+      "library_concentration_value": "6.1",
+      "library_concentration_unit": "nM",
+      "library_layout": "paired-end",
+      "number_of_pcr_cycles_for_indexing": null,
+      "library_preparation_kit": null,
+      "sample_indexing_kit": null,
+      "sample_indexing_set": null,
+      "is_technical_replicate": "Yes",
+      "expected_entity_capture_count": null,
+      "sequencing_reagent_kit": "Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283",
+      "sequencing_read_format": "101,8,8,101",
+      "transposition_reagent_kit": "200034197",
+      "transposition_method": "bulkATACseq",
+      "sequencing_batch_id": null,
+      "capture_batch_id": null,
+      "preparation_instrument_vendor": null,
+      "preparation_instrument_model": null,
+      "preparation_instrument_kit": null,
+      "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
+    }
+  ],
+  "processing_log": {
+    "mapped_fields": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "bulk_transposition_input_number_nuclei": "number_of_input_cells_or_nuclei",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "is_technical_replicate": "is_technical_replicate",
+      "library_adapter_sequence": "library_adapter_sequence",
+      "library_average_fragment_size": "library_average_fragment_size",
+      "library_concentration_unit": "library_concentration_unit",
+      "library_concentration_value": "library_concentration_value",
+      "library_final_yield_unit": "library_output_amount_unit",
+      "library_final_yield_value": "library_output_amount_value",
+      "library_layout": "library_layout",
+      "library_preparation_kit": "library_preparation_kit",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "sequencing_read_format": "sequencing_read_format",
+      "sequencing_reagent_kit": "sequencing_reagent_kit",
+      "tissue_id": "parent_sample_id",
+      "transposition_kit_number": "transposition_reagent_kit",
+      "transposition_method": "transposition_method"
+    },
+    "mapped_values": {
+      "dataset_type": {
+        "bulkATACseq": "ATACseq"
+      },
+      "is_targeted": {
+        "FALSE": "No"
+      },
+      "is_technical_replicate": {
+        "TRUE": "Yes"
+      },
+      "library_preparation_kit": {
+        "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit": null
+      },
+      "sequencing_read_format": {
+        "101/8/8/101": "101,8,8,101"
+      },
+      "sequencing_reagent_kit": {
+        "HiSeq 3000/4000 PE Cluster Kit PE-410-1001": "Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283"
+      }
+    },
+    "unmapped_fields": [
+      "_from_metadatatsv",
+      "assay_category",
+      "bulk_atac_cell_isolation_protocols_io_doi",
+      "collectiontype",
+      "donor_id",
+      "execution_datetime",
+      "library_construction_protocols_io_doi",
+      "library_creation_date",
+      "library_id",
+      "library_pcr_cycles",
+      "metadata_path",
+      "operator",
+      "operator_email",
+      "pi",
+      "pi_email",
+      "sample_quality_metric",
+      "sequencing_phix_percent",
+      "sequencing_read_percent_q30",
+      "transposition_transposase_source"
+    ],
+    "unmapped_values": [
+      {
+        "field": "transposition_reagent_kit",
+        "value": "200034197",
+        "permissible_values": [
+          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 4 rxn; PN 1000285",
+          "Custom"
+        ]
+      }
+    ],
+    "applied_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "tissue (bulk)",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "bulkATACseq"
+          }
+        }
+      }
+    ]
+  }
+}

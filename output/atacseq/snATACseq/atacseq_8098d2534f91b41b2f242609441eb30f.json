@@ -1,0 +1,275 @@
+{
+  "uuid": "8098d2534f91b41b2f242609441eb30f",
+  "hubmap_id": "HBM838.NDBV.498",
+  "status": "Published",
+  "group_name": "Stanford TMC",
+  "dataset_type": "ATACseq",
+  "metadata": {
+    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_vendor": "Illumina",
+    "analyte_class": "DNA",
+    "assay_category": "sequence",
+    "assay_type": "snATACseq",
+    "cell_barcode_offset": "0",
+    "cell_barcode_read": "I5",
+    "cell_barcode_size": "16",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "donor_id": "STAN0014",
+    "execution_datetime": "2021-03-18 09:30",
+    "is_targeted": "False",
+    "is_technical_replicate": "False",
+    "library_adapter_sequence": "AGATCGGAAGAGCACACGT",
+    "library_average_fragment_size": "380",
+    "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+    "library_final_yield": "440",
+    "library_final_yield_unit": "ng",
+    "library_id": "B011-A-405",
+    "library_layout": "paired-end",
+    "library_pcr_cycles": "7",
+    "library_pcr_cycles_for_sample_index": "7",
+    "operator": "Bei Wei, Kristina Paul",
+    "operator_email": "wbei@stanford.edu",
+    "pi": "Mike Snyder",
+    "pi_email": "mpsnyder@stanford.edu",
+    "protocols_io_doi": "10.17504/protocols.io.6t8herw",
+    "sc_isolation_cell_number": "880000",
+    "sc_isolation_enrichment": "none",
+    "sc_isolation_entity": "nucleus",
+    "sc_isolation_protocols_io_doi": "10.17504/protocols.io.bvbmn2k6",
+    "sc_isolation_quality_metric": "OK",
+    "sc_isolation_tissue_dissociation": "dounce",
+    "sequencing_phix_percent": "1",
+    "sequencing_read_format": "50/8/24/50",
+    "sequencing_read_percent_q30": "88",
+    "sequencing_reagent_kit": "NovaSeq",
+    "tissue_id": "STAN0014-SI-2-1",
+    "transposition_input": "2102",
+    "transposition_kit_number": "163732",
+    "transposition_method": "snATACseq",
+    "transposition_transposase_source": "10X snATAC"
+  },
+  "migrated_metadata": [
+    {
+      "parent_sample_id": "STAN0014-SI-2-1",
+      "lab_id": null,
+      "preparation_protocol_doi": "10.17504/protocols.io.6t8herw",
+      "dataset_type": "ATACseq",
+      "analyte_class": "DNA",
+      "is_targeted": "No",
+      "acquisition_instrument_vendor": "Illumina",
+      "acquisition_instrument_model": "NovaSeq",
+      "source_storage_duration_value": null,
+      "source_storage_duration_unit": null,
+      "time_since_acquisition_instrument_calibration_value": null,
+      "time_since_acquisition_instrument_calibration_unit": null,
+      "contributors_path": "extras/contributors.tsv",
+      "data_path": ".",
+      "barcode_offset": "0",
+      "barcode_read": "Read 2 (R2)",
+      "barcode_size": "24",
+      "umi_offset": "Not applicable",
+      "umi_read": "Not applicable",
+      "umi_size": "Not applicable",
+      "assay_input_entity": "single nucleus",
+      "number_of_input_cells_or_nuclei": "2102",
+      "library_adapter_sequence": "AGATCGGAAGAGCACACGT",
+      "library_average_fragment_size": "380",
+      "library_input_amount_value": null,
+      "library_input_amount_unit": null,
+      "library_output_amount_value": "440",
+      "library_output_amount_unit": "ng",
+      "library_concentration_value": null,
+      "library_concentration_unit": null,
+      "library_layout": "paired-end",
+      "number_of_pcr_cycles_for_indexing": "7",
+      "library_preparation_kit": null,
+      "sample_indexing_kit": null,
+      "sample_indexing_set": null,
+      "is_technical_replicate": "No",
+      "expected_entity_capture_count": null,
+      "sequencing_reagent_kit": "NovaSeq",
+      "sequencing_read_format": "50,8,24,50",
+      "transposition_reagent_kit": "163732",
+      "transposition_method": "snATACseq",
+      "sequencing_batch_id": null,
+      "capture_batch_id": null,
+      "preparation_instrument_vendor": null,
+      "preparation_instrument_model": null,
+      "preparation_instrument_kit": null,
+      "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
+    }
+  ],
+  "processing_log": {
+    "mapped_fields": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "cell_barcode_offset": "barcode_offset",
+      "cell_barcode_read": "barcode_read",
+      "cell_barcode_size": "barcode_size",
+      "contributors_path": "contributors_path",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "is_technical_replicate": "is_technical_replicate",
+      "library_adapter_sequence": "library_adapter_sequence",
+      "library_average_fragment_size": "library_average_fragment_size",
+      "library_final_yield": "library_output_amount_value",
+      "library_final_yield_unit": "library_output_amount_unit",
+      "library_layout": "library_layout",
+      "library_pcr_cycles_for_sample_index": "number_of_pcr_cycles_for_indexing",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "sc_isolation_entity": "assay_input_entity",
+      "sequencing_read_format": "sequencing_read_format",
+      "sequencing_reagent_kit": "sequencing_reagent_kit",
+      "tissue_id": "parent_sample_id",
+      "transposition_input": "number_of_input_cells_or_nuclei",
+      "transposition_kit_number": "transposition_reagent_kit",
+      "transposition_method": "transposition_method"
+    },
+    "mapped_values": {
+      "dataset_type": {
+        "snATACseq": "ATACseq"
+      },
+      "is_targeted": {
+        "False": "No"
+      },
+      "is_technical_replicate": {
+        "False": "No"
+      },
+      "sequencing_read_format": {
+        "50/8/24/50": "50,8,24,50"
+      },
+      "transposition_method": {
+        "snATACseq": "snATACseq"
+      }
+    },
+    "unmapped_fields": [
+      "assay_category",
+      "donor_id",
+      "execution_datetime",
+      "library_construction_protocols_io_doi",
+      "library_id",
+      "library_pcr_cycles",
+      "operator",
+      "operator_email",
+      "pi",
+      "pi_email",
+      "sc_isolation_cell_number",
+      "sc_isolation_enrichment",
+      "sc_isolation_protocols_io_doi",
+      "sc_isolation_quality_metric",
+      "sc_isolation_tissue_dissociation",
+      "sequencing_phix_percent",
+      "sequencing_read_percent_q30",
+      "transposition_transposase_source"
+    ],
+    "unmapped_values": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 S1 Reagent Kit (200 Cycles); PN 20012864",
+          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (100 Cycles); PN 20028319",
+          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (200 Cycles); PN 20028318",
+          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (300 Cycles); PN 20028317",
+          "Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (100 Cycles); PN 20028316",
+          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313",
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401",
+          "Illumina; NovaSeq X Series 1.5B Reagent Kit (100 Cycle); PN 20104703",
+          "Illumina; NovaSeq X Series 1.5B Reagent Kit (200 Cycle); PN 20104704",
+          "Illumina; NovaSeq X Series 1.5B Reagent Kit (300 Cycle); PN 20104705",
+          "Illumina; NovaSeq X Series 10B Reagent Kit (100 Cycle); PN 20085596",
+          "Illumina; NovaSeq X Series 10B Reagent Kit (200 Cycle); PN 20085595",
+          "Illumina; NovaSeq X Series 10B Reagent Kit (300 Cycle); PN 20085594",
+          "Illumina; NovaSeq X Series 25B Reagent Kit (300 Cycle); PN 20104706"
+        ]
+      },
+      {
+        "field": "transposition_reagent_kit",
+        "value": "163732",
+        "permissible_values": [
+          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 4 rxn; PN 1000285",
+          "Custom"
+        ]
+      }
+    ],
+    "applied_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 2 (R2)",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "24",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "snATACseq"
+          }
+        }
+      }
+    ]
+  }
+}

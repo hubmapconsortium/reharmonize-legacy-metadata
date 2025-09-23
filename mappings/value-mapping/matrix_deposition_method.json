@@ -1,0 +1,12 @@
+{
+  "matrix_deposition_method": {
+    "Sprayed": [
+      "Electrospray deposition",
+      "Robotic spraying"
+    ],
+    "Sprayed matrix": [
+      "Electrospray deposition",
+      "Robotic spraying"
+    ]
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "uuid": "f1871a90db7b18dfa4ec5b537b1446a7",
+  "hubmap_id": "HBM958.GTMM.247",
+  "status": "QA",
+  "group_name": "University of California San Diego TMC",
+  "dataset_type": "ATACseq",
+  "metadata": {
+    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_vendor": "Illumina",
+    "analyte_class": "DNA",
+    "assay_category": "sequence",
+    "assay_type": "SNARE-seq2",
+    "cell_barcode_offset": "0,38,76",
+    "cell_barcode_read": "R2",
+    "cell_barcode_size": "8,8,8",
+    "contributors_path": "extras/hubmap_20210701c_snare2_contributors.tsv",
+    "data_path": ".",
+    "description": "Single-nucleus SNARE-seq2 (dual-omic RNA and accessible chromatin sequencing) on adult human heart",
+    "donor_id": "CALT0013",
+    "execution_datetime": "2021-07-01 11:00",
+    "is_targeted": "False",
+    "is_technical_replicate": "False",
+    "library_adapter_sequence": "CTGTCTCTTATACACATCT+AGATGTGTATAAGAGACAG",
+    "library_average_fragment_size": "650",
+    "library_construction_protocols_io_doi": "10.17504/protocols.io.bzdrp256",
+    "library_final_yield": "357",
+    "library_final_yield_unit": "ng",
+    "library_id": "HRT65",
+    "library_layout": "paired-end",
+    "library_pcr_cycles": "10",
+    "library_pcr_cycles_for_sample_index": "9",
+    "operator": "Dinh Diep",
+    "operator_email": "ddiep@ucsd.edu",
+    "pi": "Kun Zhang",
+    "pi_email": "kzhang@eng.ucsd.edu",
+    "protocols_io_doi": "10.17504/protocols.io.bzdrp256",
+    "sc_isolation_cell_number": "757000",
+    "sc_isolation_enrichment": "none",
+    "sc_isolation_entity": "nucleus",
+    "sc_isolation_protocols_io_doi": "10.17504/protocols.io.b2z4qf8w",
+    "sc_isolation_quality_metric": "OK",
+    "sc_isolation_tissue_dissociation": "gentleMACS",
+    "sequencing_phix_percent": "15",
+    "sequencing_read_format": "75/94/8/75",
+    "sequencing_read_percent_q30": "92.82",
+    "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent",
+    "tissue_id": "CALT0013-HT-1-2-3",
+    "transposition_input": "300000",
+    "transposition_kit_number": "",
+    "transposition_method": "SNARE-Seq2-AC",
+    "transposition_transposase_source": "In-house",
+    "version": "1"
+  },
+  "migrated_metadata": [
+    {
+      "parent_sample_id": "CALT0013-HT-1-2-3",
+      "lab_id": null,
+      "preparation_protocol_doi": "10.17504/protocols.io.bzdrp256",
+      "dataset_type": "ATACseq",
+      "analyte_class": "DNA",
+      "is_targeted": "No",
+      "acquisition_instrument_vendor": "Illumina",
+      "acquisition_instrument_model": "NovaSeq",
+      "source_storage_duration_value": null,
+      "source_storage_duration_unit": null,
+      "time_since_acquisition_instrument_calibration_value": null,
+      "time_since_acquisition_instrument_calibration_unit": null,
+      "contributors_path": "extras/hubmap_20210701c_snare2_contributors.tsv",
+      "data_path": ".",
+      "barcode_offset": "0,38,76",
+      "barcode_read": "Read 2 (R2)",
+      "barcode_size": "8,8,8",
+      "umi_offset": "Not applicable",
+      "umi_read": "Not applicable",
+      "umi_size": "Not applicable",
+      "assay_input_entity": "single nucleus",
+      "number_of_input_cells_or_nuclei": "300000",
+      "library_adapter_sequence": "CTGTCTCTTATACACATCT+AGATGTGTATAAGAGACAG",
+      "library_average_fragment_size": "650",
+      "library_input_amount_value": null,
+      "library_input_amount_unit": null,
+      "library_output_amount_value": "357",
+      "library_output_amount_unit": "ng",
+      "library_concentration_value": null,
+      "library_concentration_unit": null,
+      "library_layout": "paired-end",
+      "number_of_pcr_cycles_for_indexing": "9",
+      "library_preparation_kit": null,
+      "sample_indexing_kit": null,
+      "sample_indexing_set": null,
+      "is_technical_replicate": "No",
+      "expected_entity_capture_count": null,
+      "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent",
+      "sequencing_read_format": "75,94,8,75",
+      "transposition_reagent_kit": "",
+      "transposition_method": "sciATACseq",
+      "sequencing_batch_id": null,
+      "capture_batch_id": null,
+      "preparation_instrument_vendor": null,
+      "preparation_instrument_model": null,
+      "preparation_instrument_kit": null,
+      "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
+    }
+  ],
+  "processing_log": {
+    "mapped_fields": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "cell_barcode_offset": "barcode_offset",
+      "cell_barcode_read": "barcode_read",
+      "cell_barcode_size": "barcode_size",
+      "contributors_path": "contributors_path",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "is_technical_replicate": "is_technical_replicate",
+      "library_adapter_sequence": "library_adapter_sequence",
+      "library_average_fragment_size": "library_average_fragment_size",
+      "library_final_yield": "library_output_amount_value",
+      "library_final_yield_unit": "library_output_amount_unit",
+      "library_layout": "library_layout",
+      "library_pcr_cycles_for_sample_index": "number_of_pcr_cycles_for_indexing",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "sc_isolation_entity": "assay_input_entity",
+      "sequencing_read_format": "sequencing_read_format",
+      "sequencing_reagent_kit": "sequencing_reagent_kit",
+      "tissue_id": "parent_sample_id",
+      "transposition_input": "number_of_input_cells_or_nuclei",
+      "transposition_kit_number": "transposition_reagent_kit",
+      "transposition_method": "transposition_method"
+    },
+    "mapped_values": {
+      "dataset_type": {
+        "SNARE-seq2": "ATACseq"
+      },
+      "is_targeted": {
+        "False": "No"
+      },
+      "is_technical_replicate": {
+        "False": "No"
+      },
+      "sequencing_read_format": {
+        "75/94/8/75": "75,94,8,75"
+      },
+      "transposition_method": {
+        "SNARE-Seq2-AC": "sciATACseq"
+      }
+    },
+    "unmapped_fields": [
+      "assay_category",
+      "description",
+      "donor_id",
+      "execution_datetime",
+      "library_construction_protocols_io_doi",
+      "library_id",
+      "library_pcr_cycles",
+      "operator",
+      "operator_email",
+      "pi",
+      "pi_email",
+      "sc_isolation_cell_number",
+      "sc_isolation_enrichment",
+      "sc_isolation_protocols_io_doi",
+      "sc_isolation_quality_metric",
+      "sc_isolation_tissue_dissociation",
+      "sequencing_phix_percent",
+      "sequencing_read_percent_q30",
+      "transposition_transposase_source",
+      "version"
+    ],
+    "unmapped_values": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NovaSeq 6000 S4 Reagent",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
+        ]
+      }
+    ],
+    "applied_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 2 (R2)",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "8,8,8",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0,38,76",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "must": {
+            "assay_type": "SNARE-seq2"
+          }
+        }
+      }
+    ]
+  }
+}
