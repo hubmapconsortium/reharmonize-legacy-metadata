@@ -51,59 +51,57 @@
     "transposition_method": "sciATACseq",
     "transposition_transposase_source": "Nextera"
   },
-  "migrated_metadata": [
-    {
-      "parent_sample_id": "CALT0002-HT-1-1",
-      "lab_id": null,
-      "preparation_protocol_doi": "10.17504/protocols.io.be8mjhu6",
-      "dataset_type": "ATACseq",
-      "analyte_class": "DNA",
-      "is_targeted": "No",
-      "acquisition_instrument_vendor": "Illumina",
-      "acquisition_instrument_model": "NextSeq 500",
-      "source_storage_duration_value": null,
-      "source_storage_duration_unit": null,
-      "time_since_acquisition_instrument_calibration_value": null,
-      "time_since_acquisition_instrument_calibration_unit": null,
-      "contributors_path": null,
-      "data_path": ".",
-      "barcode_offset": "Not applicable",
-      "barcode_read": "Not applicable",
-      "barcode_size": "Not applicable",
-      "umi_offset": "Not applicable",
-      "umi_read": "Not applicable",
-      "umi_size": "Not applicable",
-      "assay_input_entity": "single cell",
-      "number_of_input_cells_or_nuclei": "100000",
-      "library_adapter_sequence": "AGATGTGTATAAGAGACAG",
-      "library_average_fragment_size": "400",
-      "library_input_amount_value": null,
-      "library_input_amount_unit": null,
-      "library_output_amount_value": "9.57",
-      "library_output_amount_unit": "ng",
-      "library_concentration_value": null,
-      "library_concentration_unit": null,
-      "library_layout": "paired-end",
-      "number_of_pcr_cycles_for_indexing": "14",
-      "library_preparation_kit": null,
-      "sample_indexing_kit": null,
-      "sample_indexing_set": null,
-      "is_technical_replicate": "No",
-      "expected_entity_capture_count": null,
-      "sequencing_reagent_kit": "Nextseq500",
-      "sequencing_read_format": "50,50,20,20",
-      "transposition_reagent_kit": "",
-      "transposition_method": "sciATACseq",
-      "sequencing_batch_id": null,
-      "capture_batch_id": null,
-      "preparation_instrument_vendor": null,
-      "preparation_instrument_model": null,
-      "preparation_instrument_kit": null,
-      "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
-    }
-  ],
+  "modified_metadata": {
+    "parent_sample_id": "CALT0002-HT-1-1",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.be8mjhu6",
+    "dataset_type": "ATACseq",
+    "analyte_class": "DNA",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Illumina",
+    "acquisition_instrument_model": "NextSeq 500",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": null,
+    "data_path": ".",
+    "barcode_offset": "Not applicable",
+    "barcode_read": "Not applicable",
+    "barcode_size": "Not applicable",
+    "umi_offset": "Not applicable",
+    "umi_read": "Not applicable",
+    "umi_size": "Not applicable",
+    "assay_input_entity": "single cell",
+    "number_of_input_cells_or_nuclei": "100000",
+    "library_adapter_sequence": "AGATGTGTATAAGAGACAG",
+    "library_average_fragment_size": "400",
+    "library_input_amount_value": null,
+    "library_input_amount_unit": null,
+    "library_output_amount_value": "9.57",
+    "library_output_amount_unit": "ng",
+    "library_concentration_value": null,
+    "library_concentration_unit": null,
+    "library_layout": "paired-end",
+    "number_of_pcr_cycles_for_indexing": "14",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
+    "sample_indexing_set": null,
+    "is_technical_replicate": "No",
+    "expected_entity_capture_count": null,
+    "sequencing_reagent_kit": "Nextseq500",
+    "sequencing_read_format": "50,50,20,20",
+    "transposition_reagent_kit": "",
+    "transposition_method": "sciATACseq",
+    "sequencing_batch_id": null,
+    "capture_batch_id": null,
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
+    "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
+  },
   "processing_log": {
-    "mapped_fields": {
+    "field_mappings": {
       "acquisition_instrument_model": "acquisition_instrument_model",
       "acquisition_instrument_vendor": "acquisition_instrument_vendor",
       "analyte_class": "analyte_class",
@@ -129,7 +127,7 @@
       "transposition_kit_number": "transposition_reagent_kit",
       "transposition_method": "transposition_method"
     },
-    "mapped_values": {
+    "value_mappings": {
       "acquisition_instrument_model": {
         "Nextseq500-NS500488": "NextSeq 500"
       },
@@ -146,7 +144,7 @@
         "50+50+20+20": "50,50,20,20"
       }
     },
-    "unmapped_values": [
+    "ambiguous_mappings": [
       {
         "field": "sequencing_reagent_kit",
         "value": "Nextseq500",
@@ -157,7 +155,7 @@
         ]
       }
     ],
-    "unmapped_records": {
+    "excluded_data": {
       "_from_metadatatsv": true,
       "assay_category": "sequence",
       "collectiontype": "single_metadatatsv",
@@ -180,7 +178,7 @@
       "sequencing_read_percent_q30": "0",
       "transposition_transposase_source": "Nextera"
     },
-    "applied_patches": [
+    "metadata_patches": [
       {
         "field": "assay_input_entity",
         "value": "single cell",

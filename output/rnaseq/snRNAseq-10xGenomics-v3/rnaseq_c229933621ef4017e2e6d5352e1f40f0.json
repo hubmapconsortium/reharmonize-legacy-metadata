@@ -47,60 +47,58 @@
     "sequencing_reagent_kit": "NovaSeq",
     "tissue_id": "STAN0010-SI-2-1"
   },
-  "migrated_metadata": [
-    {
-      "parent_sample_id": "STAN0010-SI-2-1",
-      "lab_id": null,
-      "preparation_protocol_doi": "10.17504/protocols.io.bvbmn2k6",
-      "dataset_type": "RNAseq",
-      "analyte_class": "RNA",
-      "is_targeted": "No",
-      "acquisition_instrument_vendor": "Illumina",
-      "acquisition_instrument_model": "NovaSeq",
-      "source_storage_duration_value": null,
-      "source_storage_duration_unit": null,
-      "time_since_acquisition_instrument_calibration_value": null,
-      "time_since_acquisition_instrument_calibration_unit": null,
-      "contributors_path": "extras/contributors.tsv",
-      "data_path": ".",
-      "barcode_offset": "0",
-      "barcode_read": "Read 1 (R1)",
-      "barcode_size": "16",
-      "umi_offset": "16",
-      "umi_read": "Read 1 (R1)",
-      "umi_size": "12",
-      "assay_input_entity": "single nucleus",
-      "number_of_input_cells_or_nuclei": "920000",
-      "amount_of_input_analyte_value": "7055",
-      "amount_of_input_analyte_unit": null,
-      "library_adapter_sequence": "AGATCGGAAGAGCACACGT",
-      "library_average_fragment_size": "475",
-      "library_input_amount_value": null,
-      "library_input_amount_unit": null,
-      "library_output_amount_value": "650",
-      "library_output_amount_unit": "ng",
-      "library_concentration_value": null,
-      "library_concentration_unit": null,
-      "library_layout": "paired-end",
-      "number_of_iterations_of_cdna_amplification": "7",
-      "number_of_pcr_cycles_for_indexing": "13",
-      "library_preparation_kit": null,
-      "sample_indexing_kit": null,
-      "sample_indexing_set": null,
-      "is_technical_replicate": "No",
-      "expected_entity_capture_count": null,
-      "sequencing_reagent_kit": "NovaSeq",
-      "sequencing_read_format": "28,10,10,90",
-      "sequencing_batch_id": null,
-      "capture_batch_id": null,
-      "preparation_instrument_vendor": null,
-      "preparation_instrument_model": null,
-      "preparation_instrument_kit": null,
-      "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
-    }
-  ],
+  "modified_metadata": {
+    "parent_sample_id": "STAN0010-SI-2-1",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.bvbmn2k6",
+    "dataset_type": "RNAseq",
+    "analyte_class": "RNA",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Illumina",
+    "acquisition_instrument_model": "NovaSeq",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "barcode_offset": "0",
+    "barcode_read": "Read 1 (R1)",
+    "barcode_size": "16",
+    "umi_offset": "16",
+    "umi_read": "Read 1 (R1)",
+    "umi_size": "12",
+    "assay_input_entity": "single nucleus",
+    "number_of_input_cells_or_nuclei": "920000",
+    "amount_of_input_analyte_value": "7055",
+    "amount_of_input_analyte_unit": null,
+    "library_adapter_sequence": "AGATCGGAAGAGCACACGT",
+    "library_average_fragment_size": "475",
+    "library_input_amount_value": null,
+    "library_input_amount_unit": null,
+    "library_output_amount_value": "650",
+    "library_output_amount_unit": "ng",
+    "library_concentration_value": null,
+    "library_concentration_unit": null,
+    "library_layout": "paired-end",
+    "number_of_iterations_of_cdna_amplification": "7",
+    "number_of_pcr_cycles_for_indexing": "13",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
+    "sample_indexing_set": null,
+    "is_technical_replicate": "No",
+    "expected_entity_capture_count": null,
+    "sequencing_reagent_kit": "NovaSeq",
+    "sequencing_read_format": "28,10,10,90",
+    "sequencing_batch_id": null,
+    "capture_batch_id": null,
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
+    "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
+  },
   "processing_log": {
-    "mapped_fields": {
+    "field_mappings": {
       "acquisition_instrument_model": "acquisition_instrument_model",
       "acquisition_instrument_vendor": "acquisition_instrument_vendor",
       "analyte_class": "analyte_class",
@@ -130,7 +128,7 @@
       "umi_size": "umi_size",
       "umi_offset": "umi_offset"
     },
-    "mapped_values": {
+    "value_mappings": {
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
       },
@@ -144,7 +142,7 @@
         "28/10/10/90": "28,10,10,90"
       }
     },
-    "unmapped_values": [
+    "ambiguous_mappings": [
       {
         "field": "acquisition_instrument_model",
         "value": "NovaSeq",
@@ -176,7 +174,7 @@
         ]
       }
     ],
-    "unmapped_records": {
+    "excluded_data": {
       "assay_category": "sequence",
       "donor_id": "STAN0010",
       "execution_datetime": "2021-03-20 09:30",
@@ -194,7 +192,7 @@
       "sequencing_phix_percent": "1",
       "sequencing_read_percent_q30": "96.1"
     },
-    "applied_patches": [
+    "metadata_patches": [
       {
         "field": "assay_input_entity",
         "value": "single nucleus",

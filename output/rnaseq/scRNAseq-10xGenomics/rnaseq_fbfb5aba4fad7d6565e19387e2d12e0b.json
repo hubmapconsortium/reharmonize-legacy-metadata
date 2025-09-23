@@ -47,60 +47,58 @@
     "sequencing_reagent_kit": "S4",
     "tissue_id": "UFL0008-SP-1-1-2"
   },
-  "migrated_metadata": [
-    {
-      "parent_sample_id": "UFL0008-SP-1-1-2",
-      "lab_id": null,
-      "preparation_protocol_doi": "10.17504/protocols.io.be79jhr6",
-      "dataset_type": "RNAseq",
-      "analyte_class": "RNA",
-      "is_targeted": "No",
-      "acquisition_instrument_vendor": "Illumina",
-      "acquisition_instrument_model": "NovaSeq 6000",
-      "source_storage_duration_value": null,
-      "source_storage_duration_unit": null,
-      "time_since_acquisition_instrument_calibration_value": null,
-      "time_since_acquisition_instrument_calibration_unit": null,
-      "contributors_path": "extras//UFLA_10x_contributors.tsv",
-      "data_path": ".",
-      "barcode_offset": null,
-      "barcode_read": "Read 1 (R1)",
-      "barcode_size": "16",
-      "umi_offset": null,
-      "umi_read": null,
-      "umi_size": null,
-      "assay_input_entity": "single cell",
-      "number_of_input_cells_or_nuclei": "500000",
-      "amount_of_input_analyte_value": "14202",
-      "amount_of_input_analyte_unit": null,
-      "library_adapter_sequence": "5'-  GATCGGAAGAGCACACGTCTGAACTCCAGTCA -3'       3'- TCTAGCCTTCTCG -5'",
-      "library_average_fragment_size": "482",
-      "library_input_amount_value": null,
-      "library_input_amount_unit": null,
-      "library_output_amount_value": "600",
-      "library_output_amount_unit": "ng",
-      "library_concentration_value": null,
-      "library_concentration_unit": null,
-      "library_layout": "paired-end",
-      "number_of_iterations_of_cdna_amplification": "15",
-      "number_of_pcr_cycles_for_indexing": "15",
-      "library_preparation_kit": null,
-      "sample_indexing_kit": null,
-      "sample_indexing_set": null,
-      "is_technical_replicate": "No",
-      "expected_entity_capture_count": null,
-      "sequencing_reagent_kit": "S4",
-      "sequencing_read_format": "28,8,0,91",
-      "sequencing_batch_id": null,
-      "capture_batch_id": null,
-      "preparation_instrument_vendor": null,
-      "preparation_instrument_model": null,
-      "preparation_instrument_kit": null,
-      "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
-    }
-  ],
+  "modified_metadata": {
+    "parent_sample_id": "UFL0008-SP-1-1-2",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.be79jhr6",
+    "dataset_type": "RNAseq",
+    "analyte_class": "RNA",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Illumina",
+    "acquisition_instrument_model": "NovaSeq 6000",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras//UFLA_10x_contributors.tsv",
+    "data_path": ".",
+    "barcode_offset": null,
+    "barcode_read": "Read 1 (R1)",
+    "barcode_size": "16",
+    "umi_offset": null,
+    "umi_read": null,
+    "umi_size": null,
+    "assay_input_entity": "single cell",
+    "number_of_input_cells_or_nuclei": "500000",
+    "amount_of_input_analyte_value": "14202",
+    "amount_of_input_analyte_unit": null,
+    "library_adapter_sequence": "5'-  GATCGGAAGAGCACACGTCTGAACTCCAGTCA -3'       3'- TCTAGCCTTCTCG -5'",
+    "library_average_fragment_size": "482",
+    "library_input_amount_value": null,
+    "library_input_amount_unit": null,
+    "library_output_amount_value": "600",
+    "library_output_amount_unit": "ng",
+    "library_concentration_value": null,
+    "library_concentration_unit": null,
+    "library_layout": "paired-end",
+    "number_of_iterations_of_cdna_amplification": "15",
+    "number_of_pcr_cycles_for_indexing": "15",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
+    "sample_indexing_set": null,
+    "is_technical_replicate": "No",
+    "expected_entity_capture_count": null,
+    "sequencing_reagent_kit": "S4",
+    "sequencing_read_format": "28,8,0,91",
+    "sequencing_batch_id": null,
+    "capture_batch_id": null,
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
+    "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
+  },
   "processing_log": {
-    "mapped_fields": {
+    "field_mappings": {
       "acquisition_instrument_model": "acquisition_instrument_model",
       "acquisition_instrument_vendor": "acquisition_instrument_vendor",
       "analyte_class": "analyte_class",
@@ -127,7 +125,7 @@
       "sequencing_reagent_kit": "sequencing_reagent_kit",
       "tissue_id": "parent_sample_id"
     },
-    "mapped_values": {
+    "value_mappings": {
       "dataset_type": {
         "scRNAseq-10xGenomics": "RNAseq"
       },
@@ -147,7 +145,7 @@
         "28/8/0/91": "28,8,0,91"
       }
     },
-    "unmapped_values": [
+    "ambiguous_mappings": [
       {
         "field": "sequencing_reagent_kit",
         "value": "S4",
@@ -157,7 +155,7 @@
         ]
       }
     ],
-    "unmapped_records": {
+    "excluded_data": {
       "assay_category": "sequence",
       "donor_id": "UFL0008",
       "execution_datetime": "2020-08-20 18:08",
@@ -175,7 +173,7 @@
       "sequencing_phix_percent": "0.01",
       "sequencing_read_percent_q30": "94.2"
     },
-    "applied_patches": [
+    "metadata_patches": [
       {
         "field": "assay_input_entity",
         "value": "single cell",
