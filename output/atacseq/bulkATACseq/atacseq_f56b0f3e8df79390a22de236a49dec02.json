@@ -147,26 +147,6 @@
         "Tagment DNA TDE1 Enzyme": "bulkATACseq"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "bulk_atac_cell_isolation_protocols_io_doi",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_creation_date",
-      "library_id",
-      "library_pcr_cycles",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "sample_quality_metric",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "transposition_transposase_source",
-      "version"
-    ],
     "unmapped_values": [
       {
         "field": "transposition_reagent_kit",
@@ -178,6 +158,26 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "bulk_atac_cell_isolation_protocols_io_doi": "10.17504/protocols.io.kqdg3p2kel25/v1",
+      "description": "Placenta; Site A; Fetal region",
+      "donor_id": "UCSDFR0001",
+      "execution_datetime": "2022-02-11 21:48",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.261gen52jg47/v1",
+      "library_creation_date": "2022-01-22",
+      "library_id": "3093_pA_F",
+      "library_pcr_cycles": "8",
+      "operator": "Scott Lindsay-Hewett",
+      "operator_email": "sclindsay@ucsd.edu",
+      "pi": "Louise Laurent",
+      "pi_email": "llaurent@health.ucsd.edu",
+      "sample_quality_metric": "OK",
+      "sequencing_phix_percent": "0",
+      "sequencing_read_percent_q30": "98.17",
+      "transposition_transposase_source": "Illumina",
+      "version": "1"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

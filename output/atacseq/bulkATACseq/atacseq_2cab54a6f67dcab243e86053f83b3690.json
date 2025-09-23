@@ -143,27 +143,6 @@
         "HiSeq 3000/4000 PE Cluster Kit PE-410-1001": "Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283"
       }
     },
-    "unmapped_fields": [
-      "_from_metadatatsv",
-      "assay_category",
-      "bulk_atac_cell_isolation_protocols_io_doi",
-      "collectiontype",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_creation_date",
-      "library_id",
-      "library_pcr_cycles",
-      "metadata_path",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "sample_quality_metric",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "transposition_transposase_source"
-    ],
     "unmapped_values": [
       {
         "field": "transposition_reagent_kit",
@@ -175,6 +154,27 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "_from_metadatatsv": true,
+      "assay_category": "sequence",
+      "bulk_atac_cell_isolation_protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+      "collectiontype": "single_metadatatsv",
+      "donor_id": "STAN0003",
+      "execution_datetime": "2019-10-04 0:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+      "library_creation_date": "2022-01-22",
+      "library_id": "B001-A-406_A",
+      "library_pcr_cycles": "7",
+      "metadata_path": ".",
+      "operator": "Aaron Horning",
+      "operator_email": "ahorning@stanford.edu",
+      "pi": "Michael Snyder",
+      "pi_email": "mpsnyder@stanford.edu",
+      "sample_quality_metric": "OK",
+      "sequencing_phix_percent": "5",
+      "sequencing_read_percent_q30": "78.3",
+      "transposition_transposase_source": "Illumina"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

@@ -145,27 +145,6 @@
         "70/6/104": "70,6,104"
       }
     },
-    "unmapped_fields": [
-      "_from_metadatatsv",
-      "assay_category",
-      "collectiontype",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "metadata_path",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30"
-    ],
     "unmapped_values": [
       {
         "field": "acquisition_instrument_model",
@@ -185,6 +164,27 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "_from_metadatatsv": true,
+      "assay_category": "sequence",
+      "collectiontype": "single_metadatatsv",
+      "donor_id": "UCSD0003",
+      "execution_datetime": "2019-05-29 11:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.be5gjg3w",
+      "library_id": "KM18",
+      "metadata_path": ".",
+      "operator": "Nongluk Plongthongkum",
+      "operator_email": "nplongth@eng.ucsd.edu",
+      "pi": "Kun Zhang",
+      "pi_email": "kzhang@eng.ucsd.edu",
+      "rnaseq_assay_method": "SNARE2-RNAseq-RNA",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.ufketkw",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "20",
+      "sequencing_read_percent_q30": "87.32"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

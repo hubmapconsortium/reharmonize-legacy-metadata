@@ -147,24 +147,6 @@
         "28/8/0/91": "28,8,0,91"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30"
-    ],
     "unmapped_values": [
       {
         "field": "sequencing_reagent_kit",
@@ -175,6 +157,24 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "donor_id": "UFL0006",
+      "execution_datetime": "2020-08-20 18:08",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+      "library_id": "UFL0006_SPL_CC2_CD45_neg",
+      "operator": "Maigan Brusko",
+      "operator_email": "maigan@ufl.edu",
+      "pi": "Todd Brusko",
+      "pi_email": "tbrusko@ufl.edu",
+      "rnaseq_assay_method": "Single Cell 3' v3",
+      "sc_isolation_enrichment": "FACS",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.bucdnss6",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "digestion",
+      "sequencing_phix_percent": "0.01",
+      "sequencing_read_percent_q30": "90.2"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

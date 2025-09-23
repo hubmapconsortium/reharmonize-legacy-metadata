@@ -153,28 +153,6 @@
         "snATACseq": "snATACseq"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "library_pcr_cycles",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "sc_isolation_cell_number",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "transposition_transposase_source",
-      "version"
-    ],
     "unmapped_values": [
       {
         "field": "acquisition_instrument_model",
@@ -186,6 +164,28 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "snATAC-seq component of a 10x Genomics mulitome experiment to profile human placenta HBM579.SHVS.665",
+      "donor_id": "UCSDFR0012",
+      "execution_datetime": "2022-07-20 14:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.5qpvoby69l4o/v2",
+      "library_id": "JAX3146-pA-SNF-F",
+      "library_pcr_cycles": "7",
+      "operator": "Jessica Grassmann",
+      "operator_email": "jessica.grassmann@jax.org",
+      "pi": "Louise Laurent",
+      "pi_email": "llaurent@health.ucsd.edu",
+      "sc_isolation_cell_number": "2870000",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.81wgb657ylpk/v1",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "automated dissociator",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "93.64",
+      "transposition_transposase_source": "10X multiome",
+      "version": "1"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

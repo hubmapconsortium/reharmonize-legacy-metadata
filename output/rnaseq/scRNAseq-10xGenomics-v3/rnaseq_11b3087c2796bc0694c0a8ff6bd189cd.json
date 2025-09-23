@@ -157,27 +157,27 @@
         "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3": "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "version"
-    ],
     "unmapped_values": [],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "Normal human sc chondrocytes",
+      "donor_id": "UCONN0014",
+      "execution_datetime": "2021-09-24 16:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bp2l6175rvqe/v1",
+      "library_id": "01regCARTIconHEAnm4",
+      "operator": "Tony Mondala",
+      "operator_email": "tmondala@scripps.edu",
+      "pi": "Martin Lotz",
+      "pi_email": "Mlotz@scripps.edu",
+      "rnaseq_assay_method": "Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.14egn765qv5d/v1",
+      "sc_isolation_quality_metric": "Trypan Blue staining followed by Cell Countess",
+      "sc_isolation_tissue_dissociation": "collagenase II Digestion",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "94.5",
+      "version": "3"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

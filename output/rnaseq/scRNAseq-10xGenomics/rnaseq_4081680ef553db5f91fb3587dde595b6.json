@@ -167,28 +167,6 @@
         "28/8/0/91": "28,8,0,91"
       }
     },
-    "unmapped_fields": [
-      "_from_metadatatsv",
-      "assay_category",
-      "collectiontype",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "metadata_path",
-      "operator",
-      "operator_email",
-      "other_metadata",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30"
-    ],
     "unmapped_values": [
       {
         "field": "sequencing_reagent_kit",
@@ -199,6 +177,46 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "_from_metadatatsv": true,
+      "assay_category": "sequence",
+      "collectiontype": "rnaseq_10x",
+      "donor_id": "UFL0002",
+      "execution_datetime": "2019-11-07 12:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+      "library_id": "HBMP2_thymus_2",
+      "metadata_path": ".",
+      "operator": "Maigan Brusko",
+      "operator_email": "maigan@ufl.edu",
+      "other_metadata": {
+        "": "GAGCACCG",
+        "10x_Genomics_Index_well_ID": "SI-GA-E8",
+        "Concentration_ng_ul": "24.8",
+        "FRAGMENT_SIZE_report_from_core": "",
+        "HuBMAP Case Identifier": "Case2 Thymus  2",
+        "Name": "HBMP2_thymus_2",
+        "Path": "",
+        "Quantification_method": "Qubit",
+        "Run_date_reported_from_ICBR": "",
+        "SI_INDEX_SEQUENCE": "ATAGTTAC",
+        "Seq_run": "NS-1699",
+        "Sequencing_concentration_reported_from_ICBR": "225 pM",
+        "UUID Identifier": "UFL0002-TH-2-1",
+        "Volume_ul": "10",
+        "fragment_analysis_method_report_from_core": "",
+        "qPCR_library_quantification_results": "",
+        "qPCR_quantification_method": ""
+      },
+      "pi": "Todd Brusko",
+      "pi_email": "tbrusko@ufl.edu",
+      "rnaseq_assay_method": "Single Cell 3' v3",
+      "sc_isolation_enrichment": "FACS",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.bd9vi966",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "digestion",
+      "sequencing_phix_percent": "0.01",
+      "sequencing_read_percent_q30": "0.9"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

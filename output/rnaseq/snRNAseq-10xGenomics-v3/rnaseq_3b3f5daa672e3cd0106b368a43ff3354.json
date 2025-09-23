@@ -144,24 +144,6 @@
         "28/10/10/90": "28,10,10,90"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30"
-    ],
     "unmapped_values": [
       {
         "field": "acquisition_instrument_model",
@@ -194,6 +176,24 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "donor_id": "STAN0013",
+      "execution_datetime": "2021-03-12 09:30",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+      "library_id": "B010-A-501",
+      "operator": "Bei Wei, Kristina Paul",
+      "operator_email": "wbei@stanford.edu",
+      "pi": "Mike Snyder",
+      "pi_email": "mpsnyder@stanford.edu",
+      "rnaseq_assay_method": "10x Chromium multiome Reagent Kits",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.6t8herw",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "96.5"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

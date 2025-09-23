@@ -144,24 +144,6 @@
         "29/8/92": "29,8,92"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30"
-    ],
     "unmapped_values": [
       {
         "field": "acquisition_instrument_model",
@@ -194,6 +176,24 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "donor_id": "STAN0008",
+      "execution_datetime": "2020-12-09 11:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+      "library_id": "B005-A-001",
+      "operator": "Stephanie Nevins, Roxanne Chiu",
+      "operator_email": "snevins@stanford.edu",
+      "pi": "Mike Snyder",
+      "pi_email": "mpsnyder@stanford.edu",
+      "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v10",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "94.3"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

@@ -154,27 +154,27 @@
         "NovaSeq 6000 SP": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "version"
-    ],
     "unmapped_values": [],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "snrnaseq",
+      "donor_id": "STAN0007",
+      "execution_datetime": "2021-03-18 03:09",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bfwajpae",
+      "library_id": "B004-A-504",
+      "operator": "Stephanie Nevins, Roxanne Chiu",
+      "operator_email": "snevins@stanford.edu",
+      "pi": "Michael Snyder",
+      "pi_email": "mpsnyder@stanford.edu",
+      "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v3.1",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.bfwajpae",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "20",
+      "sequencing_read_percent_q30": "93.5",
+      "version": "2"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

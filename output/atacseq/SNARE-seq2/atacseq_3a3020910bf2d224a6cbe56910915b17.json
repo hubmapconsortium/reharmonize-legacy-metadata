@@ -147,28 +147,6 @@
         "SNARE-Seq2-AC": "sciATACseq"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "library_pcr_cycles",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "sc_isolation_cell_number",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "transposition_transposase_source",
-      "version"
-    ],
     "unmapped_values": [
       {
         "field": "acquisition_instrument_model",
@@ -188,6 +166,28 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "Single-nucleus SNARE-seq2 (dual-omic RNA and accessible chromatin sequencing) on adult human heart",
+      "donor_id": "CALT0013",
+      "execution_datetime": "2021-07-01 11:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bzdrp256",
+      "library_id": "HRT29",
+      "library_pcr_cycles": "10",
+      "operator": "Dinh Diep",
+      "operator_email": "ddiep@ucsd.edu",
+      "pi": "Kun Zhang",
+      "pi_email": "kzhang@eng.ucsd.edu",
+      "sc_isolation_cell_number": "1290000",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.b2z4qf8w",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "gentleMACS",
+      "sequencing_phix_percent": "15",
+      "sequencing_read_percent_q30": "93.64",
+      "transposition_transposase_source": "In-house",
+      "version": "1"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

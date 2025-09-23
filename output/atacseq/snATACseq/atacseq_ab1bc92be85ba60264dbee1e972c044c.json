@@ -147,28 +147,6 @@
         "snATACseq": "snATACseq"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "library_pcr_cycles",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "sc_isolation_cell_number",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "transposition_transposase_source",
-      "version"
-    ],
     "unmapped_values": [
       {
         "field": "acquisition_instrument_model",
@@ -210,6 +188,28 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "snATACseq",
+      "donor_id": "STAN0003",
+      "execution_datetime": "2020-07-02 09:30",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bf33jqqn",
+      "library_id": "B001-A-006",
+      "library_pcr_cycles": "12",
+      "operator": "Derek Chen",
+      "operator_email": "derekc8@stanford.edu",
+      "pi": "William Greenleaf",
+      "pi_email": "wjg@stanford.edu",
+      "sc_isolation_cell_number": "8870000",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.bfsnjnde",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "94.5",
+      "transposition_transposase_source": "10X snATAC",
+      "version": "1"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

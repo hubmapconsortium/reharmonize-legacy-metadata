@@ -151,26 +151,6 @@
         "34/10/10/66": "34,10,10,66"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "version"
-    ],
     "unmapped_values": [
       {
         "field": "sequencing_reagent_kit",
@@ -182,6 +162,26 @@
         ]
       }
     ],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "Human_Heart",
+      "donor_id": "CALT0005",
+      "execution_datetime": "2021-03-22 12:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.buxdnxi6",
+      "library_id": "W135_heart_LV",
+      "operator": "David Read",
+      "operator_email": "readdf@uw.edu",
+      "pi": "Cole Trapnell",
+      "pi_email": "coletrap@uw.edu",
+      "rnaseq_assay_method": "sciRNAseq",
+      "sc_isolation_enrichment": "FACS",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.budans2e",
+      "sc_isolation_quality_metric": "Microscopy Visual Inspection",
+      "sc_isolation_tissue_dissociation": "GentleMACS",
+      "sequencing_phix_percent": "0",
+      "sequencing_read_percent_q30": "93.76",
+      "version": "2"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

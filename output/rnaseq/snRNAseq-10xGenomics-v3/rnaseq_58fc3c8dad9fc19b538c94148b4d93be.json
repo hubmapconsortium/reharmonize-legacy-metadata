@@ -154,27 +154,27 @@
         "NovaSeq S4 200 cycle": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "description",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "version"
-    ],
     "unmapped_values": [],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "description": "snRNA-seq component of a 10x Genomics mulitome experiment to profile human placenta HBM798.WXMM.948",
+      "donor_id": "USCDFR0003",
+      "execution_datetime": "2021-05-06 14:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.5qpvoby69l4o/v2",
+      "library_id": "JAX3076-pA-SNF-M1",
+      "operator": "Shannon Bessonett",
+      "operator_email": "shannon.bessonett@jax.org",
+      "pi": "Louise Laurent",
+      "pi_email": "llaurent@health.ucsd.edu",
+      "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.ewov1n9npgr2/v2",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "94.77",
+      "version": "3"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

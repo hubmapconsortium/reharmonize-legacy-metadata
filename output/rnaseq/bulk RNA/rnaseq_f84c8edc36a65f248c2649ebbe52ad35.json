@@ -135,27 +135,27 @@
         "NovaSeq 6000 SP Reagent Kit": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401"
       }
     },
-    "unmapped_fields": [
-      "_from_metadatatsv",
-      "assay_category",
-      "bulk_rna_isolation_protocols_io_doi",
-      "bulk_rna_isolation_quality_metric_value",
-      "bulk_rna_yield_units_per_tissue_unit",
-      "bulk_rna_yield_value",
-      "collectiontype",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "metadata_path",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30"
-    ],
     "unmapped_values": [],
+    "unmapped_records": {
+      "_from_metadatatsv": true,
+      "assay_category": "sequence",
+      "bulk_rna_isolation_protocols_io_doi": "10.17504/protocols.io.bf52jq8e",
+      "bulk_rna_isolation_quality_metric_value": "8.7",
+      "bulk_rna_yield_units_per_tissue_unit": "ng/mg",
+      "bulk_rna_yield_value": "71.3",
+      "collectiontype": "single_metadatatsv",
+      "donor_id": "STAN0003",
+      "execution_datetime": "2019-04-25 0:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme",
+      "metadata_path": ".",
+      "operator": "Stephanie Nevins",
+      "operator_email": "snevins@stanford.edu",
+      "pi": "Mike Snyder",
+      "pi_email": "mpsnyder@stanford.edu",
+      "rnaseq_assay_method": "NEBNext Ultra II RNA Library Prep Kit",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "94.44"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",

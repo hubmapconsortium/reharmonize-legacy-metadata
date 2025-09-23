@@ -145,26 +145,26 @@
         "10X_scRNASeq_protocol": null
       }
     },
-    "unmapped_fields": [
-      "assay_category",
-      "donor_id",
-      "execution_datetime",
-      "library_construction_protocols_io_doi",
-      "library_id",
-      "operator",
-      "operator_email",
-      "pi",
-      "pi_email",
-      "rnaseq_assay_method",
-      "sc_isolation_enrichment",
-      "sc_isolation_protocols_io_doi",
-      "sc_isolation_quality_metric",
-      "sc_isolation_tissue_dissociation",
-      "sequencing_phix_percent",
-      "sequencing_read_percent_q30",
-      "source_project"
-    ],
     "unmapped_values": [],
+    "unmapped_records": {
+      "assay_category": "sequence",
+      "donor_id": "HCA0001",
+      "execution_datetime": "2019-09-25 09:08",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.btdpni5n",
+      "library_id": "P1TLH_TLH_library",
+      "operator": "",
+      "operator_email": "",
+      "pi": "Ian Mcgilvray",
+      "pi_email": "ian.mcgilvray@uhn.ca",
+      "rnaseq_assay_method": "3' end single cell RNA sequencing-bcl2fastq",
+      "sc_isolation_enrichment": "cell size selection",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.btdpni5n",
+      "sc_isolation_quality_metric": "",
+      "sc_isolation_tissue_dissociation": "enzymatic dissociation",
+      "sequencing_phix_percent": "",
+      "sequencing_read_percent_q30": "",
+      "source_project": "HCA"
+    },
     "applied_patches": [
       {
         "field": "assay_input_entity",
