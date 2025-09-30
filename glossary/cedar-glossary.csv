@@ -21,7 +21,7 @@ is_staining_automated,Indicates whether the slide staining process is automated 
 is_targeted,Indicates whether a specific molecule or set of molecules is targeted for detection or measurement by the assay.,Yes
 is_technical_replicate,"Indicates whether the sequencing reaction was run in replicate. If ""Yes,"" the corresponding FASTQ files in the dataset should be merged for analysis.",Yes
 lab_id,"A locally assigned identifier provided by the data provider for the dataset. It is used to reference an external metadata record that may be maintained independently, enabling traceability and supporting provenance tracking.",Visium_9OLC_A4_S1
-library_adapter_sequence,"The 5' and/or 3' adapter sequences used during library preparation to make the library compatible with the sequencing protocol and instrumentation. Adapter sequences should be provided as a comma-separated list of key-value pairs in the format: "adapter name: sequence".",Nextera Read 1: CTGTCTCTTATACACATCT
+library_adapter_sequence,"The 5' and/or 3' adapter sequences used during library preparation to make the library compatible with the sequencing protocol and instrumentation. Adapter sequences should be provided as a comma-separated list of key-value pairs in the format: ""adapter name: sequence"".",Nextera Read 1: CTGTCTCTTATACACATCT
 library_average_fragment_size,"The average size of sequencing library fragments, measured in base pairs (bp), as estimated by gel electrophoresis, BioAnalyzer, or TapeStation.",200
 library_concentration_unit,The unit of measurement used to specify the library concentration value.,ng/ul
 library_concentration_value,The concentration of the pooled library submitted for sequencing.,2.5
@@ -267,4 +267,5 @@ weight_unit,"The unit of measurement for the weight value. If no weight measurem
 weight_value,The weight of the object in question.,100
 width_unit,"The unit of measurement for the width value. If no width is specified, this field may be left blank.",mm
 width_value,The width of the object in question.,15
+
 
