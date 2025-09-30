@@ -67,7 +67,7 @@ umi_read,"Specifies which sequencing read file contains the Unique Molecular Ide
 umi_size,"The length of the Unique Molecular Identifier (UMI) in base pairs (bp). If no UMI is used, enter ""Not applicable"".",8
 ablation_frequency_unit,"The unit of measurement for the ablation frequency value. If no input frequency, this field may be left blank.",
 ablation_frequency_value,"The frequency at which laser ablation is performed, typically measured in hertz (Hz). This value indicates how often the laser pulses during the ablation process.",
-acquisition_id,The unique identifier for the directory containing the Region of Interest (ROI) images for a slide. The combination of "Acquisition ID" and "ROI ID" is used to denote the specific slide-ROI depicted in the image.,
+acquisition_id,The unique identifier for the directory containing the Region of Interest (ROI) images for a slide. The combination of ""Acquisition ID"" and ""ROI ID"" is used to denote the specific slide-ROI depicted in the image.,
 acquisition_instrument_objective_magnification,"The magnification level of the objective lens used during image acquisition, expressed as an integer value (e.g., 10). Note that the use of ""x"" as in ""10x"" is not an accepted value.",
 activation_stimulus,The specific type of stimulus used to provoke cell activation. This field is required if "Is cells activation performed?" is marked as "Yes".,PMA/ionomycin
 actual_entity_input_count,The actual number of cells or nuclei input into the assay. This information should be provided when available to ensure accurate assay setup and analysis.,
@@ -267,5 +267,6 @@ weight_unit,"The unit of measurement for the weight value. If no weight measurem
 weight_value,The weight of the object in question.,100
 width_unit,"The unit of measurement for the width value. If no width is specified, this field may be left blank.",mm
 width_value,The width of the object in question.,15
+
 
 
