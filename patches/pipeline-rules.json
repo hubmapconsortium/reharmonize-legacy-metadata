@@ -186,7 +186,7 @@
       "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme"
     },
     "should": {
-      "sequencing_read_format": "150/8/8/150"
+      "sequencing_read_format": "150/8/8/150",
       "sequencing_read_format": "150,8,8,150"
       }
     },
@@ -198,7 +198,7 @@
     "when": {
       "must" : {
       "assay_type": "SNARE-seq2"
-      "sequencing_read_format": 75,94,8,75"
+      "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent"
       }
     },
@@ -210,7 +210,7 @@
     "when": {
       "must" : {
       "assay_type": "SNARE-seq2"
-      "sequencing_read_format": 75,94,8,75"
+      "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 S1 Reagent"
       }
     },
@@ -222,7 +222,7 @@
     "when": {
       "must" : {
       "assay_type": "SNARE-seq2"
-      "sequencing_read_format": 75,94,8,75"
+      "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 S2 Reagent"
       }
     },
@@ -234,7 +234,7 @@
     "when": {
       "must" : {
       "assay_type": "SNARE-seq2"
-      "sequencing_read_format": 75,94,8,75"
+      "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent"
       }
     },
