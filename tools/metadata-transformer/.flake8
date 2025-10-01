@@ -1,0 +1,5 @@
+[flake8]
+max-line-length = 88
+# E501: Line too long (handled by black)
+# W503: Line break before binary operator (contradicts PEP 8 and black)
+ignore = E501, W503
