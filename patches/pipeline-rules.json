@@ -242,6 +242,7 @@
       "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400"
     }
   },
+  {
     "when": {
       "must" : {
         "assay_type": "SNARE-seq2"
