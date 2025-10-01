@@ -197,7 +197,7 @@
   {
     "when": {
       "must" : {
-      "assay_type": "SNARE-seq2"
+      "assay_type": "SNARE-seq2",
       "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent"
       }
@@ -209,7 +209,7 @@
   {
     "when": {
       "must" : {
-      "assay_type": "SNARE-seq2"
+      "assay_type": "SNARE-seq2",
       "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 S1 Reagent"
       }
@@ -221,7 +221,7 @@
   {
     "when": {
       "must" : {
-      "assay_type": "SNARE-seq2"
+      "assay_type": "SNARE-seq2",
       "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 S2 Reagent"
       }
@@ -233,7 +233,7 @@
   {
     "when": {
       "must" : {
-      "assay_type": "SNARE-seq2"
+      "assay_type": "SNARE-seq2",
       "sequencing_read_format": 75,94,8,75",
       "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent"
       }
