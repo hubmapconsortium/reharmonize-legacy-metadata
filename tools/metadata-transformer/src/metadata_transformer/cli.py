@@ -31,7 +31,7 @@ from metadata_transformer.value_mapper import ValueMapper
     help="Directory containing JSON value mapping files",
 )
 @click.option(
-    "--target-schema",
+    "--target-schema-file",
     type=click.Path(exists=True, file_okay=True, dir_okay=False, path_type=Path),
     required=True,
     help="Path to target schema JSON file",
@@ -61,7 +61,7 @@ from metadata_transformer.value_mapper import ValueMapper
 def main(
     field_mapping_file: Path,
     value_mapping_dir: Path,
-    target_schema: Path,
+    target_schema_file: Path,
     patches_dir: Optional[Path],
     input_dir: Optional[Path],
     input_file: Optional[Path],
@@ -136,9 +136,9 @@ def main(
             click.echo(f"Warning: Error loading value mappings: {e}", err=True)
 
         if verbose:
-            click.echo(f"Loading target schema from: {target_schema}")
+            click.echo(f"Loading target schema from: {target_schema_file}")
         try:
-            schema_loader.load_schema(target_schema)
+            schema_loader.load_schema(target_schema_file)
             schema_fields = schema_loader.get_schema_fields()
             required_fields = schema_loader.get_required_fields()
             if verbose:

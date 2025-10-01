@@ -34,7 +34,7 @@ pip install -e ".[dev]"
 metadata-transform \
   --field-mapping-file <field-mapping-file.json> \
   --value-mapping-dir <value-mapping-dir> \
-  --target-schema <schema-file.json> \
+  --target-schema-file <schema-file.json> \
   --input-dir <legacy-metadata-dir> \
   --output-dir <output-dir>
 ```
@@ -44,7 +44,7 @@ metadata-transform \
 metadata-transform \
   --field-mapping-file <field-mapping-file.json> \
   --value-mapping-dir <value-mapping-dir> \
-  --target-schema <schema-file.json> \
+  --target-schema-file <schema-file.json> \
   --input-file <legacy-metadata-file.json> \
   --output-dir <output-dir>
 ```
@@ -54,7 +54,7 @@ metadata-transform \
 metadata-transform \
   --field-mapping-file <field-mapping-file.json> \
   --value-mapping-dir <value-mapping-dir> \
-  --target-schema <schema-file.json> \
+  --target-schema-file <schema-file.json> \
   --patches-dir <patches-dir> \
   --input-file <legacy-metadata-file.json> \
   --output-dir <output-dir>
@@ -64,7 +64,7 @@ metadata-transform \
 
 - `--field-mapping-file`: JSON file containing field name mappings (required)
 - `--value-mapping-dir`: Directory containing JSON value mapping files (required)
-- `--target-schema`: Path to target schema JSON file (required)
+- `--target-schema-file`: Path to target schema JSON file (required)
 - `--patches-dir`: Directory containing JSON patch files for conditional patching (optional)
 - `--input-dir`: Directory containing legacy metadata files for bulk processing (mutually exclusive with --input-file)
 - `--input-file`: Path to single legacy metadata file to process (mutually exclusive with --input-dir)

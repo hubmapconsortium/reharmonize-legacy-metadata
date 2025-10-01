@@ -45,7 +45,7 @@ class TestCLI:
                     str(field_mapping_file),
                     "--value-mapping-dir",
                     str(value_mapping_dir),
-                    "--target-schema",
+                    "--target-schema-file",
                     str(schema_file),
                     "--output-dir",
                     str(output_dir),
@@ -89,7 +89,7 @@ class TestCLI:
                     str(field_mapping_file),
                     "--value-mapping-dir",
                     str(value_mapping_dir),
-                    "--target-schema",
+                    "--target-schema-file",
                     str(schema_file),
                     "--input-dir",
                     str(input_dir),
@@ -174,7 +174,7 @@ class TestCLI:
                     str(field_mapping_file),
                     "--value-mapping-dir",
                     str(value_mapping_dir),
-                    "--target-schema",
+                    "--target-schema-file",
                     str(schema_file),
                     "--input-file",
                     str(input_file),
@@ -238,7 +238,7 @@ class TestCLI:
                     str(field_mapping_file),
                     "--value-mapping-dir",
                     str(value_mapping_dir),
-                    "--target-schema",
+                    "--target-schema-file",
                     str(schema_file),
                     "--input-dir",
                     str(input_dir),
@@ -295,7 +295,7 @@ class TestCLI:
                     str(field_mapping_file),
                     "--value-mapping-dir",
                     str(value_mapping_dir),
-                    "--target-schema",
+                    "--target-schema-file",
                     str(schema_file),
                     "--input-dir",
                     str(input_dir),
@@ -339,7 +339,7 @@ class TestCLI:
                     str(field_mapping_file),
                     "--value-mapping-dir",
                     str(value_mapping_dir),
-                    "--target-schema",
+                    "--target-schema-file",
                     str(schema_file),
                     "--input-file",
                     str(input_file),
@@ -364,7 +364,7 @@ class TestCLI:
         assert result.exit_code == 0
         assert "--field-mapping-file" in result.output
         assert "--value-mapping-dir" in result.output
-        assert "--target-schema" in result.output
+        assert "--target-schema-file" in result.output
         assert "--input-dir" in result.output
         assert "--input-file" in result.output
         assert "--output-dir" in result.output
