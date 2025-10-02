@@ -1,0 +1,111 @@
+{
+  "uuid": "f8064c286bcf3fcfb5dd199ff53b2a8d",
+  "hubmap_id": "HBM455.BSJM.532",
+  "status": "Published",
+  "group_name": "Vanderbilt TMC",
+  "dataset_type": "Auto-fluorescence",
+  "metadata": {
+    "acquisition_instrument_model": "AxioScan.Z1",
+    "acquisition_instrument_vendor": "Carl Zeiss Microscopy",
+    "analyte_class": "endogenous fluorophores",
+    "assay_category": "imaging",
+    "assay_type": "AF",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "description": "Autofluorescence Microscopy collected from the right kidney of a 64 year old White male donorby the Biomolecular Multimodal Imaging Center (BIOMC) at Vanderbilt University. BIOMIC is a Tissue Mapping Centerthat is part of the NIH funded Human Biomolecular Atlas Program (HuBMAP). Autofluorescence images werecollected with a Carl Zeiss microscopy AxioScan.Z1 using 3 channels/filters --DAPI (excitation: 335-383 nm/emission: 420-470 nm), eGFP (excitation: 450-490 nm/emission: 500-550 nm),and dsRed (excitation: 538-562 nm/emission: 570-640 nm). Support was provided by the NIH Common Fundand National Institute of Diabetes and Digestive and Kidney Diseases (U54 DK120058). Tissue was collected throughthe Cooperative Human Tissue Network with support provided by the NIH National Cancer Institute (5 UM1 CA183727-08).",
+    "donor_id": "VAN0027",
+    "execution_datetime": "2022-01-26 17:40",
+    "is_targeted": "False",
+    "number_of_channels": "3",
+    "operator": "Jamie L Allen",
+    "operator_email": "jamie.l.allen@vanderbilt.edu",
+    "overall_protocols_io_doi": "10.17504/protocols.io.bfskjncw",
+    "pi": "Jeffrey M. Spraggins",
+    "pi_email": "jeff.spraggins@vanderbilt.edu",
+    "protocols_io_doi": "10.17504/protocols.io.7e3hjgn",
+    "resolution_x_unit": "um",
+    "resolution_x_value": "0.65",
+    "resolution_y_unit": "um",
+    "resolution_y_value": "0.65",
+    "resolution_z_unit": "um",
+    "resolution_z_value": "0.0",
+    "tissue_id": "VAN0027-RK-1-22",
+    "version": "1"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "VAN0027-RK-1-22",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.7e3hjgn",
+    "dataset_type": "Auto-fluorescence",
+    "analyte_class": "Endogenous fluorophore",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Zeiss Microscopy",
+    "acquisition_instrument_model": "Axio Scan.Z1",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "antibodies_path": null,
+    "is_image_preprocessing_required": null,
+    "slide_id": null,
+    "tile_configuration": null,
+    "scan_direction": null,
+    "tiled_image_columns": null,
+    "tiled_image_count": null,
+    "intended_tile_overlap_percentage": null,
+    "metadata_schema_id": "c9c6a02b-010e-4217-96dc-f7ef71dd14c4"
+  },
+  "processing_log": {
+    "field_mappings": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "contributors_path": "contributors_path",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "tissue_id": "parent_sample_id"
+    },
+    "value_mappings": {
+      "acquisition_instrument_model": {
+        "AxioScan.Z1": "Axio Scan.Z1"
+      },
+      "acquisition_instrument_vendor": {
+        "Carl Zeiss Microscopy": "Zeiss Microscopy"
+      },
+      "analyte_class": {
+        "endogenous fluorophores": "Endogenous fluorophore"
+      },
+      "dataset_type": {
+        "AF": "Auto-fluorescence"
+      },
+      "is_targeted": {
+        "False": "No"
+      }
+    },
+    "ambiguous_mappings": [],
+    "excluded_data": {
+      "assay_category": "imaging",
+      "description": "Autofluorescence Microscopy collected from the right kidney of a 64 year old White male donorby the Biomolecular Multimodal Imaging Center (BIOMC) at Vanderbilt University. BIOMIC is a Tissue Mapping Centerthat is part of the NIH funded Human Biomolecular Atlas Program (HuBMAP). Autofluorescence images werecollected with a Carl Zeiss microscopy AxioScan.Z1 using 3 channels/filters --DAPI (excitation: 335-383 nm/emission: 420-470 nm), eGFP (excitation: 450-490 nm/emission: 500-550 nm),and dsRed (excitation: 538-562 nm/emission: 570-640 nm). Support was provided by the NIH Common Fundand National Institute of Diabetes and Digestive and Kidney Diseases (U54 DK120058). Tissue was collected throughthe Cooperative Human Tissue Network with support provided by the NIH National Cancer Institute (5 UM1 CA183727-08).",
+      "donor_id": "VAN0027",
+      "execution_datetime": "2022-01-26 17:40",
+      "number_of_channels": "3",
+      "operator": "Jamie L Allen",
+      "operator_email": "jamie.l.allen@vanderbilt.edu",
+      "overall_protocols_io_doi": "10.17504/protocols.io.bfskjncw",
+      "pi": "Jeffrey M. Spraggins",
+      "pi_email": "jeff.spraggins@vanderbilt.edu",
+      "resolution_x_unit": "um",
+      "resolution_x_value": "0.65",
+      "resolution_y_unit": "um",
+      "resolution_y_value": "0.65",
+      "resolution_z_unit": "um",
+      "resolution_z_value": "0.0",
+      "version": "1"
+    },
+    "metadata_patches": []
+  }
+}
