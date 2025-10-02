@@ -1,0 +1,278 @@
+{
+  "uuid": "34faa1f36158f2833bc679e41b33c588",
+  "hubmap_id": "HBM652.NZQQ.526",
+  "status": "QA",
+  "group_name": "University of California San Diego TMC",
+  "dataset_type": "ATACseq",
+  "metadata": {
+    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_vendor": "Illumina",
+    "analyte_class": "DNA",
+    "assay_category": "sequence",
+    "assay_type": "snATACseq",
+    "cell_barcode_offset": "0",
+    "cell_barcode_read": "R2",
+    "cell_barcode_size": "16",
+    "contributors_path": "extras/bukmap_20190529_10X-C_contributors.tsv",
+    "data_path": ".",
+    "description": "10X Genomics Single-Nucleus Assay of Transposase Accessible Chromatin-Sequencing for Epigenetic Profiling of Adult Human Kidney Tissue",
+    "donor_id": "UCSD0004",
+    "execution_datetime": "2019-05-29 11:00",
+    "is_targeted": "False",
+    "is_technical_replicate": "True",
+    "library_adapter_sequence": "CTGTCTCTTATACACATCT+AGATGTGTATAAGAGACAG",
+    "library_average_fragment_size": "368",
+    "library_construction_protocols_io_doi": "10.17504/protocols.io.bvssn6ee",
+    "library_final_yield": "192",
+    "library_final_yield_unit": "ng",
+    "library_id": "KC38",
+    "library_layout": "paired-end",
+    "library_pcr_cycles": "12",
+    "library_pcr_cycles_for_sample_index": "11",
+    "operator": "Sarah Urata",
+    "operator_email": "surata@eng.ucsd.edu",
+    "pi": "Kun Zhang",
+    "pi_email": "kzhang@eng.ucsd.edu",
+    "protocols_io_doi": "10.17504/protocols.io.bvssn6ee",
+    "sc_isolation_cell_number": "777000",
+    "sc_isolation_enrichment": "none",
+    "sc_isolation_entity": "nucleus",
+    "sc_isolation_protocols_io_doi": "10.17504/protocols.io.ufketkw",
+    "sc_isolation_quality_metric": "OK",
+    "sc_isolation_tissue_dissociation": "dounce",
+    "sequencing_phix_percent": "1",
+    "sequencing_read_format": "51/8/16/51",
+    "sequencing_read_percent_q30": "94.66",
+    "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent",
+    "tissue_id": "UCSD0004-RK-1-1-1",
+    "transposition_input": "12105",
+    "transposition_kit_number": "1000075",
+    "transposition_method": "snATACseq",
+    "transposition_transposase_source": "10X snATAC",
+    "version": "1"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "UCSD0004-RK-1-1-1",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.bvssn6ee",
+    "dataset_type": "ATACseq",
+    "analyte_class": "DNA",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Illumina",
+    "acquisition_instrument_model": "NovaSeq",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras/bukmap_20190529_10X-C_contributors.tsv",
+    "data_path": ".",
+    "barcode_offset": "0",
+    "barcode_read": "Read 2 (R2)",
+    "barcode_size": "24",
+    "umi_offset": "Not applicable",
+    "umi_read": "Not applicable",
+    "umi_size": "Not applicable",
+    "assay_input_entity": "single nucleus",
+    "number_of_input_cells_or_nuclei": "12105",
+    "library_adapter_sequence": "CTGTCTCTTATACACATCT+AGATGTGTATAAGAGACAG",
+    "library_average_fragment_size": "368",
+    "library_input_amount_value": null,
+    "library_input_amount_unit": null,
+    "library_output_amount_value": "192",
+    "library_output_amount_unit": "ng",
+    "library_concentration_value": null,
+    "library_concentration_unit": null,
+    "library_layout": "paired-end",
+    "number_of_pcr_cycles_for_indexing": "11",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
+    "sample_indexing_set": null,
+    "is_technical_replicate": "Yes",
+    "expected_entity_capture_count": null,
+    "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent",
+    "sequencing_read_format": "51,8,16,51",
+    "transposition_reagent_kit": "1000075",
+    "transposition_method": "snATACseq",
+    "sequencing_batch_id": null,
+    "capture_batch_id": null,
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
+    "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
+  },
+  "processing_log": {
+    "field_mappings": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "cell_barcode_offset": "barcode_offset",
+      "cell_barcode_read": "barcode_read",
+      "cell_barcode_size": "barcode_size",
+      "contributors_path": "contributors_path",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "is_technical_replicate": "is_technical_replicate",
+      "library_adapter_sequence": "library_adapter_sequence",
+      "library_average_fragment_size": "library_average_fragment_size",
+      "library_final_yield": "library_output_amount_value",
+      "library_final_yield_unit": "library_output_amount_unit",
+      "library_layout": "library_layout",
+      "library_pcr_cycles_for_sample_index": "number_of_pcr_cycles_for_indexing",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "sc_isolation_entity": "assay_input_entity",
+      "sequencing_read_format": "sequencing_read_format",
+      "sequencing_reagent_kit": "sequencing_reagent_kit",
+      "tissue_id": "parent_sample_id",
+      "transposition_input": "number_of_input_cells_or_nuclei",
+      "transposition_kit_number": "transposition_reagent_kit",
+      "transposition_method": "transposition_method"
+    },
+    "value_mappings": {
+      "dataset_type": {
+        "snATACseq": "ATACseq"
+      },
+      "is_targeted": {
+        "False": "No"
+      },
+      "is_technical_replicate": {
+        "True": "Yes"
+      },
+      "sequencing_read_format": {
+        "51/8/16/51": "51,8,16,51"
+      },
+      "transposition_method": {
+        "snATACseq": "snATACseq"
+      }
+    },
+    "ambiguous_mappings": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NovaSeq 6000 SP Reagent",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401",
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400"
+        ]
+      },
+      {
+        "field": "transposition_reagent_kit",
+        "value": "1000075",
+        "permissible_values": [
+          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 4 rxn; PN 1000285",
+          "Custom"
+        ]
+      }
+    ],
+    "excluded_data": {
+      "assay_category": "sequence",
+      "description": "10X Genomics Single-Nucleus Assay of Transposase Accessible Chromatin-Sequencing for Epigenetic Profiling of Adult Human Kidney Tissue",
+      "donor_id": "UCSD0004",
+      "execution_datetime": "2019-05-29 11:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bvssn6ee",
+      "library_id": "KC38",
+      "library_pcr_cycles": "12",
+      "operator": "Sarah Urata",
+      "operator_email": "surata@eng.ucsd.edu",
+      "pi": "Kun Zhang",
+      "pi_email": "kzhang@eng.ucsd.edu",
+      "sc_isolation_cell_number": "777000",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.ufketkw",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "94.66",
+      "transposition_transposase_source": "10X snATAC",
+      "version": "1"
+    },
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 2 (R2)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "24",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snATACseq"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
