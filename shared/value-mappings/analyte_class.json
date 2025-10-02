@@ -1,0 +1,14 @@
+{
+  "analyte_class": {
+    "protein": "Protein",
+    "Endogenous fluorophores": "Endogenous fluorophore",
+    "endogenous fluorophores": "Endogenous fluorophore",
+    "lipids and metabolites": "Lipid + metabolite",
+    "lipids": "Lipid",
+    "polysaccharides": "Polysaccharide",
+    "metabolites": "Metabolite",
+    "peptides": "Peptide",
+    "Nucleic acid and protein": "Nucleic acid + protein",
+    "nucleic acid and protein": "Nucleic acid + protein"
+  }
+}
