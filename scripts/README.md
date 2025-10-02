@@ -80,8 +80,8 @@ python generate-target-schema.py \
 
 | Script | Input | Output | Use Case |
 |--------|-------|--------|----------|
-| `generate-field-mapping.py` | CSV file | JSON mapping | Map legacy → target fields |
-| `generate-target-schema.py` | YAML URL or file path | JSON schema | Generate validation schema |
+| `generate-field-mapping.py` | CSV file | JSON file | Map legacy → target fields |
+| `generate-target-schema.py` | YAML URL or file path | JSON file | Generate simplified metadata schema from CEDAR template |
 
 ---
 
