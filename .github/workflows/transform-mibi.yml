@@ -1,0 +1,52 @@
+name: Transform MIBI legacy metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyYAML
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/mibi/mibi-field-mappings.csv \
+            metadata/mibi/mibi-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/mibi/latest/mibi.yml" \
+            metadata/mibi/mibi-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/mibi/mibi-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/mibi/mibi-schema.json \
+            --patch-file metadata/mibi/mibi-patches.json \
+            --input-dir metadata/mibi/input \
+            --output-dir metadata/mibi/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/mibi/output
+          git commit -m "Transform MIBI legacy metadata (automated)" || echo "No changes to commit"
+          git push
