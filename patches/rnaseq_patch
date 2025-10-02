@@ -1,0 +1,16 @@
+[
+  {
+    "when": {
+      "must" : {
+      "assay_type": "bulk RNA"
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme"
+    },
+    "should": {
+      "sequencing_read_format": "150/8/8/150",
+      }
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"
+    }
+  }
+]
