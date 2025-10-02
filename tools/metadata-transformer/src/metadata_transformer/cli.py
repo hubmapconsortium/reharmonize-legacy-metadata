@@ -299,9 +299,6 @@ def _process_bulk_files(
                 if verbose:
                     click.echo(f"❌ Failed to process {input_file.name}: {e}")
 
-    # Write bulk summary
-    summary_file = output_generator.write_bulk_summary(processed_files, output_dir)
-
     # Print summary
     successful = len([f for f in processed_files if f["status"] == "success"])
     failed = len(processed_files) - successful
@@ -312,7 +309,6 @@ def _process_bulk_files(
     click.echo(f"   Successful: {successful}")
     click.echo(f"   Failed: {failed}")
     click.echo(f"   Total objects transformed: {total_objects}")
-    click.echo(f"   Summary written to: {summary_file}")
 
 
 if __name__ == "__main__":
