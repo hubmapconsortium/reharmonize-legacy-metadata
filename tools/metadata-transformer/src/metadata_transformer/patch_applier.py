@@ -89,25 +89,89 @@ class PatchApplier:
 
         # Validate and add patches
         for i, patch in enumerate(patch_data):
-            if not isinstance(patch, dict):
-                raise FieldMappingError(f"Patch {i} in {patch_file} must be an object")
-
-            if "when" not in patch or "then" not in patch:
-                raise FieldMappingError(
-                    f"Patch {i} in {patch_file} must have 'when' and 'then' keys"
-                )
-
-            if not isinstance(patch["when"], dict) or not isinstance(
-                patch["then"], dict
-            ):
-                raise FieldMappingError(
-                    f"Patch {i} in {patch_file}: 'when' and 'then' must be objects"
-                )
+            self._validate_patch_structure(patch, i, patch_file)
 
             # Add source file info for debugging
             patch_with_source = patch.copy()
             patch_with_source["_source_file"] = str(patch_file)
             self.patches.append(patch_with_source)
+
+    def _validate_patch_structure(
+        self, patch: Dict[str, Any], index: int, file_path: Path
+    ) -> None:
+        """
+        Validate patch structure including nested conditions.
+
+        Args:
+            patch: The patch object to validate
+            index: The index of the patch in the array
+            file_path: The file path for error messages
+
+        Raises:
+            FieldMappingError: If patch structure is invalid
+        """
+        if not isinstance(patch, dict):
+            raise FieldMappingError(f"Patch {index} in {file_path} must be an object")
+
+        if "when" not in patch or "then" not in patch:
+            raise FieldMappingError(
+                f"Patch {index} in {file_path} must have 'when' and 'then' keys"
+            )
+
+        if not isinstance(patch["when"], dict):
+            raise FieldMappingError(
+                f"Patch {index} in {file_path}: 'when' must be an object"
+            )
+
+        if not isinstance(patch["then"], dict):
+            raise FieldMappingError(
+                f"Patch {index} in {file_path}: 'then' must be an object"
+            )
+
+        # Validate when clause structure
+        self._validate_when_clause(patch["when"], f"Patch {index} in {file_path}")
+
+    def _validate_when_clause(self, when_clause: Dict[str, Any], context: str) -> None:
+        """
+        Recursively validate when clause structure.
+
+        Args:
+            when_clause: The when clause to validate
+            context: Context string for error messages
+
+        Raises:
+            FieldMappingError: If when clause structure is invalid
+        """
+        if not when_clause:
+            # Empty when clause is allowed (patch always applies)
+            return
+
+        for key in when_clause:
+            if key not in ["__must__", "__should__"]:
+                raise FieldMappingError(
+                    f"{context}: 'when' can only contain '__must__' and/or '__should__' keys, found '{key}'"
+                )
+
+            clause = when_clause[key]
+
+            # Only accept array format
+            if not isinstance(clause, list):
+                raise FieldMappingError(
+                    f"{context}: '{key}' must be an array, got {type(clause).__name__}"
+                )
+
+            # Validate each item in the array
+            for i, item in enumerate(clause):
+                if not isinstance(item, dict):
+                    raise FieldMappingError(
+                        f"{context}.{key}[{i}] must be an object, got {type(item).__name__}"
+                    )
+
+                # Check if nested structure
+                if "__must__" in item or "__should__" in item:
+                    # Recursively validate nested structure
+                    self._validate_when_clause(item, f"{context}.{key}[{i}]")
+                # Otherwise it's a simple field-value dict (no further validation needed)
 
     def apply_patches(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -146,65 +210,80 @@ class PatchApplier:
         Returns:
             True if conditions are met, False otherwise
         """
-        must_conditions = when_clause.get("must", {})
-        should_conditions = when_clause.get("should", {})
+        must_result = True
+        should_result = True
 
-        # If neither must nor should are present, patch always applies
-        if not must_conditions and not should_conditions:
+        if "__must__" in when_clause:
+            must_result = self._evaluate_must(when_clause["__must__"], metadata)
+
+        if "__should__" in when_clause:
+            should_result = self._evaluate_should(when_clause["__should__"], metadata)
+
+        # If neither present, patch always applies
+        if "__must__" not in when_clause and "__should__" not in when_clause:
             return True
 
-        # Check must conditions (AND logic - all must be true)
-        must_result = True
-        if must_conditions:
-            must_result = self._evaluate_must_conditions(must_conditions, metadata)
-
-        # Check should conditions (OR logic - any must be true)
-        should_result = True
-        if should_conditions:
-            should_result = self._evaluate_should_conditions(
-                should_conditions, metadata
-            )
-
-        # Both groups must pass if present
         return must_result and should_result
 
-    def _evaluate_must_conditions(
-        self, must_conditions: Dict[str, Any], metadata: Dict[str, Any]
+    def _evaluate_must(
+        self, must_clause: List[Dict[str, Any]], metadata: Dict[str, Any]
     ) -> bool:
         """
-        Evaluate 'must' conditions using AND logic.
+        Evaluate '__must__' clause with AND logic.
+        All items in the array must evaluate to true.
 
         Args:
-            must_conditions: Dictionary of field-value pairs that must all match
+            must_clause: List of condition items
             metadata: The metadata to evaluate against
 
         Returns:
             True if all conditions match, False otherwise
         """
-        for field_name, expected_value in must_conditions.items():
-            actual_value = metadata.get(field_name)
-            if actual_value != expected_value:
-                return False
-        return True
+        if not isinstance(must_clause, list):
+            return False
 
-    def _evaluate_should_conditions(
-        self, should_conditions: Dict[str, Any], metadata: Dict[str, Any]
+        # Empty array: all() returns True (vacuous truth)
+        return all(self._evaluate_item(item, metadata) for item in must_clause)
+
+    def _evaluate_should(
+        self, should_clause: List[Dict[str, Any]], metadata: Dict[str, Any]
     ) -> bool:
         """
-        Evaluate 'should' conditions using OR logic.
+        Evaluate '__should__' clause with OR logic.
+        At least one item in the array must evaluate to true.
 
         Args:
-            should_conditions: Dictionary of field-value pairs where any must match
+            should_clause: List of condition items
             metadata: The metadata to evaluate against
 
         Returns:
             True if any condition matches, False otherwise
         """
-        for field_name, expected_value in should_conditions.items():
-            actual_value = metadata.get(field_name)
-            if actual_value == expected_value:
-                return True
-        return False
+        if not isinstance(should_clause, list):
+            return False
+
+        # Empty array: any() returns False
+        return any(self._evaluate_item(item, metadata) for item in should_clause)
+
+    def _evaluate_item(self, item: Dict[str, Any], metadata: Dict[str, Any]) -> bool:
+        """
+        Evaluate a single item from a __must__ or __should__ array.
+
+        Args:
+            item: Either a nested structure with __must__/__should__ keys,
+                  or a simple field-value dict
+            metadata: The metadata to evaluate against
+
+        Returns:
+            True if item conditions match, False otherwise
+        """
+        # Check if this is a nested logical structure
+        if "__must__" in item or "__should__" in item:
+            # Recursively evaluate the nested structure
+            return self._evaluate_conditions(item, metadata)
+
+        # Simple field-value dict - all fields must match (implicit AND)
+        return all(metadata.get(k) == v for k, v in item.items())
 
     def _log_patch_application(self, patch: Dict[str, Any], source_file: str) -> None:
         """

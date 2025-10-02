@@ -83,6 +83,8 @@ metadata-transform \
 - `--output-dir`: Directory where transformed files will be written (required)
 - `--verbose`, `-v`: Enable verbose output (optional)
 
+See [PATCH_EXPRESSION.md](PATCH_EXPRESSION.md) for detailed patch expression syntax and examples.
+
 ## Output Format
 
 Each transformed file contains:
@@ -130,8 +132,27 @@ pip install -e ".[dev]"
 ```
 
 ### Running Tests
+
+**Prerequisites:**
 ```bash
-# Activate virtual environment first
+# Navigate to the tools directory (parent of metadata-transformer)
+cd /path/to/reharmonize-legacy-metadata/tools
+
+# Create and activate virtual environment (if not already done)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install the package with dev dependencies
+cd metadata-transformer
+pip install -e ".[dev]"
+```
+
+**Run Tests:**
+```bash
+# Make sure you're in the metadata-transformer directory
+cd /path/to/reharmonize-legacy-metadata/tools/metadata-transformer
+
+# Activate virtual environment (from tools directory)
 source ../.venv/bin/activate
 
 # Run all tests
@@ -144,7 +165,16 @@ pytest -v
 pytest --cov
 
 # Run specific test file
-pytest tests/test_field_mapper.py
+pytest tests/test_patch_applier.py
+
+# Run specific test class
+pytest tests/test_patch_applier.py::TestPatchApplier
+
+# Run specific test method
+pytest tests/test_patch_applier.py::TestPatchApplier::test_nested_and_or_logic
+
+# Run quietly (minimal output)
+pytest -q
 ```
 
 ### Code Formatting
