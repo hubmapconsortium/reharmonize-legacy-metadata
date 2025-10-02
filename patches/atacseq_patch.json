@@ -1,0 +1,79 @@
+[
+  {
+    "when": {
+      "must" : {
+      "assay_type": "SNARE-seq2",
+      "sequencing_read_format": "75/94/8/75",
+      "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent"
+      }
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312"
+    }
+  },
+  {
+    "when": {
+      "must" : {
+      "assay_type": "SNARE-seq2",
+      "sequencing_read_format": "75+94+8+75",
+      "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent"
+      }
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312"
+    }
+  },
+  {
+    "when": {
+      "must" : {
+      "assay_type": "SNARE-seq2",
+      "sequencing_read_format": "75,94,8,75",
+      "sequencing_reagent_kit": "NovaSeq 6000 S1 Reagent"
+      }
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (300 Cycles); PN 20028317"
+    }
+  },
+  {
+    "when": {
+      "must" : {
+      "assay_type": "SNARE-seq2",
+      "sequencing_read_format": "75,94,8,75",
+      "sequencing_reagent_kit": "NovaSeq 6000 S2 Reagent"
+      }
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (300 Cycles); PN 20028314"
+    }
+  },
+  {
+    "when": {
+      "must" : {
+      "assay_type": "SNARE-seq2",
+      "sequencing_read_format": "75,94,8,75",
+      "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent"
+      }
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400"
+    }
+  },
+  {
+    "when": {
+      "must" : {
+        "assay_type": "SNARE-seq2"
+      },
+      "should": {
+        "sequencing_reagent_kit": [ "NovaSeq 6000 SP Reagent",
+                                    "NovaSeq 6000 S2 Reagent",
+                                    "NovaSeq 6000 S1 Reagent",
+                                    "NovaSeq 6000 S4 Reagent"
+                                  ]
+        }
+    },
+    "then": {
+      "acquisition_instrument_model": "NovaSeq 6000"
+    }
+  }
+]
