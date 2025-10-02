@@ -45,7 +45,7 @@ Focus on the following four areas:
 
 ## 3. Resolve Ambiguous Mappings
 - **How to check:**
-  - Identify mappings where multiple options are possible.
+  - Identify mappings where multiple options are possible in the `output` files.
   - Suggest the most appropriate mapping, or determine if the legacy value should be included in the new schema.
 - **Making changes:**
   - Record your resolution in the `patches.json` file in the appropriate dataset directory.
@@ -63,5 +63,6 @@ Focus on the following four areas:
 
 ## ✅ Deliverables
 - Updated `field-mapping.csv` files in dataset directories as needed
+- Updated `value-mapping.csv` files in `shared/value-mappings` directory as needed
 - Updated `patches.json` files when resolving ambiguities
 - Clear Git commit messages explaining the rationale for every change
