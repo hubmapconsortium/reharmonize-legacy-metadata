@@ -1,0 +1,262 @@
+{
+  "uuid": "43f83f08bedac2bc4d58767362dfebe2",
+  "hubmap_id": "HBM793.TLPP.486",
+  "status": "Published",
+  "group_name": "University of California San Diego TMC",
+  "dataset_type": "RNAseq",
+  "metadata": {
+    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_vendor": "Illumina",
+    "analyte_class": "RNA",
+    "assay_category": "sequence",
+    "assay_type": "SNARE2-RNAseq",
+    "cell_barcode_offset": "10,48,86",
+    "cell_barcode_read": "R2",
+    "cell_barcode_size": "8,8,8",
+    "contributors_path": "extras/bukmap_20190822_contributors.tsv",
+    "data_path": ".",
+    "donor_id": "UCSD0006",
+    "execution_datetime": "2019-08-22 11:00",
+    "is_targeted": "False",
+    "is_technical_replicate": "False",
+    "library_adapter_sequence": "CTGTCTCTTATACACATCT",
+    "library_average_fragment_size": "700",
+    "library_construction_protocols_io_doi": "10.17504/protocols.io.be5gjg3w",
+    "library_final_yield_unit": "ng",
+    "library_final_yield_value": "673",
+    "library_id": "KM49",
+    "library_layout": "paired-end",
+    "library_pcr_cycles": "19",
+    "library_pcr_cycles_for_sample_index": "12",
+    "operator": "Nongluk Plongthongkum",
+    "operator_email": "nplongth@eng.ucsd.edu",
+    "pi": "Kun Zhang",
+    "pi_email": "kzhang@eng.ucsd.edu",
+    "protocols_io_doi": "10.17504/protocols.io.be5gjg3w",
+    "rnaseq_assay_input": "16000",
+    "rnaseq_assay_method": "SNARE-Seq2-RNA",
+    "sc_isolation_cell_number": "4420000",
+    "sc_isolation_enrichment": "FACS",
+    "sc_isolation_entity": "nucleus",
+    "sc_isolation_protocols_io_doi": "10.17504/protocols.io.ufketkw",
+    "sc_isolation_quality_metric": "OK",
+    "sc_isolation_tissue_dissociation": "dounce",
+    "sequencing_phix_percent": "20",
+    "sequencing_read_format": "70/6/104",
+    "sequencing_read_percent_q30": "93.66",
+    "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent",
+    "tissue_id": "UCSD0006-RK-1-1-1"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "UCSD0006-RK-1-1-1",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.be5gjg3w",
+    "dataset_type": "RNAseq",
+    "analyte_class": "RNA",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Illumina",
+    "acquisition_instrument_model": "NovaSeq",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras/bukmap_20190822_contributors.tsv",
+    "data_path": ".",
+    "barcode_offset": "10,48,86",
+    "barcode_read": "Read 2 (R2)",
+    "barcode_size": "8,8,8",
+    "umi_offset": "0",
+    "umi_read": "Read 2 (R2)",
+    "umi_size": "10",
+    "assay_input_entity": "single nucleus",
+    "number_of_input_cells_or_nuclei": "4420000",
+    "amount_of_input_analyte_value": "16000",
+    "amount_of_input_analyte_unit": null,
+    "library_adapter_sequence": "CTGTCTCTTATACACATCT",
+    "library_average_fragment_size": "700",
+    "library_input_amount_value": null,
+    "library_input_amount_unit": null,
+    "library_output_amount_value": "673",
+    "library_output_amount_unit": "ng",
+    "library_concentration_value": null,
+    "library_concentration_unit": null,
+    "library_layout": "paired-end",
+    "number_of_iterations_of_cdna_amplification": "19",
+    "number_of_pcr_cycles_for_indexing": "12",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
+    "sample_indexing_set": null,
+    "is_technical_replicate": "No",
+    "expected_entity_capture_count": null,
+    "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent",
+    "sequencing_read_format": "70,6,104",
+    "sequencing_batch_id": null,
+    "capture_batch_id": null,
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
+    "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
+  },
+  "processing_log": {
+    "field_mappings": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "cell_barcode_offset": "barcode_offset",
+      "cell_barcode_read": "barcode_read",
+      "cell_barcode_size": "barcode_size",
+      "contributors_path": "contributors_path",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "is_technical_replicate": "is_technical_replicate",
+      "library_adapter_sequence": "library_adapter_sequence",
+      "library_average_fragment_size": "library_average_fragment_size",
+      "library_final_yield_unit": "library_output_amount_unit",
+      "library_final_yield_value": "library_output_amount_value",
+      "library_layout": "library_layout",
+      "library_pcr_cycles": "number_of_iterations_of_cdna_amplification",
+      "library_pcr_cycles_for_sample_index": "number_of_pcr_cycles_for_indexing",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "rnaseq_assay_input": "amount_of_input_analyte_value",
+      "sc_isolation_cell_number": "number_of_input_cells_or_nuclei",
+      "sc_isolation_entity": "assay_input_entity",
+      "sequencing_read_format": "sequencing_read_format",
+      "sequencing_reagent_kit": "sequencing_reagent_kit",
+      "tissue_id": "parent_sample_id",
+      "umi_read": "umi_read",
+      "umi_size": "umi_size",
+      "umi_offset": "umi_offset"
+    },
+    "value_mappings": {
+      "dataset_type": {
+        "SNARE2-RNAseq": "RNAseq"
+      },
+      "is_targeted": {
+        "False": "No"
+      },
+      "is_technical_replicate": {
+        "False": "No"
+      },
+      "sequencing_read_format": {
+        "70/6/104": "70,6,104"
+      }
+    },
+    "ambiguous_mappings": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NovaSeq 6000 S4 Reagent",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
+        ]
+      }
+    ],
+    "excluded_data": {
+      "assay_category": "sequence",
+      "donor_id": "UCSD0006",
+      "execution_datetime": "2019-08-22 11:00",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.be5gjg3w",
+      "library_id": "KM49",
+      "operator": "Nongluk Plongthongkum",
+      "operator_email": "nplongth@eng.ucsd.edu",
+      "pi": "Kun Zhang",
+      "pi_email": "kzhang@eng.ucsd.edu",
+      "rnaseq_assay_method": "SNARE-Seq2-RNA",
+      "sc_isolation_enrichment": "FACS",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.ufketkw",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "20",
+      "sequencing_read_percent_q30": "93.66"
+    },
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 2 (R2)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "8,8,8",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "10,48,86",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Read 2 (R2)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "10",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "0",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "SNARE2-RNAseq"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

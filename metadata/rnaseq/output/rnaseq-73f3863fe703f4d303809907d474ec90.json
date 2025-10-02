@@ -1,0 +1,280 @@
+{
+  "uuid": "73f3863fe703f4d303809907d474ec90",
+  "hubmap_id": "HBM346.LSFW.324",
+  "status": "Published",
+  "group_name": "Stanford TMC",
+  "dataset_type": "RNAseq",
+  "metadata": {
+    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_vendor": "Illumina",
+    "analyte_class": "RNA",
+    "assay_category": "sequence",
+    "assay_type": "snRNAseq-10xGenomics-v3",
+    "cell_barcode_offset": "0",
+    "cell_barcode_read": "R1",
+    "cell_barcode_size": "16",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "donor_id": "STAN0012",
+    "execution_datetime": "2021-03-20 09:30",
+    "is_targeted": "False",
+    "is_technical_replicate": "False",
+    "library_adapter_sequence": "AGATCGGAAGAGCACACGT",
+    "library_average_fragment_size": "475",
+    "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+    "library_final_yield_unit": "ng",
+    "library_final_yield_value": "270",
+    "library_id": "B009-A-401",
+    "library_layout": "paired-end",
+    "library_pcr_cycles": "7",
+    "library_pcr_cycles_for_sample_index": "13",
+    "operator": "Bei Wei, Kristina Paul",
+    "operator_email": "wbei@stanford.edu",
+    "pi": "Mike Snyder",
+    "pi_email": "mpsnyder@stanford.edu",
+    "protocols_io_doi": "10.17504/protocols.io.bvbmn2k6",
+    "rnaseq_assay_input": "9786",
+    "rnaseq_assay_method": "10x Chromium multiome Reagent Kits",
+    "sc_isolation_cell_number": "800000",
+    "sc_isolation_enrichment": "none",
+    "sc_isolation_entity": "nucleus",
+    "sc_isolation_protocols_io_doi": "10.17504/protocols.io.6t8herw",
+    "sc_isolation_quality_metric": "OK",
+    "sc_isolation_tissue_dissociation": "dounce",
+    "sequencing_phix_percent": "1",
+    "sequencing_read_format": "28/10/10/90",
+    "sequencing_read_percent_q30": "96.5",
+    "sequencing_reagent_kit": "NovaSeq",
+    "tissue_id": "STAN0012-SI-3-2"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "STAN0012-SI-3-2",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.bvbmn2k6",
+    "dataset_type": "RNAseq",
+    "analyte_class": "RNA",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Illumina",
+    "acquisition_instrument_model": "NovaSeq",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "barcode_offset": "0",
+    "barcode_read": "Read 1 (R1)",
+    "barcode_size": "16",
+    "umi_offset": "16",
+    "umi_read": "Read 1 (R1)",
+    "umi_size": "12",
+    "assay_input_entity": "single nucleus",
+    "number_of_input_cells_or_nuclei": "800000",
+    "amount_of_input_analyte_value": "9786",
+    "amount_of_input_analyte_unit": null,
+    "library_adapter_sequence": "AGATCGGAAGAGCACACGT",
+    "library_average_fragment_size": "475",
+    "library_input_amount_value": null,
+    "library_input_amount_unit": null,
+    "library_output_amount_value": "270",
+    "library_output_amount_unit": "ng",
+    "library_concentration_value": null,
+    "library_concentration_unit": null,
+    "library_layout": "paired-end",
+    "number_of_iterations_of_cdna_amplification": "7",
+    "number_of_pcr_cycles_for_indexing": "13",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
+    "sample_indexing_set": null,
+    "is_technical_replicate": "No",
+    "expected_entity_capture_count": null,
+    "sequencing_reagent_kit": "NovaSeq",
+    "sequencing_read_format": "28,10,10,90",
+    "sequencing_batch_id": null,
+    "capture_batch_id": null,
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
+    "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
+  },
+  "processing_log": {
+    "field_mappings": {
+      "acquisition_instrument_model": "acquisition_instrument_model",
+      "acquisition_instrument_vendor": "acquisition_instrument_vendor",
+      "analyte_class": "analyte_class",
+      "assay_type": "dataset_type",
+      "cell_barcode_offset": "barcode_offset",
+      "cell_barcode_read": "barcode_read",
+      "cell_barcode_size": "barcode_size",
+      "contributors_path": "contributors_path",
+      "data_path": "data_path",
+      "is_targeted": "is_targeted",
+      "is_technical_replicate": "is_technical_replicate",
+      "library_adapter_sequence": "library_adapter_sequence",
+      "library_average_fragment_size": "library_average_fragment_size",
+      "library_final_yield_unit": "library_output_amount_unit",
+      "library_final_yield_value": "library_output_amount_value",
+      "library_layout": "library_layout",
+      "library_pcr_cycles": "number_of_iterations_of_cdna_amplification",
+      "library_pcr_cycles_for_sample_index": "number_of_pcr_cycles_for_indexing",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "rnaseq_assay_input": "amount_of_input_analyte_value",
+      "sc_isolation_cell_number": "number_of_input_cells_or_nuclei",
+      "sc_isolation_entity": "assay_input_entity",
+      "sequencing_read_format": "sequencing_read_format",
+      "sequencing_reagent_kit": "sequencing_reagent_kit",
+      "tissue_id": "parent_sample_id",
+      "umi_read": "umi_read",
+      "umi_size": "umi_size",
+      "umi_offset": "umi_offset"
+    },
+    "value_mappings": {
+      "dataset_type": {
+        "snRNAseq-10xGenomics-v3": "RNAseq"
+      },
+      "is_targeted": {
+        "False": "No"
+      },
+      "is_technical_replicate": {
+        "False": "No"
+      },
+      "sequencing_read_format": {
+        "28/10/10/90": "28,10,10,90"
+      }
+    },
+    "ambiguous_mappings": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 S1 Reagent Kit (200 Cycles); PN 20012864",
+          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (100 Cycles); PN 20028319",
+          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (200 Cycles); PN 20028318",
+          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (300 Cycles); PN 20028317",
+          "Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (100 Cycles); PN 20028316",
+          "Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (200 Cycles); PN 20028315",
+          "Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (300 Cycles); PN 20028314",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (300 cycles); PN 20028312",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313",
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401",
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (200 Cycles); PN 20040719",
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400",
+          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (500 Cycles); PN 20028402",
+          "Illumina; NovaSeq X Series 1.5B Reagent Kit (100 Cycle); PN 20104703",
+          "Illumina; NovaSeq X Series 1.5B Reagent Kit (200 Cycle); PN 20104704",
+          "Illumina; NovaSeq X Series 1.5B Reagent Kit (300 Cycle); PN 20104705",
+          "Illumina; NovaSeq X Series 10B Reagent Kit (100 Cycle); PN 20085596",
+          "Illumina; NovaSeq X Series 10B Reagent Kit (200 Cycle); PN 20085595",
+          "Illumina; NovaSeq X Series 10B Reagent Kit (300 Cycle); PN 20085594",
+          "Illumina; NovaSeq X Series 25B Reagent Kit (300 Cycle); PN 20104706"
+        ]
+      }
+    ],
+    "excluded_data": {
+      "assay_category": "sequence",
+      "donor_id": "STAN0012",
+      "execution_datetime": "2021-03-20 09:30",
+      "library_construction_protocols_io_doi": "10.17504/protocols.io.bffvjjn6",
+      "library_id": "B009-A-401",
+      "operator": "Bei Wei, Kristina Paul",
+      "operator_email": "wbei@stanford.edu",
+      "pi": "Mike Snyder",
+      "pi_email": "mpsnyder@stanford.edu",
+      "rnaseq_assay_method": "10x Chromium multiome Reagent Kits",
+      "sc_isolation_enrichment": "none",
+      "sc_isolation_protocols_io_doi": "10.17504/protocols.io.6t8herw",
+      "sc_isolation_quality_metric": "OK",
+      "sc_isolation_tissue_dissociation": "dounce",
+      "sequencing_phix_percent": "1",
+      "sequencing_read_percent_q30": "96.5"
+    },
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "12",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

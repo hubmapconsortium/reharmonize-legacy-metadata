@@ -1,0 +1,144 @@
+[
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "bulk RNA" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "tissue (bulk)",
+      "barcode_read": "Not applicable",
+      "barcode_size": "Not applicable",
+      "barcode_offset": "Not applicable",
+      "umi_read": "Not applicable",
+      "umi_size": "Not applicable",
+      "umi_offset": "Not applicable"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "sciRNAseq" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single cell",
+      "barcode_read": "Not applicable",
+      "barcode_size": "40",
+      "barcode_offset": "Not applicable",
+      "umi_read": "Not applicable",
+      "umi_size": "8",
+      "umi_offset": "Not applicable"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "scRNAseq-10xGenomics" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single cell"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "scRNAseq-10xGenomics-v2" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single cell",
+      "barcode_read": "Read 1 (R1)",
+      "barcode_size": "16",
+      "barcode_offset": "0",
+      "umi_read": "Read 1 (R1)",
+      "umi_size": "10",
+      "umi_offset": "16"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "scRNAseq-10xGenomics-v3" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single cell",
+      "barcode_read": "Read 1 (R1)",
+      "barcode_size": "16",
+      "barcode_offset": "0",
+      "umi_read": "Read 1 (R1)",
+      "umi_size": "12",
+      "umi_offset": "16"    
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "SNARE2-RNAseq" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single nucleus",
+      "barcode_read": "Read 2 (R2)",
+      "barcode_size": "8,8,8",
+      "barcode_offset": "10,48,86",
+      "umi_read": "Read 2 (R2)",
+      "umi_size": "10",
+      "umi_offset": "0"      
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "snRNAseq" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single nucleus"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "snRNAseq-10xGenomics-v3" }
+      ]
+    },
+    "then": {
+      "assay_input_entity": "single nucleus",
+      "barcode_read": "Read 1 (R1)",
+      "barcode_size": "16",
+      "barcode_offset": "0",
+      "umi_read": "Read 1 (R1)",
+      "umi_size": "12",
+      "umi_offset": "16"     
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "bulk RNA" },
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme" },
+        { "__should__": [
+          { "sequencing_read_format": "150/8/8/150" }
+        ]}
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "bulk RNA" },
+        { "sc_isolation_protocols_io_doi": "10.17504/protocols.io/view/hubmap-uf-tmc-single-cell-rna-seq-10x-genomics-lib-bffvjjn6" },
+        { "acquisition_instrument_model" : "NovaSeq6000" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent"
+    }
+  }
+]
