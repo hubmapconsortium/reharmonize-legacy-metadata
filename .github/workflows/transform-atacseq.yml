@@ -16,8 +16,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install metadata-transformer
+      - name: Install dependencies
         run: |
+          pip install PyYAML
           pip install -e tools/metadata-transformer
 
       - name: Generate field mapping
