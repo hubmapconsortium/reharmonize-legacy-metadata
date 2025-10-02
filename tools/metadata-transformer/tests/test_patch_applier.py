@@ -294,3 +294,118 @@ class TestPatchApplier:
         # Clear logs
         self.patch_applier.clear_logs()
         assert len(self.patch_applier.structured_log.metadata_patches) == 0
+
+    def test_load_patch_file_nonexistent(self) -> None:
+        """Test loading patch file that doesn't exist."""
+        nonexistent_path = Path("/nonexistent/file.json")
+        with pytest.raises(FieldMappingError, match="Patch file not found"):
+            self.patch_applier.load_patch_file(nonexistent_path)
+
+    def test_load_patch_file_not_file(self) -> None:
+        """Test loading patch file with directory path."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            dir_path = Path(temp_dir)
+            with pytest.raises(FieldMappingError, match="Path is not a file"):
+                self.patch_applier.load_patch_file(dir_path)
+
+    def test_load_patch_file_valid(self) -> None:
+        """Test loading patches from a valid single file."""
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as temp_file:
+            patches = [
+                {
+                    "when": {"must": {"assay_type": "test"}},
+                    "then": {"new_field": "new_value"},
+                },
+                {
+                    "when": {"should": {"protocol": "v1"}},
+                    "then": {"protocol_version": "1.0"},
+                },
+            ]
+            json.dump(patches, temp_file)
+            temp_file.flush()
+            file_path = Path(temp_file.name)
+
+        try:
+            self.patch_applier.load_patch_file(file_path)
+            assert len(self.patch_applier.patches) == 2
+            assert self.patch_applier.patches[0]["then"]["new_field"] == "new_value"
+            assert self.patch_applier.patches[1]["then"]["protocol_version"] == "1.0"
+        finally:
+            file_path.unlink()
+
+    def test_load_patch_file_invalid_json(self) -> None:
+        """Test loading patch file with invalid JSON."""
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as temp_file:
+            temp_file.write("{ invalid json")
+            temp_file.flush()
+            file_path = Path(temp_file.name)
+
+        try:
+            with pytest.raises(FieldMappingError, match="Invalid JSON"):
+                self.patch_applier.load_patch_file(file_path)
+        finally:
+            file_path.unlink()
+
+    def test_load_patch_file_non_array(self) -> None:
+        """Test loading patch file with non-array JSON."""
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as temp_file:
+            json.dump({"not": "an array"}, temp_file)
+            temp_file.flush()
+            file_path = Path(temp_file.name)
+
+        try:
+            with pytest.raises(FieldMappingError, match="must contain a JSON array"):
+                self.patch_applier.load_patch_file(file_path)
+        finally:
+            file_path.unlink()
+
+    def test_load_patches_and_file_together(self) -> None:
+        """Test loading patches from both directory and file."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+
+            # Create a patch file in the directory
+            dir_patch_file = temp_path / "dir_patches.json"
+            dir_patches = [
+                {
+                    "when": {"must": {"type": "dir"}},
+                    "then": {"source": "directory"},
+                }
+            ]
+            with open(dir_patch_file, "w") as f:
+                json.dump(dir_patches, f)
+
+            # Create a separate patch file
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".json", delete=False
+            ) as temp_file:
+                file_patches = [
+                    {
+                        "when": {"must": {"type": "file"}},
+                        "then": {"source": "file"},
+                    }
+                ]
+                json.dump(file_patches, temp_file)
+                temp_file.flush()
+                file_path = Path(temp_file.name)
+
+            try:
+                # Load from directory first
+                self.patch_applier.load_patches(temp_path)
+                assert len(self.patch_applier.patches) == 1
+
+                # Then load from file
+                self.patch_applier.load_patch_file(file_path)
+                assert len(self.patch_applier.patches) == 2
+
+                # Verify both patches are present
+                assert self.patch_applier.patches[0]["then"]["source"] == "directory"
+                assert self.patch_applier.patches[1]["then"]["source"] == "file"
+            finally:
+                file_path.unlink()

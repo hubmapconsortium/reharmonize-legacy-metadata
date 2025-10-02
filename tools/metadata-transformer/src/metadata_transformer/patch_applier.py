@@ -46,6 +46,24 @@ class PatchApplier:
         for json_file in json_files:
             self._load_patch_file(json_file)
 
+    def load_patch_file(self, patch_file: Path) -> None:
+        """
+        Load patches from a single file.
+
+        Args:
+            patch_file: Path to a JSON patch file
+
+        Raises:
+            FieldMappingError: If file doesn't exist or can't be processed
+        """
+        if not patch_file.exists():
+            raise FieldMappingError(f"Patch file not found: {patch_file}")
+
+        if not patch_file.is_file():
+            raise FieldMappingError(f"Path is not a file: {patch_file}")
+
+        self._load_patch_file(patch_file)
+
     def _load_patch_file(self, patch_file: Path) -> None:
         """
         Load patches from a single file into the patches list.

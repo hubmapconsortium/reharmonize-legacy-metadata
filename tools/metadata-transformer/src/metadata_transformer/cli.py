@@ -42,6 +42,11 @@ from metadata_transformer.value_mapper import ValueMapper
     help="Directory containing JSON patch files for conditional patching (optional)",
 )
 @click.option(
+    "--patches-file",
+    type=click.Path(exists=True, file_okay=True, dir_okay=False, path_type=Path),
+    help="Single JSON patch file for conditional patching (optional)",
+)
+@click.option(
     "--input-dir",
     type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
     help="Directory containing legacy metadata files (for bulk processing)",
@@ -63,6 +68,7 @@ def main(
     value_mapping_dir: Path,
     target_schema_file: Path,
     patches_dir: Optional[Path],
+    patches_file: Optional[Path],
     input_dir: Optional[Path],
     input_file: Optional[Path],
     output_dir: Path,
@@ -148,19 +154,34 @@ def main(
         except Exception as e:
             click.echo(f"Warning: Error loading schema: {e}", err=True)
 
-        # Load patches if directory is provided
+        # Load patches from directory if provided
         if patches_dir:
             if verbose:
-                click.echo(f"Loading patches from: {patches_dir}")
+                click.echo(f"Loading patches from directory: {patches_dir}")
             try:
                 patch_applier.load_patches(patches_dir)
                 patches_count = patch_applier.get_loaded_patches_count()
                 if verbose:
-                    click.echo(f"Loaded {patches_count} patches")
+                    click.echo(f"Loaded {patches_count} patches from directory")
             except Exception as e:
-                click.echo(f"Warning: Error loading patches: {e}", err=True)
-        elif verbose:
-            click.echo("No patches directory specified - skipping conditional patching")
+                click.echo(
+                    f"Warning: Error loading patches from directory: {e}", err=True
+                )
+
+        # Load patches from file if provided
+        if patches_file:
+            if verbose:
+                click.echo(f"Loading patches from file: {patches_file}")
+            try:
+                patch_applier.load_patch_file(patches_file)
+                patches_count = patch_applier.get_loaded_patches_count()
+                if verbose:
+                    click.echo(f"Loaded {patches_count} total patches")
+            except Exception as e:
+                click.echo(f"Warning: Error loading patches from file: {e}", err=True)
+
+        if not patches_dir and not patches_file and verbose:
+            click.echo("No patches specified - skipping conditional patching")
 
         # Initialize transformer
         transformer = MetadataTransformer(

@@ -49,7 +49,7 @@ metadata-transform \
   --output-dir <output-dir>
 ```
 
-### With Optional Patches
+### With Optional Patches (Directory)
 ```bash
 metadata-transform \
   --field-mapping-file <field-mapping-file.json> \
@@ -60,12 +60,24 @@ metadata-transform \
   --output-dir <output-dir>
 ```
 
+### With Optional Patches (Single File)
+```bash
+metadata-transform \
+  --field-mapping-file <field-mapping-file.json> \
+  --value-mapping-dir <value-mapping-dir> \
+  --target-schema-file <schema-file.json> \
+  --patches-file <patch-file.json> \
+  --input-file <legacy-metadata-file.json> \
+  --output-dir <output-dir>
+```
+
 ## Arguments
 
 - `--field-mapping-file`: JSON file containing field name mappings (required)
 - `--value-mapping-dir`: Directory containing JSON value mapping files (required)
 - `--target-schema-file`: Path to target schema JSON file (required)
 - `--patches-dir`: Directory containing JSON patch files for conditional patching (optional)
+- `--patches-file`: Single JSON patch file for conditional patching (optional, can be used with --patches-dir)
 - `--input-dir`: Directory containing legacy metadata files for bulk processing (mutually exclusive with --input-file)
 - `--input-file`: Path to single legacy metadata file to process (mutually exclusive with --input-dir)
 - `--output-dir`: Directory where transformed files will be written (required)
