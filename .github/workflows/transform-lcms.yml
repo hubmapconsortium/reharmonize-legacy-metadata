@@ -1,0 +1,52 @@
+name: Transform LC-MS legacy metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyYAML
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/lcms/lcms-field-mappings.csv \
+            metadata/lcms/lcms-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/lcms/latest/lcms.yml" \
+            metadata/lcms/lcms-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/lcms/lcms-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/lcms/lcms-schema.json \
+            --patch-file metadata/lcms/lcms-patches.json \
+            --input-dir metadata/lcms/input \
+            --output-dir metadata/lcms/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/lcms/output
+          git commit -m "Transform LC-MS legacy metadata (automated)" || echo "No changes to commit"
+          git push
