@@ -6,10 +6,13 @@ Evaluate the modified metadata from legacy records to determine whether they hav
 The deliverables are organized in the [metadata](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata) folder by dataset type (e.g., `rnaseq`, `atacseq`). Each dataset directory contains:
 - `input/` - Original legacy metadata
 - `output/` - Transformed metadata files
-- `field-mapping.csv` - Field mapping definitions
+- `glossary/` - Field definitions for the legacy schema
+- `field-mapping.csv` - Field mapping table
 - `patches.json` - Metadata transformation patches
 
-Value mappings are shared across dataset types and located in [shared/value-mappings](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/shared/value-mappings).
+Shared resources are stored in the `shared/` directory:
+- [shared/value-mappings](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/shared/value-mappings) - Value mappings for each field name
+- [shared/field-definitions](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/shared/field-definitions) - Field definitions for the new standardized schemas
 
 For detailed guidance on creating or updating field mappings, value mappings, metadata patches, and understanding the output file structure, see the **[project wiki](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/wiki)**.
 
