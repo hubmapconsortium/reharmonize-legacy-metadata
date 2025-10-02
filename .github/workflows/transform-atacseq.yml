@@ -1,0 +1,51 @@
+name: Transform ATACseq legacy metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install metadata-transformer
+        run: |
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/atacseq/atacseq-field-mappings.csv \
+            metadata/atacseq/atacseq-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/atacseq/latest/atacseq.yml" \
+            metadata/atacseq/atacseq-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/atacseq/atacseq-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/atacseq/atacseq-schema.json \
+            --patch-file metadata/atacseq/atacseq-patches.json \
+            --input-dir metadata/atacseq/input \
+            --output-dir metadata/atacseq/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/rnaseq/output
+          git commit -m "Transform ATACseq legacy metadata (automated)" || echo "No changes to commit"
+          git push
