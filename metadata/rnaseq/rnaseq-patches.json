@@ -128,5 +128,21 @@
     "then": {
       "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"
     }
-  }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "sciRNAseq" },
+        { "__should__": [
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3 Reagent Kits v4" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3 Reagent Kits v5" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3 Reagent Kits v6" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3 Reagent Kits v7" }
+        ]}
+      ]
+    },
+    "then": {
+      "library_preparation_kit": "10x Chromium Single Cell 3 Reagent Kits v3"
+    }
+  } 
 ]
