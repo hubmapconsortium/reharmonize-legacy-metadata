@@ -132,13 +132,20 @@
   {
     "when": {
       "__must__" : [
-        { "assay_type": "bulk RNA" },
-        { "sc_isolation_protocols_io_doi": "10.17504/protocols.io/view/hubmap-uf-tmc-single-cell-rna-seq-10x-genomics-lib-bffvjjn6" },
-        { "acquisition_instrument_model" : "NovaSeq6000" }
+        { "assay_type": "snRNAseq" },
+        { "__should__": [
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v4" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v5" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v6" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v7" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v8" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v9" },
+          { "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v10" }
+        ]}
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent"
+      "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3"
     }
-  }
+  } 
 ]
