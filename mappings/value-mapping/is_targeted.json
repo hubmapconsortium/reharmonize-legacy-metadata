@@ -1,8 +1,0 @@
-{
-  "is_targeted": {
-    "TRUE": "Yes",
-    "True": "Yes",
-    "FALSE": "No",
-    "False": "No"
-  }
-}

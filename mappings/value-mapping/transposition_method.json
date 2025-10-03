@@ -1,7 +1,0 @@
-{
-  "transposition_method": {
-    "snATACseq": "snATACseq",
-    "Tagment DNA TDE1 Enzyme": "bulkATACseq",
-    "SNARE-Seq2-AC": "sciATACseq"
-  }
-}
