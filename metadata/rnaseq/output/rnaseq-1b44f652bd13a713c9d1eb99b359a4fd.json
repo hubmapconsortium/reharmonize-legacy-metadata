@@ -50,7 +50,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq 6000",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -117,9 +117,6 @@
       "umi_offset": "umi_offset"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "NovaSeq6000": "NovaSeq 6000"
-      },
       "dataset_type": {
         "bulk RNA": "RNAseq"
       },
@@ -246,6 +243,17 @@
                   "sequencing_read_format": "150/8/8/150"
                 }
               ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 6000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_model": "NovaSeq6000"
             }
           ]
         }
