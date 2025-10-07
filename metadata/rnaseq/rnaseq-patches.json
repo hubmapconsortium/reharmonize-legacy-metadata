@@ -147,8 +147,8 @@
     "then": {
       "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3"
     }
-  }
-{
+  },
+  {
     "when": {
       "__must__" : [
         { "assay_type": "scRNAseq-10xGenomics-v2" },
