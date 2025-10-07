@@ -192,14 +192,27 @@
       "acquisition_instrument_model": "NextSeq 6000"
     }
   },
-  {
+{
     "when": {
       "__must__" : [
-        { "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v3.1" }
+        { "sequencing_reagent_kit": "NovaSeq S4 200 cycle" },
+        { "sequencing_read_format": "28/10/10/90" }
       ]
     },
     "then": {
-      "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3.1"
+      "library_preparation_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit (200 Cycles)"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "assay_type": "snRNAseq-10xGenomics-v3" },
+        { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" }
+      ]
+    },
+    "then": {
+      "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+      "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns PN-1000215"
     }
   }
 ]
