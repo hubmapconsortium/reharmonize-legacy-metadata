@@ -160,5 +160,26 @@
       "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v2",
       "sequencing_reagent_kit": null
     }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "Nextseq2000" }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "NextSeq 2000"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "Nextseq2000" },
+        { "sequencing_reagent_kit": "P2"}
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811"
+    }
   }
 ]
