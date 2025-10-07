@@ -86,8 +86,8 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "6",
     "number_of_pcr_cycles_for_indexing": "16",
-    "library_preparation_kit": null,
-    "sample_indexing_kit": null,
+    "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+    "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns PN-1000215",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "5000",
@@ -263,6 +263,34 @@
           "__must__": [
             {
               "acquisition_instrument_model": "NovaSeq6000"
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sample_indexing_kit",
+        "value": "Dual Index Kit TT Set A, 96 rxns PN-1000215",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
             }
           ]
         }

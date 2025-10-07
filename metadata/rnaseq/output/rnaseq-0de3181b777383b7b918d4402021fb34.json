@@ -86,7 +86,7 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "12",
     "number_of_pcr_cycles_for_indexing": "13",
-    "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3.1",
+    "library_preparation_kit": null,
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
@@ -263,17 +263,6 @@
           "__must__": [
             {
               "acquisition_instrument_model": "NovaSeq6000"
-            }
-          ]
-        }
-      },
-      {
-        "field": "library_preparation_kit",
-        "value": "10x Chromium Single Cell 3' Reagent Kits v3.1",
-        "conditions": {
-          "__must__": [
-            {
-              "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v3.1"
             }
           ]
         }
