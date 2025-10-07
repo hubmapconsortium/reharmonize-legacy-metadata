@@ -83,7 +83,7 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "12",
     "number_of_pcr_cycles_for_indexing": "14",
-    "library_preparation_kit": null,
+    "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3",
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
@@ -137,9 +137,6 @@
       },
       "is_technical_replicate": {
         "False": "No"
-      },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "29/8/92": "29,8,92"
@@ -200,6 +197,54 @@
       "sequencing_phix_percent": "1",
       "sequencing_read_percent_q30": "94.6"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10x Chromium Single Cell 3' Reagent Kits v3",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            },
+            {
+              "__should__": [
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v4"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v5"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v6"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v7"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v8"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v9"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v10"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

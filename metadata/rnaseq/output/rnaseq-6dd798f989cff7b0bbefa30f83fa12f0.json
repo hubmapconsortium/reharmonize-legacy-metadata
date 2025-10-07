@@ -68,10 +68,10 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras/SCRIPPS_scRNA_contributors.tsv",
     "data_path": ".",
-    "barcode_offset": null,
-    "barcode_read": null,
+    "barcode_offset": "0",
+    "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": null,
+    "umi_offset": "16",
     "umi_read": "Read 1 (R1)",
     "umi_size": "12",
     "assay_input_entity": "single cell",
@@ -142,32 +142,17 @@
       "dataset_type": {
         "scRNAseq-10xGenomics-v3": "RNAseq"
       },
-      "barcode_offset": {
-        "1": null
-      },
-      "barcode_read": {
-        "01regCHONDRconHEA_featurebcmatrixfiltered.tar": null
-      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
       },
-      "assay_input_entity": {
-        "whole cell": "single cell"
-      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
       },
       "sequencing_reagent_kit": {
         "NSQ 500/550 Hi Output KT v2.5 (150 CYS)": "Illumina; NextSeq 500/550 Hi Output Kit 150 Cycles; v2.5; PN 20024907"
-      },
-      "umi_offset": {
-        "17": null
-      },
-      "umi_read": {
-        "R1": "Read 1 (R1)"
       }
     },
     "ambiguous_mappings": [],
@@ -191,6 +176,84 @@
       "sequencing_read_percent_q30": "91.8",
       "version": "3"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single cell",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "12",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

@@ -65,13 +65,13 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
-    "barcode_offset": "",
-    "barcode_read": "",
-    "barcode_size": "",
-    "umi_offset": null,
-    "umi_read": null,
-    "umi_size": null,
-    "assay_input_entity": "single nucleus",
+    "barcode_offset": "Not applicable",
+    "barcode_read": "Not applicable",
+    "barcode_size": "40",
+    "umi_offset": "Not applicable",
+    "umi_read": "Not applicable",
+    "umi_size": "8",
+    "assay_input_entity": "single cell",
     "number_of_input_cells_or_nuclei": "657200",
     "amount_of_input_analyte_value": "270000",
     "amount_of_input_analyte_unit": null,
@@ -127,7 +127,10 @@
       "sc_isolation_entity": "assay_input_entity",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id"
+      "tissue_id": "parent_sample_id",
+      "umi_read": "umi_read",
+      "umi_size": "umi_size",
+      "umi_offset": "umi_offset"
     },
     "value_mappings": {
       "acquisition_instrument_model": {
@@ -141,9 +144,6 @@
       },
       "is_technical_replicate": {
         "False": "No"
-      },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "34/10/10/66": "34,10,10,66"
@@ -180,6 +180,84 @@
       "sequencing_read_percent_q30": "93.76",
       "version": "2"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single cell",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "40",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "8",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

@@ -138,9 +138,6 @@
       "is_technical_replicate": {
         "False": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "101/8/101": "101,8,101"
       }
@@ -182,6 +179,18 @@
       "sequencing_phix_percent": "5",
       "sequencing_read_percent_q30": "82.68"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

@@ -71,7 +71,7 @@
     "barcode_offset": "0",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": null,
+    "umi_offset": "16",
     "umi_read": "Read 1 (R1)",
     "umi_size": "12",
     "assay_input_entity": "single nucleus",
@@ -139,29 +139,17 @@
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
       },
-      "barcode_read": {
-        "R1": "Read 1 (R1)"
-      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
       },
       "sequencing_reagent_kit": {
         "NovaSeq S4 200 cycle": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
-      },
-      "umi_offset": {
-        "17": null
-      },
-      "umi_read": {
-        "R1": "Read 1 (R1)"
       }
     },
     "ambiguous_mappings": [],
@@ -185,6 +173,84 @@
       "sequencing_read_percent_q30": "95.64",
       "version": "3"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "12",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      }
+    ]
   }
 }
