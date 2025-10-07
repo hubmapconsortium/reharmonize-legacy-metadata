@@ -141,6 +141,9 @@
       "is_technical_replicate": {
         "0": "No"
       },
+      "assay_input_entity": {
+        "whole cells": "single cell"
+      },
       "sequencing_read_format": {
         "28/8/0/91": "28,8,0,91"
       }
@@ -173,18 +176,6 @@
       "sequencing_phix_percent": "0.01",
       "sequencing_read_percent_q30": "93.3"
     },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single cell",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "scRNAseq-10xGenomics"
-            }
-          ]
-        }
-      }
-    ]
+    "metadata_patches": []
   }
 }

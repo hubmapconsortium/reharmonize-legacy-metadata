@@ -68,9 +68,9 @@
     "barcode_offset": "0",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": "16",
-    "umi_read": "Read 1 (R1)",
-    "umi_size": "12",
+    "umi_offset": null,
+    "umi_read": null,
+    "umi_size": null,
     "assay_input_entity": "single nucleus",
     "number_of_input_cells_or_nuclei": "6660000",
     "amount_of_input_analyte_value": "16000",
@@ -127,20 +127,23 @@
       "sc_isolation_entity": "assay_input_entity",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id",
-      "umi_read": "umi_read",
-      "umi_size": "umi_size",
-      "umi_offset": "umi_offset"
+      "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
+      },
+      "barcode_read": {
+        "R1": "Read 1 (R1)"
       },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "28/10/10/91": "28,10,10,91"
@@ -185,84 +188,6 @@
       "sequencing_read_percent_q30": "95.15",
       "version": "2"
     },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single nucleus",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_read",
-        "value": "Read 1 (R1)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_size",
-        "value": "16",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_offset",
-        "value": "0",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_read",
-        "value": "Read 1 (R1)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_size",
-        "value": "12",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_offset",
-        "value": "16",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      }
-    ]
+    "metadata_patches": []
   }
 }
