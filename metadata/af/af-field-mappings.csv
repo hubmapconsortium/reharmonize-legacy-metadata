@@ -21,6 +21,12 @@ scan_direction,,
 tiled_image_columns,,
 tiled_image_count,,
 intended_tile_overlap_percentage,,
+resolution_x_unit,resolution_x_unit,resolution_x_unit
+resolution_x_value,resolution_x_value,resolution_x_value
+resolution_y_unit,resolution_y_unit,resolution_y_unit
+resolution_y_value,resolution_y_value,resolution_y_value
+resolution_z_unit,resolution_z_unit,resolution_z_unit
+resolution_z_value,resolution_z_value,resolution_z_value
 metadata_schema_id,,
 ,assay_category,assay_category
 ,,description
@@ -32,10 +38,5 @@ metadata_schema_id,,
 ,overall_protocols_io_doi,overall_protocols_io_doi
 ,pi,pi
 ,pi_email,pi_email
-,resolution_x_unit,resolution_x_unit
-,resolution_x_value,resolution_x_value
-,resolution_y_unit,resolution_y_unit
-,resolution_y_value,resolution_y_value
-,resolution_z_unit,resolution_z_unit
-,resolution_z_value,resolution_z_value
+
 ,,version
