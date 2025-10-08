@@ -206,7 +206,7 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit (200 Cycles)"
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit (200 Cycles)"
     }
   },
 {
