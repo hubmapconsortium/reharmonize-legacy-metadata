@@ -260,7 +260,17 @@
         "conditions": {
           "__must__": [
             {
-              "acquisition_instrument_model": "NovaSeq6000"
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
             }
           ]
         }

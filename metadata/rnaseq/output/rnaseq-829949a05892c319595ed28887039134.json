@@ -241,6 +241,12 @@
               "__should__": [
                 {
                   "sequencing_read_format": "150/8/8/150"
+                },
+                {
+                  "sequencing_read_format": "150-8-8-150"
+                },
+                {
+                  "sequencing_read_format": "150,8,8,150"
                 }
               ]
             }
@@ -253,7 +259,17 @@
         "conditions": {
           "__must__": [
             {
-              "acquisition_instrument_model": "NovaSeq6000"
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
             }
           ]
         }

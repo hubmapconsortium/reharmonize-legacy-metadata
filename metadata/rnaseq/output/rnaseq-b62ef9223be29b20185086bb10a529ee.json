@@ -274,7 +274,14 @@
               "assay_type": "snRNAseq-10xGenomics-v3"
             },
             {
-              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+              "__should__": [
+                {
+                  "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium multiome Reagent Kits"
+                }
+              ]
             }
           ]
         }
@@ -288,7 +295,14 @@
               "assay_type": "snRNAseq-10xGenomics-v3"
             },
             {
-              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+              "__should__": [
+                {
+                  "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium multiome Reagent Kits"
+                }
+              ]
             }
           ]
         }
