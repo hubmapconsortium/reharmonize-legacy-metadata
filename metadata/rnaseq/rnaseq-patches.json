@@ -121,7 +121,9 @@
         { "assay_type": "bulk RNA" },
         { "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme" },
         { "__should__": [
-          { "sequencing_read_format": "150/8/8/150" }
+          { "sequencing_read_format": "150/8/8/150" },
+          { "sequencing_read_format": "150-8-8-150" },
+          { "sequencing_read_format": "150,8,8,150" }
         ]}
       ]
     },
@@ -185,7 +187,11 @@
   {
     "when": {
       "__must__" : [
-        { "acquisition_instrument_model": "NovaSeq6000" }
+        { "acquisition_instrument_vendor": "Illumina" },
+        { "__should__": [
+          { "acquisition_instrument_model": "NovaSeq6000" },
+          { "acquisition_instrument_model": "NovaSeq" }
+        ]}
       ]
     },
     "then": {
@@ -207,7 +213,10 @@
     "when": {
       "__must__" : [
         { "assay_type": "snRNAseq-10xGenomics-v3" },
-        { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" }
+        { "__should__": [
+          { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
+          { "rnaseq_assay_method": "10x Chromium multiome Reagent Kits" }
+        ]}
       ]
     },
     "then": {
