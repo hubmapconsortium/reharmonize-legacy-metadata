@@ -89,18 +89,18 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "11",
     "number_of_pcr_cycles_for_indexing": "13",
-    "library_preparation_kit": null,
-    "sample_indexing_kit": null,
+    "library_preparation_kit": "10X Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
+    "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns PN-1000215",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "10000",
-    "sequencing_reagent_kit": "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811",
+    "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3; PN 20046811",
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": null,
+    "preparation_instrument_vendor": "10X Genomics",
     "preparation_instrument_model": null,
-    "preparation_instrument_kit": null,
+    "preparation_instrument_kit": "Chromium Next GEM Chip G Single Cell Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "processing_log": {
@@ -150,9 +150,6 @@
       },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
-      },
-      "sequencing_reagent_kit": {
-        "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3": "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811"
       }
     },
     "ambiguous_mappings": [],
@@ -250,6 +247,73 @@
           "__must__": [
             {
               "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10X Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sample_indexing_kit",
+        "value": "Dual Index Kit TT Set A, 96 rxns PN-1000215",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_kit",
+        "value": "Chromium Next GEM Chip G Single Cell Kit",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3; PN 20046811",
+        "conditions": {
+          "__must__": [
+            {
+              "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3"
             }
           ]
         }

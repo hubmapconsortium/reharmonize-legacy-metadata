@@ -89,18 +89,18 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "11",
     "number_of_pcr_cycles_for_indexing": "13",
-    "library_preparation_kit": null,
-    "sample_indexing_kit": null,
+    "library_preparation_kit": "10X Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092",
+    "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns PN-120262",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "10000",
-    "sequencing_reagent_kit": "Illumina; NextSeq 500/550 Hi Output Kit 150 Cycles; v2.5; PN 20024907",
+    "sequencing_reagent_kit": "NextSeq 500/550 High Output Kit v2.5 (150 Cycles); PN 20024907",
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
-    "preparation_instrument_kit": null,
+    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_instrument_model": "Chromium Controller; PN GCG-SR-1",
+    "preparation_instrument_kit": "Chromium Single Cell B Chip Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "processing_log": {
@@ -153,9 +153,6 @@
       },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
-      },
-      "sequencing_reagent_kit": {
-        "NSQ 500/550 Hi Output KT v2.5 (150 CYS)": "Illumina; NextSeq 500/550 Hi Output Kit 150 Cycles; v2.5; PN 20024907"
       }
     },
     "ambiguous_mappings": [],
@@ -253,6 +250,255 @@
           "__must__": [
             {
               "assay_type": "scRNAseq-10xGenomics-v3"
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10X Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns; PN-1000092",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sample_indexing_kit",
+        "value": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_kit",
+        "value": "Chromium Single Cell B Chip Kit",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "__should__": [
+                {
+                  "execution_datetime": "2019-06-27 16:00"
+                },
+                {
+                  "execution_datetime": "2020-01-29 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-21 16:00"
+                },
+                {
+                  "execution_datetime": "2019-11-21 15:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-16 15:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-16 16:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_model",
+        "value": "Chromium Controller; PN GCG-SR-1",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "__should__": [
+                {
+                  "execution_datetime": "2019-06-27 16:00"
+                },
+                {
+                  "execution_datetime": "2020-01-29 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-21 16:00"
+                },
+                {
+                  "execution_datetime": "2019-11-21 15:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-16 15:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-16 16:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_kit",
+        "value": "Chromium Single Cell B Chip Kit",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "__should__": [
+                {
+                  "execution_datetime": "2019-06-27 16:00"
+                },
+                {
+                  "execution_datetime": "2020-01-29 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-21 16:00"
+                },
+                {
+                  "execution_datetime": "2019-11-21 15:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-16 15:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                },
+                {
+                  "execution_datetime": "2019-11-16 16:00"
+                },
+                {
+                  "execution_datetime": "2019-06-27 15:00"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10X Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sample_indexing_kit",
+        "value": "Chromium i7 Multiplex Kit, 96 rxns PN-120262",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_kit",
+        "value": "Chromium Single Cell B Chip Kit",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v3"
+            },
+            {
+              "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NextSeq 500/550 High Output Kit v2.5 (150 Cycles); PN 20024907",
+        "conditions": {
+          "__must__": [
+            {
+              "sequencing_reagent_kit": "NSQ 500/550 Hi Output KT v2.5 (150 CYS)"
             }
           ]
         }

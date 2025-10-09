@@ -92,7 +92,7 @@
     "sequencing_read_format": "28,8,0,91",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": null,
+    "preparation_instrument_vendor": "10X Genomics",
     "preparation_instrument_model": null,
     "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
@@ -177,6 +177,17 @@
       {
         "field": "assay_input_entity",
         "value": "single cell",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
         "conditions": {
           "__must__": [
             {
