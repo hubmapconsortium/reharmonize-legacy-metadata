@@ -3,6 +3,7 @@ Core metadata transformation logic implementing the 4-phase transformation proce
 """
 
 import json
+import jsonpatch
 from pathlib import Path
 from typing import Any, Dict, List, Union
 
@@ -112,9 +113,15 @@ class MetadataTransformer:
             # For single object input, use the original object as base
             result = original_data.copy()
 
-        result["modified_metadata"] = (
-            transformed_objects[0] if transformed_objects else {}
-        )
+        # Get original metadata for JSON patch generation
+        original_metadata = legacy_data[0].get("metadata", {}) if legacy_data else {}
+        modified_metadata = transformed_objects[0] if transformed_objects else {}
+
+        # Generate JSON patch showing transformation changes
+        json_patch_ops = self._generate_json_patch(original_metadata, modified_metadata)
+
+        result["modified_metadata"] = modified_metadata
+        result["json_patch"] = json_patch_ops
         result["processing_log"] = combined_structured_log.to_dict()
 
         return result
@@ -366,6 +373,26 @@ class MetadataTransformer:
         # Phase complete - no logging needed
 
         return compliant_metadata
+
+    def _generate_json_patch(
+        self, original_metadata: Dict[str, Any], modified_metadata: Dict[str, Any]
+    ) -> List[Dict[str, Any]]:
+        """
+        Generate JSON Patch (RFC 6902) representing transformation changes.
+
+        This method compares the original legacy metadata with the transformed
+        metadata and generates a list of patch operations that describe the
+        differences.
+
+        Args:
+            original_metadata: Original legacy metadata dictionary
+            modified_metadata: Transformed metadata dictionary
+
+        Returns:
+            List of JSON Patch operations (dicts with 'op', 'path', and optionally 'value')
+        """
+        patch = jsonpatch.make_patch(original_metadata, modified_metadata)
+        return patch.patch
 
     def get_structured_log(self) -> StructuredProcessingLog:
         """

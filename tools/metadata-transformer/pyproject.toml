@@ -29,6 +29,7 @@ classifiers = [
 dependencies = [
     "click>=8.0.0",
     "jsonschema>=4.0.0",
+    "jsonpatch>=1.32",
 ]
 
 [project.optional-dependencies]

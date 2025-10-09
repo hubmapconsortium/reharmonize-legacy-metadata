@@ -260,3 +260,196 @@ class TestMetadataTransformer:
         assert retrieved_log.excluded_data["test_field"] == "test_value"
         # Should be the same object
         assert retrieved_log is self.transformer.structured_log
+
+    def test_json_patch_in_output(self) -> None:
+        """Test that json_patch key exists in transformation output."""
+        with TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            metadata_file = temp_path / "test_patch.json"
+
+            # Create test metadata object
+            metadata_obj = {
+                "uuid": "test-uuid-123",
+                "metadata": {
+                    "legacy_field1": "value1",
+                    "legacy_field2": "value2",
+                },
+            }
+            metadata_file.write_text(json.dumps(metadata_obj))
+
+            # Set up mock behaviors
+            self.field_mapper.map_field.side_effect = lambda x: {
+                "legacy_field1": "target_field1",
+                "legacy_field2": "target_field2",
+            }.get(x)
+
+            self.value_mapper.map_value.side_effect = lambda f, v: v
+
+            self.schema_loader.get_schema_fields.return_value = {
+                "target_field1": {"required": True},
+                "target_field2": {"required": False},
+            }
+            self.schema_loader.get_default_value.return_value = None
+
+            result = self.transformer.transform_metadata_file(metadata_file)
+
+            # Verify json_patch key exists
+            assert "json_patch" in result
+            assert isinstance(result["json_patch"], list)
+
+    def test_json_patch_format(self) -> None:
+        """Test that json_patch contains valid RFC 6902 operations."""
+        with TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            metadata_file = temp_path / "test_patch_format.json"
+
+            # Create test metadata with changes
+            metadata_obj = {
+                "uuid": "test-uuid-456",
+                "metadata": {
+                    "old_field": "old_value",
+                    "change_field": "original_value",
+                },
+            }
+            metadata_file.write_text(json.dumps(metadata_obj))
+
+            # Set up transformations
+            self.field_mapper.map_field.side_effect = lambda x: {
+                "old_field": "new_field",
+                "change_field": "change_field",
+            }.get(x)
+
+            self.value_mapper.map_value.side_effect = lambda f, v: {
+                ("change_field", "original_value"): "modified_value",
+            }.get((f, v), v)
+
+            self.schema_loader.get_schema_fields.return_value = {
+                "new_field": {},
+                "change_field": {},
+            }
+            self.schema_loader.get_default_value.return_value = None
+
+            result = self.transformer.transform_metadata_file(metadata_file)
+
+            # Verify patch operations have required fields
+            json_patch = result["json_patch"]
+            for operation in json_patch:
+                assert "op" in operation
+                assert "path" in operation
+                assert operation["op"] in [
+                    "add",
+                    "remove",
+                    "replace",
+                    "move",
+                    "copy",
+                    "test",
+                ]
+
+    def test_json_patch_applies_correctly(self) -> None:
+        """Test that applying the json_patch produces modified_metadata."""
+        with TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            metadata_file = temp_path / "test_patch_apply.json"
+
+            # Create test metadata
+            metadata_obj = {
+                "uuid": "test-uuid-789",
+                "metadata": {
+                    "field1": "value1",
+                    "field2": "value2",
+                },
+            }
+            metadata_file.write_text(json.dumps(metadata_obj))
+
+            # Simple pass-through mapping
+            self.field_mapper.map_field.side_effect = lambda x: x
+            self.value_mapper.map_value.side_effect = lambda f, v: f"mapped_{v}"
+
+            self.schema_loader.get_schema_fields.return_value = {
+                "field1": {},
+                "field2": {},
+            }
+            self.schema_loader.get_default_value.return_value = None
+
+            result = self.transformer.transform_metadata_file(metadata_file)
+
+            # Apply the patch to original metadata
+            import jsonpatch
+
+            original_metadata = metadata_obj["metadata"]
+            json_patch = result["json_patch"]
+            patched_metadata = jsonpatch.apply_patch(original_metadata, json_patch)
+
+            # Should match modified_metadata
+            assert patched_metadata == result["modified_metadata"]
+
+    def test_json_patch_order_in_output(self) -> None:
+        """Test that json_patch appears before processing_log in output."""
+        with TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            metadata_file = temp_path / "test_patch_order.json"
+
+            metadata_obj = {
+                "uuid": "test-uuid-order",
+                "metadata": {"field": "value"},
+            }
+            metadata_file.write_text(json.dumps(metadata_obj))
+
+            self.field_mapper.map_field.side_effect = lambda x: x
+            self.value_mapper.map_value.side_effect = lambda f, v: v
+            self.schema_loader.get_schema_fields.return_value = {"field": {}}
+            self.schema_loader.get_default_value.return_value = None
+
+            result = self.transformer.transform_metadata_file(metadata_file)
+
+            # Get keys in order
+            keys = list(result.keys())
+
+            # json_patch should come before processing_log
+            json_patch_idx = keys.index("json_patch")
+            processing_log_idx = keys.index("processing_log")
+
+            assert json_patch_idx < processing_log_idx
+
+    def test_json_patch_empty_metadata(self) -> None:
+        """Test json_patch generation with empty metadata."""
+        with TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            metadata_file = temp_path / "test_empty.json"
+
+            # Empty metadata
+            metadata_obj = {"uuid": "test-uuid-empty", "metadata": {}}
+            metadata_file.write_text(json.dumps(metadata_obj))
+
+            self.field_mapper.map_field.side_effect = lambda x: x
+            self.value_mapper.map_value.side_effect = lambda f, v: v
+            self.schema_loader.get_schema_fields.return_value = {}
+            self.schema_loader.get_default_value.return_value = None
+
+            result = self.transformer.transform_metadata_file(metadata_file)
+
+            # Should have json_patch key even if empty
+            assert "json_patch" in result
+            assert isinstance(result["json_patch"], list)
+
+    def test_generate_json_patch_method(self) -> None:
+        """Test the _generate_json_patch method directly."""
+        original = {"field1": "value1", "field2": "value2", "field3": "value3"}
+        modified = {
+            "field1": "value1",
+            "field2": "changed_value",
+            "field4": "new_value",
+        }
+
+        patch_ops = self.transformer._generate_json_patch(original, modified)
+
+        # Should be a list
+        assert isinstance(patch_ops, list)
+
+        # Should contain operations
+        assert len(patch_ops) > 0
+
+        # Each operation should have required fields
+        for op in patch_ops:
+            assert "op" in op
+            assert "path" in op
