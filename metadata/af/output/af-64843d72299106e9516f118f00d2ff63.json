@@ -67,6 +67,12 @@
       "data_path": "data_path",
       "is_targeted": "is_targeted",
       "protocols_io_doi": "preparation_protocol_doi",
+      "resolution_x_unit": "resolution_x_unit",
+      "resolution_x_value": "resolution_x_value",
+      "resolution_y_unit": "resolution_y_unit",
+      "resolution_y_value": "resolution_y_value",
+      "resolution_z_unit": "resolution_z_unit",
+      "resolution_z_value": "resolution_z_value",
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {

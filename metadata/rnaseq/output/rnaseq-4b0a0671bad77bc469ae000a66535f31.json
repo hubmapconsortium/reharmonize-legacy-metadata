@@ -91,7 +91,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "",
-    "sequencing_reagent_kit": "P2",
+    "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811",
     "sequencing_read_format": "34,10,10,66",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -133,9 +133,6 @@
       "umi_offset": "umi_offset"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "Nextseq2000": "NextSeq 2000"
-      },
       "dataset_type": {
         "sciRNAseq": "RNAseq"
       },
@@ -149,17 +146,7 @@
         "34/10/10/66": "34,10,10,66"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "P2",
-        "permissible_values": [
-          "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811",
-          "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (200 Cycles); PN 20046812",
-          "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (300 Cycles); PN 20046813"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "sequence",
       "description": "Human_Heart",
@@ -254,6 +241,31 @@
           "__must__": [
             {
               "assay_type": "sciRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 2000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_model": "Nextseq2000"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_model": "Nextseq2000"
+            },
+            {
+              "sequencing_reagent_kit": "P2"
             }
           ]
         }

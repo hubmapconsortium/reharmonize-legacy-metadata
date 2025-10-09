@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "AF" },
+        { "__should__": [
+          { "acquisition_instrument_model": "AxioScan.Z1" },
+          { "acquisition_instrument_model": "Axio Scan.Z1" }
+      ]}
+    ]
+    },
+    "then": {
+      "acquisition_instrument_model": "AxioScan.Z1"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "AF" },
+        { "acquisition_instrument_vendor": "Zeiss" },
+      ]
+    },
+    "then": {
+      "acquisition_instrument_vendor": "Carl Zeiss Microscopy"
+    }
+  }
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "AF" },
+        { "analyte_class": null },
+      ]
+    },
+    "then": {
+      "analyte_class": "endogenous fluorophores"
+    }
+  }
+]
