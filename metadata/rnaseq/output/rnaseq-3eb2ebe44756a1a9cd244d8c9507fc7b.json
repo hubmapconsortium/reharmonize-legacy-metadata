@@ -55,7 +55,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -93,7 +93,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
     "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
@@ -138,23 +138,11 @@
       "is_technical_replicate": {
         "FALSE": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
       }
     },
     "ambiguous_mappings": [
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NovaSeq",
-        "permissible_values": [
-          "NovaSeq 6000",
-          "NovaSeq X",
-          "NovaSeq X Plus"
-        ]
-      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq",
@@ -200,6 +188,63 @@
       "sequencing_phix_percent": "1",
       "sequencing_read_percent_q30": "94.52"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 6000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_model",
+        "value": "Chromium Controller, PN: GCG-SR-1",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            },
+            {
+              "__should__": [
+                {
+                  "execution_datetime": "2021-03-15 11:30"
+                },
+                {
+                  "execution_datetime": "2021-03-18 03:09"
+                },
+                {
+                  "execution_datetime": "2021-02-05 10:00"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

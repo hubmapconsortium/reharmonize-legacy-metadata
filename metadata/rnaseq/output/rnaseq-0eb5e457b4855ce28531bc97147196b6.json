@@ -66,9 +66,9 @@
     "barcode_offset": "0",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": null,
-    "umi_read": null,
-    "umi_size": null,
+    "umi_offset": "16",
+    "umi_read": "Read 1 (R1)",
+    "umi_size": "10",
     "assay_input_entity": "single cell",
     "number_of_input_cells_or_nuclei": "6000",
     "amount_of_input_analyte_value": "",
@@ -84,7 +84,7 @@
     "library_layout": "single-end",
     "number_of_iterations_of_cdna_amplification": "",
     "number_of_pcr_cycles_for_indexing": "",
-    "library_preparation_kit": null,
+    "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v2",
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "",
@@ -93,9 +93,9 @@
     "sequencing_read_format": "",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
-    "preparation_instrument_kit": null,
+    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_instrument_model": "Chromium Controller; PN GCG-SR-1",
+    "preparation_instrument_kit": "Chromium Single Cell A Chip Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "processing_log": {
@@ -124,14 +124,14 @@
       "sc_isolation_entity": "assay_input_entity",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id"
+      "tissue_id": "parent_sample_id",
+      "umi_read": "umi_read",
+      "umi_size": "umi_size",
+      "umi_offset": "umi_offset"
     },
     "value_mappings": {
       "dataset_type": {
         "scRNAseq-10xGenomics-v2": "RNAseq"
-      },
-      "barcode_read": {
-        "Read 1": "Read 1 (R1)"
       },
       "is_targeted": {
         "FALSE": "No"
@@ -154,7 +154,7 @@
       "operator_email": "",
       "pi": "Ian Mcgilvray",
       "pi_email": "ian.mcgilvray@uhn.ca",
-      "rnaseq_assay_method": "3' end single cell RNA sequencing-bcl2fastq",
+      "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v2",
       "sc_isolation_enrichment": "cell size selection",
       "sc_isolation_protocols_io_doi": "10.17504/protocols.io.btdpni5n",
       "sc_isolation_quality_metric": "",
@@ -163,6 +163,145 @@
       "sequencing_read_percent_q30": "",
       "source_project": "HCA"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single cell",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "0",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Read 1 (R1)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "10",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "16",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_model",
+        "value": "Chromium Controller; PN GCG-SR-1",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_kit",
+        "value": "Chromium Single Cell A Chip Kit",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10x Chromium Single Cell 3' Reagent Kits v2",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            },
+            {
+              "protocols_io_doi": "10.17504/protocols.io.btdpni5n"
+            }
+          ]
+        }
+      },
+      {
+        "field": "rnaseq_assay_method",
+        "value": "10x Chromium Single Cell 3' Reagent Kits v2",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "scRNAseq-10xGenomics-v2"
+            },
+            {
+              "protocols_io_doi": "10.17504/protocols.io.btdpni5n"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

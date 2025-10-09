@@ -58,7 +58,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq 6000",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -86,8 +86,8 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "6",
     "number_of_pcr_cycles_for_indexing": "16",
-    "library_preparation_kit": null,
-    "sample_indexing_kit": null,
+    "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+    "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "5000",
@@ -95,9 +95,9 @@
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
-    "preparation_instrument_kit": null,
+    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
+    "preparation_instrument_kit": "Chromium Next GEM Chip J Single Cell Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "processing_log": {
@@ -130,9 +130,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "NovaSeq6000": "NovaSeq 6000"
-      },
       "dataset_type": {
         "snRNAseq": "RNAseq"
       },
@@ -144,9 +141,6 @@
       },
       "is_technical_replicate": {
         "FALSE": "No"
-      },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
@@ -184,6 +178,147 @@
       "sequencing_read_percent_q30": "94.7",
       "version": "2"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 6000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+        "conditions": {
+          "__must__": [
+            {
+              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+            },
+            {
+              "__should__": [
+                {
+                  "assay_type": "snRNAseq-10xGenomics-v3"
+                },
+                {
+                  "assay_type": "snRNAseq"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "sample_indexing_kit",
+        "value": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+        "conditions": {
+          "__must__": [
+            {
+              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+            },
+            {
+              "__should__": [
+                {
+                  "assay_type": "snRNAseq-10xGenomics-v3"
+                },
+                {
+                  "assay_type": "snRNAseq"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_vendor",
+        "value": "10X Genomics",
+        "conditions": {
+          "__must__": [
+            {
+              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+            },
+            {
+              "__should__": [
+                {
+                  "assay_type": "snRNAseq-10xGenomics-v3"
+                },
+                {
+                  "assay_type": "snRNAseq"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_kit",
+        "value": "Chromium Next GEM Chip J Single Cell Kit",
+        "conditions": {
+          "__must__": [
+            {
+              "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
+            },
+            {
+              "__should__": [
+                {
+                  "assay_type": "snRNAseq-10xGenomics-v3"
+                },
+                {
+                  "assay_type": "snRNAseq"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "preparation_instrument_model",
+        "value": "Chromium Controller, PN: GCG-SR-1",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            },
+            {
+              "__should__": [
+                {
+                  "execution_datetime": "2021-03-15 11:30"
+                },
+                {
+                  "execution_datetime": "2021-03-18 03:09"
+                },
+                {
+                  "execution_datetime": "2021-02-05 10:00"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

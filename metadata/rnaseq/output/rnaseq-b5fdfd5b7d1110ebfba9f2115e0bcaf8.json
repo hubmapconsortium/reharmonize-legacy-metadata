@@ -57,7 +57,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq 6000",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -127,9 +127,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "NovaSeq6000": "NovaSeq 6000"
-      },
       "dataset_type": {
         "snRNAseq": "RNAseq"
       },
@@ -147,9 +144,6 @@
       },
       "is_technical_replicate": {
         "FALSE": "No"
-      },
-      "assay_input_entity": {
-        "nuclei": "single nucleus"
       },
       "sequencing_read_format": {
         "101/8/8/101": "101,8,8,101"
@@ -180,6 +174,39 @@
       "sequencing_phix_percent": "20",
       "sequencing_read_percent_q30": "92.4"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 6000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

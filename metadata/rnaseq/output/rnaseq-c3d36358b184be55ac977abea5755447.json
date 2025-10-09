@@ -55,7 +55,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -83,7 +83,7 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "12",
     "number_of_pcr_cycles_for_indexing": "13",
-    "library_preparation_kit": null,
+    "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3",
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
@@ -138,23 +138,11 @@
       "is_technical_replicate": {
         "False": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "29/8/92": "29,8,92"
       }
     },
     "ambiguous_mappings": [
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NovaSeq",
-        "permissible_values": [
-          "NovaSeq 6000",
-          "NovaSeq X",
-          "NovaSeq X Plus"
-        ]
-      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq",
@@ -200,6 +188,75 @@
       "sequencing_phix_percent": "1",
       "sequencing_read_percent_q30": "94.4"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "single nucleus",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            }
+          ]
+        }
+      },
+      {
+        "field": "library_preparation_kit",
+        "value": "10x Chromium Single Cell 3' Reagent Kits v3",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "snRNAseq"
+            },
+            {
+              "__should__": [
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v4"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v5"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v6"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v7"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v8"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v9"
+                },
+                {
+                  "rnaseq_assay_method": "10x Chromium Single Cell 3_ Reagent Kits v10"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 6000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }

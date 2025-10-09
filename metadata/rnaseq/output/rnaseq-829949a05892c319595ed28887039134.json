@@ -50,20 +50,20 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq 6000",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": null,
     "data_path": ".",
-    "barcode_offset": null,
-    "barcode_read": null,
-    "barcode_size": null,
-    "umi_offset": null,
-    "umi_read": null,
-    "umi_size": null,
-    "assay_input_entity": null,
+    "barcode_offset": "Not applicable",
+    "barcode_read": "Not applicable",
+    "barcode_size": "Not applicable",
+    "umi_offset": "Not applicable",
+    "umi_read": "Not applicable",
+    "umi_size": "Not applicable",
+    "assay_input_entity": "tissue (bulk)",
     "number_of_input_cells_or_nuclei": null,
     "amount_of_input_analyte_value": "1",
     "amount_of_input_analyte_unit": "ug",
@@ -83,7 +83,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": null,
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400",
     "sequencing_read_format": "150,8,8,150",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -111,12 +111,12 @@
       "rnaseq_assay_input_value": "amount_of_input_analyte_value",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id"
+      "tissue_id": "parent_sample_id",
+      "umi_read": "umi_read",
+      "umi_size": "umi_size",
+      "umi_offset": "umi_offset"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "NovaSeq6000": "NovaSeq 6000"
-      },
       "dataset_type": {
         "bulk RNA": "RNAseq"
       },
@@ -125,9 +125,6 @@
       },
       "sequencing_read_format": {
         "150/8/8/150": "150,8,8,150"
-      },
-      "sequencing_reagent_kit": {
-        "NovaSeq 6000 SP Reagent Kit": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401"
       }
     },
     "ambiguous_mappings": [],
@@ -151,6 +148,132 @@
       "sequencing_phix_percent": "1",
       "sequencing_read_percent_q30": "94.42"
     },
-    "metadata_patches": []
+    "metadata_patches": [
+      {
+        "field": "assay_input_entity",
+        "value": "tissue (bulk)",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_read",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_size",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "barcode_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_read",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_size",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "umi_offset",
+        "value": "Not applicable",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            }
+          ]
+        }
+      },
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400",
+        "conditions": {
+          "__must__": [
+            {
+              "assay_type": "bulk RNA"
+            },
+            {
+              "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme"
+            },
+            {
+              "__should__": [
+                {
+                  "sequencing_read_format": "150/8/8/150"
+                },
+                {
+                  "sequencing_read_format": "150-8-8-150"
+                },
+                {
+                  "sequencing_read_format": "150,8,8,150"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NextSeq 6000",
+        "conditions": {
+          "__must__": [
+            {
+              "acquisition_instrument_vendor": "Illumina"
+            },
+            {
+              "__should__": [
+                {
+                  "acquisition_instrument_model": "NovaSeq6000"
+                },
+                {
+                  "acquisition_instrument_model": "NovaSeq"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
 }
