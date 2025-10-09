@@ -68,23 +68,20 @@ class MetadataTransformer:
 
         # File processing info moved to stdout - handled by CLI
 
-        # Load legacy metadata
-        legacy_data = self._load_legacy_metadata(input_file)
+        # Load legacy metadata from file
+        loaded_object = self._load_metadata(input_file)
 
-        # Store original data structure
-        original_data = self._load_original_data(input_file)
+        # Extract original metadata for transformation and JSON patch generation
+        legacy_metadata = loaded_object.get("metadata", {})
 
-        # Process each metadata object in the file
-        transformed_objects = []
-        for i, legacy_object in enumerate(legacy_data):
-            try:
-                transformed_object = self._transform_single_object(legacy_object, i)
-                transformed_objects.append(transformed_object)
-            except Exception as e:
-                # Error handling moved to stdout - handled by CLI
-                raise FileProcessingError(
-                    f"Failed to transform object {i} in {input_file}: {e}"
-                )
+        # Transform the metadata
+        try:
+            transformed_metadata = self._transform_metadata(legacy_metadata)
+        except Exception as e:
+            # Error handling moved to stdout - handled by CLI
+            raise FileProcessingError(
+                f"Failed to transform metadata in {input_file}: {e}"
+            )
 
         # File processing completion info moved to stdout - handled by CLI
 
@@ -94,50 +91,43 @@ class MetadataTransformer:
             patch_log = self.patch_applier.get_structured_log()
             if isinstance(patch_log, StructuredProcessingLog):
                 combined_structured_log.merge_with(patch_log)
+
         if hasattr(self.field_mapper, "get_structured_log"):
             field_log = self.field_mapper.get_structured_log()
             if isinstance(field_log, StructuredProcessingLog):
                 combined_structured_log.merge_with(field_log)
+
         if hasattr(self.value_mapper, "get_structured_log"):
             value_log = self.value_mapper.get_structured_log()
             if isinstance(value_log, StructuredProcessingLog):
                 combined_structured_log.merge_with(value_log)
+
         combined_structured_log.merge_with(self.structured_log)
 
-        # Append modified_metadata and processing_log to original structure
-        # Always return single object format
-        if isinstance(original_data, list):
-            # For array input, use the first object as base
-            result = original_data[0].copy() if original_data else {}
-        else:
-            # For single object input, use the original object as base
-            result = original_data.copy()
-
-        # Get original metadata for JSON patch generation
-        original_metadata = legacy_data[0].get("metadata", {}) if legacy_data else {}
-        modified_metadata = transformed_objects[0] if transformed_objects else {}
+        # Build output result using original data as base
+        output = loaded_object.copy()
 
         # Generate JSON patch showing transformation changes
-        json_patch_ops = self._generate_json_patch(original_metadata, modified_metadata)
+        json_patches = self._generate_json_patches(legacy_metadata, transformed_metadata)
 
-        result["modified_metadata"] = modified_metadata
-        result["json_patch"] = json_patch_ops
-        result["processing_log"] = combined_structured_log.to_dict()
+        output["modified_metadata"] = transformed_metadata
+        output["json_patch"] = json_patches
+        output["processing_log"] = combined_structured_log.to_dict()
 
-        return result
+        return output
 
-    def _load_legacy_metadata(self, input_file: Path) -> List[Dict[str, Any]]:
+    def _load_metadata(self, input_file: Path) -> Dict[str, Any]:
         """
-        Load legacy metadata from JSON file.
+        Load metadata from JSON file.
 
         Args:
             input_file: Path to the input file
 
         Returns:
-            List of legacy metadata objects
+            Metadata dictionary
 
         Raises:
-            FileProcessingError: If file can't be loaded
+            FileProcessingError: If file can't be loaded or is invalid
         """
         if not input_file.exists():
             raise FileProcessingError(f"Input file not found: {input_file}")
@@ -150,231 +140,125 @@ class MetadataTransformer:
         except Exception as e:
             raise FileProcessingError(f"Error reading {input_file}: {e}")
 
-        if isinstance(data, dict):
-            # Single object, wrap in list
-            data = [data]
-        elif not isinstance(data, list):
+        # Validate data structure - must be a dictionary
+        if not isinstance(data, dict):
             raise FileProcessingError(
-                f"Input file must contain JSON array or object: {input_file}"
+                f"Input file must contain JSON object: {input_file}"
             )
-
-        # File loading info moved to stdout - handled by CLI
 
         return data
 
-    def _load_original_data(
-        self, input_file: Path
-    ) -> Union[Dict[str, Any], List[Dict[str, Any]]]:
+    def _transform_metadata(self, legacy_metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Load the original data structure from JSON file to preserve format.
+        Transform metadata through the 4-phase process.
 
         Args:
-            input_file: Path to the input file
+            metadata: Legacy metadata dictionary
 
         Returns:
-            Original data structure (either dict or list)
-
-        Raises:
-            FileProcessingError: If file can't be loaded
+            Transformed metadata dictionary
         """
-        if not input_file.exists():
-            raise FileProcessingError(f"Input file not found: {input_file}")
-
-        try:
-            with open(input_file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except json.JSONDecodeError as e:
-            raise FileProcessingError(f"Invalid JSON in {input_file}: {e}")
-        except Exception as e:
-            raise FileProcessingError(f"Error reading {input_file}: {e}")
-
-        # Ensure we return the expected type - validation happens in transform_metadata_file
-        return data  # type: ignore
-
-    def _transform_single_object(
-        self, legacy_object: Dict[str, Any], object_index: int
-    ) -> Dict[str, Any]:
-        """
-        Transform a single legacy metadata object through the 4-phase process.
-
-        Args:
-            legacy_object: The legacy metadata object
-            object_index: Index of the object in the input file
-
-        Returns:
-            Transformed metadata object
-        """
-        object_id = legacy_object.get("uuid", f"object_{object_index}")
-
-        # Object transformation start - no logging needed
-
-        # Navigate to metadata key
-        metadata_section = legacy_object.get("metadata", {})
-        if not metadata_section:
-            # Metadata key warnings moved to stdout - handled by CLI
-            metadata_section = {}
-
         # Phase 0: Conditional Patching
-        patched_metadata = self._phase0_conditional_patching(
-            metadata_section, object_id
-        )
+        patched_metadata = self._phase0_conditional_patching(legacy_metadata)
 
         # Phase 1: Field Mapping
-        field_mapped_metadata = self._phase1_field_mapping(patched_metadata, object_id)
+        field_mapped_metadata = self._phase1_field_mapping(patched_metadata)
 
         # Phase 2: Value Mapping
-        value_mapped_metadata = self._phase2_value_mapping(
-            field_mapped_metadata, object_id
-        )
+        value_mapped_metadata = self._phase2_value_mapping(field_mapped_metadata)
 
         # Phase 3: Schema Compliance
-        schema_compliant_metadata = self._phase3_schema_compliance(
-            value_mapped_metadata, object_id
-        )
-
-        # Phase 4 is handled by output generator
-
-        # Object transformation complete - no logging needed
+        schema_compliant_metadata = self._phase3_schema_compliance(value_mapped_metadata)
 
         return schema_compliant_metadata
 
-    def _phase0_conditional_patching(
-        self, metadata: Dict[str, Any], object_id: str
-    ) -> Dict[str, Any]:
+    def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
         Phase 0: Apply conditional patches to metadata before field mapping.
 
         Args:
             metadata: Legacy metadata dictionary
-            object_id: Identifier for the object being processed
 
         Returns:
             Metadata with applicable patches applied
         """
-        # Phase start - no logging needed
+        return self.patch_applier.apply_patches(metadata)
 
-        patched_metadata = self.patch_applier.apply_patches(metadata)
-
-        # Phase complete - no logging needed
-
-        return patched_metadata
-
-    def _phase1_field_mapping(
-        self, metadata: Dict[str, Any], object_id: str
-    ) -> Dict[str, Any]:
+    def _phase1_field_mapping(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
         Phase 1: Apply field name mappings to transform legacy field names.
 
         Args:
             metadata: Legacy metadata dictionary
-            object_id: Identifier for the object being processed
 
         Returns:
             Metadata with mapped field names
         """
-        # Phase start - no logging needed
-
         mapped_metadata: Dict[str, Any] = {}
-        unmapped_fields = []
 
         for legacy_field, value in metadata.items():
             target_field = self.field_mapper.map_field(legacy_field)
 
             if target_field is not None:
                 if target_field in mapped_metadata:
-                    # Multiple legacy fields map to same target - this is ambiguous
-                    # Ambiguous mapping - keep existing value, don't log
+                    # Multiple legacy fields map to same target - keep existing value
                     pass
                 else:
                     mapped_metadata[target_field] = value
                     self.field_mapper.log_field_mapping(legacy_field, target_field)
             else:
-                # No mapping found - keep original field name for now
+                # No mapping found - keep original field name
                 mapped_metadata[legacy_field] = value
-                unmapped_fields.append(legacy_field)
-
-        # Unmapped fields don't need logging per requirements
-
-        # Phase complete - no logging needed
 
         return mapped_metadata
 
-    def _phase2_value_mapping(
-        self, metadata: Dict[str, Any], object_id: str
-    ) -> Dict[str, Any]:
+    def _phase2_value_mapping(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
         Phase 2: Apply value mappings to transform field values.
 
         Args:
             metadata: Metadata with field names already mapped
-            object_id: Identifier for the object being processed
 
         Returns:
             Metadata with mapped values
         """
-        # Phase start - no logging needed
-
         value_mapped_metadata = {}
 
         for field_name, value in metadata.items():
             mapped_value = self.value_mapper.map_value(field_name, value)
             value_mapped_metadata[field_name] = mapped_value
 
-            # Value mapping is already logged in ValueMapper
-
-        # Phase complete - no logging needed
-
         return value_mapped_metadata
 
-    def _phase3_schema_compliance(
-        self, metadata: Dict[str, Any], object_id: str
-    ) -> Dict[str, Any]:
+    def _phase3_schema_compliance(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
         Phase 3: Ensure metadata complies with target schema.
 
         Args:
             metadata: Metadata with field and value mappings applied
-            object_id: Identifier for the object being processed
 
         Returns:
             Schema-compliant metadata
         """
-        # Phase start - no logging needed
-
         schema_fields = self.schema_loader.get_schema_fields()
         compliant_metadata = {}
-        obsolete_fields = []
 
         # Add all schema fields with appropriate values
         for schema_field in schema_fields:
             if schema_field in metadata:
-                # Use mapped value
                 compliant_metadata[schema_field] = metadata[schema_field]
             else:
-                # Use default value or null
                 default_value = self.schema_loader.get_default_value(schema_field)
                 compliant_metadata[schema_field] = default_value
 
-                # Missing required fields don't need logging per requirements
-
-        # Identify obsolete fields that don't map to schema
-        for field_name in metadata:
+        # Log obsolete fields that don't map to schema
+        for field_name, field_value in metadata.items():
             if field_name not in schema_fields:
-                obsolete_fields.append(
-                    {"field": field_name, "value": metadata[field_name]}
-                )
-
-        # Log obsolete fields using structured format
-        for obsolete_field in obsolete_fields:
-            field_name = obsolete_field["field"]
-            field_value = obsolete_field["value"]
-            self.structured_log.add_unmapped_field_with_value(field_name, field_value)
-
-        # Phase complete - no logging needed
+                self.structured_log.add_unmapped_field_with_value(field_name, field_value)
 
         return compliant_metadata
 
-    def _generate_json_patch(
+    def _generate_json_patches(
         self, original_metadata: Dict[str, Any], modified_metadata: Dict[str, Any]
     ) -> List[Dict[str, Any]]:
         """

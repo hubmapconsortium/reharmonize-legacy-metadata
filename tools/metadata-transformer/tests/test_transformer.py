@@ -72,10 +72,10 @@ class TestMetadataTransformer:
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
             invalid_file = temp_path / "invalid_structure.json"
-            invalid_file.write_text('"not an object or array"')
+            invalid_file.write_text('"not an object"')
 
             with pytest.raises(
-                FileProcessingError, match="must contain JSON array or object"
+                FileProcessingError, match="must contain JSON object"
             ):
                 self.transformer.transform_metadata_file(invalid_file)
 
@@ -126,8 +126,8 @@ class TestMetadataTransformer:
             assert transformed_obj["target_field2"] == "mapped_value2"
             assert transformed_obj["target_field3"] is None  # Default value
 
-    def test_transform_metadata_file_array_of_objects(self) -> None:
-        """Test transforming file with array of metadata objects."""
+    def test_transform_metadata_file_array_rejected(self) -> None:
+        """Test that transforming file with array is rejected."""
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
             metadata_file = temp_path / "array_objects.json"
@@ -139,18 +139,11 @@ class TestMetadataTransformer:
             ]
             metadata_file.write_text(json.dumps(metadata_array))
 
-            # Set up mock behaviors
-            self.field_mapper.map_field.return_value = "target_field"
-            self.value_mapper.map_value.side_effect = lambda f, v: f"mapped_{v}"
-            self.schema_loader.get_schema_fields.return_value = {"target_field": {}}
-
-            result = self.transformer.transform_metadata_file(metadata_file)
-
-            # Verify result structure (uses first object from array as base)
-            assert isinstance(result["modified_metadata"], dict)
-            assert result["modified_metadata"]["target_field"] == "mapped_value1"
-            # Should have the first object's properties as base
-            assert result["uuid"] == "test-uuid-1"
+            # Arrays are no longer supported
+            with pytest.raises(
+                FileProcessingError, match="must contain JSON object"
+            ):
+                self.transformer.transform_metadata_file(metadata_file)
 
     def test_phase1_field_mapping(self) -> None:
         """Test Phase 1 field mapping functionality."""
@@ -166,7 +159,7 @@ class TestMetadataTransformer:
             "conflicting_field": "target_field",  # Same target - creates conflict
         }.get(x)
 
-        result = self.transformer._phase1_field_mapping(metadata, "test-obj")
+        result = self.transformer._phase1_field_mapping(metadata)
 
         # Should map the first occurrence and skip the conflicting one
         assert "target_field" in result
@@ -190,7 +183,7 @@ class TestMetadataTransformer:
             ("field2", "legacy_value2"): "mapped_value2",
         }.get((f, v), v)
 
-        result = self.transformer._phase2_value_mapping(metadata, "test-obj")
+        result = self.transformer._phase2_value_mapping(metadata)
 
         assert result["field1"] == "mapped_value1"
         assert result["field2"] == "mapped_value2"
@@ -217,7 +210,7 @@ class TestMetadataTransformer:
             lambda x: x == "schema_field3"
         )
 
-        result = self.transformer._phase3_schema_compliance(metadata, "test-obj")
+        result = self.transformer._phase3_schema_compliance(metadata)
 
         # Should include all schema fields
         assert result["schema_field1"] == "value1"
@@ -232,19 +225,19 @@ class TestMetadataTransformer:
         assert "obsolete_field" in structured_log.excluded_data
         assert structured_log.excluded_data["obsolete_field"] == "obsolete_value"
 
-    def test_transform_single_object_no_metadata_key(self) -> None:
-        """Test transforming object without metadata key logs warning."""
-        legacy_object = {"uuid": "test-uuid", "some_field": "value"}
+    def test_transform_metadata_empty(self) -> None:
+        """Test transforming empty metadata."""
+        metadata = {}
 
         # Set up minimal mocks
         self.schema_loader.get_schema_fields.return_value = {}
 
-        result = self.transformer._transform_single_object(legacy_object, 0)
+        result = self.transformer._transform_metadata(metadata)
 
         # Should return empty dict since no metadata and no schema fields
         assert isinstance(result, dict)
 
-        # Check no warnings are logged - missing metadata key warnings moved to CLI
+        # Check no warnings are logged
         assert len(self.transformer.structured_log.excluded_data) == 0
 
     def test_get_structured_log(self) -> None:
@@ -433,7 +426,7 @@ class TestMetadataTransformer:
             assert isinstance(result["json_patch"], list)
 
     def test_generate_json_patch_method(self) -> None:
-        """Test the _generate_json_patch method directly."""
+        """Test the _generate_json_patches method directly."""
         original = {"field1": "value1", "field2": "value2", "field3": "value3"}
         modified = {
             "field1": "value1",
@@ -441,7 +434,7 @@ class TestMetadataTransformer:
             "field4": "new_value",
         }
 
-        patch_ops = self.transformer._generate_json_patch(original, modified)
+        patch_ops = self.transformer._generate_json_patches(original, modified)
 
         # Should be a list
         assert isinstance(patch_ops, list)
