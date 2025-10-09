@@ -163,8 +163,7 @@
     },
     "then": {
       "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v2",
-      "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v2",
-      "sequencing_reagent_kit": null
+      "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v2"
     }
   },
   {
