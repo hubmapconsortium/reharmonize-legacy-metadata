@@ -235,7 +235,7 @@
         { "rnaseq_assay_method": "Chromium multiome Reagent Kits" },
         { "__should__": [
           { "assay_type": "snRNAseq-10xGenomics-v3" },
-          { "assay_type": "snRNAseq" },
+          { "assay_type": "snRNAseq" }
         ]}
       ]
     },
@@ -422,7 +422,7 @@
       "library_preparation_kit": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
       "preparation_instrument_vendor": "10X Genomics",
       "preparation_instrument_kit": "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074",
-      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
+      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262"
     }
   },
 {
