@@ -338,5 +338,31 @@
     "then": {
       "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3; PN 20046811"
     }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "rnaseq_assay_method": "Single Cell 3' v3" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "rnaseq_assay_method": "Single Cell 3' v3" },
+        { "__should__": [
+          { "execution_datetime": "2019-11-07 12:00" },
+          { "execution_datetime": "2020-08-20 18:08" }
+        ]}
+      ]
+    },
+    "then": {
+      "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1"
+    }
   }
 ]
