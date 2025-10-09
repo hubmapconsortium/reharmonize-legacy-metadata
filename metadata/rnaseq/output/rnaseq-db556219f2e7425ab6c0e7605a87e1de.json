@@ -58,7 +58,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NextSeq 6000",
+    "acquisition_instrument_model": "NovaSeq",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -142,11 +142,23 @@
       "is_technical_replicate": {
         "False": "No"
       },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
+      },
       "sequencing_read_format": {
         "28/10/10/91": "28,10,10,91"
       }
     },
     "ambiguous_mappings": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq 6000 S4 Reagent",
@@ -176,39 +188,6 @@
       "sequencing_read_percent_q30": "95.17",
       "version": "2"
     },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single nucleus",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NextSeq 6000",
-        "conditions": {
-          "__must__": [
-            {
-              "acquisition_instrument_vendor": "Illumina"
-            },
-            {
-              "__should__": [
-                {
-                  "acquisition_instrument_model": "NovaSeq6000"
-                },
-                {
-                  "acquisition_instrument_model": "NovaSeq"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+    "metadata_patches": []
   }
 }

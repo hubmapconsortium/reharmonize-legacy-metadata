@@ -58,7 +58,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NextSeq 6000",
+    "acquisition_instrument_model": "NovaSeq",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -68,9 +68,9 @@
     "barcode_offset": "10,48,86",
     "barcode_read": "Read 2 (R2)",
     "barcode_size": "8,8,8",
-    "umi_offset": "0",
-    "umi_read": "Read 2 (R2)",
-    "umi_size": "10",
+    "umi_offset": null,
+    "umi_read": null,
+    "umi_size": null,
     "assay_input_entity": "single nucleus",
     "number_of_input_cells_or_nuclei": "7420000",
     "amount_of_input_analyte_value": "8000",
@@ -127,14 +127,14 @@
       "sc_isolation_entity": "assay_input_entity",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id",
-      "umi_read": "umi_read",
-      "umi_size": "umi_size",
-      "umi_offset": "umi_offset"
+      "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
       "dataset_type": {
         "SNARE2-RNAseq": "RNAseq"
+      },
+      "barcode_read": {
+        "R2": "Read 2 (R2)"
       },
       "is_targeted": {
         "False": "No"
@@ -142,11 +142,23 @@
       "is_technical_replicate": {
         "False": "No"
       },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
+      },
       "sequencing_read_format": {
         "70/6/102": "70,6,102"
       }
     },
     "ambiguous_mappings": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq 6000 S4 Reagent",
@@ -176,105 +188,6 @@
       "sequencing_read_percent_q30": "94.15",
       "version": "2"
     },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single nucleus",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_read",
-        "value": "Read 2 (R2)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_size",
-        "value": "8,8,8",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_offset",
-        "value": "10,48,86",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_read",
-        "value": "Read 2 (R2)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_size",
-        "value": "10",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_offset",
-        "value": "0",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "SNARE2-RNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NextSeq 6000",
-        "conditions": {
-          "__must__": [
-            {
-              "acquisition_instrument_vendor": "Illumina"
-            },
-            {
-              "__should__": [
-                {
-                  "acquisition_instrument_model": "NovaSeq6000"
-                },
-                {
-                  "acquisition_instrument_model": "NovaSeq"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+    "metadata_patches": []
   }
 }

@@ -88,13 +88,13 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+    "sequencing_reagent_kit": "S4",
     "sequencing_read_format": "28,8,0,91",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10X Genomics",
-    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
-    "preparation_instrument_kit": "Chromium Single Cell B Chip Kit",
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "processing_log": {
@@ -141,11 +141,23 @@
       "is_technical_replicate": {
         "0": "No"
       },
+      "assay_input_entity": {
+        "whole cells": "single cell"
+      },
       "sequencing_read_format": {
         "28/8/0/91": "28,8,0,91"
       }
     },
-    "ambiguous_mappings": [],
+    "ambiguous_mappings": [
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "S4",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
+        ]
+      }
+    ],
     "excluded_data": {
       "assay_category": "sequence",
       "donor_id": "UFL0003",
@@ -164,83 +176,6 @@
       "sequencing_phix_percent": "0.01",
       "sequencing_read_percent_q30": "94.3"
     },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single cell",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "scRNAseq-10xGenomics"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_vendor",
-        "value": "10X Genomics",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "scRNAseq-10xGenomics"
-            }
-          ]
-        }
-      },
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
-        "conditions": {
-          "__must__": [
-            {
-              "rnaseq_assay_method": "Single Cell 3' v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_vendor",
-        "value": "10X Genomics",
-        "conditions": {
-          "__must__": [
-            {
-              "rnaseq_assay_method": "Single Cell 3' v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_kit",
-        "value": "Chromium Single Cell B Chip Kit",
-        "conditions": {
-          "__must__": [
-            {
-              "rnaseq_assay_method": "Single Cell 3' v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_model",
-        "value": "Chromium Controller, PN: GCG-SR-1",
-        "conditions": {
-          "__must__": [
-            {
-              "rnaseq_assay_method": "Single Cell 3' v3"
-            },
-            {
-              "__should__": [
-                {
-                  "execution_datetime": "2019-11-07 12:00"
-                },
-                {
-                  "execution_datetime": "2020-08-20 18:08"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+    "metadata_patches": []
   }
 }

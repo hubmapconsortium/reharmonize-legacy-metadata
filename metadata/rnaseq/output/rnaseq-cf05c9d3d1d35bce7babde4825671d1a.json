@@ -71,7 +71,7 @@
     "barcode_offset": "0",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": "16",
+    "umi_offset": null,
     "umi_read": "Read 1 (R1)",
     "umi_size": "12",
     "assay_input_entity": "single nucleus",
@@ -89,18 +89,18 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "6",
     "number_of_pcr_cycles_for_indexing": "16",
-    "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
-    "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "6000",
-    "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313",
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_instrument_vendor": null,
     "preparation_instrument_model": null,
-    "preparation_instrument_kit": "Chromium Next GEM Chip J Single Cell Kit",
+    "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "processing_log": {
@@ -139,14 +139,29 @@
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
       },
+      "barcode_read": {
+        "R1": "Read 1 (R1)"
+      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
       },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
+      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
+      },
+      "sequencing_reagent_kit": {
+        "NovaSeq S4 200 cycle": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
+      },
+      "umi_offset": {
+        "17": null
+      },
+      "umi_read": {
+        "R1": "Read 1 (R1)"
       }
     },
     "ambiguous_mappings": [],
@@ -170,182 +185,6 @@
       "sequencing_read_percent_q30": "95.29",
       "version": "3"
     },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single nucleus",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_read",
-        "value": "Read 1 (R1)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_size",
-        "value": "16",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_offset",
-        "value": "0",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_read",
-        "value": "Read 1 (R1)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_size",
-        "value": "12",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_offset",
-        "value": "16",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            }
-          ]
-        }
-      },
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
-        "conditions": {
-          "__must__": [
-            {
-              "sequencing_reagent_kit": "NovaSeq S4 200 cycle"
-            },
-            {
-              "sequencing_read_format": "28/10/10/90"
-            }
-          ]
-        }
-      },
-      {
-        "field": "library_preparation_kit",
-        "value": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            },
-            {
-              "__should__": [
-                {
-                  "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
-                },
-                {
-                  "rnaseq_assay_method": "Chromium multiome Reagent Kits"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "field": "sample_indexing_kit",
-        "value": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            },
-            {
-              "__should__": [
-                {
-                  "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
-                },
-                {
-                  "rnaseq_assay_method": "Chromium multiome Reagent Kits"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_vendor",
-        "value": "10X Genomics",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            },
-            {
-              "__should__": [
-                {
-                  "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
-                },
-                {
-                  "rnaseq_assay_method": "Chromium multiome Reagent Kits"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_kit",
-        "value": "Chromium Next GEM Chip J Single Cell Kit",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq-10xGenomics-v3"
-            },
-            {
-              "__should__": [
-                {
-                  "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)"
-                },
-                {
-                  "rnaseq_assay_method": "Chromium multiome Reagent Kits"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+    "metadata_patches": []
   }
 }
