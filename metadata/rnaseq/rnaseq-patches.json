@@ -216,10 +216,27 @@
 {
     "when": {
       "__must__" : [
-        { "assay_type": "snRNAseq-10xGenomics-v3" },
+        { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
         { "__should__": [
-          { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
-          { "rnaseq_assay_method": "Chromium multiome Reagent Kits" }
+          { "assay_type": "snRNAseq-10xGenomics-v3" },
+          { "assay_type": "snRNAseq" }
+        ]}
+      ]
+    },
+    "then": {
+      "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+      "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_kit": "Chromium Next GEM Chip J Single Cell Kit"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "rnaseq_assay_method": "Chromium multiome Reagent Kits" },
+        { "__should__": [
+          { "assay_type": "snRNAseq-10xGenomics-v3" },
+          { "assay_type": "snRNAseq" },
         ]}
       ]
     },
@@ -358,6 +375,76 @@
         { "__should__": [
           { "execution_datetime": "2019-11-07 12:00" },
           { "execution_datetime": "2020-08-20 18:08" }
+        ]}
+      ]
+    },
+    "then": {
+      "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "assay_type": "snRNAseq-10xGenomics-v3" },
+        { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
+        { "__should__": [
+          { "execution_datetime": "2021-01-27 01:09" },
+          { "execution_datetime": "2021-03-15 03:09" }
+        ]}
+      ]
+    },
+    "then": {
+      "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "assay_type": "snRNAseq" },
+        { "__should__": [
+          { "execution_datetime": "2021-03-15 11:30" },
+          { "execution_datetime": "2021-03-18 03:09" },
+          { "execution_datetime": "2021-02-05 10:00" }
+        ]}
+      ]
+    },
+    "then": {
+      "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw" }
+      ]
+    },
+    "then": {
+      "rnaseq_assay_method": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
+      "library_preparation_kit": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
+      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074",
+      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw" },
+        { "__should__": [
+          { "execution_datetime": "2020-07-07 11:00" },
+          { "execution_datetime": "2020-07-02 11:00" },
+          { "execution_datetime": "2020-03-04 11:00" },
+          { "execution_datetime": "2020-03-17 11:00" },
+          { "execution_datetime": "2020-03-02 11:00" },
+          { "execution_datetime": "2020-02-05 11:00" },
+          { "execution_datetime": "2019-12-17 11:00" },
+          { "execution_datetime": "2019-11-04 11:00" },
+          { "execution_datetime": "2019-11-04 11:00" },
+          { "execution_datetime": "2019-10-29 11:00" },
+          { "execution_datetime": "2019-10-10 11:00" },
+          { "execution_datetime": "2019-10-09 11:00" },
+          { "execution_datetime": "2019-06-07 11:00" },
+          { "execution_datetime": "2019-05-29 11:00" }
         ]}
       ]
     },
