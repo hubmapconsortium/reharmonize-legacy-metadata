@@ -76,44 +76,61 @@ python generate-target-schema.py \
 
 ---
 
-### 3. `find-values-for-review.py`
+### 3. `find-nonstandard-values.py`
 
-Identifies legacy values that could not be mapped to standard values, requiring domain expert review to determine if they should be added to the standard value set.
+Identifies non-standard values from modified metadata that are not in the standardized value set. These values require review by domain experts and data curators to determine if they should be added to the standard or corrected.
 
 **Usage:**
 ```bash
-python find-values-for-review.py <input_dir> <output_json>
+python find-nonstandard-values.py <input_dir> <schema_file> <output_json>
 ```
 
 **Examples:**
 ```bash
-# Find unmapped values from LC-MS processed metadata
-python find-values-for-review.py metadata/lcms/output lcms-values-for-review.json
+# Find non-standard values from RNAseq processed metadata
+python find-nonstandard-values.py metadata/rnaseq/output metadata/rnaseq/rnaseq-schema.json rnaseq-nonstandard-values.json
 
-# Find unmapped values from RNAseq processed metadata
-python find-values-for-review.py metadata/rnaseq/output rnaseq-values-for-review.json
+# Find non-standard values from ATACseq processed metadata
+python find-nonstandard-values.py metadata/atacseq/output metadata/atacseq/atacseq-schema.json atacseq-nonstandard-values.json
 ```
 
-**How it works:**
-- Examines `processing_log/value_mappings` in processed JSON files
-- Identifies fields where legacy values map to `null` (no standard value found)
-- Aggregates unmapped values across all files (deduplicates automatically)
-- Outputs single values as strings, multiple values as arrays
+**How it works (two detection approaches):**
 
-**Input:** Directory containing processed metadata JSON files with `processing_log/value_mappings`
+1. **Null Mappings Detection:**
+   - Examines `processing_log/value_mappings` in processed JSON files
+   - Identifies fields where legacy values map to `null` (no standard mapping available)
 
-**Output:** JSON object with fields requiring review
+2. **Non-Standard Values Detection:**
+   - Checks values in `modified_metadata` against schema's standardized `permissible_values`
+   - Flags values that aren't in the standardized value set for categorical fields
+
+3. **Merges both results:**
+   - Aggregates all non-standard values across all files
+   - Deduplicates automatically
+   - Outputs single values as strings, multiple values as arrays
+
+**Input:**
+- Directory containing processed metadata JSON files
+- Schema JSON file with standardized permissible value definitions
+
+**Output:** JSON object with non-standard values
 ```json
 {
-  "lc_column_vendor": ["Agilent Technologies", "Millipore", "Self-packed"],
-  "ms_scan_mode": "MS/MS"
+  "sequencing_reagent_kit": [
+    "10X_scRNASeq_protocol",
+    "NovaSeq 6000 S1",
+    "P2"
+  ],
+  "barcode_offset": "1",
+  "acquisition_instrument_model": "NovaSeq"
 }
 ```
 
-**Use case:** After transformation, review these values with domain experts to decide:
-- Should the legacy value be added to the standard?
-- Is it a data quality issue?
-- Should it map to an existing standard value?
+**Use case:** After transformation, review these values with domain experts and data curators to decide:
+- Should the non-standard value be added to the standardized value set?
+- Is it a data quality issue that needs correction?
+- Should it map to an existing standardized value?
+- Is the schema definition incomplete or outdated?
 
 ---
 
@@ -123,7 +140,7 @@ python find-values-for-review.py metadata/rnaseq/output rnaseq-values-for-review
 |--------|-------|--------|----------|
 | `generate-field-mapping.py` | CSV file | JSON file | Map legacy → target fields |
 | `generate-target-schema.py` | YAML URL or file path | JSON file | Generate simplified metadata schema from CEDAR template |
-| `find-values-for-review.py` | Processed JSON directory | JSON file | Identify unmapped legacy values for expert review |
+| `find-nonstandard-values.py` | Processed JSON directory + Schema file | JSON file | Find non-standard values not in standardized value set for curator review |
 
 ---
 
