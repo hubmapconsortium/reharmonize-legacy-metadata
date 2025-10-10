@@ -101,66 +101,66 @@
     "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
   },
   "json_patch": [
+    {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
+    {"op": "add", "path": "/barcode_read", "value": "Read 2 (R2)"},
+    {"op": "add", "path": "/barcode_size", "value": "24"},
+    {"op": "add", "path": "/capture_batch_id", "value": null},
+    {"op": "add", "path": "/dataset_type", "value": "ATACseq"},
+    {"op": "add", "path": "/expected_entity_capture_count", "value": null},
+    {"op": "add", "path": "/lab_id", "value": null},
+    {"op": "add", "path": "/library_concentration_unit", "value": null},
+    {"op": "add", "path": "/library_concentration_value", "value": null},
+    {"op": "add", "path": "/library_input_amount_unit", "value": null},
+    {"op": "add", "path": "/library_input_amount_value", "value": null},
+    {"op": "add", "path": "/library_preparation_kit", "value": null},
+    {"op": "add", "path": "/metadata_schema_id", "value": "dd5e8653-81cf-470b-b71b-15cab421bb84"},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
+    {"op": "add", "path": "/sample_indexing_kit", "value": null},
+    {"op": "add", "path": "/sample_indexing_set", "value": null},
+    {"op": "add", "path": "/sequencing_batch_id", "value": null},
+    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
+    {"op": "add", "path": "/source_storage_duration_value", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
+    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_size", "value": "Not applicable"},
+    {"op": "move", "from": "/cell_barcode_offset", "path": "/barcode_offset"},
+    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
+    {"op": "move", "from": "/library_final_yield", "path": "/library_output_amount_value"},
+    {"op": "move", "from": "/transposition_input", "path": "/number_of_input_cells_or_nuclei"},
+    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_pcr_cycles_for_indexing"},
+    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
+    {"op": "move", "from": "/protocols_io_doi", "path": "/preparation_protocol_doi"},
+    {"op": "move", "from": "/transposition_kit_number", "path": "/transposition_reagent_kit"},
+    {"op": "remove", "path": "/assay_category"},
+    {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/cell_barcode_read"},
+    {"op": "remove", "path": "/cell_barcode_size"},
+    {"op": "remove", "path": "/description"},
+    {"op": "remove", "path": "/donor_id"},
+    {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/library_construction_protocols_io_doi"},
+    {"op": "remove", "path": "/library_id"},
+    {"op": "remove", "path": "/library_pcr_cycles"},
+    {"op": "remove", "path": "/operator"},
+    {"op": "remove", "path": "/operator_email"},
+    {"op": "remove", "path": "/pi"},
+    {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/sc_isolation_cell_number"},
+    {"op": "remove", "path": "/sc_isolation_enrichment"},
+    {"op": "remove", "path": "/sc_isolation_entity"},
     {"op": "remove", "path": "/sc_isolation_protocols_io_doi"},
+    {"op": "remove", "path": "/sc_isolation_quality_metric"},
+    {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
+    {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
     {"op": "remove", "path": "/transposition_transposase_source"},
     {"op": "remove", "path": "/version"},
-    {"op": "remove", "path": "/sc_isolation_enrichment"},
-    {"op": "remove", "path": "/description"},
-    {"op": "remove", "path": "/pi"},
-    {"op": "remove", "path": "/cell_barcode_read"},
-    {"op": "remove", "path": "/sequencing_phix_percent"},
-    {"op": "remove", "path": "/cell_barcode_size"},
-    {"op": "remove", "path": "/sc_isolation_quality_metric"},
-    {"op": "remove", "path": "/operator_email"},
-    {"op": "remove", "path": "/protocols_io_doi"},
-    {"op": "remove", "path": "/sc_isolation_cell_number"},
-    {"op": "remove", "path": "/sc_isolation_entity"},
-    {"op": "remove", "path": "/operator"},
-    {"op": "remove", "path": "/library_pcr_cycles"},
-    {"op": "remove", "path": "/library_id"},
-    {"op": "remove", "path": "/assay_type"},
-    {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
-    {"op": "remove", "path": "/assay_category"},
-    {"op": "remove", "path": "/pi_email"},
-    {"op": "remove", "path": "/donor_id"},
-    {"op": "remove", "path": "/execution_datetime"},
-    {"op": "add", "path": "/sequencing_batch_id", "value": null},
-    {"op": "add", "path": "/barcode_size", "value": "24"},
-    {"op": "add", "path": "/source_storage_duration_value", "value": null},
-    {"op": "add", "path": "/library_preparation_kit", "value": null},
-    {"op": "add", "path": "/umi_size", "value": "Not applicable"},
-    {"op": "add", "path": "/expected_entity_capture_count", "value": null},
-    {"op": "move", "from": "/transposition_kit_number", "path": "/transposition_reagent_kit"},
-    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
-    {"op": "add", "path": "/dataset_type", "value": "ATACseq"},
-    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
-    {"op": "add", "path": "/sample_indexing_kit", "value": null},
-    {"op": "add", "path": "/library_input_amount_unit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
-    {"op": "add", "path": "/capture_batch_id", "value": null},
-    {"op": "move", "from": "/library_final_yield", "path": "/library_output_amount_value"},
-    {"op": "add", "path": "/lab_id", "value": null},
-    {"op": "add", "path": "/library_concentration_unit", "value": null},
-    {"op": "move", "from": "/transposition_input", "path": "/number_of_input_cells_or_nuclei"},
-    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
-    {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
-    {"op": "add", "path": "/library_concentration_value", "value": null},
-    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_pcr_cycles_for_indexing"},
-    {"op": "add", "path": "/sample_indexing_set", "value": null},
-    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
-    {"op": "move", "from": "/cell_barcode_offset", "path": "/barcode_offset"},
-    {"op": "move", "from": "/library_construction_protocols_io_doi", "path": "/preparation_protocol_doi"},
-    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
-    {"op": "add", "path": "/barcode_read", "value": "Read 2 (R2)"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/library_input_amount_value", "value": null},
-    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
-    {"op": "add", "path": "/metadata_schema_id", "value": "dd5e8653-81cf-470b-b71b-15cab421bb84"},
-    {"op": "replace", "path": "/is_technical_replicate", "value": "Yes"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/is_technical_replicate", "value": "Yes"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "51,8,16,51"}
   ],
   "processing_log": {
@@ -257,85 +257,6 @@
       "sequencing_read_percent_q30": "94.76",
       "transposition_transposase_source": "10X snATAC",
       "version": "1"
-    },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single nucleus",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_read",
-        "value": "Read 2 (R2)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_size",
-        "value": "24",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_offset",
-        "value": "0",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_read",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_size",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_offset",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snATACseq"
-            }
-          ]
-        }
-      }
-    ]
+    }
   }
 }

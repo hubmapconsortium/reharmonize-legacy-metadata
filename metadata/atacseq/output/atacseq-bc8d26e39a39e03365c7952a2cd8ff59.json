@@ -97,62 +97,62 @@
     "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
   },
   "json_patch": [
+    {"op": "add", "path": "/assay_input_entity", "value": "tissue (bulk)"},
+    {"op": "add", "path": "/barcode_offset", "value": "Not applicable"},
+    {"op": "add", "path": "/barcode_read", "value": "Not applicable"},
+    {"op": "add", "path": "/barcode_size", "value": "Not applicable"},
+    {"op": "add", "path": "/capture_batch_id", "value": null},
+    {"op": "add", "path": "/dataset_type", "value": "ATACseq"},
+    {"op": "add", "path": "/expected_entity_capture_count", "value": null},
+    {"op": "add", "path": "/lab_id", "value": null},
+    {"op": "add", "path": "/library_input_amount_unit", "value": null},
+    {"op": "add", "path": "/library_input_amount_value", "value": null},
+    {"op": "add", "path": "/metadata_schema_id", "value": "dd5e8653-81cf-470b-b71b-15cab421bb84"},
+    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": null},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
+    {"op": "add", "path": "/sample_indexing_kit", "value": null},
+    {"op": "add", "path": "/sample_indexing_set", "value": null},
+    {"op": "add", "path": "/sequencing_batch_id", "value": null},
+    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
+    {"op": "add", "path": "/source_storage_duration_value", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
+    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_size", "value": "Not applicable"},
+    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
+    {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
+    {"op": "move", "from": "/bulk_transposition_input_number_nuclei", "path": "/number_of_input_cells_or_nuclei"},
+    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
+    {"op": "move", "from": "/protocols_io_doi", "path": "/preparation_protocol_doi"},
+    {"op": "move", "from": "/transposition_kit_number", "path": "/transposition_reagent_kit"},
+    {"op": "remove", "path": "/assay_category"},
+    {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/bulk_atac_cell_isolation_protocols_io_doi"},
+    {"op": "remove", "path": "/description"},
+    {"op": "remove", "path": "/donor_id"},
+    {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/library_construction_protocols_io_doi"},
+    {"op": "remove", "path": "/library_creation_date"},
+    {"op": "remove", "path": "/library_id"},
+    {"op": "remove", "path": "/library_pcr_cycles"},
+    {"op": "remove", "path": "/operator"},
+    {"op": "remove", "path": "/operator_email"},
+    {"op": "remove", "path": "/pi"},
+    {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/sample_quality_metric"},
+    {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
     {"op": "remove", "path": "/transposition_transposase_source"},
     {"op": "remove", "path": "/version"},
-    {"op": "remove", "path": "/sample_quality_metric"},
-    {"op": "remove", "path": "/description"},
-    {"op": "remove", "path": "/pi"},
-    {"op": "remove", "path": "/sequencing_phix_percent"},
-    {"op": "remove", "path": "/library_creation_date"},
-    {"op": "remove", "path": "/operator_email"},
-    {"op": "remove", "path": "/operator"},
-    {"op": "remove", "path": "/library_construction_protocols_io_doi"},
-    {"op": "remove", "path": "/library_pcr_cycles"},
-    {"op": "remove", "path": "/library_id"},
-    {"op": "remove", "path": "/assay_type"},
-    {"op": "remove", "path": "/bulk_atac_cell_isolation_protocols_io_doi"},
-    {"op": "remove", "path": "/assay_category"},
-    {"op": "remove", "path": "/pi_email"},
-    {"op": "remove", "path": "/donor_id"},
-    {"op": "remove", "path": "/execution_datetime"},
-    {"op": "add", "path": "/sequencing_batch_id", "value": null},
-    {"op": "add", "path": "/barcode_size", "value": "Not applicable"},
-    {"op": "add", "path": "/source_storage_duration_value", "value": null},
-    {"op": "add", "path": "/umi_size", "value": "Not applicable"},
-    {"op": "add", "path": "/expected_entity_capture_count", "value": null},
-    {"op": "move", "from": "/transposition_kit_number", "path": "/transposition_reagent_kit"},
-    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
-    {"op": "add", "path": "/dataset_type", "value": "ATACseq"},
-    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
-    {"op": "add", "path": "/sample_indexing_kit", "value": null},
-    {"op": "add", "path": "/library_input_amount_unit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
-    {"op": "add", "path": "/capture_batch_id", "value": null},
-    {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
-    {"op": "add", "path": "/lab_id", "value": null},
-    {"op": "move", "from": "/bulk_transposition_input_number_nuclei", "path": "/number_of_input_cells_or_nuclei"},
-    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
-    {"op": "add", "path": "/assay_input_entity", "value": "tissue (bulk)"},
-    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": null},
-    {"op": "add", "path": "/sample_indexing_set", "value": null},
-    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
-    {"op": "add", "path": "/barcode_offset", "value": "Not applicable"},
-    {"op": "move", "from": "/protocols_io_doi", "path": "/preparation_protocol_doi"},
-    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
-    {"op": "add", "path": "/barcode_read", "value": "Not applicable"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/library_input_amount_value", "value": null},
-    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
-    {"op": "add", "path": "/metadata_schema_id", "value": "dd5e8653-81cf-470b-b71b-15cab421bb84"},
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/library_preparation_kit", "value": null},
-    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/sequencing_read_format", "value": "101,10,24,101"},
     {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"},
-    {"op": "replace", "path": "/transposition_method", "value": "bulkATACseq"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "101,10,24,101"}
+    {"op": "replace", "path": "/transposition_method", "value": "bulkATACseq"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -233,85 +233,6 @@
       "sequencing_read_percent_q30": "97.89",
       "transposition_transposase_source": "Illumina",
       "version": "1"
-    },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "tissue (bulk)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_read",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_size",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_offset",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_read",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_size",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_offset",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulkATACseq"
-            }
-          ]
-        }
-      }
-    ]
+    }
   }
 }
