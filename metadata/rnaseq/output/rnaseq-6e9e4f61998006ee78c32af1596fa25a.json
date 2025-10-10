@@ -93,67 +93,67 @@
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
-    {"op": "remove", "path": "/rnaseq_assay_method"},
-    {"op": "remove", "path": "/execution_datetime"},
-    {"op": "remove", "path": "/pi"},
-    {"op": "remove", "path": "/protocols_io_doi"},
-    {"op": "remove", "path": "/metadata_path"},
-    {"op": "remove", "path": "/pi_email"},
-    {"op": "remove", "path": "/bulk_rna_yield_value"},
-    {"op": "remove", "path": "/bulk_rna_yield_units_per_tissue_unit"},
-    {"op": "remove", "path": "/sequencing_phix_percent"},
-    {"op": "remove", "path": "/collectiontype"},
-    {"op": "remove", "path": "/donor_id"},
-    {"op": "remove", "path": "/bulk_rna_isolation_protocols_io_doi"},
-    {"op": "remove", "path": "/assay_category"},
-    {"op": "remove", "path": "/operator"},
-    {"op": "remove", "path": "/assay_type"},
-    {"op": "remove", "path": "/operator_email"},
-    {"op": "remove", "path": "/sequencing_read_percent_q30"},
-    {"op": "remove", "path": "/bulk_rna_isolation_quality_metric_value"},
-    {"op": "remove", "path": "/_from_metadatatsv"},
-    {"op": "move", "from": "/rnaseq_assay_input_value", "path": "/amount_of_input_analyte_value"},
-    {"op": "move", "from": "/rnaseq_assay_input_unit", "path": "/amount_of_input_analyte_unit"},
-    {"op": "add", "path": "/library_input_amount_value", "value": null},
-    {"op": "add", "path": "/barcode_size", "value": "Not applicable"},
-    {"op": "add", "path": "/lab_id", "value": null},
-    {"op": "add", "path": "/is_technical_replicate", "value": null},
-    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": null},
-    {"op": "add", "path": "/sample_indexing_kit", "value": null},
-    {"op": "move", "from": "/library_construction_protocols_io_doi", "path": "/preparation_protocol_doi"},
-    {"op": "add", "path": "/contributors_path", "value": null},
-    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
     {"op": "add", "path": "/assay_input_entity", "value": "tissue (bulk)"},
-    {"op": "add", "path": "/library_concentration_value", "value": null},
-    {"op": "add", "path": "/library_preparation_kit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/source_storage_duration_value", "value": null},
-    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_pcr_cycles_for_indexing"},
-    {"op": "add", "path": "/umi_size", "value": "Not applicable"},
-    {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
-    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
-    {"op": "add", "path": "/library_concentration_unit", "value": null},
     {"op": "add", "path": "/barcode_offset", "value": "Not applicable"},
-    {"op": "add", "path": "/sample_indexing_set", "value": null},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
-    {"op": "add", "path": "/capture_batch_id", "value": null},
-    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/barcode_read", "value": "Not applicable"},
-    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": null},
-    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
-    {"op": "add", "path": "/library_input_amount_unit", "value": null},
-    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
+    {"op": "add", "path": "/barcode_size", "value": "Not applicable"},
+    {"op": "add", "path": "/capture_batch_id", "value": null},
+    {"op": "add", "path": "/contributors_path", "value": null},
+    {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
     {"op": "add", "path": "/expected_entity_capture_count", "value": null},
-    {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
-    {"op": "add", "path": "/sequencing_batch_id", "value": null},
+    {"op": "add", "path": "/is_technical_replicate", "value": null},
+    {"op": "add", "path": "/lab_id", "value": null},
+    {"op": "add", "path": "/library_concentration_unit", "value": null},
+    {"op": "add", "path": "/library_concentration_value", "value": null},
+    {"op": "add", "path": "/library_input_amount_unit", "value": null},
+    {"op": "add", "path": "/library_input_amount_value", "value": null},
+    {"op": "add", "path": "/library_preparation_kit", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
+    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": null},
+    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": null},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
+    {"op": "add", "path": "/sample_indexing_kit", "value": null},
+    {"op": "add", "path": "/sample_indexing_set", "value": null},
+    {"op": "add", "path": "/sequencing_batch_id", "value": null},
+    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
+    {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"},
+    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_size", "value": "Not applicable"},
+    {"op": "move", "from": "/rnaseq_assay_input_unit", "path": "/amount_of_input_analyte_unit"},
+    {"op": "move", "from": "/rnaseq_assay_input_value", "path": "/amount_of_input_analyte_value"},
+    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
+    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/library_output_amount_value"},
+    {"op": "move", "from": "/library_final_yield_value", "path": "/number_of_pcr_cycles_for_indexing"},
+    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
+    {"op": "move", "from": "/library_construction_protocols_io_doi", "path": "/preparation_protocol_doi"},
+    {"op": "remove", "path": "/_from_metadatatsv"},
+    {"op": "remove", "path": "/assay_category"},
+    {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/bulk_rna_isolation_protocols_io_doi"},
+    {"op": "remove", "path": "/bulk_rna_isolation_quality_metric_value"},
+    {"op": "remove", "path": "/bulk_rna_yield_units_per_tissue_unit"},
+    {"op": "remove", "path": "/bulk_rna_yield_value"},
+    {"op": "remove", "path": "/collectiontype"},
+    {"op": "remove", "path": "/donor_id"},
+    {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/metadata_path"},
+    {"op": "remove", "path": "/operator"},
+    {"op": "remove", "path": "/operator_email"},
+    {"op": "remove", "path": "/pi"},
+    {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/protocols_io_doi"},
+    {"op": "remove", "path": "/rnaseq_assay_method"},
+    {"op": "remove", "path": "/sequencing_phix_percent"},
+    {"op": "remove", "path": "/sequencing_read_percent_q30"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "150,8,8,150"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"}
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -210,133 +210,6 @@
       "rnaseq_assay_method": "NEBNext Ultra II RNA Library Prep Kit",
       "sequencing_phix_percent": "1",
       "sequencing_read_percent_q30": "94.26"
-    },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "tissue (bulk)",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_read",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_size",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "barcode_offset",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_read",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_size",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "umi_offset",
-        "value": "Not applicable",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            }
-          ]
-        }
-      },
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "bulk RNA"
-            },
-            {
-              "library_construction_protocols_io_doi": "10.17504/protocols.io.bftnjnme"
-            },
-            {
-              "__should__": [
-                {
-                  "sequencing_read_format": "150/8/8/150"
-                },
-                {
-                  "sequencing_read_format": "150-8-8-150"
-                },
-                {
-                  "sequencing_read_format": "150,8,8,150"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NextSeq 6000",
-        "conditions": {
-          "__must__": [
-            {
-              "acquisition_instrument_vendor": "Illumina"
-            },
-            {
-              "__should__": [
-                {
-                  "acquisition_instrument_model": "NovaSeq6000"
-                },
-                {
-                  "acquisition_instrument_model": "NovaSeq"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+    }
   }
 }

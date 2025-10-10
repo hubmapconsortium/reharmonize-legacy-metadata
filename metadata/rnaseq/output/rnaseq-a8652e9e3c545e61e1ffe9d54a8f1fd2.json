@@ -98,65 +98,65 @@
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
-    {"op": "remove", "path": "/rnaseq_assay_method"},
-    {"op": "remove", "path": "/execution_datetime"},
-    {"op": "remove", "path": "/sc_isolation_quality_metric"},
-    {"op": "remove", "path": "/pi"},
-    {"op": "remove", "path": "/protocols_io_doi"},
-    {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
-    {"op": "remove", "path": "/sc_isolation_enrichment"},
-    {"op": "remove", "path": "/pi_email"},
-    {"op": "remove", "path": "/sequencing_phix_percent"},
-    {"op": "remove", "path": "/cell_barcode_read"},
-    {"op": "remove", "path": "/donor_id"},
-    {"op": "remove", "path": "/library_id"},
-    {"op": "remove", "path": "/assay_category"},
-    {"op": "remove", "path": "/operator"},
-    {"op": "remove", "path": "/assay_type"},
-    {"op": "remove", "path": "/sc_isolation_entity"},
-    {"op": "remove", "path": "/operator_email"},
-    {"op": "remove", "path": "/sequencing_read_percent_q30"},
-    {"op": "remove", "path": "/sc_isolation_protocols_io_doi"},
-    {"op": "move", "from": "/rnaseq_assay_input", "path": "/amount_of_input_analyte_value"},
     {"op": "add", "path": "/amount_of_input_analyte_unit", "value": null},
-    {"op": "add", "path": "/library_input_amount_value", "value": null},
-    {"op": "move", "from": "/cell_barcode_size", "path": "/barcode_size"},
-    {"op": "add", "path": "/lab_id", "value": null},
-    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_iterations_of_cdna_amplification"},
-    {"op": "add", "path": "/sample_indexing_kit", "value": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262"},
-    {"op": "move", "from": "/library_construction_protocols_io_doi", "path": "/preparation_protocol_doi"},
-    {"op": "add", "path": "/library_concentration_value", "value": null},
-    {"op": "add", "path": "/umi_read", "value": null},
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
-    {"op": "add", "path": "/library_preparation_kit", "value": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074"},
-    {"op": "add", "path": "/source_storage_duration_value", "value": null},
-    {"op": "move", "from": "/library_pcr_cycles", "path": "/number_of_pcr_cycles_for_indexing"},
-    {"op": "add", "path": "/umi_size", "value": null},
-    {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller, PN: GCG-SR-1"},
-    {"op": "add", "path": "/umi_offset", "value": null},
-    {"op": "add", "path": "/library_concentration_unit", "value": null},
-    {"op": "move", "from": "/cell_barcode_offset", "path": "/barcode_offset"},
-    {"op": "add", "path": "/sample_indexing_set", "value": null},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10X Genomics"},
-    {"op": "add", "path": "/capture_batch_id", "value": null},
-    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/barcode_read", "value": "Read 1 (R1)"},
-    {"op": "move", "from": "/sc_isolation_cell_number", "path": "/number_of_input_cells_or_nuclei"},
-    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
-    {"op": "add", "path": "/library_input_amount_unit", "value": null},
-    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
+    {"op": "add", "path": "/capture_batch_id", "value": null},
+    {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
     {"op": "add", "path": "/expected_entity_capture_count", "value": null},
-    {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
-    {"op": "add", "path": "/sequencing_batch_id", "value": null},
+    {"op": "add", "path": "/lab_id", "value": null},
+    {"op": "add", "path": "/library_concentration_unit", "value": null},
+    {"op": "add", "path": "/library_concentration_value", "value": null},
+    {"op": "add", "path": "/library_input_amount_unit", "value": null},
+    {"op": "add", "path": "/library_input_amount_value", "value": null},
+    {"op": "add", "path": "/library_preparation_kit", "value": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075"},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074"},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller, PN: GCG-SR-1"},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10X Genomics"},
+    {"op": "add", "path": "/sample_indexing_kit", "value": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262"},
+    {"op": "add", "path": "/sample_indexing_set", "value": null},
+    {"op": "add", "path": "/sequencing_batch_id", "value": null},
+    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
+    {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
+    {"op": "add", "path": "/umi_offset", "value": null},
+    {"op": "add", "path": "/umi_read", "value": null},
+    {"op": "add", "path": "/umi_size", "value": null},
+    {"op": "move", "from": "/rnaseq_assay_input", "path": "/amount_of_input_analyte_value"},
+    {"op": "move", "from": "/cell_barcode_offset", "path": "/barcode_offset"},
+    {"op": "move", "from": "/cell_barcode_size", "path": "/barcode_size"},
+    {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
+    {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
+    {"op": "move", "from": "/sc_isolation_cell_number", "path": "/number_of_input_cells_or_nuclei"},
+    {"op": "move", "from": "/library_pcr_cycles", "path": "/number_of_iterations_of_cdna_amplification"},
+    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_pcr_cycles_for_indexing"},
+    {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
+    {"op": "move", "from": "/library_construction_protocols_io_doi", "path": "/preparation_protocol_doi"},
+    {"op": "remove", "path": "/assay_category"},
+    {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/cell_barcode_read"},
+    {"op": "remove", "path": "/donor_id"},
+    {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/library_id"},
+    {"op": "remove", "path": "/operator"},
+    {"op": "remove", "path": "/operator_email"},
+    {"op": "remove", "path": "/pi"},
+    {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/protocols_io_doi"},
+    {"op": "remove", "path": "/rnaseq_assay_method"},
+    {"op": "remove", "path": "/sc_isolation_enrichment"},
+    {"op": "remove", "path": "/sc_isolation_entity"},
+    {"op": "remove", "path": "/sc_isolation_protocols_io_doi"},
+    {"op": "remove", "path": "/sc_isolation_quality_metric"},
+    {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
+    {"op": "remove", "path": "/sequencing_phix_percent"},
+    {"op": "remove", "path": "/sequencing_read_percent_q30"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,101"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"}
+    {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
+    {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,101"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -230,278 +230,6 @@
       "sc_isolation_tissue_dissociation": "dounce",
       "sequencing_phix_percent": "5",
       "sequencing_read_percent_q30": "73.79"
-    },
-    "metadata_patches": [
-      {
-        "field": "assay_input_entity",
-        "value": "single nucleus",
-        "conditions": {
-          "__must__": [
-            {
-              "assay_type": "snRNAseq"
-            }
-          ]
-        }
-      },
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NextSeq 6000",
-        "conditions": {
-          "__must__": [
-            {
-              "acquisition_instrument_vendor": "Illumina"
-            },
-            {
-              "__should__": [
-                {
-                  "acquisition_instrument_model": "NovaSeq6000"
-                },
-                {
-                  "acquisition_instrument_model": "NovaSeq"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "field": "rnaseq_assay_method",
-        "value": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
-        "conditions": {
-          "__must__": [
-            {
-              "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw"
-            }
-          ]
-        }
-      },
-      {
-        "field": "library_preparation_kit",
-        "value": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
-        "conditions": {
-          "__must__": [
-            {
-              "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_vendor",
-        "value": "10X Genomics",
-        "conditions": {
-          "__must__": [
-            {
-              "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_kit",
-        "value": "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074",
-        "conditions": {
-          "__must__": [
-            {
-              "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw"
-            }
-          ]
-        }
-      },
-      {
-        "field": "sample_indexing_kit",
-        "value": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
-        "conditions": {
-          "__must__": [
-            {
-              "library_construction_protocols_io_doi": "10.17504/protocols.io.86khzcw"
-            }
-          ]
-        }
-      },
-      {
-        "field": "preparation_instrument_model",
-        "value": "Chromium Controller, PN: GCG-SR-1",
-        "conditions": {
-          "__must__": [
-            {
-              "__should__": [
-                {
-                  "execution_datetime": "2019-06-27 15:00"
-                },
-                {
-                  "execution_datetime": "2019-06-27 16:00"
-                },
-                {
-                  "execution_datetime": "2019-09-25 09:08"
-                },
-                {
-                  "execution_datetime": "2019-11-07 12:00"
-                },
-                {
-                  "execution_datetime": "2019-11-16 15:00"
-                },
-                {
-                  "execution_datetime": "2019-11-16 16:00"
-                },
-                {
-                  "execution_datetime": "2019-11-21 15:00"
-                },
-                {
-                  "execution_datetime": "2019-11-21 16:00"
-                },
-                {
-                  "execution_datetime": "2020-01-29 15:00"
-                },
-                {
-                  "execution_datetime": "2020-02-19 11:00"
-                },
-                {
-                  "execution_datetime": "2020-03-04 11:00"
-                },
-                {
-                  "execution_datetime": "2020-06-16 06:09"
-                },
-                {
-                  "execution_datetime": "2020-06-18 06:09"
-                },
-                {
-                  "execution_datetime": "2020-07-02 07:09"
-                },
-                {
-                  "execution_datetime": "2020-07-06 07:09"
-                },
-                {
-                  "execution_datetime": "2020-07-16 07:09"
-                },
-                {
-                  "execution_datetime": "2020-07-20 07:09"
-                },
-                {
-                  "execution_datetime": "2020-08-07 08:09"
-                },
-                {
-                  "execution_datetime": "2020-08-20 18:08"
-                },
-                {
-                  "execution_datetime": "2020-09-04 09:09"
-                },
-                {
-                  "execution_datetime": "2020-09-17 09:09"
-                },
-                {
-                  "execution_datetime": "2020-10-09 11:00"
-                },
-                {
-                  "execution_datetime": "2020-12-16 11:00"
-                },
-                {
-                  "execution_datetime": "2021-01-27 01:09"
-                },
-                {
-                  "execution_datetime": "2021-03-12 09:30"
-                },
-                {
-                  "execution_datetime": "2021-03-15 03:09"
-                },
-                {
-                  "execution_datetime": "2021-03-18 03:09"
-                },
-                {
-                  "execution_datetime": "2021-03-18 09:30"
-                },
-                {
-                  "execution_datetime": "2021-03-20 09:30"
-                },
-                {
-                  "execution_datetime": "2021-04-08 11:00"
-                },
-                {
-                  "execution_datetime": "2021-05-06 14:00"
-                },
-                {
-                  "execution_datetime": "2021-05-14 11:00"
-                },
-                {
-                  "execution_datetime": "2021-06-17 11:00"
-                },
-                {
-                  "execution_datetime": "2021-06-30 11:00"
-                },
-                {
-                  "execution_datetime": "2021-07-15 11:00"
-                },
-                {
-                  "execution_datetime": "2019-05-29 11:00"
-                },
-                {
-                  "execution_datetime": "2019-06-07 11:00"
-                },
-                {
-                  "execution_datetime": "2019-07-03 0:00"
-                },
-                {
-                  "execution_datetime": "2019-10-09 11:00"
-                },
-                {
-                  "execution_datetime": "2019-10-10 11:00"
-                },
-                {
-                  "execution_datetime": "2019-10-29 11:00"
-                },
-                {
-                  "execution_datetime": "2019-11-04 11:00"
-                },
-                {
-                  "execution_datetime": "2019-12-17 11:00"
-                },
-                {
-                  "execution_datetime": "2020-02-05 11:00"
-                },
-                {
-                  "execution_datetime": "2020-03-02 11:00"
-                },
-                {
-                  "execution_datetime": "2020-03-04 11:00"
-                },
-                {
-                  "execution_datetime": "2020-03-17 11:00"
-                },
-                {
-                  "execution_datetime": "2020-06-16 09:30"
-                },
-                {
-                  "execution_datetime": "2020-07-02 11:00"
-                },
-                {
-                  "execution_datetime": "2020-07-07 11:00"
-                },
-                {
-                  "execution_datetime": "2020-08-06 09:30"
-                },
-                {
-                  "execution_datetime": "2020-08-11 09:30"
-                },
-                {
-                  "execution_datetime": "2020-09-17 09:30"
-                },
-                {
-                  "execution_datetime": "2020-12-09 11:00"
-                },
-                {
-                  "execution_datetime": "2021-02-05 10:00"
-                },
-                {
-                  "execution_datetime": "2021-03-15 11:30"
-                },
-                {
-                  "execution_datetime": "2021-03-18 03:09"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+    }
   }
 }
