@@ -261,20 +261,11 @@ class TestPatchApplier:
         ]
 
         metadata = {"assay_type": "test"}
-        self.patch_applier.apply_patches(metadata)
+        result = self.patch_applier.apply_patches(metadata)
 
-        log = self.patch_applier.get_structured_log()
-        assert len(log.metadata_patches) == 2  # Two fields were patched
-
-        patch_entries = log.metadata_patches
-        fields = [entry.field for entry in patch_entries]
-        assert "field1" in fields
-        assert "field2" in fields
-
-        # Verify conditions are logged but source_file is not
-        for entry in patch_entries:
-            assert entry.conditions == {"__must__": [{"assay_type": "test"}]}
-            assert not hasattr(entry, "source_file")
+        # Verify patches were applied
+        assert result["field1"] == "value1"
+        assert result["field2"] == "value2"
 
     def test_get_loaded_patches_count(self) -> None:
         """Test getting the count of loaded patches."""
@@ -286,14 +277,12 @@ class TestPatchApplier:
     def test_clear_logs(self) -> None:
         """Test clearing the structured log."""
         # Add some log entries first
-        self.patch_applier.structured_log.add_applied_patch(
-            "test_field", "test_value", {}
-        )
-        assert len(self.patch_applier.structured_log.metadata_patches) == 1
+        self.patch_applier.structured_log.add_mapped_field("old_field", "new_field")
+        assert len(self.patch_applier.structured_log.field_mappings) == 1
 
         # Clear logs
         self.patch_applier.clear_logs()
-        assert len(self.patch_applier.structured_log.metadata_patches) == 0
+        assert len(self.patch_applier.structured_log.field_mappings) == 0
 
     def test_load_patch_file_nonexistent(self) -> None:
         """Test loading patch file that doesn't exist."""

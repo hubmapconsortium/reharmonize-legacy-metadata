@@ -17,22 +17,12 @@ class UnmappedValueEntry:
 
 
 @dataclass
-class AppliedPatchEntry:
-    """Represents a patch that was applied to the metadata."""
-
-    field: str
-    value: Any
-    conditions: Dict[str, Any] = dataclass_field(default_factory=dict)
-
-
-@dataclass
 class StructuredProcessingLog:
     """Structured processing log for metadata transformation operations."""
 
     field_mappings: Dict[str, str] = dataclass_field(default_factory=dict)
     ambiguous_mappings: List[UnmappedValueEntry] = dataclass_field(default_factory=list)
     value_mappings: Dict[str, Dict[str, Any]] = dataclass_field(default_factory=dict)
-    metadata_patches: List[AppliedPatchEntry] = dataclass_field(default_factory=list)
     excluded_data: Dict[str, Any] = dataclass_field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -49,14 +39,6 @@ class StructuredProcessingLog:
                 for entry in self.ambiguous_mappings
             ],
             "excluded_data": self.excluded_data,
-            "metadata_patches": [
-                {
-                    "field": entry.field,
-                    "value": entry.value,
-                    "conditions": entry.conditions,
-                }
-                for entry in self.metadata_patches
-            ],
         }
 
     def add_unmapped_field_with_value(self, field_name: str, value: Any) -> None:
@@ -100,11 +82,8 @@ class StructuredProcessingLog:
     def add_applied_patch(
         self, field_name: str, field_value: Any, conditions: Dict[str, Any]
     ) -> None:
-        """Add a patch that was applied to the metadata."""
-        entry = AppliedPatchEntry(
-            field=field_name, value=field_value, conditions=conditions
-        )
-        self.metadata_patches.append(entry)
+        """Add a patch that was applied to the metadata (no-op for backwards compatibility)."""
+        pass
 
     def merge_with(self, other: "StructuredProcessingLog") -> None:
         """Merge another log into this one."""
@@ -116,9 +95,6 @@ class StructuredProcessingLog:
 
         # Merge value mappings
         self.value_mappings.update(other.value_mappings)
-
-        # Merge metadata patches
-        self.metadata_patches.extend(other.metadata_patches)
 
         # Merge excluded data
         self.excluded_data.update(other.excluded_data)

@@ -112,7 +112,6 @@ class TestStructuredProcessingLog:
                 }
             ],
             "excluded_data": {},
-            "metadata_patches": [],
         }
 
         assert result == expected
@@ -131,7 +130,6 @@ class TestStructuredProcessingLog:
             "value_mappings": {},
             "ambiguous_mappings": [],
             "excluded_data": {"field1": "value1", "field2": {"complex": "value"}},
-            "metadata_patches": [],
         }
 
         assert result == expected
