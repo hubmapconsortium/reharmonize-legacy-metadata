@@ -50,3 +50,18 @@ jobs:
           git add metadata/rnaseq/output
           git commit -m "Transform RNAseq legacy metadata (automated)" || echo "No changes to commit"
           git push
+
+      - name: Find non-standard values
+        run: |
+          python scripts/find-nonstandard-values.py \
+            metadata/rnaseq/output \
+            metadata/rnaseq/rnaseq-schema.json \
+            metadata/rnaseq/rnaseq-nonstandard-values.json
+
+      - name: Commit non-standard values
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/rnaseq/rnaseq-nonstandard-values.json
+          git commit -m "Find non-standard values in RNAseq metadata (automated)" || echo "No changes to commit"
+          git push

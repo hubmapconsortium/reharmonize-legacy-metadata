@@ -50,3 +50,18 @@ jobs:
           git add metadata/mibi/output
           git commit -m "Transform MIBI legacy metadata (automated)" || echo "No changes to commit"
           git push
+
+      - name: Find non-standard values
+        run: |
+          python scripts/find-nonstandard-values.py \
+            metadata/mibi/output \
+            metadata/mibi/mibi-schema.json \
+            metadata/mibi/mibi-nonstandard-values.json
+
+      - name: Commit non-standard values
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/mibi/mibi-nonstandard-values.json
+          git commit -m "Find non-standard values in MIBI metadata (automated)" || echo "No changes to commit"
+          git push
