@@ -266,17 +266,24 @@ class MetadataTransformer:
 
         This method compares the original legacy metadata with the transformed
         metadata and generates a list of patch operations that describe the
-        differences.
+        differences. The patches are sorted by operation type first (add, then others),
+        then by path, and finally by their full JSON representation for consistency.
 
         Args:
             original_metadata: Original legacy metadata dictionary
             modified_metadata: Transformed metadata dictionary
 
         Returns:
-            List of JSON Patch operations (dicts with 'op', 'path', and optionally 'value')
+            List of JSON Patch operations (dicts with 'op', 'path', and optionally 'value'),
+            sorted by operation type, path, and then ascendingly
         """
         patch = jsonpatch.make_patch(original_metadata, modified_metadata)
-        return patch.patch
+        # Sort patches by operation type, path, and then by JSON representation
+        sorted_patches = sorted(
+            patch.patch,
+            key=lambda x: (x.get('op', ''), x.get('path', ''), json.dumps(x, sort_keys=True))
+        )
+        return sorted_patches
 
     def get_structured_log(self) -> StructuredProcessingLog:
         """
