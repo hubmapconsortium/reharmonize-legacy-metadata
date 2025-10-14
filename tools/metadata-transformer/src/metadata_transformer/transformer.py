@@ -5,7 +5,7 @@ Core metadata transformation logic implementing the 4-phase transformation proce
 import json
 import jsonpatch
 from pathlib import Path
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Tuple, Union
 
 from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMapper
@@ -76,7 +76,7 @@ class MetadataTransformer:
 
         # Transform the metadata
         try:
-            transformed_metadata = self._transform_metadata(legacy_metadata)
+            transformed_metadata, json_patches = self._transform_metadata(legacy_metadata)
         except Exception as e:
             # Error handling moved to stdout - handled by CLI
             raise FileProcessingError(
@@ -107,11 +107,11 @@ class MetadataTransformer:
         # Build output result using original data as base
         output = loaded_object.copy()
 
-        # Generate JSON patch showing transformation changes
-        json_patches = self._generate_json_patches(legacy_metadata, transformed_metadata)
+        # Sort JSON patches for consistency
+        sorted_json_patches = self._sort_patches(json_patches)
 
         output["modified_metadata"] = transformed_metadata
-        output["json_patch"] = json_patches
+        output["json_patch"] = sorted_json_patches
         output["processing_log"] = combined_structured_log.to_dict()
 
         return output
@@ -148,7 +148,7 @@ class MetadataTransformer:
 
         return data
 
-    def _transform_metadata(self, legacy_metadata: Dict[str, Any]) -> Dict[str, Any]:
+    def _transform_metadata(self, legacy_metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
         """
         Transform metadata through the 4-phase process.
 
@@ -156,21 +156,31 @@ class MetadataTransformer:
             metadata: Legacy metadata dictionary
 
         Returns:
-            Transformed metadata dictionary
+            Tuple of (transformed metadata dictionary, list of JSON patch operations)
         """
+        all_patches = []
+
         # Phase 0: Conditional Patching
         patched_metadata = self._phase0_conditional_patching(legacy_metadata)
+        phase0_patch = jsonpatch.make_patch(legacy_metadata, patched_metadata)
+        all_patches.extend(phase0_patch.patch)
 
         # Phase 1: Field Mapping
         field_mapped_metadata = self._phase1_field_mapping(patched_metadata)
+        phase1_patch = jsonpatch.make_patch(patched_metadata, field_mapped_metadata)
+        all_patches.extend(phase1_patch.patch)
 
         # Phase 2: Value Mapping
         value_mapped_metadata = self._phase2_value_mapping(field_mapped_metadata)
+        phase2_patch = jsonpatch.make_patch(field_mapped_metadata, value_mapped_metadata)
+        all_patches.extend(phase2_patch.patch)
 
         # Phase 3: Schema Compliance
         schema_compliant_metadata = self._phase3_schema_compliance(value_mapped_metadata)
+        phase3_patch = jsonpatch.make_patch(value_mapped_metadata, schema_compliant_metadata)
+        all_patches.extend(phase3_patch.patch)
 
-        return schema_compliant_metadata
+        return schema_compliant_metadata, all_patches
 
     def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -258,32 +268,20 @@ class MetadataTransformer:
 
         return compliant_metadata
 
-    def _generate_json_patches(
-        self, original_metadata: Dict[str, Any], modified_metadata: Dict[str, Any]
-    ) -> List[Dict[str, Any]]:
+    def _sort_patches(self, patches: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Generate JSON Patch (RFC 6902) representing transformation changes.
-
-        This method compares the original legacy metadata with the transformed
-        metadata and generates a list of patch operations that describe the
-        differences. The patches are sorted by operation type first (add, then others),
-        then by path, and finally by their full JSON representation for consistency.
+        Sort JSON Patch operations for consistency.
 
         Args:
-            original_metadata: Original legacy metadata dictionary
-            modified_metadata: Transformed metadata dictionary
+            patches: List of JSON Patch operations
 
         Returns:
-            List of JSON Patch operations (dicts with 'op', 'path', and optionally 'value'),
-            sorted by operation type, path, and then ascendingly
+            Sorted list of JSON Patch operations
         """
-        patch = jsonpatch.make_patch(original_metadata, modified_metadata)
-        # Sort patches by operation type, path, and then by JSON representation
-        sorted_patches = sorted(
-            patch.patch,
+        return sorted(
+            patches,
             key=lambda x: (x.get('op', ''), x.get('path', ''), json.dumps(x, sort_keys=True))
         )
-        return sorted_patches
 
     def get_structured_log(self) -> StructuredProcessingLog:
         """

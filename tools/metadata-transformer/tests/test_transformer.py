@@ -232,10 +232,11 @@ class TestMetadataTransformer:
         # Set up minimal mocks
         self.schema_loader.get_schema_fields.return_value = {}
 
-        result = self.transformer._transform_metadata(metadata)
+        result, patches = self.transformer._transform_metadata(metadata)
 
         # Should return empty dict since no metadata and no schema fields
         assert isinstance(result, dict)
+        assert isinstance(patches, list)
 
         # Check no warnings are logged
         assert len(self.transformer.structured_log.excluded_data) == 0
@@ -424,25 +425,3 @@ class TestMetadataTransformer:
             # Should have json_patch key even if empty
             assert "json_patch" in result
             assert isinstance(result["json_patch"], list)
-
-    def test_generate_json_patch_method(self) -> None:
-        """Test the _generate_json_patches method directly."""
-        original = {"field1": "value1", "field2": "value2", "field3": "value3"}
-        modified = {
-            "field1": "value1",
-            "field2": "changed_value",
-            "field4": "new_value",
-        }
-
-        patch_ops = self.transformer._generate_json_patches(original, modified)
-
-        # Should be a list
-        assert isinstance(patch_ops, list)
-
-        # Should contain operations
-        assert len(patch_ops) > 0
-
-        # Each operation should have required fields
-        for op in patch_ops:
-            assert "op" in op
-            assert "path" in op
