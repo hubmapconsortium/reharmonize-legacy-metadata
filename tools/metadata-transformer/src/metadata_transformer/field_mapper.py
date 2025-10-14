@@ -172,25 +172,6 @@ class FieldMapper:
         self._field_mappings = field_mappings if field_mappings is not None else {}
         self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
 
-    # Backward compatibility methods for loading
-    def load_field_mappings(self, field_mapping_dir: Path) -> None:
-        """
-        Deprecated: For backward compatibility only.
-        Use FieldMappings.load_field_mappings() instead.
-        """
-        mappings = FieldMappings()
-        mappings.load_field_mappings(field_mapping_dir)
-        object.__setattr__(self, "_field_mappings", mappings.get_all_mappings())
-
-    def load_field_mapping_file(self, mapping_file: Path) -> None:
-        """
-        Deprecated: For backward compatibility only.
-        Use FieldMappings.load_field_mapping_file() instead.
-        """
-        mappings = FieldMappings()
-        mappings.load_field_mapping_file(mapping_file)
-        object.__setattr__(self, "_field_mappings", mappings.get_all_mappings())
-
     def map_field(self, legacy_field: str) -> Optional[str]:
         """
         Map a legacy field name to its target schema equivalent.
@@ -230,34 +211,3 @@ class FieldMapper:
             StructuredProcessingLog object
         """
         return self._structured_log
-
-    # Backward compatibility properties and methods for tests
-    @property
-    def field_mappings(self) -> Dict[str, Optional[str]]:
-        """Property for backward compatibility with tests."""
-        return self._field_mappings
-
-    @field_mappings.setter
-    def field_mappings(self, value: Dict[str, Optional[str]]) -> None:
-        """Setter for backward compatibility with tests."""
-        object.__setattr__(self, "_field_mappings", value)
-
-    @property
-    def structured_log(self) -> StructuredProcessingLog:
-        """Property for backward compatibility with tests."""
-        return self._structured_log
-
-    def set_structured_log(self, structured_log: StructuredProcessingLog) -> None:
-        """
-        Deprecated: For backward compatibility only.
-        In the new design, create a new mapper with get_mapper() instead.
-        """
-        # For backward compatibility - mutate the log
-        object.__setattr__(self, "_structured_log", structured_log)
-
-    def clear_logs(self) -> None:
-        """
-        Deprecated: For backward compatibility only.
-        In the new design, create a new mapper with get_mapper() instead.
-        """
-        object.__setattr__(self, "_structured_log", StructuredProcessingLog())

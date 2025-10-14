@@ -10,34 +10,31 @@ import pytest
 
 from metadata_transformer.exceptions import ValueMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
-from metadata_transformer.value_mapper import ValueMapper
+from metadata_transformer.value_mapper import ValueMapper, ValueMappings
 
 
-class TestValueMapper:
-    """Test cases for ValueMapper class."""
+class TestValueMappings:
+    """Test cases for ValueMappings class."""
 
     def test_init(self) -> None:
-        """Test ValueMapper initialization."""
-        mapper = ValueMapper()
-        assert isinstance(mapper.value_mappings, dict)
-        assert len(mapper.value_mappings) == 0
-        assert isinstance(mapper.structured_log, StructuredProcessingLog)
-        assert len(mapper.structured_log.field_mappings) == 0
-        assert len(mapper.structured_log.ambiguous_mappings) == 0
+        """Test ValueMappings initialization."""
+        mappings = ValueMappings()
+        assert isinstance(mappings.get_all_mappings(), dict)
+        assert len(mappings.get_all_mappings()) == 0
 
     def test_load_value_mappings_nonexistent_directory(self) -> None:
         """Test loading from non-existent directory raises error."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
         nonexistent_dir = Path("/nonexistent/directory")
 
         with pytest.raises(
             ValueMappingError, match="Value mapping directory not found"
         ):
-            mapper.load_value_mappings(nonexistent_dir)
+            mappings.load_value_mappings(nonexistent_dir)
 
     def test_load_value_mappings_not_directory(self) -> None:
         """Test loading from file instead of directory raises error."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -45,11 +42,11 @@ class TestValueMapper:
             temp_file.write_text("test")
 
             with pytest.raises(ValueMappingError, match="Path is not a directory"):
-                mapper.load_value_mappings(temp_file)
+                mappings.load_value_mappings(temp_file)
 
     def test_load_value_mappings_no_json_files(self) -> None:
         """Test loading from directory with no JSON files raises error."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -57,11 +54,11 @@ class TestValueMapper:
             (temp_path / "not_json.txt").write_text("test")
 
             with pytest.raises(ValueMappingError, match="No JSON files found"):
-                mapper.load_value_mappings(temp_path)
+                mappings.load_value_mappings(temp_path)
 
     def test_load_value_mappings_nested_structure(self) -> None:
         """Test loading value mappings with nested field structure."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -77,15 +74,16 @@ class TestValueMapper:
             }
             mapping_file.write_text(json.dumps(mapping_data))
 
-            mapper.load_value_mappings(temp_path)
+            mappings.load_value_mappings(temp_path)
 
-            assert "assay_type" in mapper.value_mappings
-            assert len(mapper.value_mappings["assay_type"]) == 3
-            assert mapper.value_mappings["assay_type"]["AF"] == "Auto-fluorescence"
+            all_mappings = mappings.get_all_mappings()
+            assert "assay_type" in all_mappings
+            assert len(all_mappings["assay_type"]) == 3
+            assert all_mappings["assay_type"]["AF"] == "Auto-fluorescence"
 
     def test_load_value_mappings_flat_structure(self) -> None:
         """Test loading value mappings with flat structure (uses filename as field)."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -98,21 +96,22 @@ class TestValueMapper:
             }
             mapping_file.write_text(json.dumps(mapping_data))
 
-            mapper.load_value_mappings(temp_path)
+            mappings.load_value_mappings(temp_path)
 
-            assert "instrument_vendor" in mapper.value_mappings
+            all_mappings = mappings.get_all_mappings()
+            assert "instrument_vendor" in all_mappings
             assert (
-                mapper.value_mappings["instrument_vendor"]["Zeiss"]
+                all_mappings["instrument_vendor"]["Zeiss"]
                 == "Zeiss Microscopy"
             )
             assert (
-                mapper.value_mappings["instrument_vendor"]["Thermo"]
+                all_mappings["instrument_vendor"]["Thermo"]
                 == "Thermo Fisher Scientific"
             )
 
     def test_load_value_mappings_multiple_files(self) -> None:
         """Test loading value mappings from multiple files."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -127,16 +126,17 @@ class TestValueMapper:
             data2 = {"Zeiss": "Zeiss Microscopy", "Thermo": "Thermo Fisher"}
             mapping2.write_text(json.dumps(data2))
 
-            mapper.load_value_mappings(temp_path)
+            mappings.load_value_mappings(temp_path)
 
-            assert "assay_type" in mapper.value_mappings
-            assert "vendor" in mapper.value_mappings
-            assert mapper.value_mappings["assay_type"]["AF"] == "Auto-fluorescence"
-            assert mapper.value_mappings["vendor"]["Zeiss"] == "Zeiss Microscopy"
+            all_mappings = mappings.get_all_mappings()
+            assert "assay_type" in all_mappings
+            assert "vendor" in all_mappings
+            assert all_mappings["assay_type"]["AF"] == "Auto-fluorescence"
+            assert all_mappings["vendor"]["Zeiss"] == "Zeiss Microscopy"
 
     def test_load_value_mappings_invalid_json(self) -> None:
         """Test loading invalid JSON file raises error."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -146,11 +146,11 @@ class TestValueMapper:
             invalid_json.write_text("{ invalid json }")
 
             with pytest.raises(ValueMappingError, match="Invalid JSON"):
-                mapper.load_value_mappings(temp_path)
+                mappings.load_value_mappings(temp_path)
 
     def test_load_value_mappings_non_dict_json(self) -> None:
         """Test loading JSON file that's not a dictionary raises error."""
-        mapper = ValueMapper()
+        mappings = ValueMappings()
 
         with TemporaryDirectory() as temp_dir:
             temp_path = Path(temp_dir)
@@ -160,14 +160,54 @@ class TestValueMapper:
             json_array.write_text('["not", "a", "dict"]')
 
             with pytest.raises(ValueMappingError, match="must contain a JSON object"):
-                mapper.load_value_mappings(temp_path)
+                mappings.load_value_mappings(temp_path)
+
+    def test_get_mapper(self) -> None:
+        """Test get_mapper creates ValueMapper with correct data."""
+        mappings = ValueMappings()
+
+        with TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+
+            mapping_file = temp_path / "test.json"
+            mapping_data = {"field1": {"old": "new"}}
+            mapping_file.write_text(json.dumps(mapping_data))
+
+            mappings.load_value_mappings(temp_path)
+
+            log = StructuredProcessingLog()
+            mapper = mappings.get_mapper(log)
+
+            assert isinstance(mapper, ValueMapper)
+            assert mapper.get_all_mappings() == {"field1": {"old": "new"}}
+            assert mapper.get_structured_log() is log
+
+
+class TestValueMapper:
+    """Test cases for ValueMapper class."""
+
+    def test_init_default(self) -> None:
+        """Test ValueMapper initialization with defaults."""
+        mapper = ValueMapper()
+        assert mapper.get_all_mappings() == {}
+        assert isinstance(mapper.get_structured_log(), StructuredProcessingLog)
+
+    def test_init_with_mappings(self) -> None:
+        """Test ValueMapper initialization with mappings."""
+        value_mappings = {"field1": {"old": "new"}}
+        log = StructuredProcessingLog()
+
+        mapper = ValueMapper(value_mappings, log)
+
+        assert mapper.get_all_mappings() == value_mappings
+        assert mapper.get_structured_log() is log
 
     def test_map_value_with_mapping(self) -> None:
         """Test value mapping when mapping exists."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {
+        value_mappings = {
             "assay_type": {"AF": "Auto-fluorescence", "CODEX": "CODEX"}
         }
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("assay_type", "AF")
         assert result == "Auto-fluorescence"
@@ -179,42 +219,42 @@ class TestValueMapper:
 
     def test_map_value_no_field_mapping(self) -> None:
         """Test value mapping when no field mapping exists."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {"other_field": {"key": "value"}}
+        value_mappings = {"other_field": {"key": "value"}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("nonexistent_field", "some_value")
         assert result == "some_value"  # Should return original value
 
     def test_map_value_no_value_mapping(self) -> None:
         """Test value mapping when field exists but value doesn't have mapping."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {"assay_type": {"AF": "Auto-fluorescence"}}
+        value_mappings = {"assay_type": {"AF": "Auto-fluorescence"}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("assay_type", "unknown_value")
         assert result == "unknown_value"  # Should return original value
 
     def test_map_value_with_none(self) -> None:
         """Test value mapping with None value."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {"field": {"None": "null_value"}}
+        value_mappings = {"field": {"None": "null_value"}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("field", None)
         assert result is None  # None converted to "None" for lookup, but no match
 
     def test_map_value_numeric_conversion(self) -> None:
         """Test value mapping with numeric values converted to strings for lookup."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {
+        value_mappings = {
             "numeric_field": {"123": "one-two-three", "456": "four-five-six"}
         }
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("numeric_field", 123)
         assert result == "one-two-three"
 
     def test_has_mapping_for_field(self) -> None:
         """Test checking if field has value mappings."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {"field1": {"key": "value"}, "field2": {}}
+        value_mappings = {"field1": {"key": "value"}, "field2": {}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         assert mapper.has_mapping_for_field("field1") is True
         assert mapper.has_mapping_for_field("field2") is True
@@ -222,9 +262,9 @@ class TestValueMapper:
 
     def test_get_field_mappings(self) -> None:
         """Test getting mappings for a specific field."""
-        mapper = ValueMapper()
         field_mappings = {"key1": "value1", "key2": "value2"}
-        mapper.value_mappings = {"test_field": field_mappings}
+        value_mappings = {"test_field": field_mappings}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.get_field_mappings("test_field")
         assert result == field_mappings
@@ -235,22 +275,20 @@ class TestValueMapper:
 
     def test_get_all_mappings(self) -> None:
         """Test getting all value mappings returns a copy."""
-        mapper = ValueMapper()
         original_mappings = {"field1": {"key": "value"}}
-        mapper.value_mappings = original_mappings
+        mapper = ValueMapper(original_mappings, StructuredProcessingLog())
 
         retrieved_mappings = mapper.get_all_mappings()
 
         assert retrieved_mappings == original_mappings
         # Should be a copy, not the same object
-        assert retrieved_mappings is not mapper.value_mappings
+        assert retrieved_mappings is not original_mappings
 
     def test_get_structured_log(self) -> None:
         """Test getting structured processing log."""
-        mapper = ValueMapper()
+        value_mappings = {"test_field": {"old_value": "new_value"}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
-        # Add some value mappings to the log
-        mapper.value_mappings = {"test_field": {"old_value": "new_value"}}
         mapper.map_value("test_field", "old_value")
 
         structured_log = mapper.get_structured_log()
@@ -260,12 +298,12 @@ class TestValueMapper:
 
     def test_map_value_with_multi_value_mapping(self) -> None:
         """Test value mapping when mapping contains multiple target values."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {
+        value_mappings = {
             "acquisition_instrument_model": {
                 "NovaSeq": ["NovaSeq X", "NovaSeq 6000", "NovaSeq X Plus"]
             }
         }
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("acquisition_instrument_model", "NovaSeq")
 
@@ -286,8 +324,8 @@ class TestValueMapper:
 
     def test_map_value_with_single_item_list_mapping(self) -> None:
         """Test value mapping when mapping contains single-item list."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {"test_field": {"old_value": ["new_value"]}}
+        value_mappings = {"test_field": {"old_value": ["new_value"]}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("test_field", "old_value")
 
@@ -301,8 +339,8 @@ class TestValueMapper:
 
     def test_map_value_with_empty_list_mapping(self) -> None:
         """Test value mapping when mapping contains empty list."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {"test_field": {"old_value": []}}
+        value_mappings = {"test_field": {"old_value": []}}
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         result = mapper.map_value("test_field", "old_value")
 
@@ -316,8 +354,7 @@ class TestValueMapper:
 
     def test_map_value_mixed_mapping_types(self) -> None:
         """Test value mapping with mix of single values, lists, and multi-value lists."""
-        mapper = ValueMapper()
-        mapper.value_mappings = {
+        value_mappings = {
             "mixed_field": {
                 "single": "single_target",
                 "single_list": ["single_target_from_list"],
@@ -325,6 +362,7 @@ class TestValueMapper:
                 "empty": [],
             }
         }
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         # Test single value mapping
         result1 = mapper.map_value("mixed_field", "single")
@@ -363,10 +401,7 @@ class TestValueMapper:
 
     def test_map_value_with_null_mapping(self) -> None:
         """Test mapping values to null works correctly."""
-        mapper = ValueMapper()
-
-        # Set up value mappings with null targets
-        mapper.value_mappings = {
+        value_mappings = {
             "barcode_read": {
                 "I5": None,
                 "I2": None,
@@ -374,6 +409,7 @@ class TestValueMapper:
                 "R1": "Read 1 (R1)",
             }
         }
+        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
 
         # Test mapping values to null
         assert mapper.map_value("barcode_read", "I5") is None
@@ -391,11 +427,11 @@ class TestValueMapper:
 
         # Check mapped values include null mappings
         assert "barcode_read" in structured_log.value_mappings
-        value_mappings = structured_log.value_mappings["barcode_read"]
-        assert value_mappings["I5"] is None
-        assert value_mappings["I2"] is None
-        assert value_mappings["['I1', 'I2']"] is None
-        assert value_mappings["R1"] == "Read 1 (R1)"
+        value_mappings_log = structured_log.value_mappings["barcode_read"]
+        assert value_mappings_log["I5"] is None
+        assert value_mappings_log["I2"] is None
+        assert value_mappings_log["['I1', 'I2']"] is None
+        assert value_mappings_log["R1"] == "Read 1 (R1)"
 
         # Should have no unmapped values for these cases
         assert len(structured_log.ambiguous_mappings) == 0

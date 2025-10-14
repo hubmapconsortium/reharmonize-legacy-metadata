@@ -138,16 +138,6 @@ class ValueMapper:
         self._value_mappings = value_mappings if value_mappings is not None else {}
         self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
 
-    # Backward compatibility methods for loading
-    def load_value_mappings(self, value_mapping_dir: Path) -> None:
-        """
-        Deprecated: For backward compatibility only.
-        Use ValueMappings.load_value_mappings() instead.
-        """
-        mappings = ValueMappings()
-        mappings.load_value_mappings(value_mapping_dir)
-        object.__setattr__(self, "_value_mappings", mappings.get_all_mappings())
-
     def map_value(self, field_name: str, legacy_value: Any) -> Any:
         """
         Map a legacy field value to its target schema equivalent.
@@ -232,20 +222,4 @@ class ValueMapper:
         Returns:
             StructuredProcessingLog object
         """
-        return self._structured_log
-
-    # Backward compatibility properties for tests
-    @property
-    def value_mappings(self) -> Dict[str, Dict[str, Any]]:
-        """Property for backward compatibility with tests."""
-        return self._value_mappings
-
-    @value_mappings.setter
-    def value_mappings(self, value: Dict[str, Dict[str, Any]]) -> None:
-        """Setter for backward compatibility with tests."""
-        object.__setattr__(self, "_value_mappings", value)
-
-    @property
-    def structured_log(self) -> StructuredProcessingLog:
-        """Property for backward compatibility with tests."""
         return self._structured_log
