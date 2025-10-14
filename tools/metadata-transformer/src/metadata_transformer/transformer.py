@@ -13,7 +13,7 @@ from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.patch_applier import PatchApplier
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.schema_loader import SchemaLoader
-from metadata_transformer.value_mapper import ValueMapper
+from metadata_transformer.value_mapper import ValueMappings
 
 
 class MetadataTransformer:
@@ -22,7 +22,7 @@ class MetadataTransformer:
     def __init__(
         self,
         field_mappings: FieldMappings,
-        value_mapper: ValueMapper,
+        value_mappings: ValueMappings,
         schema_loader: SchemaLoader,
         patch_applier: PatchApplier,
     ) -> None:
@@ -31,12 +31,12 @@ class MetadataTransformer:
 
         Args:
             field_mappings: FieldMappings instance
-            value_mapper: Configured ValueMapper instance
+            value_mappings: ValueMappings instance
             schema_loader: SchemaLoader instance
             patch_applier: PatchApplier instance
         """
         self.field_mappings = field_mappings
-        self.value_mapper = value_mapper
+        self.value_mappings = value_mappings
         self.schema_loader = schema_loader
         self.patch_applier = patch_applier
 
@@ -54,13 +54,9 @@ class MetadataTransformer:
             FileProcessingError: If file can't be processed
         """
         # Create fresh logs for this transformation (immutability pattern)
-        value_mapper_log = StructuredProcessingLog()
         patch_applier_log = StructuredProcessingLog()
 
         # Inject fresh logs into other components (they haven't been refactored yet)
-        if hasattr(self.value_mapper, "set_structured_log"):
-            self.value_mapper.set_structured_log(value_mapper_log)
-
         if hasattr(self.patch_applier, "set_structured_log"):
             self.patch_applier.set_structured_log(patch_applier_log)
 
@@ -74,7 +70,7 @@ class MetadataTransformer:
 
         # Transform the metadata
         try:
-            transformed_metadata, json_patches, field_mapping_log = self._transform_metadata(legacy_metadata)
+            transformed_metadata, json_patches, transformation_log = self._transform_metadata(legacy_metadata)
         except Exception as e:
             # Error handling moved to stdout - handled by CLI
             raise FileProcessingError(
@@ -86,8 +82,7 @@ class MetadataTransformer:
         # Combine structured logs from all components
         combined_structured_log = StructuredProcessingLog()
         combined_structured_log.merge_with(patch_applier_log)
-        combined_structured_log.merge_with(field_mapping_log)
-        combined_structured_log.merge_with(value_mapper_log)
+        combined_structured_log.merge_with(transformation_log)
 
         # Build output result using original data as base
         output = loaded_object.copy()
@@ -141,7 +136,7 @@ class MetadataTransformer:
             legacy_metadata: Legacy metadata dictionary
 
         Returns:
-            Tuple of (transformed metadata dictionary, list of JSON patch operations)
+            Tuple of (transformed metadata dictionary, list of JSON patch operations, merged processing log)
         """
         all_patches = []
 
@@ -156,7 +151,7 @@ class MetadataTransformer:
         all_patches.extend(phase1_patch)
 
         # Phase 2: Value Mapping
-        value_mapped_metadata = self._phase2_value_mapping(field_mapped_metadata)
+        value_mapped_metadata, value_mapping_log = self._phase2_value_mapping(field_mapped_metadata)
         phase2_patch = generate_patch(field_mapped_metadata, value_mapped_metadata)
         all_patches.extend(phase2_patch)
 
@@ -165,7 +160,12 @@ class MetadataTransformer:
         phase3_patch = generate_patch(value_mapped_metadata, schema_compliant_metadata)
         all_patches.extend(phase3_patch)
 
-        return schema_compliant_metadata, all_patches, field_mapping_log
+        # Merge field and value mapping logs
+        combined_log = StructuredProcessingLog()
+        combined_log.merge_with(field_mapping_log)
+        combined_log.merge_with(value_mapping_log)
+
+        return schema_compliant_metadata, all_patches, combined_log
 
     def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -211,7 +211,7 @@ class MetadataTransformer:
 
         return mapped_metadata, field_mapping_log
 
-    def _phase2_value_mapping(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
+    def _phase2_value_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 2: Apply value mappings to transform field values.
 
@@ -219,15 +219,18 @@ class MetadataTransformer:
             metadata: Metadata with field names already mapped
 
         Returns:
-            Metadata with mapped values
+            Metadata with mapped values and the processing log
         """
+        value_mapping_log = StructuredProcessingLog()
+        value_mapper = self.value_mappings.get_mapper(value_mapping_log)
+
         value_mapped_metadata = {}
 
         for field_name, value in metadata.items():
-            mapped_value = self.value_mapper.map_value(field_name, value)
+            mapped_value = value_mapper.map_value(field_name, value)
             value_mapped_metadata[field_name] = mapped_value
 
-        return value_mapped_metadata
+        return value_mapped_metadata, value_mapping_log
 
     def _phase3_schema_compliance(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """

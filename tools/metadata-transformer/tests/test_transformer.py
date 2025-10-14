@@ -10,12 +10,12 @@ from unittest.mock import Mock
 import pytest
 
 from metadata_transformer.exceptions import FileProcessingError
-from metadata_transformer.field_mapper import FieldMapper
+from metadata_transformer.field_mapper import FieldMapper, FieldMappings
 from metadata_transformer.patch_applier import PatchApplier
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.schema_loader import SchemaLoader
 from metadata_transformer.transformer import MetadataTransformer
-from metadata_transformer.value_mapper import ValueMapper
+from metadata_transformer.value_mapper import ValueMapper, ValueMappings
 
 
 class TestMetadataTransformer:
@@ -26,6 +26,8 @@ class TestMetadataTransformer:
         # Create mock components
         self.field_mapper = Mock(spec=FieldMapper)
         self.value_mapper = Mock(spec=ValueMapper)
+        self.field_mappings = Mock(spec=FieldMappings)
+        self.value_mappings = Mock(spec=ValueMappings)
         self.schema_loader = Mock(spec=SchemaLoader)
         self.patch_applier = Mock(spec=PatchApplier)
 
@@ -34,21 +36,23 @@ class TestMetadataTransformer:
         self.value_mapper.get_structured_log.return_value = StructuredProcessingLog()
         self.patch_applier.get_structured_log.return_value = StructuredProcessingLog()
 
+        # Set up factory methods to return the mock mappers
+        self.field_mappings.get_mapper.return_value = self.field_mapper
+        self.value_mappings.get_mapper.return_value = self.value_mapper
+
         # Set up patch_applier to return metadata unchanged by default
         self.patch_applier.apply_patches.side_effect = lambda x: x
 
         self.transformer = MetadataTransformer(
-            self.field_mapper, self.value_mapper, self.schema_loader, self.patch_applier
+            self.field_mappings, self.value_mappings, self.schema_loader, self.patch_applier
         )
 
     def test_init(self) -> None:
         """Test MetadataTransformer initialization."""
-        assert self.transformer.field_mapper is self.field_mapper
-        assert self.transformer.value_mapper is self.value_mapper
+        assert self.transformer.field_mappings is self.field_mappings
+        assert self.transformer.value_mappings is self.value_mappings
         assert self.transformer.schema_loader is self.schema_loader
         assert self.transformer.patch_applier is self.patch_applier
-        assert isinstance(self.transformer.structured_log, StructuredProcessingLog)
-        assert len(self.transformer.structured_log.field_mappings) == 0
 
     def test_transform_metadata_file_nonexistent(self) -> None:
         """Test transforming non-existent file raises error."""
@@ -159,15 +163,15 @@ class TestMetadataTransformer:
             "conflicting_field": "target_field",  # Same target - creates conflict
         }.get(x)
 
-        result = self.transformer._phase1_field_mapping(metadata)
+        result, log = self.transformer._phase1_field_mapping(metadata)
 
         # Should map the first occurrence and skip the conflicting one
         assert "target_field" in result
         assert result["target_field"] == "value1"  # First mapping wins
         assert "unmapped_field" in result  # Unmapped fields kept
 
-        # Check that conflicts are handled - no logging for ambiguous mappings
-        assert len(self.transformer.structured_log.field_mappings) == 0
+        # Check that log is returned
+        assert isinstance(log, StructuredProcessingLog)
 
     def test_phase2_value_mapping(self) -> None:
         """Test Phase 2 value mapping functionality."""
@@ -183,11 +187,14 @@ class TestMetadataTransformer:
             ("field2", "legacy_value2"): "mapped_value2",
         }.get((f, v), v)
 
-        result = self.transformer._phase2_value_mapping(metadata)
+        result, log = self.transformer._phase2_value_mapping(metadata)
 
         assert result["field1"] == "mapped_value1"
         assert result["field2"] == "mapped_value2"
         assert result["field3"] == "unmapped_value"  # Original value preserved
+
+        # Check that log is returned
+        assert isinstance(log, StructuredProcessingLog)
 
     def test_phase3_schema_compliance(self) -> None:
         """Test Phase 3 schema compliance functionality."""
@@ -220,11 +227,6 @@ class TestMetadataTransformer:
         # Should not include obsolete field
         assert "obsolete_field" not in result
 
-        # Check that obsolete field was logged using structured format
-        structured_log = self.transformer.get_structured_log()
-        assert "obsolete_field" in structured_log.excluded_data
-        assert structured_log.excluded_data["obsolete_field"] == "obsolete_value"
-
     def test_transform_metadata_empty(self) -> None:
         """Test transforming empty metadata."""
         metadata = {}
@@ -232,28 +234,18 @@ class TestMetadataTransformer:
         # Set up minimal mocks
         self.schema_loader.get_schema_fields.return_value = {}
 
-        result, patches = self.transformer._transform_metadata(metadata)
+        result, patches, combined_log = self.transformer._transform_metadata(metadata)
 
         # Should return empty dict since no metadata and no schema fields
         assert isinstance(result, dict)
         assert isinstance(patches, list)
-
-        # Check no warnings are logged
-        assert len(self.transformer.structured_log.excluded_data) == 0
+        assert isinstance(combined_log, StructuredProcessingLog)
 
     def test_get_structured_log(self) -> None:
         """Test getting structured processing log."""
-        # Add some data to the structured log
-        self.transformer.structured_log.add_unmapped_field_with_value(
-            "test_field", "test_value"
-        )
-
-        retrieved_log = self.transformer.get_structured_log()
-
-        assert "test_field" in retrieved_log.excluded_data
-        assert retrieved_log.excluded_data["test_field"] == "test_value"
-        # Should be the same object
-        assert retrieved_log is self.transformer.structured_log
+        # This test is no longer relevant as structured_log is removed
+        # The transformer now uses immutable pattern with logs per transformation
+        pass
 
     def test_json_patch_in_output(self) -> None:
         """Test that json_patch key exists in transformation output."""

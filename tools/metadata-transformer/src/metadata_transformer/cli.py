@@ -14,7 +14,7 @@ from metadata_transformer.output_generator import OutputGenerator
 from metadata_transformer.patch_applier import PatchApplier
 from metadata_transformer.schema_loader import SchemaLoader
 from metadata_transformer.transformer import MetadataTransformer
-from metadata_transformer.value_mapper import ValueMapper
+from metadata_transformer.value_mapper import ValueMappings
 
 
 @click.command()
@@ -106,7 +106,7 @@ def main(
             click.echo("Initializing metadata transformer components...")
 
         field_mappings = FieldMappings()
-        value_mapper = ValueMapper()
+        value_mappings = ValueMappings()
         schema_loader = SchemaLoader()
         patch_applier = PatchApplier()
         output_generator = OutputGenerator()
@@ -129,10 +129,10 @@ def main(
             json_files = list(value_mapping_dir.glob("*.json"))
             if verbose:
                 click.echo(f"Found {len(json_files)} value mapping files")
-            value_mapper.load_value_mappings(value_mapping_dir)
-            total_fields = len(value_mapper.get_all_mappings())
+            value_mappings.load_value_mappings(value_mapping_dir)
+            total_fields = len(value_mappings.get_all_mappings())
             total_mappings = sum(
-                len(mappings) for mappings in value_mapper.get_all_mappings().values()
+                len(mappings) for mappings in value_mappings.get_all_mappings().values()
             )
             if verbose:
                 click.echo(
@@ -185,7 +185,7 @@ def main(
 
         # Initialize transformer
         transformer = MetadataTransformer(
-            field_mappings, value_mapper, schema_loader, patch_applier
+            field_mappings, value_mappings, schema_loader, patch_applier
         )
 
         # Process files

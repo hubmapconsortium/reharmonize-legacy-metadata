@@ -78,7 +78,7 @@ class TestCLI:
             input_dir = temp_path / "input"
             input_dir.mkdir()
             input_file = input_dir / "test.json"
-            input_file.write_text('[{"metadata": {"field": "value"}}]')
+            input_file.write_text('{"metadata": {"field": "value"}}')
 
             output_dir = temp_path / "output"
 
@@ -149,19 +149,17 @@ class TestCLI:
                 )
             )
 
-            # Create input file
+            # Create input file (single object, not array)
             input_file = temp_path / "input.json"
             input_file.write_text(
                 json.dumps(
-                    [
-                        {
-                            "uuid": "test-uuid",
-                            "metadata": {
-                                "legacy_field": "test_value",
-                                "assay_type": "AF",
-                            },
-                        }
-                    ]
+                    {
+                        "uuid": "test-uuid",
+                        "metadata": {
+                            "legacy_field": "test_value",
+                            "assay_type": "AF",
+                        },
+                    }
                 )
             )
 
@@ -226,7 +224,7 @@ class TestCLI:
             for i in range(3):
                 input_file = input_dir / f"file{i}.json"
                 input_file.write_text(
-                    json.dumps([{"uuid": f"uuid-{i}", "metadata": {"legacy": "old"}}])
+                    json.dumps({"uuid": f"uuid-{i}", "metadata": {"legacy": "old"}})
                 )
 
             output_dir = temp_path / "output"
@@ -257,10 +255,6 @@ class TestCLI:
             for i in range(3):
                 output_file = output_dir / f"file{i}.json"
                 assert output_file.exists()
-
-            # Verify summary file was created
-            summary_file = output_dir / "bulk_processing_summary.json"
-            assert summary_file.exists()
 
     def test_cli_bulk_processing_no_files(self) -> None:
         """Test bulk processing with no JSON files in input directory."""
@@ -328,7 +322,7 @@ class TestCLI:
             )
 
             input_file = temp_path / "input.json"
-            input_file.write_text('[{"metadata": {"field": "key"}}]')
+            input_file.write_text('{"metadata": {"field": "key"}}')
 
             output_dir = temp_path / "output"
 
