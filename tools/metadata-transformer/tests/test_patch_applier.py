@@ -9,6 +9,7 @@ import pytest
 from metadata_transformer.exceptions import FieldMappingError
 from metadata_transformer.patch_applier import Patches, PatchApplier
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 
 
 class TestPatches:
@@ -252,12 +253,12 @@ class TestPatches:
 
             patches.load_patches(temp_path)
 
-            log = StructuredProcessingLog()
-            applier = patches.get_applier(log)
+            log_provider = ProcessingLogProvider()
+            applier = patches.get_applier(log_provider)
 
             assert isinstance(applier, PatchApplier)
             assert applier.get_loaded_patches_count() == 1
-            assert applier.get_structured_log() is log
+            assert isinstance(applier.get_processing_log(), StructuredProcessingLog)
 
 
 class TestPatchApplier:
@@ -265,9 +266,9 @@ class TestPatchApplier:
 
     def test_init_default(self) -> None:
         """Test PatchApplier initialization with empty patches."""
-        applier = PatchApplier([], StructuredProcessingLog())
+        applier = PatchApplier([], ProcessingLogProvider())
         assert applier.get_loaded_patches_count() == 0
-        assert isinstance(applier.get_structured_log(), StructuredProcessingLog)
+        assert isinstance(applier.get_processing_log(), StructuredProcessingLog)
 
     def test_init_with_patches(self) -> None:
         """Test PatchApplier initialization with patches."""
@@ -278,16 +279,16 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        log = StructuredProcessingLog()
+        log_provider = ProcessingLogProvider()
 
-        applier = PatchApplier(patches_list, log)
+        applier = PatchApplier(patches_list, log_provider)
 
         assert applier.get_loaded_patches_count() == 1
-        assert applier.get_structured_log() is log
+        assert isinstance(applier.get_processing_log(), StructuredProcessingLog)
 
     def test_apply_patches_no_patches(self) -> None:
         """Test applying patches when no patches are loaded."""
-        applier = PatchApplier([], StructuredProcessingLog())
+        applier = PatchApplier([], ProcessingLogProvider())
         metadata = {"field1": "value1", "field2": "value2"}
         result = applier.apply_patches(metadata)
         assert result == metadata
@@ -301,7 +302,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         metadata = {"assay_type": "test", "existing_field": "existing_value"}
         result = applier.apply_patches(metadata)
@@ -319,7 +320,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         metadata = {"assay_type": "different", "existing_field": "existing_value"}
         result = applier.apply_patches(metadata)
@@ -336,7 +337,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         metadata = {"protocol": "v1", "other_field": "value"}
         result = applier.apply_patches(metadata)
@@ -354,7 +355,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         metadata = {"protocol": "v2", "version": "2.0", "other_field": "value"}
         result = applier.apply_patches(metadata)
@@ -371,7 +372,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         # Both conditions match
         metadata = {"assay_type": "test", "protocol": "v1", "other": "value"}
@@ -395,7 +396,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         # Must condition matches, should condition matches
         metadata = {"assay_type": "test", "protocol": "v1", "other": "value"}
@@ -426,7 +427,7 @@ class TestPatchApplier:
                 "_source_file": "patch2.json",
             },
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         metadata = {"assay_type": "test"}
         result = applier.apply_patches(metadata)
@@ -460,7 +461,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         # Test: A true, B true, D true -> True
         metadata = {"field0": "value0", "field1": "value1", "field3": "value3"}
@@ -507,7 +508,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         # Test: A true -> True
         metadata = {"field0": "value0"}
@@ -558,7 +559,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         # Test: A true, B true -> True
         metadata = {"field0": "value0", "field1": "value1"}
@@ -589,7 +590,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
 
         # Test: Both fields match -> True
         metadata = {"field1": "value1", "field2": "value2"}
@@ -611,7 +612,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
         metadata = {}
         result = applier.apply_patches(metadata)
         assert result["result"] == "applied"
@@ -624,7 +625,7 @@ class TestPatchApplier:
                 "_source_file": "test.json",
             }
         ]
-        applier = PatchApplier(patches_list, StructuredProcessingLog())
+        applier = PatchApplier(patches_list, ProcessingLogProvider())
         metadata = {}
         result = applier.apply_patches(metadata)
         assert "result" not in result

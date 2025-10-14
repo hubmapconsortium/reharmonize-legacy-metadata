@@ -13,6 +13,7 @@ from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMapper, FieldMappings
 from metadata_transformer.patch_applier import PatchApplier, Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.schema_applier import Schema, SchemaApplier
 from metadata_transformer.transformer import MetadataTransformer
 from metadata_transformer.value_mapper import ValueMapper, ValueMappings
@@ -33,11 +34,11 @@ class TestMetadataTransformer:
         self.patch_applier = Mock(spec=PatchApplier)
         self.patches = Mock(spec=Patches)
 
-        # Set up default return values for structured logs
-        self.field_mapper.get_structured_log.return_value = StructuredProcessingLog()
-        self.value_mapper.get_structured_log.return_value = StructuredProcessingLog()
-        self.patch_applier.get_structured_log.return_value = StructuredProcessingLog()
-        self.schema_applier.get_structured_log.return_value = StructuredProcessingLog()
+        # Set up default return values for processing logs
+        self.field_mapper.get_processing_log.return_value = StructuredProcessingLog()
+        self.value_mapper.get_processing_log.return_value = StructuredProcessingLog()
+        self.patch_applier.get_processing_log.return_value = StructuredProcessingLog()
+        self.schema_applier.get_processing_log.return_value = StructuredProcessingLog()
 
         # Set up factory methods to return the mock mappers
         self.field_mappings.get_mapper.return_value = self.field_mapper
@@ -64,12 +65,16 @@ class TestMetadataTransformer:
         # Set up patches factory to return the mock applier
         self.patches.get_applier.return_value = self.patch_applier
 
+        # Create log provider
+        self.log_provider = ProcessingLogProvider()
+
         self.transformer = MetadataTransformer(
-            self.patches, self.field_mappings, self.value_mappings, self.schema
+            self.patches, self.field_mappings, self.value_mappings, self.schema, self.log_provider
         )
 
     def test_init(self) -> None:
         """Test MetadataTransformer initialization."""
+        assert self.transformer.log_provider is self.log_provider
         assert self.transformer.field_mappings is self.field_mappings
         assert self.transformer.value_mappings is self.value_mappings
         assert self.transformer.schema is self.schema

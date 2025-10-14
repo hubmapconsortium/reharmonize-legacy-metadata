@@ -12,6 +12,7 @@ from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.patch_applier import Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.schema_applier import Schema
 from metadata_transformer.value_mapper import ValueMappings
 
@@ -25,6 +26,7 @@ class MetadataTransformer:
         field_mappings: Optional[FieldMappings] = None,
         value_mappings: Optional[ValueMappings] = None,
         schema: Optional[Schema] = None,
+        log_provider: ProcessingLogProvider = None,
     ) -> None:
         """
         Initialize the MetadataTransformer.
@@ -34,11 +36,13 @@ class MetadataTransformer:
             field_mappings: Optional FieldMappings instance. If None, Phase 1 is skipped.
             value_mappings: Optional ValueMappings instance. If None, Phase 2 is skipped.
             schema: Optional Schema instance. If None, Phase 3 is skipped.
+            log_provider: Provider for creating processing logs.
         """
         self.patches = patches
         self.field_mappings = field_mappings
         self.value_mappings = value_mappings
         self.schema = schema
+        self.log_provider = log_provider
 
     def transform_metadata_file(self, input_file: Path) -> Dict[str, Any]:
         """
@@ -177,12 +181,11 @@ class MetadataTransformer:
         Returns:
             Metadata with applicable patches applied and the processing log
         """
-        patch_applier_log = StructuredProcessingLog()
-        patch_applier = self.patches.get_applier(patch_applier_log)
+        patch_applier = self.patches.get_applier(self.log_provider)
 
         patched_metadata = patch_applier.apply_patches(metadata)
 
-        return patched_metadata, patch_applier_log
+        return patched_metadata, patch_applier.get_processing_log()
 
     def _phase1_field_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
@@ -194,8 +197,7 @@ class MetadataTransformer:
         Returns:
             Metadata with mapped field names and the processing log
         """
-        field_mapping_log = StructuredProcessingLog()
-        field_mapper = self.field_mappings.get_mapper(field_mapping_log)
+        field_mapper = self.field_mappings.get_mapper(self.log_provider)
 
         mapped_metadata: Dict[str, Any] = {}
 
@@ -214,7 +216,7 @@ class MetadataTransformer:
                 # No mapping found - keep original field name
                 mapped_metadata[legacy_field] = value
 
-        return mapped_metadata, field_mapping_log
+        return mapped_metadata, field_mapper.get_processing_log()
 
     def _phase2_value_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
@@ -226,8 +228,7 @@ class MetadataTransformer:
         Returns:
             Metadata with mapped values and the processing log
         """
-        value_mapping_log = StructuredProcessingLog()
-        value_mapper = self.value_mappings.get_mapper(value_mapping_log)
+        value_mapper = self.value_mappings.get_mapper(self.log_provider)
 
         value_mapped_metadata = {}
 
@@ -235,7 +236,7 @@ class MetadataTransformer:
             mapped_value = value_mapper.map_value(field_name, value)
             value_mapped_metadata[field_name] = mapped_value
 
-        return value_mapped_metadata, value_mapping_log
+        return value_mapped_metadata, value_mapper.get_processing_log()
 
     def _phase3_schema_compliance(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
@@ -247,12 +248,11 @@ class MetadataTransformer:
         Returns:
             Schema-compliant metadata and the processing log
         """
-        schema_applier_log = StructuredProcessingLog()
-        schema_applier = self.schema.get_applier(schema_applier_log)
+        schema_applier = self.schema.get_applier(self.log_provider)
 
         compliant_metadata = schema_applier.apply_schema(metadata)
 
-        return compliant_metadata, schema_applier_log
+        return compliant_metadata, schema_applier.get_processing_log()
 
     def _sort_patches(self, patches: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """

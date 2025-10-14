@@ -11,6 +11,7 @@ import pytest
 from metadata_transformer.exceptions import FieldMappingError
 from metadata_transformer.field_mapper import FieldMapper, FieldMappings
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 
 
 class TestFieldMappings:
@@ -279,12 +280,12 @@ class TestFieldMappings:
 
             mappings.load_field_mappings(temp_path)
 
-            log = StructuredProcessingLog()
-            mapper = mappings.get_mapper(log)
+            log_provider = ProcessingLogProvider()
+            mapper = mappings.get_mapper(log_provider)
 
             assert isinstance(mapper, FieldMapper)
             assert mapper.get_all_mappings() == {"legacy_field": "target_field"}
-            assert mapper.get_structured_log() is log
+            assert isinstance(mapper.get_processing_log(), StructuredProcessingLog)
 
 
 class TestFieldMapper:
@@ -292,19 +293,20 @@ class TestFieldMapper:
 
     def test_init_default(self) -> None:
         """Test FieldMapper initialization with empty mappings."""
-        mapper = FieldMapper({}, StructuredProcessingLog())
+        log_provider = ProcessingLogProvider()
+        mapper = FieldMapper({}, log_provider)
         assert mapper.get_all_mappings() == {}
-        assert isinstance(mapper.get_structured_log(), StructuredProcessingLog)
+        assert isinstance(mapper.get_processing_log(), StructuredProcessingLog)
 
     def test_init_with_mappings(self) -> None:
         """Test FieldMapper initialization with mappings."""
         field_mappings = {"legacy_field": "target_field"}
-        log = StructuredProcessingLog()
+        log_provider = ProcessingLogProvider()
 
-        mapper = FieldMapper(field_mappings, log)
+        mapper = FieldMapper(field_mappings, log_provider)
 
         assert mapper.get_all_mappings() == field_mappings
-        assert mapper.get_structured_log() is log
+        assert isinstance(mapper.get_processing_log(), StructuredProcessingLog)
 
     def test_map_field(self) -> None:
         """Test field mapping functionality."""
@@ -313,7 +315,8 @@ class TestFieldMapper:
             "another_field": None,
             "third_field": "mapped_field",
         }
-        mapper = FieldMapper(field_mappings, StructuredProcessingLog())
+        log_provider = ProcessingLogProvider()
+        mapper = FieldMapper(field_mappings, log_provider)
 
         assert mapper.map_field("legacy_field") == "target_field"
         assert mapper.map_field("another_field") is None
@@ -323,7 +326,8 @@ class TestFieldMapper:
     def test_get_all_mappings(self) -> None:
         """Test getting all field mappings returns a copy."""
         original_mappings = {"field1": "target1", "field2": "target2"}
-        mapper = FieldMapper(original_mappings, StructuredProcessingLog())
+        log_provider = ProcessingLogProvider()
+        mapper = FieldMapper(original_mappings, log_provider)
 
         retrieved_mappings = mapper.get_all_mappings()
 
@@ -335,14 +339,15 @@ class TestFieldMapper:
         retrieved_mappings["new_field"] = "new_target"
         assert "new_field" not in mapper.get_all_mappings()
 
-    def test_get_structured_log(self) -> None:
-        """Test getting structured processing log."""
-        mapper = FieldMapper({}, StructuredProcessingLog())
+    def test_get_processing_log(self) -> None:
+        """Test getting processing log."""
+        log_provider = ProcessingLogProvider()
+        mapper = FieldMapper({}, log_provider)
 
         # Add some field mappings to the log
         mapper.log_field_mapping("legacy_field", "target_field")
 
-        structured_log = mapper.get_structured_log()
+        processing_log = mapper.get_processing_log()
 
-        assert "legacy_field" in structured_log.field_mappings
-        assert structured_log.field_mappings["legacy_field"] == "target_field"
+        assert "legacy_field" in processing_log.field_mappings
+        assert processing_log.field_mappings["legacy_field"] == "target_field"

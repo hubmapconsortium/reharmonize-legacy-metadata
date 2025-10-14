@@ -10,6 +10,7 @@ import pytest
 
 from metadata_transformer.exceptions import ValueMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.value_mapper import ValueMapper, ValueMappings
 
 
@@ -175,12 +176,12 @@ class TestValueMappings:
 
             mappings.load_value_mappings(temp_path)
 
-            log = StructuredProcessingLog()
-            mapper = mappings.get_mapper(log)
+            log_provider = ProcessingLogProvider()
+            mapper = mappings.get_mapper(log_provider)
 
             assert isinstance(mapper, ValueMapper)
             assert mapper.get_all_mappings() == {"field1": {"old": "new"}}
-            assert mapper.get_structured_log() is log
+            assert isinstance(mapper.get_processing_log(), StructuredProcessingLog)
 
 
 class TestValueMapper:
@@ -188,39 +189,39 @@ class TestValueMapper:
 
     def test_init_default(self) -> None:
         """Test ValueMapper initialization with empty mappings."""
-        mapper = ValueMapper({}, StructuredProcessingLog())
+        mapper = ValueMapper({}, ProcessingLogProvider())
         assert mapper.get_all_mappings() == {}
-        assert isinstance(mapper.get_structured_log(), StructuredProcessingLog)
+        assert isinstance(mapper.get_processing_log(), StructuredProcessingLog)
 
     def test_init_with_mappings(self) -> None:
         """Test ValueMapper initialization with mappings."""
         value_mappings = {"field1": {"old": "new"}}
-        log = StructuredProcessingLog()
+        log_provider = ProcessingLogProvider()
 
-        mapper = ValueMapper(value_mappings, log)
+        mapper = ValueMapper(value_mappings, log_provider)
 
         assert mapper.get_all_mappings() == value_mappings
-        assert mapper.get_structured_log() is log
+        assert isinstance(mapper.get_processing_log(), StructuredProcessingLog)
 
     def test_map_value_with_mapping(self) -> None:
         """Test value mapping when mapping exists."""
         value_mappings = {
             "assay_type": {"AF": "Auto-fluorescence", "CODEX": "CODEX"}
         }
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("assay_type", "AF")
         assert result == "Auto-fluorescence"
 
         # Check that mapping was logged using structured format
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
         assert "assay_type" in structured_log.value_mappings
         assert structured_log.value_mappings["assay_type"]["AF"] == "Auto-fluorescence"
 
     def test_map_value_no_field_mapping(self) -> None:
         """Test value mapping when no field mapping exists."""
         value_mappings = {"other_field": {"key": "value"}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("nonexistent_field", "some_value")
         assert result == "some_value"  # Should return original value
@@ -228,7 +229,7 @@ class TestValueMapper:
     def test_map_value_no_value_mapping(self) -> None:
         """Test value mapping when field exists but value doesn't have mapping."""
         value_mappings = {"assay_type": {"AF": "Auto-fluorescence"}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("assay_type", "unknown_value")
         assert result == "unknown_value"  # Should return original value
@@ -236,7 +237,7 @@ class TestValueMapper:
     def test_map_value_with_none(self) -> None:
         """Test value mapping with None value."""
         value_mappings = {"field": {"None": "null_value"}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("field", None)
         assert result is None  # None converted to "None" for lookup, but no match
@@ -246,7 +247,7 @@ class TestValueMapper:
         value_mappings = {
             "numeric_field": {"123": "one-two-three", "456": "four-five-six"}
         }
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("numeric_field", 123)
         assert result == "one-two-three"
@@ -254,7 +255,7 @@ class TestValueMapper:
     def test_has_mapping_for_field(self) -> None:
         """Test checking if field has value mappings."""
         value_mappings = {"field1": {"key": "value"}, "field2": {}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         assert mapper.has_mapping_for_field("field1") is True
         assert mapper.has_mapping_for_field("field2") is True
@@ -264,7 +265,7 @@ class TestValueMapper:
         """Test getting mappings for a specific field."""
         field_mappings = {"key1": "value1", "key2": "value2"}
         value_mappings = {"test_field": field_mappings}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.get_field_mappings("test_field")
         assert result == field_mappings
@@ -276,7 +277,8 @@ class TestValueMapper:
     def test_get_all_mappings(self) -> None:
         """Test getting all value mappings returns a copy."""
         original_mappings = {"field1": {"key": "value"}}
-        mapper = ValueMapper(original_mappings, StructuredProcessingLog())
+        log_provider = ProcessingLogProvider()
+        mapper = ValueMapper(original_mappings, log_provider)
 
         retrieved_mappings = mapper.get_all_mappings()
 
@@ -287,11 +289,11 @@ class TestValueMapper:
     def test_get_structured_log(self) -> None:
         """Test getting structured processing log."""
         value_mappings = {"test_field": {"old_value": "new_value"}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         mapper.map_value("test_field", "old_value")
 
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
 
         assert "test_field" in structured_log.value_mappings
         assert structured_log.value_mappings["test_field"]["old_value"] == "new_value"
@@ -303,7 +305,7 @@ class TestValueMapper:
                 "NovaSeq": ["NovaSeq X", "NovaSeq 6000", "NovaSeq X Plus"]
             }
         }
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("acquisition_instrument_model", "NovaSeq")
 
@@ -311,7 +313,7 @@ class TestValueMapper:
         assert result == "NovaSeq"
 
         # Should log skip message instead of replacement in structured format
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
         assert len(structured_log.ambiguous_mappings) == 1
         unmapped_entry = structured_log.ambiguous_mappings[0]
         assert unmapped_entry.field == "acquisition_instrument_model"
@@ -325,7 +327,7 @@ class TestValueMapper:
     def test_map_value_with_single_item_list_mapping(self) -> None:
         """Test value mapping when mapping contains single-item list."""
         value_mappings = {"test_field": {"old_value": ["new_value"]}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("test_field", "old_value")
 
@@ -333,14 +335,14 @@ class TestValueMapper:
         assert result == "new_value"
 
         # Should log normal replacement message in structured format
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
         assert "test_field" in structured_log.value_mappings
         assert structured_log.value_mappings["test_field"]["old_value"] == "new_value"
 
     def test_map_value_with_empty_list_mapping(self) -> None:
         """Test value mapping when mapping contains empty list."""
         value_mappings = {"test_field": {"old_value": []}}
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("test_field", "old_value")
 
@@ -348,7 +350,7 @@ class TestValueMapper:
         assert result == []
 
         # Should log normal replacement message in structured format
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
         assert "test_field" in structured_log.value_mappings
         assert structured_log.value_mappings["test_field"]["old_value"] == []
 
@@ -362,7 +364,7 @@ class TestValueMapper:
                 "empty": [],
             }
         }
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         # Test single value mapping
         result1 = mapper.map_value("mixed_field", "single")
@@ -381,7 +383,7 @@ class TestValueMapper:
         assert result4 == []
 
         # Check structured processing log has correct entries
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
 
         # Check mapped values
         assert "mixed_field" in structured_log.value_mappings
@@ -409,7 +411,7 @@ class TestValueMapper:
                 "R1": "Read 1 (R1)",
             }
         }
-        mapper = ValueMapper(value_mappings, StructuredProcessingLog())
+        mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         # Test mapping values to null
         assert mapper.map_value("barcode_read", "I5") is None
@@ -423,7 +425,7 @@ class TestValueMapper:
         assert mapper.map_value("barcode_read", "unmapped") == "unmapped"
 
         # Check structured processing log has correct entries
-        structured_log = mapper.get_structured_log()
+        structured_log = mapper.get_processing_log()
 
         # Check mapped values include null mappings
         assert "barcode_read" in structured_log.value_mappings

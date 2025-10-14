@@ -8,6 +8,7 @@ from typing import Any, Dict
 
 from metadata_transformer.exceptions import ValueMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 
 
 class ValueMappings:
@@ -84,20 +85,20 @@ class ValueMappings:
                     self._value_mappings[field_name] = {}
                 self._value_mappings[field_name][key] = value
 
-    def get_mapper(self, structured_log: StructuredProcessingLog) -> "ValueMapper":
+    def get_mapper(self, log_provider: ProcessingLogProvider) -> "ValueMapper":
         """
-        Create a ValueMapper instance with the loaded mappings and a fresh log.
+        Create a ValueMapper instance with the loaded mappings and a log provider.
 
         This factory method ensures immutability - each transformation gets its own
         mapper instance with an isolated processing log.
 
         Args:
-            structured_log: Fresh StructuredProcessingLog for this transformation
+            log_provider: Provider for creating processing logs
 
         Returns:
-            New ValueMapper instance with mappings and log
+            New ValueMapper instance with mappings and log provider
         """
-        return ValueMapper(self._value_mappings.copy(), structured_log)
+        return ValueMapper(self._value_mappings.copy(), log_provider)
 
     def get_all_mappings(self) -> Dict[str, Dict[str, Any]]:
         """
@@ -121,17 +122,17 @@ class ValueMapper:
     def __init__(
         self,
         value_mappings: Dict[str, Dict[str, Any]],
-        structured_log: StructuredProcessingLog,
+        log_provider: ProcessingLogProvider,
     ) -> None:
         """
-        Initialize a ValueMapper with mappings and log.
+        Initialize a ValueMapper with mappings and log provider.
 
         Args:
             value_mappings: Dictionary of field -> value mappings.
-            structured_log: Processing log for this transformation.
+            log_provider: Provider for creating processing logs.
         """
         self._value_mappings = value_mappings
-        self._structured_log = structured_log
+        self._log = log_provider.create_log()
 
     def map_value(self, field_name: str, legacy_value: Any) -> Any:
         """
@@ -158,7 +159,7 @@ class ValueMapper:
             # Check if mapped_value is a list with multiple options
             if isinstance(mapped_value, list) and len(mapped_value) > 1:
                 # Don't replace the value, keep original and log need for manual selection
-                self._structured_log.add_unmapped_value(
+                self._log.add_unmapped_value(
                     field_name, legacy_value, mapped_value
                 )
                 return legacy_value
@@ -169,7 +170,7 @@ class ValueMapper:
                     mapped_value = mapped_value[0]
 
                 # Add to structured log
-                self._structured_log.add_mapped_value(
+                self._log.add_mapped_value(
                     legacy_value, mapped_value, field_name
                 )
 
@@ -210,11 +211,11 @@ class ValueMapper:
         """
         return self._value_mappings.copy()
 
-    def get_structured_log(self) -> StructuredProcessingLog:
+    def get_processing_log(self) -> StructuredProcessingLog:
         """
-        Get the structured processing log for this transformation.
+        Get the processing log for this transformation.
 
         Returns:
             StructuredProcessingLog object
         """
-        return self._structured_log
+        return self._log

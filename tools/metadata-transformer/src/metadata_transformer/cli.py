@@ -12,6 +12,7 @@ from metadata_transformer.exceptions import MetadataTransformerError
 from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.output_generator import OutputGenerator
 from metadata_transformer.patch_applier import Patches
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.schema_applier import Schema
 from metadata_transformer.transformer import MetadataTransformer
 from metadata_transformer.value_mapper import ValueMappings
@@ -183,9 +184,12 @@ def main(
         if not patch_dir and not patch_file and verbose:
             click.echo("No patches specified - skipping conditional patching")
 
+        # Initialize log provider
+        log_provider = ProcessingLogProvider()
+
         # Initialize transformer
         transformer = MetadataTransformer(
-            patches, field_mappings, value_mappings, schema
+            patches, field_mappings, value_mappings, schema, log_provider
         )
 
         # Process files

@@ -8,6 +8,7 @@ from typing import Dict, Optional
 
 from metadata_transformer.exceptions import FieldMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 
 
 class FieldMappings:
@@ -118,20 +119,20 @@ class FieldMappings:
 
             self._field_mappings[legacy_field] = target_field
 
-    def get_mapper(self, structured_log: StructuredProcessingLog) -> "FieldMapper":
+    def get_mapper(self, log_provider: ProcessingLogProvider) -> "FieldMapper":
         """
-        Create a FieldMapper instance with the loaded mappings and a fresh log.
+        Create a FieldMapper instance with the loaded mappings and a log provider.
 
         This factory method ensures immutability - each transformation gets its own
         mapper instance with an isolated processing log.
 
         Args:
-            structured_log: Fresh StructuredProcessingLog for this transformation
+            log_provider: Provider for creating processing logs
 
         Returns:
-            New FieldMapper instance with mappings and log
+            New FieldMapper instance with mappings and log provider
         """
-        return FieldMapper(self._field_mappings.copy(), structured_log)
+        return FieldMapper(self._field_mappings.copy(), log_provider)
 
     def get_all_mappings(self) -> Dict[str, Optional[str]]:
         """
@@ -155,17 +156,17 @@ class FieldMapper:
     def __init__(
         self,
         field_mappings: Dict[str, Optional[str]],
-        structured_log: StructuredProcessingLog,
+        log_provider: ProcessingLogProvider,
     ) -> None:
         """
-        Initialize a FieldMapper with mappings and log.
+        Initialize a FieldMapper with mappings and log provider.
 
         Args:
             field_mappings: Dictionary of legacy -> target field mappings.
-            structured_log: Processing log for this transformation.
+            log_provider: Provider for creating processing logs.
         """
         self._field_mappings = field_mappings
-        self._structured_log = structured_log
+        self._log = log_provider.create_log()
 
     def map_field(self, legacy_field: str) -> Optional[str]:
         """
@@ -187,7 +188,7 @@ class FieldMapper:
             legacy_field: The legacy field name
             target_field: The target field name
         """
-        self._structured_log.add_mapped_field(legacy_field, target_field)
+        self._log.add_mapped_field(legacy_field, target_field)
 
     def get_all_mappings(self) -> Dict[str, Optional[str]]:
         """
@@ -198,11 +199,11 @@ class FieldMapper:
         """
         return self._field_mappings.copy()
 
-    def get_structured_log(self) -> StructuredProcessingLog:
+    def get_processing_log(self) -> StructuredProcessingLog:
         """
-        Get the structured processing log for this transformation.
+        Get the processing log for this transformation.
 
         Returns:
             StructuredProcessingLog object
         """
-        return self._structured_log
+        return self._log

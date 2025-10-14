@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 
 from metadata_transformer.exceptions import SchemaValidationError
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 
 
 class Schema:
@@ -171,20 +172,20 @@ class Schema:
 
         return True
 
-    def get_applier(self, structured_log: StructuredProcessingLog) -> "SchemaApplier":
+    def get_applier(self, log_provider: ProcessingLogProvider) -> "SchemaApplier":
         """
-        Create a SchemaApplier instance with the loaded schema and a fresh log.
+        Create a SchemaApplier instance with the loaded schema and a log provider.
 
         This factory method ensures immutability - each transformation gets its own
         applier instance with an isolated processing log.
 
         Args:
-            structured_log: Fresh StructuredProcessingLog for this transformation
+            log_provider: Provider for creating processing logs
 
         Returns:
-            New SchemaApplier instance with schema and log
+            New SchemaApplier instance with schema and log provider
         """
-        return SchemaApplier(self._schema_fields.copy(), structured_log)
+        return SchemaApplier(self._schema_fields.copy(), log_provider)
 
 
 class SchemaApplier:
@@ -199,17 +200,17 @@ class SchemaApplier:
     def __init__(
         self,
         schema_fields: Dict[str, Dict[str, Any]],
-        structured_log: StructuredProcessingLog,
+        log_provider: ProcessingLogProvider,
     ) -> None:
         """
-        Initialize a SchemaApplier with schema and log.
+        Initialize a SchemaApplier with schema and log provider.
 
         Args:
             schema_fields: Dictionary of schema field definitions.
-            structured_log: Processing log for this transformation.
+            log_provider: Provider for creating processing logs.
         """
         self._schema_fields = schema_fields
-        self._structured_log = structured_log
+        self._log = log_provider.create_log()
 
     def apply_schema(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -234,7 +235,7 @@ class SchemaApplier:
         # Log obsolete fields that don't map to schema
         for field_name, field_value in metadata.items():
             if field_name not in self._schema_fields:
-                self._structured_log.add_unmapped_field_with_value(field_name, field_value)
+                self._log.add_unmapped_field_with_value(field_name, field_value)
 
         return compliant_metadata
 
@@ -251,14 +252,14 @@ class SchemaApplier:
         field_def = self._schema_fields.get(field_name, {})
         return field_def.get("default_value")
 
-    def get_structured_log(self) -> StructuredProcessingLog:
+    def get_processing_log(self) -> StructuredProcessingLog:
         """
-        Get the structured processing log for schema compliance operations.
+        Get the processing log for schema compliance operations.
 
         Returns:
             StructuredProcessingLog object
         """
-        return self._structured_log
+        return self._log
 
     def get_schema_fields(self) -> Dict[str, Dict[str, Any]]:
         """

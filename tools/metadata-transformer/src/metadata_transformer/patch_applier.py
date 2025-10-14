@@ -8,6 +8,7 @@ from typing import Any, Dict, List
 
 from metadata_transformer.exceptions import FieldMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
+from metadata_transformer.processing_log_provider import ProcessingLogProvider
 
 
 class Patches:
@@ -178,20 +179,20 @@ class Patches:
                     self._validate_when_clause(item, f"{context}.{key}[{i}]")
                 # Otherwise it's a simple field-value dict (no further validation needed)
 
-    def get_applier(self, structured_log: StructuredProcessingLog) -> "PatchApplier":
+    def get_applier(self, log_provider: ProcessingLogProvider) -> "PatchApplier":
         """
-        Create a PatchApplier instance with the loaded patches and a fresh log.
+        Create a PatchApplier instance with the loaded patches and a log provider.
 
         This factory method ensures immutability - each transformation gets its own
         applier instance with an isolated processing log.
 
         Args:
-            structured_log: Fresh StructuredProcessingLog for this transformation
+            log_provider: Provider for creating processing logs
 
         Returns:
-            New PatchApplier instance with patches and log
+            New PatchApplier instance with patches and log provider
         """
-        return PatchApplier(self._patches.copy(), structured_log)
+        return PatchApplier(self._patches.copy(), log_provider)
 
     def get_all_patches(self) -> List[Dict[str, Any]]:
         """
@@ -224,17 +225,17 @@ class PatchApplier:
     def __init__(
         self,
         patches: List[Dict[str, Any]],
-        structured_log: StructuredProcessingLog,
+        log_provider: ProcessingLogProvider,
     ) -> None:
         """
-        Initialize a PatchApplier with patches and log.
+        Initialize a PatchApplier with patches and log provider.
 
         Args:
             patches: List of patch rules.
-            structured_log: Processing log for this transformation.
+            log_provider: Provider for creating processing logs.
         """
         self._patches = patches
-        self._structured_log = structured_log
+        self._log = log_provider.create_log()
 
     def apply_patches(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -358,18 +359,18 @@ class PatchApplier:
         """
         # Log each field that was patched
         for field_name, field_value in patch["then"].items():
-            self._structured_log.add_applied_patch(
+            self._log.add_applied_patch(
                 field_name=field_name, field_value=field_value, conditions=patch["when"]
             )
 
-    def get_structured_log(self) -> StructuredProcessingLog:
+    def get_processing_log(self) -> StructuredProcessingLog:
         """
-        Get the structured processing log for patch operations.
+        Get the processing log for patch operations.
 
         Returns:
             StructuredProcessingLog object
         """
-        return self._structured_log
+        return self._log
 
     def get_all_patches(self) -> List[Dict[str, Any]]:
         """
