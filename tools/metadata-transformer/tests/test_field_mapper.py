@@ -291,8 +291,8 @@ class TestFieldMapper:
     """Test cases for FieldMapper class."""
 
     def test_init_default(self) -> None:
-        """Test FieldMapper initialization with defaults."""
-        mapper = FieldMapper()
+        """Test FieldMapper initialization with empty mappings."""
+        mapper = FieldMapper({}, StructuredProcessingLog())
         assert mapper.get_all_mappings() == {}
         assert isinstance(mapper.get_structured_log(), StructuredProcessingLog)
 

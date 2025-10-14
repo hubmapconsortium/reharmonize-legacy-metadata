@@ -198,23 +198,18 @@ class SchemaApplier:
 
     def __init__(
         self,
-        schema_fields: Optional[Dict[str, Dict[str, Any]]] = None,
-        structured_log: Optional[StructuredProcessingLog] = None,
+        schema_fields: Dict[str, Dict[str, Any]],
+        structured_log: StructuredProcessingLog,
     ) -> None:
         """
         Initialize a SchemaApplier with schema and log.
 
-        Note: For the new design pattern, use Schema.get_applier() instead.
-        Direct instantiation is supported for backward compatibility.
-
         Args:
             schema_fields: Dictionary of schema field definitions.
-                          If None, creates empty dict (for backward compatibility).
             structured_log: Processing log for this transformation.
-                          If None, creates new log (for backward compatibility).
         """
-        self._schema_fields = schema_fields if schema_fields is not None else {}
-        self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
+        self._schema_fields = schema_fields
+        self._structured_log = structured_log
 
     def apply_schema(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """

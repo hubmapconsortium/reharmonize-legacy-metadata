@@ -4,7 +4,7 @@ Value mapping functionality for transforming legacy field values to target schem
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from metadata_transformer.exceptions import ValueMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
@@ -120,23 +120,18 @@ class ValueMapper:
 
     def __init__(
         self,
-        value_mappings: Optional[Dict[str, Dict[str, Any]]] = None,
-        structured_log: Optional[StructuredProcessingLog] = None,
+        value_mappings: Dict[str, Dict[str, Any]],
+        structured_log: StructuredProcessingLog,
     ) -> None:
         """
         Initialize a ValueMapper with mappings and log.
 
-        Note: For the new design pattern, use ValueMappings.get_mapper() instead.
-        Direct instantiation is supported for backward compatibility.
-
         Args:
             value_mappings: Dictionary of field -> value mappings.
-                          If None, creates empty dict (for backward compatibility).
             structured_log: Processing log for this transformation.
-                          If None, creates new log (for backward compatibility).
         """
-        self._value_mappings = value_mappings if value_mappings is not None else {}
-        self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
+        self._value_mappings = value_mappings
+        self._structured_log = structured_log
 
     def map_value(self, field_name: str, legacy_value: Any) -> Any:
         """

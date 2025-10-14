@@ -4,7 +4,7 @@ Conditional patch application functionality for applying patches to metadata bef
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from metadata_transformer.exceptions import FieldMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
@@ -223,23 +223,18 @@ class PatchApplier:
 
     def __init__(
         self,
-        patches: Optional[List[Dict[str, Any]]] = None,
-        structured_log: Optional[StructuredProcessingLog] = None,
+        patches: List[Dict[str, Any]],
+        structured_log: StructuredProcessingLog,
     ) -> None:
         """
         Initialize a PatchApplier with patches and log.
 
-        Note: For the new design pattern, use Patches.get_applier() instead.
-        Direct instantiation is supported for backward compatibility.
-
         Args:
             patches: List of patch rules.
-                    If None, creates empty list (for backward compatibility).
             structured_log: Processing log for this transformation.
-                          If None, creates new log (for backward compatibility).
         """
-        self._patches = patches if patches is not None else []
-        self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
+        self._patches = patches
+        self._structured_log = structured_log
 
     def apply_patches(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """

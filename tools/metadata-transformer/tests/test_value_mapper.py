@@ -187,8 +187,8 @@ class TestValueMapper:
     """Test cases for ValueMapper class."""
 
     def test_init_default(self) -> None:
-        """Test ValueMapper initialization with defaults."""
-        mapper = ValueMapper()
+        """Test ValueMapper initialization with empty mappings."""
+        mapper = ValueMapper({}, StructuredProcessingLog())
         assert mapper.get_all_mappings() == {}
         assert isinstance(mapper.get_structured_log(), StructuredProcessingLog)
 

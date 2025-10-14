@@ -65,7 +65,7 @@ class TestMetadataTransformer:
         self.patches.get_applier.return_value = self.patch_applier
 
         self.transformer = MetadataTransformer(
-            self.field_mappings, self.value_mappings, self.schema, self.patches
+            self.patches, self.field_mappings, self.value_mappings, self.schema
         )
 
     def test_init(self) -> None:

@@ -4,7 +4,7 @@ Core metadata transformation logic implementing the 4-phase transformation proce
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from pyjsonpatch import generate_patch
 
@@ -21,24 +21,24 @@ class MetadataTransformer:
 
     def __init__(
         self,
-        field_mappings: FieldMappings,
-        value_mappings: ValueMappings,
-        schema: Schema,
-        patches: Patches,
+        patches: Optional[Patches] = None,
+        field_mappings: Optional[FieldMappings] = None,
+        value_mappings: Optional[ValueMappings] = None,
+        schema: Optional[Schema] = None,
     ) -> None:
         """
         Initialize the MetadataTransformer.
 
         Args:
-            field_mappings: FieldMappings instance
-            value_mappings: ValueMappings instance
-            schema: Schema instance
-            patches: Patches instance
+            patches: Optional Patches instance. If None, Phase 0 is skipped.
+            field_mappings: Optional FieldMappings instance. If None, Phase 1 is skipped.
+            value_mappings: Optional ValueMappings instance. If None, Phase 2 is skipped.
+            schema: Optional Schema instance. If None, Phase 3 is skipped.
         """
+        self.patches = patches
         self.field_mappings = field_mappings
         self.value_mappings = value_mappings
         self.schema = schema
-        self.patches = patches
 
     def transform_metadata_file(self, input_file: Path) -> Dict[str, Any]:
         """
@@ -120,6 +120,9 @@ class MetadataTransformer:
         """
         Transform metadata through the 4-phase process.
 
+        Phases are executed conditionally based on which dependencies are available.
+        If a dependency is None, the corresponding phase is skipped.
+
         Args:
             legacy_metadata: Legacy metadata dictionary
 
@@ -127,35 +130,42 @@ class MetadataTransformer:
             Tuple of (transformed metadata dictionary, list of JSON patch operations, merged processing log)
         """
         all_patches = []
-
-        # Phase 0: Conditional Patching
-        patched_metadata, patch_applier_log = self._phase0_conditional_patching(legacy_metadata)
-        phase0_patch = generate_patch(legacy_metadata, patched_metadata)
-        all_patches.extend(phase0_patch)
-
-        # Phase 1: Field Mapping
-        field_mapped_metadata, field_mapping_log = self._phase1_field_mapping(patched_metadata)
-        phase1_patch = generate_patch(patched_metadata, field_mapped_metadata)
-        all_patches.extend(phase1_patch)
-
-        # Phase 2: Value Mapping
-        value_mapped_metadata, value_mapping_log = self._phase2_value_mapping(field_mapped_metadata)
-        phase2_patch = generate_patch(field_mapped_metadata, value_mapped_metadata)
-        all_patches.extend(phase2_patch)
-
-        # Phase 3: Schema Compliance
-        schema_compliant_metadata, schema_compliance_log = self._phase3_schema_compliance(value_mapped_metadata)
-        phase3_patch = generate_patch(value_mapped_metadata, schema_compliant_metadata)
-        all_patches.extend(phase3_patch)
-
-        # Merge logs from all phases
         combined_log = StructuredProcessingLog()
-        combined_log.merge_with(patch_applier_log)
-        combined_log.merge_with(field_mapping_log)
-        combined_log.merge_with(value_mapping_log)
-        combined_log.merge_with(schema_compliance_log)
+        current_metadata = legacy_metadata
 
-        return schema_compliant_metadata, all_patches, combined_log
+        # Phase 0: Conditional Patching (if patches available)
+        if self.patches is not None:
+            patched_metadata, patch_applier_log = self._phase0_conditional_patching(current_metadata)
+            phase0_patch = generate_patch(current_metadata, patched_metadata)
+            all_patches.extend(phase0_patch)
+            combined_log.merge_with(patch_applier_log)
+            current_metadata = patched_metadata
+
+        # Phase 1: Field Mapping (if field mappings available)
+        if self.field_mappings is not None:
+            field_mapped_metadata, field_mapping_log = self._phase1_field_mapping(current_metadata)
+            phase1_patch = generate_patch(current_metadata, field_mapped_metadata)
+            all_patches.extend(phase1_patch)
+            combined_log.merge_with(field_mapping_log)
+            current_metadata = field_mapped_metadata
+
+        # Phase 2: Value Mapping (if value mappings available)
+        if self.value_mappings is not None:
+            value_mapped_metadata, value_mapping_log = self._phase2_value_mapping(current_metadata)
+            phase2_patch = generate_patch(current_metadata, value_mapped_metadata)
+            all_patches.extend(phase2_patch)
+            combined_log.merge_with(value_mapping_log)
+            current_metadata = value_mapped_metadata
+
+        # Phase 3: Schema Compliance (if schema available)
+        if self.schema is not None:
+            schema_compliant_metadata, schema_compliance_log = self._phase3_schema_compliance(current_metadata)
+            phase3_patch = generate_patch(current_metadata, schema_compliant_metadata)
+            all_patches.extend(phase3_patch)
+            combined_log.merge_with(schema_compliance_log)
+            current_metadata = schema_compliant_metadata
+
+        return current_metadata, all_patches, combined_log
 
     def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
@@ -267,11 +277,3 @@ class MetadataTransformer:
             )
         )
 
-    def get_structured_log(self) -> StructuredProcessingLog:
-        """
-        Get the structured processing log for transformation operations.
-
-        Returns:
-            StructuredProcessingLog object
-        """
-        return self.structured_log

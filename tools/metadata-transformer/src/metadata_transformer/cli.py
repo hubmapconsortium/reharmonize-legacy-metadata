@@ -185,7 +185,7 @@ def main(
 
         # Initialize transformer
         transformer = MetadataTransformer(
-            field_mappings, value_mappings, schema, patches
+            patches, field_mappings, value_mappings, schema
         )
 
         # Process files

@@ -154,23 +154,18 @@ class FieldMapper:
 
     def __init__(
         self,
-        field_mappings: Optional[Dict[str, Optional[str]]] = None,
-        structured_log: Optional[StructuredProcessingLog] = None,
+        field_mappings: Dict[str, Optional[str]],
+        structured_log: StructuredProcessingLog,
     ) -> None:
         """
         Initialize a FieldMapper with mappings and log.
 
-        Note: For the new design pattern, use FieldMappings.get_mapper() instead.
-        Direct instantiation is supported for backward compatibility.
-
         Args:
             field_mappings: Dictionary of legacy -> target field mappings.
-                          If None, creates empty dict (for backward compatibility).
             structured_log: Processing log for this transformation.
-                          If None, creates new log (for backward compatibility).
         """
-        self._field_mappings = field_mappings if field_mappings is not None else {}
-        self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
+        self._field_mappings = field_mappings
+        self._structured_log = structured_log
 
     def map_field(self, legacy_field: str) -> Optional[str]:
         """

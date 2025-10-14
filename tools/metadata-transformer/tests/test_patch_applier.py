@@ -264,8 +264,8 @@ class TestPatchApplier:
     """Test cases for PatchApplier class."""
 
     def test_init_default(self) -> None:
-        """Test PatchApplier initialization with defaults."""
-        applier = PatchApplier()
+        """Test PatchApplier initialization with empty patches."""
+        applier = PatchApplier([], StructuredProcessingLog())
         assert applier.get_loaded_patches_count() == 0
         assert isinstance(applier.get_structured_log(), StructuredProcessingLog)
 
@@ -287,7 +287,7 @@ class TestPatchApplier:
 
     def test_apply_patches_no_patches(self) -> None:
         """Test applying patches when no patches are loaded."""
-        applier = PatchApplier()
+        applier = PatchApplier([], StructuredProcessingLog())
         metadata = {"field1": "value1", "field2": "value2"}
         result = applier.apply_patches(metadata)
         assert result == metadata
