@@ -65,13 +65,13 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
-    "barcode_offset": "",
-    "barcode_read": "",
-    "barcode_size": "",
-    "umi_offset": null,
-    "umi_read": null,
-    "umi_size": null,
-    "assay_input_entity": "single nucleus",
+    "barcode_offset": "Not applicable",
+    "barcode_read": "Not applicable",
+    "barcode_size": "40",
+    "umi_offset": "Not applicable",
+    "umi_read": "Not applicable",
+    "umi_size": "8",
+    "assay_input_entity": "single cell",
     "number_of_input_cells_or_nuclei": "564200",
     "amount_of_input_analyte_value": "270000",
     "amount_of_input_analyte_unit": null,
@@ -91,7 +91,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "",
-    "sequencing_reagent_kit": "P2",
+    "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811",
     "sequencing_read_format": "34,10,10,66",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -102,7 +102,10 @@
   },
   "json_patch": [
     {"op": "add", "path": "/amount_of_input_analyte_unit", "value": null},
-    {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
+    {"op": "add", "path": "/assay_input_entity", "value": "single cell"},
+    {"op": "add", "path": "/barcode_offset", "value": "Not applicable"},
+    {"op": "add", "path": "/barcode_read", "value": "Not applicable"},
+    {"op": "add", "path": "/barcode_size", "value": "40"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
     {"op": "add", "path": "/lab_id", "value": null},
@@ -122,14 +125,11 @@
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "add", "path": "/umi_offset", "value": null},
-    {"op": "add", "path": "/umi_read", "value": null},
-    {"op": "add", "path": "/umi_size", "value": null},
+    {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_read", "value": "Not applicable"},
+    {"op": "add", "path": "/umi_size", "value": "8"},
     {"op": "move", "from": "/rnaseq_assay_input", "path": "/amount_of_input_analyte_value"},
-    {"op": "move", "from": "/cell_barcode_size", "path": "/barcode_offset"},
-    {"op": "move", "from": "/cell_barcode_offset", "path": "/barcode_read"},
-    {"op": "move", "from": "/cell_barcode_read", "path": "/barcode_size"},
-    {"op": "move", "from": "/expected_cell_count", "path": "/expected_entity_capture_count"},
+    {"op": "move", "from": "/cell_barcode_read", "path": "/expected_entity_capture_count"},
     {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
     {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
     {"op": "move", "from": "/sc_isolation_cell_number", "path": "/number_of_input_cells_or_nuclei"},
@@ -139,9 +139,12 @@
     {"op": "move", "from": "/protocols_io_doi", "path": "/preparation_protocol_doi"},
     {"op": "remove", "path": "/assay_category"},
     {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/cell_barcode_offset"},
+    {"op": "remove", "path": "/cell_barcode_size"},
     {"op": "remove", "path": "/description"},
     {"op": "remove", "path": "/donor_id"},
     {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/expected_cell_count"},
     {"op": "remove", "path": "/library_construction_protocols_io_doi"},
     {"op": "remove", "path": "/library_id"},
     {"op": "remove", "path": "/library_pcr_cycles_for_sample_index"},
@@ -160,7 +163,8 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 2000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "34,10,10,66"}
+    {"op": "replace", "path": "/sequencing_read_format", "value": "34,10,10,66"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -189,12 +193,12 @@
       "sc_isolation_entity": "assay_input_entity",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id"
+      "tissue_id": "parent_sample_id",
+      "umi_read": "umi_read",
+      "umi_size": "umi_size",
+      "umi_offset": "umi_offset"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "Nextseq2000": "NextSeq 2000"
-      },
       "dataset_type": {
         "sciRNAseq": "RNAseq"
       },
@@ -204,24 +208,11 @@
       "is_technical_replicate": {
         "False": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "34/10/10/66": "34,10,10,66"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "P2",
-        "permissible_values": [
-          "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811",
-          "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (200 Cycles); PN 20046812",
-          "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (300 Cycles); PN 20046813"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "sequence",
       "description": "Human_Heart",

@@ -57,7 +57,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq 6000",
+    "acquisition_instrument_model": "NextSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -95,7 +95,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
     "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
@@ -117,7 +117,7 @@
     {"op": "add", "path": "/library_preparation_kit", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller, PN: GCG-SR-1"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
@@ -136,7 +136,7 @@
     {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_iterations_of_cdna_amplification"},
     {"op": "move", "from": "/library_pcr_cycles", "path": "/number_of_pcr_cycles_for_indexing"},
     {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
-    {"op": "move", "from": "/protocols_io_doi", "path": "/preparation_protocol_doi"},
+    {"op": "move", "from": "/library_construction_protocols_io_doi", "path": "/preparation_protocol_doi"},
     {"op": "remove", "path": "/_from_metadatatsv"},
     {"op": "remove", "path": "/assay_category"},
     {"op": "remove", "path": "/assay_type"},
@@ -146,13 +146,13 @@
     {"op": "remove", "path": "/collectiontype"},
     {"op": "remove", "path": "/donor_id"},
     {"op": "remove", "path": "/execution_datetime"},
-    {"op": "remove", "path": "/library_construction_protocols_io_doi"},
     {"op": "remove", "path": "/library_id"},
     {"op": "remove", "path": "/metadata_path"},
     {"op": "remove", "path": "/operator"},
     {"op": "remove", "path": "/operator_email"},
     {"op": "remove", "path": "/pi"},
     {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/protocols_io_doi"},
     {"op": "remove", "path": "/rnaseq_assay_method"},
     {"op": "remove", "path": "/sc_isolation_enrichment"},
     {"op": "remove", "path": "/sc_isolation_entity"},
@@ -161,7 +161,7 @@
     {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
     {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,8,101"},
@@ -195,9 +195,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "NovaSeq6000": "NovaSeq 6000"
-      },
       "dataset_type": {
         "snRNAseq": "RNAseq"
       },
@@ -215,9 +212,6 @@
       },
       "is_technical_replicate": {
         "FALSE": "No"
-      },
-      "assay_input_entity": {
-        "nuclei": "single nucleus"
       },
       "sequencing_read_format": {
         "101/8/8/101": "101,8,8,101"

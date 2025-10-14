@@ -55,7 +55,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_model": "NovaSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -83,7 +83,7 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "12",
     "number_of_pcr_cycles_for_indexing": "13",
-    "library_preparation_kit": null,
+    "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3",
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
@@ -93,7 +93,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
     "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
@@ -109,10 +109,10 @@
     {"op": "add", "path": "/library_concentration_value", "value": null},
     {"op": "add", "path": "/library_input_amount_unit", "value": null},
     {"op": "add", "path": "/library_input_amount_value", "value": null},
-    {"op": "add", "path": "/library_preparation_kit", "value": null},
+    {"op": "add", "path": "/library_preparation_kit", "value": "10x Chromium Single Cell 3' Reagent Kits v3"},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller, PN: GCG-SR-1"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
@@ -153,6 +153,7 @@
     {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
     {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "29,8,92"}
@@ -198,23 +199,11 @@
       "is_technical_replicate": {
         "False": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "29/8/92": "29,8,92"
       }
     },
     "ambiguous_mappings": [
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NovaSeq",
-        "permissible_values": [
-          "NovaSeq 6000",
-          "NovaSeq X",
-          "NovaSeq X Plus"
-        ]
-      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq",
