@@ -13,7 +13,7 @@ from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMapper, FieldMappings
 from metadata_transformer.patch_applier import PatchApplier, Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
-from metadata_transformer.schema_loader import SchemaLoader
+from metadata_transformer.schema_applier import Schema, SchemaApplier
 from metadata_transformer.transformer import MetadataTransformer
 from metadata_transformer.value_mapper import ValueMapper, ValueMappings
 
@@ -28,7 +28,8 @@ class TestMetadataTransformer:
         self.value_mapper = Mock(spec=ValueMapper)
         self.field_mappings = Mock(spec=FieldMappings)
         self.value_mappings = Mock(spec=ValueMappings)
-        self.schema_loader = Mock(spec=SchemaLoader)
+        self.schema = Mock(spec=Schema)
+        self.schema_applier = Mock(spec=SchemaApplier)
         self.patch_applier = Mock(spec=PatchApplier)
         self.patches = Mock(spec=Patches)
 
@@ -36,26 +37,42 @@ class TestMetadataTransformer:
         self.field_mapper.get_structured_log.return_value = StructuredProcessingLog()
         self.value_mapper.get_structured_log.return_value = StructuredProcessingLog()
         self.patch_applier.get_structured_log.return_value = StructuredProcessingLog()
+        self.schema_applier.get_structured_log.return_value = StructuredProcessingLog()
 
         # Set up factory methods to return the mock mappers
         self.field_mappings.get_mapper.return_value = self.field_mapper
         self.value_mappings.get_mapper.return_value = self.value_mapper
+        self.schema.get_applier.return_value = self.schema_applier
 
         # Set up patch_applier to return metadata unchanged by default
         self.patch_applier.apply_patches.side_effect = lambda x: x
+
+        # Set up schema_applier with a more realistic default behavior
+        def default_schema_applier(metadata):
+            # Get schema fields from schema mock
+            schema_fields = self.schema.get_schema_fields.return_value
+            result = {}
+            for field in schema_fields:
+                if field in metadata:
+                    result[field] = metadata[field]
+                else:
+                    result[field] = self.schema.get_default_value.return_value
+            return result
+
+        self.schema_applier.apply_schema.side_effect = default_schema_applier
 
         # Set up patches factory to return the mock applier
         self.patches.get_applier.return_value = self.patch_applier
 
         self.transformer = MetadataTransformer(
-            self.field_mappings, self.value_mappings, self.schema_loader, self.patches
+            self.field_mappings, self.value_mappings, self.schema, self.patches
         )
 
     def test_init(self) -> None:
         """Test MetadataTransformer initialization."""
         assert self.transformer.field_mappings is self.field_mappings
         assert self.transformer.value_mappings is self.value_mappings
-        assert self.transformer.schema_loader is self.schema_loader
+        assert self.transformer.schema is self.schema
         assert self.transformer.patches is self.patches
 
     def test_transform_metadata_file_nonexistent(self) -> None:
@@ -114,13 +131,13 @@ class TestMetadataTransformer:
                 ("target_field2", "legacy_value2"): "mapped_value2",
             }.get((f, v), v)
 
-            self.schema_loader.get_schema_fields.return_value = {
+            self.schema.get_schema_fields.return_value = {
                 "target_field1": {"required": True},
                 "target_field2": {"required": False},
                 "target_field3": {"required": False},
             }
-            self.schema_loader.get_default_value.return_value = None
-            self.schema_loader.is_field_required.return_value = False
+            self.schema.get_default_value.return_value = None
+            self.schema.is_field_required.return_value = False
 
             result = self.transformer.transform_metadata_file(metadata_file)
 
@@ -208,20 +225,16 @@ class TestMetadataTransformer:
             "obsolete_field": "obsolete_value",
         }
 
-        # Set up schema loader mock
-        self.schema_loader.get_schema_fields.return_value = {
-            "schema_field1": {"required": True},
-            "schema_field2": {"required": False},
-            "schema_field3": {"required": False},
-        }
-        self.schema_loader.get_default_value.side_effect = lambda x: {
+        # Override the default side_effect for this specific test
+        expected_result = {
+            "schema_field1": "value1",
+            "schema_field2": "value2",
             "schema_field3": "default_value"
-        }.get(x)
-        self.schema_loader.is_field_required.side_effect = (
-            lambda x: x == "schema_field3"
-        )
+        }
+        self.schema_applier.apply_schema.side_effect = None
+        self.schema_applier.apply_schema.return_value = expected_result
 
-        result = self.transformer._phase3_schema_compliance(metadata)
+        result, log = self.transformer._phase3_schema_compliance(metadata)
 
         # Should include all schema fields
         assert result["schema_field1"] == "value1"
@@ -231,12 +244,15 @@ class TestMetadataTransformer:
         # Should not include obsolete field
         assert "obsolete_field" not in result
 
+        # Check that log is returned
+        assert isinstance(log, StructuredProcessingLog)
+
     def test_transform_metadata_empty(self) -> None:
         """Test transforming empty metadata."""
         metadata = {}
 
         # Set up minimal mocks
-        self.schema_loader.get_schema_fields.return_value = {}
+        self.schema.get_schema_fields.return_value = {}
 
         result, patches, combined_log = self.transformer._transform_metadata(metadata)
 
@@ -275,11 +291,11 @@ class TestMetadataTransformer:
 
             self.value_mapper.map_value.side_effect = lambda f, v: v
 
-            self.schema_loader.get_schema_fields.return_value = {
+            self.schema.get_schema_fields.return_value = {
                 "target_field1": {"required": True},
                 "target_field2": {"required": False},
             }
-            self.schema_loader.get_default_value.return_value = None
+            self.schema.get_default_value.return_value = None
 
             result = self.transformer.transform_metadata_file(metadata_file)
 
@@ -313,11 +329,11 @@ class TestMetadataTransformer:
                 ("change_field", "original_value"): "modified_value",
             }.get((f, v), v)
 
-            self.schema_loader.get_schema_fields.return_value = {
+            self.schema.get_schema_fields.return_value = {
                 "new_field": {},
                 "change_field": {},
             }
-            self.schema_loader.get_default_value.return_value = None
+            self.schema.get_default_value.return_value = None
 
             result = self.transformer.transform_metadata_file(metadata_file)
 
@@ -355,11 +371,11 @@ class TestMetadataTransformer:
             self.field_mapper.map_field.side_effect = lambda x: x
             self.value_mapper.map_value.side_effect = lambda f, v: f"mapped_{v}"
 
-            self.schema_loader.get_schema_fields.return_value = {
+            self.schema.get_schema_fields.return_value = {
                 "field1": {},
                 "field2": {},
             }
-            self.schema_loader.get_default_value.return_value = None
+            self.schema.get_default_value.return_value = None
 
             result = self.transformer.transform_metadata_file(metadata_file)
 
@@ -387,8 +403,8 @@ class TestMetadataTransformer:
 
             self.field_mapper.map_field.side_effect = lambda x: x
             self.value_mapper.map_value.side_effect = lambda f, v: v
-            self.schema_loader.get_schema_fields.return_value = {"field": {}}
-            self.schema_loader.get_default_value.return_value = None
+            self.schema.get_schema_fields.return_value = {"field": {}}
+            self.schema.get_default_value.return_value = None
 
             result = self.transformer.transform_metadata_file(metadata_file)
 
@@ -413,8 +429,8 @@ class TestMetadataTransformer:
 
             self.field_mapper.map_field.side_effect = lambda x: x
             self.value_mapper.map_value.side_effect = lambda f, v: v
-            self.schema_loader.get_schema_fields.return_value = {}
-            self.schema_loader.get_default_value.return_value = None
+            self.schema.get_schema_fields.return_value = {}
+            self.schema.get_default_value.return_value = None
 
             result = self.transformer.transform_metadata_file(metadata_file)
 

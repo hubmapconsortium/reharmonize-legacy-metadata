@@ -12,7 +12,7 @@ from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.patch_applier import Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
-from metadata_transformer.schema_loader import SchemaLoader
+from metadata_transformer.schema_applier import Schema
 from metadata_transformer.value_mapper import ValueMappings
 
 
@@ -23,7 +23,7 @@ class MetadataTransformer:
         self,
         field_mappings: FieldMappings,
         value_mappings: ValueMappings,
-        schema_loader: SchemaLoader,
+        schema: Schema,
         patches: Patches,
     ) -> None:
         """
@@ -32,12 +32,12 @@ class MetadataTransformer:
         Args:
             field_mappings: FieldMappings instance
             value_mappings: ValueMappings instance
-            schema_loader: SchemaLoader instance
+            schema: Schema instance
             patches: Patches instance
         """
         self.field_mappings = field_mappings
         self.value_mappings = value_mappings
-        self.schema_loader = schema_loader
+        self.schema = schema
         self.patches = patches
 
     def transform_metadata_file(self, input_file: Path) -> Dict[str, Any]:
@@ -144,7 +144,7 @@ class MetadataTransformer:
         all_patches.extend(phase2_patch)
 
         # Phase 3: Schema Compliance
-        schema_compliant_metadata = self._phase3_schema_compliance(value_mapped_metadata)
+        schema_compliant_metadata, schema_compliance_log = self._phase3_schema_compliance(value_mapped_metadata)
         phase3_patch = generate_patch(value_mapped_metadata, schema_compliant_metadata)
         all_patches.extend(phase3_patch)
 
@@ -153,6 +153,7 @@ class MetadataTransformer:
         combined_log.merge_with(patch_applier_log)
         combined_log.merge_with(field_mapping_log)
         combined_log.merge_with(value_mapping_log)
+        combined_log.merge_with(schema_compliance_log)
 
         return schema_compliant_metadata, all_patches, combined_log
 
@@ -226,7 +227,7 @@ class MetadataTransformer:
 
         return value_mapped_metadata, value_mapping_log
 
-    def _phase3_schema_compliance(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
+    def _phase3_schema_compliance(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 3: Ensure metadata complies with target schema.
 
@@ -234,26 +235,14 @@ class MetadataTransformer:
             metadata: Metadata with field and value mappings applied
 
         Returns:
-            Schema-compliant metadata
+            Schema-compliant metadata and the processing log
         """
-        schema_fields = self.schema_loader.get_schema_fields()
-        compliant_metadata = {}
+        schema_applier_log = StructuredProcessingLog()
+        schema_applier = self.schema.get_applier(schema_applier_log)
 
-        # Add all schema fields with appropriate values
-        for schema_field in schema_fields:
-            if schema_field in metadata:
-                compliant_metadata[schema_field] = metadata[schema_field]
-            else:
-                default_value = self.schema_loader.get_default_value(schema_field)
-                compliant_metadata[schema_field] = default_value
+        compliant_metadata = schema_applier.apply_schema(metadata)
 
-        # Log obsolete fields that don't map to schema
-        for field_name, field_value in metadata.items():
-            if field_name not in schema_fields:
-                # self.structured_log.add_unmapped_field_with_value(field_name, field_value)
-                pass
-
-        return compliant_metadata
+        return compliant_metadata, schema_applier_log
 
     def _sort_patches(self, patches: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """

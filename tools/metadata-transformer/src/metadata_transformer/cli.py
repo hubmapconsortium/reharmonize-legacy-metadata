@@ -12,7 +12,7 @@ from metadata_transformer.exceptions import MetadataTransformerError
 from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.output_generator import OutputGenerator
 from metadata_transformer.patch_applier import Patches
-from metadata_transformer.schema_loader import SchemaLoader
+from metadata_transformer.schema_applier import Schema
 from metadata_transformer.transformer import MetadataTransformer
 from metadata_transformer.value_mapper import ValueMappings
 
@@ -107,7 +107,7 @@ def main(
 
         field_mappings = FieldMappings()
         value_mappings = ValueMappings()
-        schema_loader = SchemaLoader()
+        schema = Schema()
         patches = Patches()
         output_generator = OutputGenerator()
 
@@ -144,9 +144,9 @@ def main(
         if verbose:
             click.echo(f"Loading target schema from: {target_schema_file}")
         try:
-            schema_loader.load_schema(target_schema_file)
-            schema_fields = schema_loader.get_schema_fields()
-            required_fields = schema_loader.get_required_fields()
+            schema.load_schema(target_schema_file)
+            schema_fields = schema.get_schema_fields()
+            required_fields = schema.get_required_fields()
             if verbose:
                 click.echo(
                     f"Loaded schema with {len(schema_fields)} fields ({len(required_fields)} required)"
@@ -185,7 +185,7 @@ def main(
 
         # Initialize transformer
         transformer = MetadataTransformer(
-            field_mappings, value_mappings, schema_loader, patches
+            field_mappings, value_mappings, schema, patches
         )
 
         # Process files

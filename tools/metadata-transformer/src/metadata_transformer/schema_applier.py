@@ -1,5 +1,5 @@
 """
-Schema loading functionality for target schema definitions.
+Schema specification and application functionality for target schema definitions.
 """
 
 import json
@@ -7,16 +7,22 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from metadata_transformer.exceptions import SchemaValidationError
+from metadata_transformer.processing_log import StructuredProcessingLog
 
 
-class SchemaLoader:
-    """Handles loading and validation of target schema files."""
+class Schema:
+    """
+    Repository holding schema specification loaded from files.
+
+    This class is responsible for loading and storing schema definitions.
+    Once loaded, the schema can be used to create multiple SchemaApplier
+    instances for concurrent or sequential transformations.
+    """
 
     def __init__(self) -> None:
-        """Initialize the SchemaLoader."""
-        self.schema_fields: Dict[str, Dict[str, Any]] = {}
-        self.required_fields: List[str] = []
-        self.processing_log: List[str] = []
+        """Initialize an empty Schema repository."""
+        self._schema_fields: Dict[str, Dict[str, Any]] = {}
+        self._required_fields: List[str] = []
 
     def load_schema(self, schema_file: Path) -> None:
         """
@@ -73,7 +79,7 @@ class SchemaLoader:
                 continue
 
             # Store field definition
-            self.schema_fields[field_name] = {
+            self._schema_fields[field_name] = {
                 "description": field_def.get("description", ""),
                 "type": field_def.get("type", "text"),
                 "required": field_def.get("required", False),
@@ -84,7 +90,7 @@ class SchemaLoader:
 
             # Track required fields
             if field_def.get("required", False):
-                self.required_fields.append(field_name)
+                self._required_fields.append(field_name)
 
     def get_schema_fields(self) -> Dict[str, Dict[str, Any]]:
         """
@@ -93,7 +99,7 @@ class SchemaLoader:
         Returns:
             Dictionary of field definitions
         """
-        return self.schema_fields.copy()
+        return self._schema_fields.copy()
 
     def get_required_fields(self) -> List[str]:
         """
@@ -102,7 +108,7 @@ class SchemaLoader:
         Returns:
             List of required field names
         """
-        return self.required_fields.copy()
+        return self._required_fields.copy()
 
     def is_field_required(self, field_name: str) -> bool:
         """
@@ -114,7 +120,7 @@ class SchemaLoader:
         Returns:
             True if field is required, False otherwise
         """
-        return field_name in self.required_fields
+        return field_name in self._required_fields
 
     def get_field_definition(self, field_name: str) -> Optional[Dict[str, Any]]:
         """
@@ -126,7 +132,7 @@ class SchemaLoader:
         Returns:
             Field definition dictionary, or None if field not in schema
         """
-        return self.schema_fields.get(field_name)
+        return self._schema_fields.get(field_name)
 
     def get_default_value(self, field_name: str) -> Any:
         """
@@ -138,7 +144,7 @@ class SchemaLoader:
         Returns:
             Default value for the field, or None if no default specified
         """
-        field_def = self.schema_fields.get(field_name, {})
+        field_def = self._schema_fields.get(field_name, {})
         return field_def.get("default_value")
 
     def validate_field_value(self, field_name: str, value: Any) -> bool:
@@ -165,11 +171,105 @@ class SchemaLoader:
 
         return True
 
-    def get_processing_log(self) -> List[str]:
+    def get_applier(self, structured_log: StructuredProcessingLog) -> "SchemaApplier":
         """
-        Get the processing log for schema loading operations.
+        Create a SchemaApplier instance with the loaded schema and a fresh log.
+
+        This factory method ensures immutability - each transformation gets its own
+        applier instance with an isolated processing log.
+
+        Args:
+            structured_log: Fresh StructuredProcessingLog for this transformation
 
         Returns:
-            List of log entries
+            New SchemaApplier instance with schema and log
         """
-        return self.processing_log.copy()
+        return SchemaApplier(self._schema_fields.copy(), structured_log)
+
+
+class SchemaApplier:
+    """
+    Immutable schema applier that ensures metadata conforms to schema.
+
+    This class is created per transformation and contains both the schema definition
+    and a processing log for that specific transformation. It is immutable after
+    construction, ensuring thread-safety and preventing accidental state mutations.
+    """
+
+    def __init__(
+        self,
+        schema_fields: Optional[Dict[str, Dict[str, Any]]] = None,
+        structured_log: Optional[StructuredProcessingLog] = None,
+    ) -> None:
+        """
+        Initialize a SchemaApplier with schema and log.
+
+        Note: For the new design pattern, use Schema.get_applier() instead.
+        Direct instantiation is supported for backward compatibility.
+
+        Args:
+            schema_fields: Dictionary of schema field definitions.
+                          If None, creates empty dict (for backward compatibility).
+            structured_log: Processing log for this transformation.
+                          If None, creates new log (for backward compatibility).
+        """
+        self._schema_fields = schema_fields if schema_fields is not None else {}
+        self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
+
+    def apply_schema(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Apply schema compliance to metadata.
+
+        Args:
+            metadata: Metadata with field and value mappings applied
+
+        Returns:
+            Schema-compliant metadata
+        """
+        compliant_metadata = {}
+
+        # Add all schema fields with appropriate values
+        for schema_field in self._schema_fields:
+            if schema_field in metadata:
+                compliant_metadata[schema_field] = metadata[schema_field]
+            else:
+                default_value = self._get_default_value(schema_field)
+                compliant_metadata[schema_field] = default_value
+
+        # Log obsolete fields that don't map to schema
+        for field_name, field_value in metadata.items():
+            if field_name not in self._schema_fields:
+                self._structured_log.add_unmapped_field_with_value(field_name, field_value)
+
+        return compliant_metadata
+
+    def _get_default_value(self, field_name: str) -> Any:
+        """
+        Get the default value for a schema field.
+
+        Args:
+            field_name: Name of the field
+
+        Returns:
+            Default value for the field, or None if no default specified
+        """
+        field_def = self._schema_fields.get(field_name, {})
+        return field_def.get("default_value")
+
+    def get_structured_log(self) -> StructuredProcessingLog:
+        """
+        Get the structured processing log for schema compliance operations.
+
+        Returns:
+            StructuredProcessingLog object
+        """
+        return self._structured_log
+
+    def get_schema_fields(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Get all schema field definitions.
+
+        Returns:
+            Dictionary of field definitions
+        """
+        return self._schema_fields.copy()
