@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Tuple, Union
 from pyjsonpatch import generate_patch
 
 from metadata_transformer.exceptions import FileProcessingError
-from metadata_transformer.field_mapper import FieldMapper
+from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.patch_applier import PatchApplier
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.schema_loader import SchemaLoader
@@ -21,7 +21,7 @@ class MetadataTransformer:
 
     def __init__(
         self,
-        field_mapper: FieldMapper,
+        field_mappings: FieldMappings,
         value_mapper: ValueMapper,
         schema_loader: SchemaLoader,
         patch_applier: PatchApplier,
@@ -30,16 +30,15 @@ class MetadataTransformer:
         Initialize the MetadataTransformer.
 
         Args:
-            field_mapper: Configured FieldMapper instance
+            field_mappings: FieldMappings instance
             value_mapper: Configured ValueMapper instance
-            schema_loader: Configured SchemaLoader instance
-            patch_applier: Configured PatchApplier instance
+            schema_loader: SchemaLoader instance
+            patch_applier: PatchApplier instance
         """
-        self.field_mapper = field_mapper
+        self.field_mappings = field_mappings
         self.value_mapper = value_mapper
         self.schema_loader = schema_loader
         self.patch_applier = patch_applier
-        self.structured_log: StructuredProcessingLog = StructuredProcessingLog()
 
     def transform_metadata_file(self, input_file: Path) -> Dict[str, Any]:
         """
@@ -54,18 +53,16 @@ class MetadataTransformer:
         Raises:
             FileProcessingError: If file can't be processed
         """
-        # Clear all processing logs to ensure clean state for each file
-        self.structured_log = StructuredProcessingLog()
+        # Create fresh logs for this transformation (immutability pattern)
+        value_mapper_log = StructuredProcessingLog()
+        patch_applier_log = StructuredProcessingLog()
 
-        # Clear component logs if they exist (handles both real and mock objects)
-        if hasattr(self.field_mapper, "clear_logs"):
-            self.field_mapper.clear_logs()
+        # Inject fresh logs into other components (they haven't been refactored yet)
+        if hasattr(self.value_mapper, "set_structured_log"):
+            self.value_mapper.set_structured_log(value_mapper_log)
 
-        if hasattr(self.value_mapper, "clear_logs"):
-            self.value_mapper.clear_logs()
-
-        if hasattr(self.patch_applier, "clear_logs"):
-            self.patch_applier.clear_logs()
+        if hasattr(self.patch_applier, "set_structured_log"):
+            self.patch_applier.set_structured_log(patch_applier_log)
 
         # File processing info moved to stdout - handled by CLI
 
@@ -77,7 +74,7 @@ class MetadataTransformer:
 
         # Transform the metadata
         try:
-            transformed_metadata, json_patches = self._transform_metadata(legacy_metadata)
+            transformed_metadata, json_patches, field_mapping_log = self._transform_metadata(legacy_metadata)
         except Exception as e:
             # Error handling moved to stdout - handled by CLI
             raise FileProcessingError(
@@ -88,22 +85,9 @@ class MetadataTransformer:
 
         # Combine structured logs from all components
         combined_structured_log = StructuredProcessingLog()
-        if hasattr(self.patch_applier, "get_structured_log"):
-            patch_log = self.patch_applier.get_structured_log()
-            if isinstance(patch_log, StructuredProcessingLog):
-                combined_structured_log.merge_with(patch_log)
-
-        if hasattr(self.field_mapper, "get_structured_log"):
-            field_log = self.field_mapper.get_structured_log()
-            if isinstance(field_log, StructuredProcessingLog):
-                combined_structured_log.merge_with(field_log)
-
-        if hasattr(self.value_mapper, "get_structured_log"):
-            value_log = self.value_mapper.get_structured_log()
-            if isinstance(value_log, StructuredProcessingLog):
-                combined_structured_log.merge_with(value_log)
-
-        combined_structured_log.merge_with(self.structured_log)
+        combined_structured_log.merge_with(patch_applier_log)
+        combined_structured_log.merge_with(field_mapping_log)
+        combined_structured_log.merge_with(value_mapper_log)
 
         # Build output result using original data as base
         output = loaded_object.copy()
@@ -149,12 +133,12 @@ class MetadataTransformer:
 
         return data
 
-    def _transform_metadata(self, legacy_metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
+    def _transform_metadata(self, legacy_metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], List[Dict[str, Any]], StructuredProcessingLog]:
         """
         Transform metadata through the 4-phase process.
 
         Args:
-            metadata: Legacy metadata dictionary
+            legacy_metadata: Legacy metadata dictionary
 
         Returns:
             Tuple of (transformed metadata dictionary, list of JSON patch operations)
@@ -167,7 +151,7 @@ class MetadataTransformer:
         all_patches.extend(phase0_patch)
 
         # Phase 1: Field Mapping
-        field_mapped_metadata = self._phase1_field_mapping(patched_metadata)
+        field_mapped_metadata, field_mapping_log = self._phase1_field_mapping(patched_metadata)
         phase1_patch = generate_patch(patched_metadata, field_mapped_metadata)
         all_patches.extend(phase1_patch)
 
@@ -181,7 +165,7 @@ class MetadataTransformer:
         phase3_patch = generate_patch(value_mapped_metadata, schema_compliant_metadata)
         all_patches.extend(phase3_patch)
 
-        return schema_compliant_metadata, all_patches
+        return schema_compliant_metadata, all_patches, field_mapping_log
 
     def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -195,7 +179,7 @@ class MetadataTransformer:
         """
         return self.patch_applier.apply_patches(metadata)
 
-    def _phase1_field_mapping(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
+    def _phase1_field_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 1: Apply field name mappings to transform legacy field names.
 
@@ -203,12 +187,15 @@ class MetadataTransformer:
             metadata: Legacy metadata dictionary
 
         Returns:
-            Metadata with mapped field names
+            Metadata with mapped field names and the processing log
         """
+        field_mapping_log = StructuredProcessingLog()
+        field_mapper = self.field_mappings.get_mapper(field_mapping_log)
+
         mapped_metadata: Dict[str, Any] = {}
 
         for legacy_field, value in metadata.items():
-            target_field = self.field_mapper.map_field(legacy_field)
+            target_field = field_mapper.map_field(legacy_field)
 
             if target_field is not None:
                 if target_field in mapped_metadata:
@@ -216,12 +203,13 @@ class MetadataTransformer:
                     pass
                 else:
                     mapped_metadata[target_field] = value
-                    self.field_mapper.log_field_mapping(legacy_field, target_field)
+                    if legacy_field != target_field: # Only log when legacy_field maps to a different field
+                        field_mapper.log_field_mapping(legacy_field, target_field)
             else:
                 # No mapping found - keep original field name
                 mapped_metadata[legacy_field] = value
 
-        return mapped_metadata
+        return mapped_metadata, field_mapping_log
 
     def _phase2_value_mapping(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -265,7 +253,8 @@ class MetadataTransformer:
         # Log obsolete fields that don't map to schema
         for field_name, field_value in metadata.items():
             if field_name not in schema_fields:
-                self.structured_log.add_unmapped_field_with_value(field_name, field_value)
+                # self.structured_log.add_unmapped_field_with_value(field_name, field_value)
+                pass
 
         return compliant_metadata
 

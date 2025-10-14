@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 import click
 
 from metadata_transformer.exceptions import MetadataTransformerError
-from metadata_transformer.field_mapper import FieldMapper
+from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.output_generator import OutputGenerator
 from metadata_transformer.patch_applier import PatchApplier
 from metadata_transformer.schema_loader import SchemaLoader
@@ -105,7 +105,7 @@ def main(
         if verbose:
             click.echo("Initializing metadata transformer components...")
 
-        field_mapper = FieldMapper()
+        field_mappings = FieldMappings()
         value_mapper = ValueMapper()
         schema_loader = SchemaLoader()
         patch_applier = PatchApplier()
@@ -115,10 +115,10 @@ def main(
         if verbose:
             click.echo(f"Loading field mappings from: {field_mapping_file}")
         try:
-            field_mapper.load_field_mapping_file(field_mapping_file)
+            field_mappings.load_field_mapping_file(field_mapping_file)
             if verbose:
                 click.echo(
-                    f"Loaded {len(field_mapper.get_all_mappings())} field mappings"
+                    f"Loaded {len(field_mappings.get_all_mappings())} field mappings"
                 )
         except Exception as e:
             click.echo(f"Warning: Error loading field mappings: {e}", err=True)
@@ -185,7 +185,7 @@ def main(
 
         # Initialize transformer
         transformer = MetadataTransformer(
-            field_mapper, value_mapper, schema_loader, patch_applier
+            field_mappings, value_mapper, schema_loader, patch_applier
         )
 
         # Process files
