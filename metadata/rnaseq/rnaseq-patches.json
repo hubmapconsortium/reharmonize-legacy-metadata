@@ -463,7 +463,7 @@
 {
     "when": {
       "__must__" : [
-        { "assay_type": "SNARE2-RNAseq" },
+        { "assay_type": "SNARE2-RNAseq" }
       ]
     },
     "then": {
