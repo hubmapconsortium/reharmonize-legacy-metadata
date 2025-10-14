@@ -101,10 +101,7 @@ class TestValueMappings:
 
             all_mappings = mappings.get_all_mappings()
             assert "instrument_vendor" in all_mappings
-            assert (
-                all_mappings["instrument_vendor"]["Zeiss"]
-                == "Zeiss Microscopy"
-            )
+            assert all_mappings["instrument_vendor"]["Zeiss"] == "Zeiss Microscopy"
             assert (
                 all_mappings["instrument_vendor"]["Thermo"]
                 == "Thermo Fisher Scientific"
@@ -205,9 +202,7 @@ class TestValueMapper:
 
     def test_map_value_with_mapping(self) -> None:
         """Test value mapping when mapping exists."""
-        value_mappings = {
-            "assay_type": {"AF": "Auto-fluorescence", "CODEX": "CODEX"}
-        }
+        value_mappings = {"assay_type": {"AF": "Auto-fluorescence", "CODEX": "CODEX"}}
         mapper = ValueMapper(value_mappings, ProcessingLogProvider())
 
         result = mapper.map_value("assay_type", "AF")

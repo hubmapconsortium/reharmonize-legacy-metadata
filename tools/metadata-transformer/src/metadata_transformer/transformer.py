@@ -6,11 +6,11 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from json_rules_engine import Patches
 from pyjsonpatch import generate_patch
 
 from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMappings
-from metadata_transformer.patch_applier import Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.schema_applier import Schema
@@ -67,7 +67,9 @@ class MetadataTransformer:
 
         # Transform the metadata
         try:
-            transformed_metadata, json_patches, transformation_log = self._transform_metadata(legacy_metadata)
+            transformed_metadata, transformation_log = self._transform_metadata(
+                legacy_metadata
+            )
         except Exception as e:
             # Error handling moved to stdout - handled by CLI
             raise FileProcessingError(
@@ -80,6 +82,7 @@ class MetadataTransformer:
         output = loaded_object.copy()
 
         # Sort JSON patches for consistency
+        json_patches = generate_patch(legacy_metadata, transformed_metadata)
         sorted_json_patches = self._sort_patches(json_patches)
 
         output["modified_metadata"] = transformed_metadata
@@ -120,7 +123,9 @@ class MetadataTransformer:
 
         return data
 
-    def _transform_metadata(self, legacy_metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], List[Dict[str, Any]], StructuredProcessingLog]:
+    def _transform_metadata(
+        self, legacy_metadata: Dict[str, Any]
+    ) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Transform metadata through the 4-phase process.
 
@@ -131,47 +136,48 @@ class MetadataTransformer:
             legacy_metadata: Legacy metadata dictionary
 
         Returns:
-            Tuple of (transformed metadata dictionary, list of JSON patch operations, merged processing log)
+            Tuple of (transformed metadata dictionary, combined processing log)
         """
-        all_patches = []
         combined_log = StructuredProcessingLog()
         current_metadata = legacy_metadata
 
         # Phase 0: Conditional Patching (if patches available)
         if self.patches is not None:
-            patched_metadata, patch_applier_log = self._phase0_conditional_patching(current_metadata)
-            phase0_patch = generate_patch(current_metadata, patched_metadata)
-            all_patches.extend(phase0_patch)
+            patched_metadata, patch_applier_log = self._phase0_conditional_patching(
+                current_metadata
+            )
             combined_log.merge_with(patch_applier_log)
             current_metadata = patched_metadata
 
         # Phase 1: Field Mapping (if field mappings available)
         if self.field_mappings is not None:
-            field_mapped_metadata, field_mapping_log = self._phase1_field_mapping(current_metadata)
-            phase1_patch = generate_patch(current_metadata, field_mapped_metadata)
-            all_patches.extend(phase1_patch)
+            field_mapped_metadata, field_mapping_log = self._phase1_field_mapping(
+                current_metadata
+            )
             combined_log.merge_with(field_mapping_log)
             current_metadata = field_mapped_metadata
 
         # Phase 2: Value Mapping (if value mappings available)
         if self.value_mappings is not None:
-            value_mapped_metadata, value_mapping_log = self._phase2_value_mapping(current_metadata)
-            phase2_patch = generate_patch(current_metadata, value_mapped_metadata)
-            all_patches.extend(phase2_patch)
+            value_mapped_metadata, value_mapping_log = self._phase2_value_mapping(
+                current_metadata
+            )
             combined_log.merge_with(value_mapping_log)
             current_metadata = value_mapped_metadata
 
         # Phase 3: Schema Compliance (if schema available)
         if self.schema is not None:
-            schema_compliant_metadata, schema_compliance_log = self._phase3_schema_compliance(current_metadata)
-            phase3_patch = generate_patch(current_metadata, schema_compliant_metadata)
-            all_patches.extend(phase3_patch)
+            schema_compliant_metadata, schema_compliance_log = (
+                self._phase3_schema_compliance(current_metadata)
+            )
             combined_log.merge_with(schema_compliance_log)
             current_metadata = schema_compliant_metadata
 
-        return current_metadata, all_patches, combined_log
+        return current_metadata, combined_log
 
-    def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
+    def _phase0_conditional_patching(
+        self, metadata: Dict[str, Any]
+    ) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 0: Apply conditional patches to metadata before field mapping.
 
@@ -179,15 +185,18 @@ class MetadataTransformer:
             metadata: Legacy metadata dictionary
 
         Returns:
-            Metadata with applicable patches applied and the processing log
+            Metadata with applicable patches applied and an empty processing log
         """
-        patch_applier = self.patches.get_applier(self.log_provider)
+        patch_applier = self.patches.get_applier()
 
         patched_metadata = patch_applier.apply_patches(metadata)
 
-        return patched_metadata, patch_applier.get_processing_log()
+        # Return empty log since patch applier no longer provides logging
+        return patched_metadata, StructuredProcessingLog()
 
-    def _phase1_field_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
+    def _phase1_field_mapping(
+        self, metadata: Dict[str, Any]
+    ) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 1: Apply field name mappings to transform legacy field names.
 
@@ -210,7 +219,9 @@ class MetadataTransformer:
                     pass
                 else:
                     mapped_metadata[target_field] = value
-                    if legacy_field != target_field: # Only log when legacy_field maps to a different field
+                    if (
+                        legacy_field != target_field
+                    ):  # Only log when legacy_field maps to a different field
                         field_mapper.log_field_mapping(legacy_field, target_field)
             else:
                 # No mapping found - keep original field name
@@ -218,7 +229,9 @@ class MetadataTransformer:
 
         return mapped_metadata, field_mapper.get_processing_log()
 
-    def _phase2_value_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
+    def _phase2_value_mapping(
+        self, metadata: Dict[str, Any]
+    ) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 2: Apply value mappings to transform field values.
 
@@ -238,7 +251,9 @@ class MetadataTransformer:
 
         return value_mapped_metadata, value_mapper.get_processing_log()
 
-    def _phase3_schema_compliance(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
+    def _phase3_schema_compliance(
+        self, metadata: Dict[str, Any]
+    ) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 3: Ensure metadata complies with target schema.
 
@@ -270,10 +285,9 @@ class MetadataTransformer:
         return sorted(
             patches,
             key=lambda x: (
-                x.get('op', ''),
-                x.get('path', ''),
-                x.get('from', ''),  # Include 'from' field for move operations
-                json.dumps(x, sort_keys=True)
-            )
+                x.get("op", ""),
+                x.get("path", ""),
+                x.get("from", ""),  # Include 'from' field for move operations
+                json.dumps(x, sort_keys=True),
+            ),
         )
-

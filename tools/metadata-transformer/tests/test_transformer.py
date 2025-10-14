@@ -8,10 +8,10 @@ from tempfile import TemporaryDirectory
 from unittest.mock import Mock
 
 import pytest
+from json_rules_engine import PatchApplier, Patches
 
 from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMapper, FieldMappings
-from metadata_transformer.patch_applier import PatchApplier, Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.schema_applier import Schema, SchemaApplier
@@ -37,7 +37,6 @@ class TestMetadataTransformer:
         # Set up default return values for processing logs
         self.field_mapper.get_processing_log.return_value = StructuredProcessingLog()
         self.value_mapper.get_processing_log.return_value = StructuredProcessingLog()
-        self.patch_applier.get_processing_log.return_value = StructuredProcessingLog()
         self.schema_applier.get_processing_log.return_value = StructuredProcessingLog()
 
         # Set up factory methods to return the mock mappers
@@ -69,7 +68,11 @@ class TestMetadataTransformer:
         self.log_provider = ProcessingLogProvider()
 
         self.transformer = MetadataTransformer(
-            self.patches, self.field_mappings, self.value_mappings, self.schema, self.log_provider
+            self.patches,
+            self.field_mappings,
+            self.value_mappings,
+            self.schema,
+            self.log_provider,
         )
 
     def test_init(self) -> None:
@@ -104,9 +107,7 @@ class TestMetadataTransformer:
             invalid_file = temp_path / "invalid_structure.json"
             invalid_file.write_text('"not an object"')
 
-            with pytest.raises(
-                FileProcessingError, match="must contain JSON object"
-            ):
+            with pytest.raises(FileProcessingError, match="must contain JSON object"):
                 self.transformer.transform_metadata_file(invalid_file)
 
     def test_transform_metadata_file_single_object(self) -> None:
@@ -170,9 +171,7 @@ class TestMetadataTransformer:
             metadata_file.write_text(json.dumps(metadata_array))
 
             # Arrays are no longer supported
-            with pytest.raises(
-                FileProcessingError, match="must contain JSON object"
-            ):
+            with pytest.raises(FileProcessingError, match="must contain JSON object"):
                 self.transformer.transform_metadata_file(metadata_file)
 
     def test_phase1_field_mapping(self) -> None:
@@ -234,7 +233,7 @@ class TestMetadataTransformer:
         expected_result = {
             "schema_field1": "value1",
             "schema_field2": "value2",
-            "schema_field3": "default_value"
+            "schema_field3": "default_value",
         }
         self.schema_applier.apply_schema.side_effect = None
         self.schema_applier.apply_schema.return_value = expected_result
@@ -259,11 +258,10 @@ class TestMetadataTransformer:
         # Set up minimal mocks
         self.schema.get_schema_fields.return_value = {}
 
-        result, patches, combined_log = self.transformer._transform_metadata(metadata)
+        result, combined_log = self.transformer._transform_metadata(metadata)
 
         # Should return empty dict since no metadata and no schema fields
         assert isinstance(result, dict)
-        assert isinstance(patches, list)
         assert isinstance(combined_log, StructuredProcessingLog)
 
     def test_get_structured_log(self) -> None:

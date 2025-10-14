@@ -72,35 +72,36 @@ class OutputGenerator:
             Formatted JSON string
         """
         # Keys that should have compact array formatting (one item per line)
-        compact_array_keys = {'json_patch'}
+        compact_array_keys = {"json_patch"}
 
-        lines = ['{']
+        lines = ["{"]
 
         items = list(data.items())
         for i, (key, value) in enumerate(items):
-            is_last = (i == len(items) - 1)
-            comma = '' if is_last else ','
+            is_last = i == len(items) - 1
+            comma = "" if is_last else ","
 
             if key in compact_array_keys and isinstance(value, list):
                 # Format array compactly (one item per line)
                 lines.append(f'  "{key}": [')
                 for j, item in enumerate(value):
-                    item_comma = '' if j == len(value) - 1 else ','
-                    item_json = json.dumps(item, ensure_ascii=False, separators=(', ', ': '))
-                    lines.append(f'    {item_json}{item_comma}')
-                lines.append(f'  ]{comma}')
+                    item_comma = "" if j == len(value) - 1 else ","
+                    item_json = json.dumps(
+                        item, ensure_ascii=False, separators=(", ", ": ")
+                    )
+                    lines.append(f"    {item_json}{item_comma}")
+                lines.append(f"  ]{comma}")
             else:
                 # Format normally with standard pretty-printing
                 value_json = json.dumps(value, indent=2, ensure_ascii=False)
                 # Indent the value appropriately
-                indented_value = '\n'.join(
-                    '  ' + line if line else line
-                    for line in value_json.split('\n')
+                indented_value = "\n".join(
+                    "  " + line if line else line for line in value_json.split("\n")
                 )
                 lines.append(f'  "{key}": {indented_value.lstrip()}{comma}')
 
-        lines.append('}')
-        return '\n'.join(lines)
+        lines.append("}")
+        return "\n".join(lines)
 
     def get_processing_log(self) -> List[str]:
         """

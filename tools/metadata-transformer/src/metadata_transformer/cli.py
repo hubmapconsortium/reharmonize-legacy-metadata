@@ -7,11 +7,11 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import click
+from json_rules_engine import Patches
 
 from metadata_transformer.exceptions import MetadataTransformerError
 from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.output_generator import OutputGenerator
-from metadata_transformer.patch_applier import Patches
 from metadata_transformer.processing_log_provider import ProcessingLogProvider
 from metadata_transformer.schema_applier import Schema
 from metadata_transformer.transformer import MetadataTransformer
@@ -160,7 +160,7 @@ def main(
             if verbose:
                 click.echo(f"Loading patches from directory: {patch_dir}")
             try:
-                patches.load_patches(patch_dir)
+                patches.load_patch_dir(patch_dir)
                 patches_count = patches.get_loaded_patches_count()
                 if verbose:
                     click.echo(f"Loaded {patches_count} patches from directory")

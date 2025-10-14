@@ -159,9 +159,7 @@ class ValueMapper:
             # Check if mapped_value is a list with multiple options
             if isinstance(mapped_value, list) and len(mapped_value) > 1:
                 # Don't replace the value, keep original and log need for manual selection
-                self._log.add_unmapped_value(
-                    field_name, legacy_value, mapped_value
-                )
+                self._log.add_unmapped_value(field_name, legacy_value, mapped_value)
                 return legacy_value
             else:
                 # Single value or single-item list - proceed with replacement
@@ -170,9 +168,7 @@ class ValueMapper:
                     mapped_value = mapped_value[0]
 
                 # Add to structured log
-                self._log.add_mapped_value(
-                    legacy_value, mapped_value, field_name
-                )
+                self._log.add_mapped_value(legacy_value, mapped_value, field_name)
 
                 return mapped_value
 
