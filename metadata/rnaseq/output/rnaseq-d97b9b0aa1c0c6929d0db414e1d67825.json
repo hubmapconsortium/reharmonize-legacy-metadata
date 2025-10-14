@@ -55,7 +55,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NextSeq 6000",
+    "acquisition_instrument_model": "NovaSeq",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -65,9 +65,9 @@
     "barcode_offset": "10,48,86",
     "barcode_read": "Read 2 (R2)",
     "barcode_size": "8,8,8",
-    "umi_offset": "0",
-    "umi_read": "Read 2 (R2)",
-    "umi_size": "10",
+    "umi_offset": null,
+    "umi_read": null,
+    "umi_size": null,
     "assay_input_entity": "single nucleus",
     "number_of_input_cells_or_nuclei": "2050000",
     "amount_of_input_analyte_value": "24000",
@@ -121,9 +121,9 @@
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "add", "path": "/umi_offset", "value": "0"},
-    {"op": "add", "path": "/umi_read", "value": "Read 2 (R2)"},
-    {"op": "add", "path": "/umi_size", "value": "10"},
+    {"op": "add", "path": "/umi_offset", "value": null},
+    {"op": "add", "path": "/umi_read", "value": null},
+    {"op": "add", "path": "/umi_size", "value": null},
     {"op": "move", "from": "/rnaseq_assay_input", "path": "/amount_of_input_analyte_value"},
     {"op": "move", "from": "/cell_barcode_offset", "path": "/barcode_offset"},
     {"op": "move", "from": "/cell_barcode_size", "path": "/barcode_size"},
@@ -153,7 +153,6 @@
     {"op": "remove", "path": "/sc_isolation_tissue_dissociation"},
     {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "70,6,104"}
@@ -184,14 +183,14 @@
       "sc_isolation_entity": "assay_input_entity",
       "sequencing_read_format": "sequencing_read_format",
       "sequencing_reagent_kit": "sequencing_reagent_kit",
-      "tissue_id": "parent_sample_id",
-      "umi_read": "umi_read",
-      "umi_size": "umi_size",
-      "umi_offset": "umi_offset"
+      "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
       "dataset_type": {
         "SNARE2-RNAseq": "RNAseq"
+      },
+      "barcode_read": {
+        "R2": "Read 2 (R2)"
       },
       "is_targeted": {
         "False": "No"
@@ -199,11 +198,23 @@
       "is_technical_replicate": {
         "False": "No"
       },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
+      },
       "sequencing_read_format": {
         "70/6/104": "70,6,104"
       }
     },
     "ambiguous_mappings": [
+      {
+        "field": "acquisition_instrument_model",
+        "value": "NovaSeq",
+        "permissible_values": [
+          "NovaSeq 6000",
+          "NovaSeq X",
+          "NovaSeq X Plus"
+        ]
+      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq 6000 S4 Reagent",

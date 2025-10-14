@@ -88,13 +88,13 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+    "sequencing_reagent_kit": "S4",
     "sequencing_read_format": "28,8,0,91",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10X Genomics",
-    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
-    "preparation_instrument_kit": "Chromium Single Cell B Chip Kit",
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
@@ -112,9 +112,9 @@
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_preparation_kit", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": "Chromium Single Cell B Chip Kit"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller, PN: GCG-SR-1"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10X Genomics"},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
@@ -130,8 +130,8 @@
     {"op": "move", "from": "/library_final_yield_unit", "path": "/library_output_amount_unit"},
     {"op": "move", "from": "/library_final_yield_value", "path": "/library_output_amount_value"},
     {"op": "move", "from": "/sc_isolation_cell_number", "path": "/number_of_input_cells_or_nuclei"},
-    {"op": "move", "from": "/library_pcr_cycles", "path": "/number_of_iterations_of_cdna_amplification"},
-    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_pcr_cycles_for_indexing"},
+    {"op": "move", "from": "/library_pcr_cycles_for_sample_index", "path": "/number_of_iterations_of_cdna_amplification"},
+    {"op": "move", "from": "/library_pcr_cycles", "path": "/number_of_pcr_cycles_for_indexing"},
     {"op": "move", "from": "/tissue_id", "path": "/parent_sample_id"},
     {"op": "move", "from": "/protocols_io_doi", "path": "/preparation_protocol_doi"},
     {"op": "remove", "path": "/assay_category"},
@@ -156,8 +156,7 @@
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "28,8,0,91"},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3"}
+    {"op": "replace", "path": "/sequencing_read_format", "value": "28,8,0,91"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -203,11 +202,23 @@
       "is_technical_replicate": {
         "0": "No"
       },
+      "assay_input_entity": {
+        "whole cells": "single cell"
+      },
       "sequencing_read_format": {
         "28/8/0/91": "28,8,0,91"
       }
     },
-    "ambiguous_mappings": [],
+    "ambiguous_mappings": [
+      {
+        "field": "sequencing_reagent_kit",
+        "value": "S4",
+        "permissible_values": [
+          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
+          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
+        ]
+      }
+    ],
     "excluded_data": {
       "assay_category": "sequence",
       "donor_id": "UFL0006",
