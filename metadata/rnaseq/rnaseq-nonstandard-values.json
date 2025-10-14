@@ -1,0 +1,41 @@
+{
+  "acquisition_instrument_model": "NovaSeq",
+  "sequencing_reagent_kit": [
+    "10X_scRNASeq_protocol",
+    "NovaSeq",
+    "NovaSeq 6000",
+    "NovaSeq 6000 Reagent",
+    "NovaSeq 6000 S1",
+    "NovaSeq 6000 S2",
+    "NovaSeq 6000 S4 Reagent",
+    "NovaSeq 6000 SP Reagent",
+    "P2",
+    "S4"
+  ],
+  "barcode_offset": [
+    "",
+    "1"
+  ],
+  "barcode_read": [
+    "",
+    "01regCARTIconHEAnm4_featurebcmatrixfiltered.tar",
+    "01regCARTIconHEAnm5_featurebcmatrixfiltered.tar",
+    "01regCARTIconHEAnm6_featurebcmatrixfiltered.tar",
+    "01regCHONDRconHEA_featurebcmatrixfiltered.tar",
+    "02regAVASMEconHEAnm1_featurebcmatrixfiltered.tar",
+    "02regMENISCconHEAnm2_featurebcmatrixfiltered.tar",
+    "02regMENISCconHEAnm3_featurebcmatrixfiltered.tar",
+    "02regMENISCconHEAnm4_featurebcmatrixfiltered.tar",
+    "02regMENISconHEAnm5_featurebcmatrixfiltered.tar",
+    "02regMENISconHEAnm6_featurebcmatrixfiltered.tar",
+    "02regMENISconHEAnm7_featurebcmatrixfiltered.tar",
+    "03regVASCMEconHEAnm1_featurebcmatrixfiltered.tar"
+  ],
+  "umi_offset": "17",
+  "barcode_size": [
+    "",
+    "26"
+  ],
+  "library_output_amount_unit": "",
+  "is_technical_replicate": ""
+}
