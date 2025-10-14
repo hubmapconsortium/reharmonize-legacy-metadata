@@ -11,7 +11,7 @@ import click
 from metadata_transformer.exceptions import MetadataTransformerError
 from metadata_transformer.field_mapper import FieldMappings
 from metadata_transformer.output_generator import OutputGenerator
-from metadata_transformer.patch_applier import PatchApplier
+from metadata_transformer.patch_applier import Patches
 from metadata_transformer.schema_loader import SchemaLoader
 from metadata_transformer.transformer import MetadataTransformer
 from metadata_transformer.value_mapper import ValueMappings
@@ -108,7 +108,7 @@ def main(
         field_mappings = FieldMappings()
         value_mappings = ValueMappings()
         schema_loader = SchemaLoader()
-        patch_applier = PatchApplier()
+        patches = Patches()
         output_generator = OutputGenerator()
 
         # Load mappings and schema
@@ -159,8 +159,8 @@ def main(
             if verbose:
                 click.echo(f"Loading patches from directory: {patch_dir}")
             try:
-                patch_applier.load_patches(patch_dir)
-                patches_count = patch_applier.get_loaded_patches_count()
+                patches.load_patches(patch_dir)
+                patches_count = patches.get_loaded_patches_count()
                 if verbose:
                     click.echo(f"Loaded {patches_count} patches from directory")
             except Exception as e:
@@ -173,8 +173,8 @@ def main(
             if verbose:
                 click.echo(f"Loading patches from file: {patch_file}")
             try:
-                patch_applier.load_patch_file(patch_file)
-                patches_count = patch_applier.get_loaded_patches_count()
+                patches.load_patch_file(patch_file)
+                patches_count = patches.get_loaded_patches_count()
                 if verbose:
                     click.echo(f"Loaded {patches_count} total patches")
             except Exception as e:
@@ -185,7 +185,7 @@ def main(
 
         # Initialize transformer
         transformer = MetadataTransformer(
-            field_mappings, value_mappings, schema_loader, patch_applier
+            field_mappings, value_mappings, schema_loader, patches
         )
 
         # Process files

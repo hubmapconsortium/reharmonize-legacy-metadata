@@ -11,7 +11,7 @@ import pytest
 
 from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMapper, FieldMappings
-from metadata_transformer.patch_applier import PatchApplier
+from metadata_transformer.patch_applier import PatchApplier, Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.schema_loader import SchemaLoader
 from metadata_transformer.transformer import MetadataTransformer
@@ -30,6 +30,7 @@ class TestMetadataTransformer:
         self.value_mappings = Mock(spec=ValueMappings)
         self.schema_loader = Mock(spec=SchemaLoader)
         self.patch_applier = Mock(spec=PatchApplier)
+        self.patches = Mock(spec=Patches)
 
         # Set up default return values for structured logs
         self.field_mapper.get_structured_log.return_value = StructuredProcessingLog()
@@ -43,8 +44,11 @@ class TestMetadataTransformer:
         # Set up patch_applier to return metadata unchanged by default
         self.patch_applier.apply_patches.side_effect = lambda x: x
 
+        # Set up patches factory to return the mock applier
+        self.patches.get_applier.return_value = self.patch_applier
+
         self.transformer = MetadataTransformer(
-            self.field_mappings, self.value_mappings, self.schema_loader, self.patch_applier
+            self.field_mappings, self.value_mappings, self.schema_loader, self.patches
         )
 
     def test_init(self) -> None:
@@ -52,7 +56,7 @@ class TestMetadataTransformer:
         assert self.transformer.field_mappings is self.field_mappings
         assert self.transformer.value_mappings is self.value_mappings
         assert self.transformer.schema_loader is self.schema_loader
-        assert self.transformer.patch_applier is self.patch_applier
+        assert self.transformer.patches is self.patches
 
     def test_transform_metadata_file_nonexistent(self) -> None:
         """Test transforming non-existent file raises error."""

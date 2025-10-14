@@ -10,7 +10,7 @@ from pyjsonpatch import generate_patch
 
 from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMappings
-from metadata_transformer.patch_applier import PatchApplier
+from metadata_transformer.patch_applier import Patches
 from metadata_transformer.processing_log import StructuredProcessingLog
 from metadata_transformer.schema_loader import SchemaLoader
 from metadata_transformer.value_mapper import ValueMappings
@@ -24,7 +24,7 @@ class MetadataTransformer:
         field_mappings: FieldMappings,
         value_mappings: ValueMappings,
         schema_loader: SchemaLoader,
-        patch_applier: PatchApplier,
+        patches: Patches,
     ) -> None:
         """
         Initialize the MetadataTransformer.
@@ -33,12 +33,12 @@ class MetadataTransformer:
             field_mappings: FieldMappings instance
             value_mappings: ValueMappings instance
             schema_loader: SchemaLoader instance
-            patch_applier: PatchApplier instance
+            patches: Patches instance
         """
         self.field_mappings = field_mappings
         self.value_mappings = value_mappings
         self.schema_loader = schema_loader
-        self.patch_applier = patch_applier
+        self.patches = patches
 
     def transform_metadata_file(self, input_file: Path) -> Dict[str, Any]:
         """
@@ -53,13 +53,6 @@ class MetadataTransformer:
         Raises:
             FileProcessingError: If file can't be processed
         """
-        # Create fresh logs for this transformation (immutability pattern)
-        patch_applier_log = StructuredProcessingLog()
-
-        # Inject fresh logs into other components (they haven't been refactored yet)
-        if hasattr(self.patch_applier, "set_structured_log"):
-            self.patch_applier.set_structured_log(patch_applier_log)
-
         # File processing info moved to stdout - handled by CLI
 
         # Load legacy metadata from file
@@ -79,11 +72,6 @@ class MetadataTransformer:
 
         # File processing completion info moved to stdout - handled by CLI
 
-        # Combine structured logs from all components
-        combined_structured_log = StructuredProcessingLog()
-        combined_structured_log.merge_with(patch_applier_log)
-        combined_structured_log.merge_with(transformation_log)
-
         # Build output result using original data as base
         output = loaded_object.copy()
 
@@ -92,7 +80,7 @@ class MetadataTransformer:
 
         output["modified_metadata"] = transformed_metadata
         output["json_patch"] = sorted_json_patches
-        output["processing_log"] = combined_structured_log.to_dict()
+        output["processing_log"] = transformation_log.to_dict()
 
         return output
 
@@ -141,7 +129,7 @@ class MetadataTransformer:
         all_patches = []
 
         # Phase 0: Conditional Patching
-        patched_metadata = self._phase0_conditional_patching(legacy_metadata)
+        patched_metadata, patch_applier_log = self._phase0_conditional_patching(legacy_metadata)
         phase0_patch = generate_patch(legacy_metadata, patched_metadata)
         all_patches.extend(phase0_patch)
 
@@ -160,14 +148,15 @@ class MetadataTransformer:
         phase3_patch = generate_patch(value_mapped_metadata, schema_compliant_metadata)
         all_patches.extend(phase3_patch)
 
-        # Merge field and value mapping logs
+        # Merge logs from all phases
         combined_log = StructuredProcessingLog()
+        combined_log.merge_with(patch_applier_log)
         combined_log.merge_with(field_mapping_log)
         combined_log.merge_with(value_mapping_log)
 
         return schema_compliant_metadata, all_patches, combined_log
 
-    def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
+    def _phase0_conditional_patching(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """
         Phase 0: Apply conditional patches to metadata before field mapping.
 
@@ -175,9 +164,14 @@ class MetadataTransformer:
             metadata: Legacy metadata dictionary
 
         Returns:
-            Metadata with applicable patches applied
+            Metadata with applicable patches applied and the processing log
         """
-        return self.patch_applier.apply_patches(metadata)
+        patch_applier_log = StructuredProcessingLog()
+        patch_applier = self.patches.get_applier(patch_applier_log)
+
+        patched_metadata = patch_applier.apply_patches(metadata)
+
+        return patched_metadata, patch_applier_log
 
     def _phase1_field_mapping(self, metadata: Dict[str, Any]) -> Tuple[Dict[str, Any], StructuredProcessingLog]:
         """

@@ -4,19 +4,24 @@ Conditional patch application functionality for applying patches to metadata bef
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from metadata_transformer.exceptions import FieldMappingError
 from metadata_transformer.processing_log import StructuredProcessingLog
 
 
-class PatchApplier:
-    """Handles loading and application of conditional patches to metadata."""
+class Patches:
+    """
+    Repository holding patches loaded from files.
+
+    This class is responsible for loading and storing patch rules.
+    Once loaded, the patches can be used to create multiple PatchApplier
+    instances for concurrent or sequential transformations.
+    """
 
     def __init__(self) -> None:
-        """Initialize the PatchApplier."""
-        self.patches: List[Dict[str, Any]] = []
-        self.structured_log: StructuredProcessingLog = StructuredProcessingLog()
+        """Initialize an empty Patches repository."""
+        self._patches: List[Dict[str, Any]] = []
 
     def load_patches(self, patches_dir: Path) -> None:
         """
@@ -94,7 +99,7 @@ class PatchApplier:
             # Add source file info for debugging
             patch_with_source = patch.copy()
             patch_with_source["_source_file"] = str(patch_file)
-            self.patches.append(patch_with_source)
+            self._patches.append(patch_with_source)
 
     def _validate_patch_structure(
         self, patch: Dict[str, Any], index: int, file_path: Path
@@ -173,6 +178,69 @@ class PatchApplier:
                     self._validate_when_clause(item, f"{context}.{key}[{i}]")
                 # Otherwise it's a simple field-value dict (no further validation needed)
 
+    def get_applier(self, structured_log: StructuredProcessingLog) -> "PatchApplier":
+        """
+        Create a PatchApplier instance with the loaded patches and a fresh log.
+
+        This factory method ensures immutability - each transformation gets its own
+        applier instance with an isolated processing log.
+
+        Args:
+            structured_log: Fresh StructuredProcessingLog for this transformation
+
+        Returns:
+            New PatchApplier instance with patches and log
+        """
+        return PatchApplier(self._patches.copy(), structured_log)
+
+    def get_all_patches(self) -> List[Dict[str, Any]]:
+        """
+        Get all loaded patches.
+
+        Returns:
+            List of all patches
+        """
+        return self._patches.copy()
+
+    def get_loaded_patches_count(self) -> int:
+        """
+        Get the number of loaded patches.
+
+        Returns:
+            Number of patches loaded
+        """
+        return len(self._patches)
+
+
+class PatchApplier:
+    """
+    Immutable patch applier that applies conditional patches with logging.
+
+    This class is created per transformation and contains both the patch rules
+    and a processing log for that specific transformation. It is immutable after
+    construction, ensuring thread-safety and preventing accidental state mutations.
+    """
+
+    def __init__(
+        self,
+        patches: Optional[List[Dict[str, Any]]] = None,
+        structured_log: Optional[StructuredProcessingLog] = None,
+    ) -> None:
+        """
+        Initialize a PatchApplier with patches and log.
+
+        Note: For the new design pattern, use Patches.get_applier() instead.
+        Direct instantiation is supported for backward compatibility.
+
+        Args:
+            patches: List of patch rules.
+                    If None, creates empty list (for backward compatibility).
+            structured_log: Processing log for this transformation.
+                          If None, creates new log (for backward compatibility).
+        """
+        self._patches = patches if patches is not None else []
+        self._structured_log = structured_log if structured_log is not None else StructuredProcessingLog()
+
     def apply_patches(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
         """
         Apply all loaded patches to the metadata based on their conditions.
@@ -185,7 +253,7 @@ class PatchApplier:
         """
         patched_metadata = metadata.copy()
 
-        for patch in self.patches:
+        for patch in self._patches:
             if self._evaluate_conditions(patch["when"], metadata):
                 # Apply the patch
                 for field_name, field_value in patch["then"].items():
@@ -295,7 +363,7 @@ class PatchApplier:
         """
         # Log each field that was patched
         for field_name, field_value in patch["then"].items():
-            self.structured_log.add_applied_patch(
+            self._structured_log.add_applied_patch(
                 field_name=field_name, field_value=field_value, conditions=patch["when"]
             )
 
@@ -306,11 +374,16 @@ class PatchApplier:
         Returns:
             StructuredProcessingLog object
         """
-        return self.structured_log
+        return self._structured_log
 
-    def clear_logs(self) -> None:
-        """Clear structured processing log."""
-        self.structured_log = StructuredProcessingLog()
+    def get_all_patches(self) -> List[Dict[str, Any]]:
+        """
+        Get all patches.
+
+        Returns:
+            List of all patches
+        """
+        return self._patches.copy()
 
     def get_loaded_patches_count(self) -> int:
         """
@@ -319,4 +392,4 @@ class PatchApplier:
         Returns:
             Number of patches loaded
         """
-        return len(self.patches)
+        return len(self._patches)
