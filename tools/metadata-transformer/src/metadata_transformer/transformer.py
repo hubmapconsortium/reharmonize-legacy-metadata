@@ -3,9 +3,10 @@ Core metadata transformation logic implementing the 4-phase transformation proce
 """
 
 import json
-import jsonpatch
 from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union
+
+from pyjsonpatch import generate_patch
 
 from metadata_transformer.exceptions import FileProcessingError
 from metadata_transformer.field_mapper import FieldMapper
@@ -162,23 +163,23 @@ class MetadataTransformer:
 
         # Phase 0: Conditional Patching
         patched_metadata = self._phase0_conditional_patching(legacy_metadata)
-        phase0_patch = jsonpatch.make_patch(legacy_metadata, patched_metadata)
-        all_patches.extend(phase0_patch.patch)
+        phase0_patch = generate_patch(legacy_metadata, patched_metadata)
+        all_patches.extend(phase0_patch)
 
         # Phase 1: Field Mapping
         field_mapped_metadata = self._phase1_field_mapping(patched_metadata)
-        phase1_patch = jsonpatch.make_patch(patched_metadata, field_mapped_metadata)
-        all_patches.extend(phase1_patch.patch)
+        phase1_patch = generate_patch(patched_metadata, field_mapped_metadata)
+        all_patches.extend(phase1_patch)
 
         # Phase 2: Value Mapping
         value_mapped_metadata = self._phase2_value_mapping(field_mapped_metadata)
-        phase2_patch = jsonpatch.make_patch(field_mapped_metadata, value_mapped_metadata)
-        all_patches.extend(phase2_patch.patch)
+        phase2_patch = generate_patch(field_mapped_metadata, value_mapped_metadata)
+        all_patches.extend(phase2_patch)
 
         # Phase 3: Schema Compliance
         schema_compliant_metadata = self._phase3_schema_compliance(value_mapped_metadata)
-        phase3_patch = jsonpatch.make_patch(value_mapped_metadata, schema_compliant_metadata)
-        all_patches.extend(phase3_patch.patch)
+        phase3_patch = generate_patch(value_mapped_metadata, schema_compliant_metadata)
+        all_patches.extend(phase3_patch)
 
         return schema_compliant_metadata, all_patches
 
@@ -272,6 +273,9 @@ class MetadataTransformer:
         """
         Sort JSON Patch operations for consistency.
 
+        Sorts by operation type, path, from field (for move ops), and full JSON.
+        This ensures deterministic ordering for the patch operations.
+
         Args:
             patches: List of JSON Patch operations
 
@@ -280,7 +284,12 @@ class MetadataTransformer:
         """
         return sorted(
             patches,
-            key=lambda x: (x.get('op', ''), x.get('path', ''), json.dumps(x, sort_keys=True))
+            key=lambda x: (
+                x.get('op', ''),
+                x.get('path', ''),
+                x.get('from', ''),  # Include 'from' field for move operations
+                json.dumps(x, sort_keys=True)
+            )
         )
 
     def get_structured_log(self) -> StructuredProcessingLog:
