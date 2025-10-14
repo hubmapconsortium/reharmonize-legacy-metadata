@@ -191,10 +191,7 @@
     "when": {
       "__must__" : [
         { "acquisition_instrument_vendor": "Illumina" },
-        { "__should__": [
-          { "acquisition_instrument_model": "NovaSeq6000" },
-          { "acquisition_instrument_model": "NovaSeq" }
-        ]}
+        { "acquisition_instrument_model": "NovaSeq6000" }
       ]
     },
     "then": {
@@ -461,6 +458,79 @@
     },
     "then": {
       "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "assay_type": "SNARE2-RNAseq" }
+      ]
+    },
+    "then": {
+      "preparation_instrument_model": null
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "assay_type": "SNARE2-RNAseq" },
+        { "rnaseq_assay_method": "SNARE2-RNAseq-RNA" }
+      ]
+    },
+    "then": {
+      "rnaseq_assay_method": "SNARE-Seq2-RNA"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "NovaSeq" },
+        { "__should__": [
+          { "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent" },
+          { "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent" },
+          { "sequencing_reagent_kit": "NovaSeq 6000 Reagent" }
+        ]}
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "NovaSeq 6000"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "NovaSeq" },
+        { "__should__": [
+          { "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent" },
+          { "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent" },
+          { "sequencing_reagent_kit": "NovaSeq 6000 Reagent" }
+        ]}
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "NovaSeq 6000"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "NovaSeq" },
+        { "sequencing_reagent_kit": "NovaSeq" },
+        { "__should__": [
+          { "execution_datetime": "2020-06-16 09:30" },
+          { "execution_datetime": "2020-08-06 09:30" },
+          { "execution_datetime": "2020-08-11 09:30" },
+          { "execution_datetime": "2020-09-17 09:30" },
+          { "execution_datetime": "2020-12-09 11:00" },
+          { "execution_datetime": "2021-02-05 10:00" },
+          { "execution_datetime": "2021-03-12 09:30" },
+          { "execution_datetime": "2021-03-18 09:30" },
+          { "execution_datetime": "2021-03-20 09:30" }
+        ]}
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "NovaSeq 6000"
     }
   }
 ]

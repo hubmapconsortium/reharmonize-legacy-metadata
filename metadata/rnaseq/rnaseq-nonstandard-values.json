@@ -1,0 +1,51 @@
+{
+  "sequencing_reagent_kit": [
+    "10X_scRNASeq_protocol",
+    "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+    "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400",
+    "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811",
+    "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3; PN 20046811",
+    "NextSeq 2000 P3 Reagents (100 Cycles); PN 20040559",
+    "NextSeq 500/550 High Output Kit v2.5 (150 Cycles); PN 20024907",
+    "NovaSeq",
+    "NovaSeq 6000",
+    "NovaSeq 6000 Reagent",
+    "NovaSeq 6000 S1",
+    "NovaSeq 6000 S2",
+    "NovaSeq 6000 S4 Reagent",
+    "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
+    "NovaSeq 6000 SP Reagent"
+  ],
+  "library_preparation_kit": [
+    "10X Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
+    "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+    "10X Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092",
+    "10x Chromium Single Cell 3' Reagent Kits v2",
+    "10x Chromium Single Cell 3' Reagent Kits v3",
+    "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+    "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075"
+  ],
+  "sample_indexing_kit": [
+    "Chromium i7 Multiplex Kit, 96 rxns PN-120262",
+    "Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
+    "Dual Index Kit TT Set A, 96 rxns PN-1000215",
+    "Dual Index Kit TT Set A, 96 rxns; PN-1000215"
+  ],
+  "preparation_instrument_vendor": "10X Genomics",
+  "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
+  "preparation_instrument_kit": [
+    "Chromium Next GEM Chip G Single Cell Kit",
+    "Chromium Next GEM Chip J Single Cell Kit",
+    "Chromium Single Cell A Chip Kit",
+    "Chromium Single Cell B Chip Kit",
+    "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074"
+  ],
+  "acquisition_instrument_model": "NextSeq 6000",
+  "library_output_amount_unit": "",
+  "is_technical_replicate": "",
+  "barcode_offset": [
+    "",
+    "1"
+  ],
+  "barcode_size": "26"
+}
