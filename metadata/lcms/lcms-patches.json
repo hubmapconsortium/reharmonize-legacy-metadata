@@ -1,1 +1,13 @@
-[]
+[
+{
+    "when": {
+      "__must__" : [
+        { "lc_instrument_model": "Ultimate 3000 RSLCnano system" }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System",
+      "lc_instrument_vendor" : "Thermo Fisher Scientific"
+    }
+  }
+]
