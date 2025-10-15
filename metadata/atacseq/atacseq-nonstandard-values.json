@@ -1,0 +1,27 @@
+{
+  "library_preparation_kit": [
+    "IDT for Illumina - Nextera DNA UD Indexes Set C",
+    "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit"
+  ],
+  "transposition_reagent_kit": [
+    "",
+    "1000075",
+    "1000110",
+    "1000175",
+    "1000280",
+    "163732",
+    "200034197",
+    "20034197"
+  ],
+  "acquisition_instrument_model": "NovaSeq",
+  "barcode_size": "24",
+  "sequencing_reagent_kit": [
+    "Nextseq500",
+    "NovaSeq",
+    "NovaSeq 6000 S4 Reagent",
+    "NovaSeq 6000 SP Reagent",
+    "NovaSeq6000",
+    "Novaseq 6000 S1XP"
+  ],
+  "transposition_method": "snATACseq"
+}
