@@ -1,10 +1,10 @@
-# json-conditional-patch
+# JSON Rules Engine
 
 A Python library for applying conditional JSON patches based on logical rules.
 
 ## Overview
 
-`json-conditional-patch` provides a powerful way to conditionally modify JSON objects based on their content. It uses a rule-based system with `__must__` (AND) and `__should__` (OR) operators to evaluate conditions and apply patches when those conditions are met.
+`json-rules-engine` provides a powerful way to conditionally modify JSON objects based on their content. It uses a rule-based system with `__must__` (AND) and `__should__` (OR) operators to evaluate conditions and apply patches when those conditions are met.
 
 ## Features
 
@@ -18,7 +18,7 @@ A Python library for applying conditional JSON patches based on logical rules.
 ## Installation
 
 ```bash
-pip install json-conditional-patch
+pip install json-rules-engine
 ```
 
 For development:
@@ -30,7 +30,7 @@ pip install -e ".[dev]"
 ## Quick Start
 
 ```python
-from json_conditional_patch import Patches, PatchApplier
+from json_rules_engine import Patches, PatchApplier
 
 # Load patches from a directory
 patches = Patches()
@@ -172,7 +172,7 @@ Exception raised when there are issues with patch operations.
 ### Basic Patching
 
 ```python
-from json_conditional_patch import Patches
+from json_rules_engine import Patches
 
 # Create and load patches
 patches = Patches()
@@ -188,7 +188,7 @@ result = applier.apply_patches(data)
 
 ```python
 from pathlib import Path
-from json_conditional_patch import Patches
+from json_rules_engine import Patches
 
 patches = Patches()
 
@@ -257,10 +257,6 @@ flake8 src/ tests/
 ## License
 
 MIT License
-
-## Author
-
-Josef Hardi (johardi@stanford.edu)
 
 ## Contributing
 
