@@ -1,0 +1,34 @@
+{
+  "lc_column_vendor": [
+    "",
+    "Agilent Technologies",
+    "Millipore",
+    "Self-packed",
+    "Sepex",
+    "self-packed"
+  ],
+  "ms_scan_mode": [
+    "MS/MS",
+    "full MS (all samples), MS/MS on pool sample"
+  ],
+  "lc_temperature_unit": [
+    "",
+    "C"
+  ],
+  "ion_mobility": "",
+  "spatial_sampling_technique": "",
+  "spatial_sampling_type": "",
+  "lc_instrument_vendor": [
+    "Shimadzu",
+    "Waters "
+  ],
+  "lc_column_length_unit": "",
+  "lc_inner_diameter_unit": "",
+  "lc_flow_rate_unit": "",
+  "data_collection_mode": [
+    "",
+    "DIa"
+  ],
+  "ms_ionization_technique": "NanoSpray",
+  "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System"
+}
