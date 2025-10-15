@@ -19,6 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install PyYAML
+          pip install -e tools/json-rules-engine
           pip install -e tools/metadata-transformer
 
       - name: Generate field mapping
