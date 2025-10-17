@@ -39,7 +39,7 @@
     },
     "then": {
       "assay_input_entity": "single cell",
-      "preparation_instrument_vendor": "10X Genomics"
+      "preparation_instrument_vendor": "10x Genomics"
     }
   },
   {
@@ -57,8 +57,8 @@
       "umi_size": "10",
       "umi_offset": "16",
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_model": "Chromium Controller; PN GCG-SR-1",
-      "preparation_instrument_kit": "Chromium Single Cell A Chip Kit"
+      "preparation_instrument_model": "Chromium Controller",
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell A Chip Kit"
     }
   },
   {
@@ -151,7 +151,7 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v3"
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' Reagent Kits v3"
     }
   },
   {
@@ -162,8 +162,8 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10x Chromium Single Cell 3' Reagent Kits v2",
-      "rnaseq_assay_method": "10x Chromium Single Cell 3' Reagent Kits v2"
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' Reagent Kits v2",
+      "rnaseq_assay_method": "10x Genomics; Chromium Single Cell 3' Reagent Kits v2"
     }
   },
   {
@@ -184,7 +184,7 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811"
+      "sequencing_reagent_kit": "Illumina; NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811"
     }
   },
   {
@@ -195,7 +195,7 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "NextSeq 6000"
+      "acquisition_instrument_model": "NovaSeq 6000"
     }
   },
 {
@@ -220,10 +220,10 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
-      "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+      "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215",
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Next GEM Chip J Single Cell Kit"
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit"
     }
   },
 {
@@ -237,10 +237,10 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10X Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
-      "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
+      "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215",
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Next GEM Chip J Single Cell Kit"
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit"
     }
   },
 {
@@ -251,10 +251,10 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10X Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns; PN-1000092",
-      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns; PN-1000092",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit"
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
   },
 {
@@ -265,10 +265,10 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10X Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns; PN-1000269",
-      "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns; PN-1000269",
+      "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215",
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Next GEM Chip G Single Cell Kit"
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip G Single Cell Kit"
     }
   },
   {
@@ -290,22 +290,22 @@
     },
     "then": {
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_model": "Chromium Controller; PN GCG-SR-1",
-      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit"
+      "preparation_instrument_model": "Chromium Controller",
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
   },
 {
     "when": {
       "__must__" : [
         { "assay_type": "scRNAseq-10xGenomics-v3" },
-        { "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092" }
+        { "library_preparation_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092" }
       ]
     },
     "then": {
-      "library_preparation_kit": "10X Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092",
-      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns PN-120262",
-      "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit"
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns PN-120262",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
   },
 {
@@ -316,10 +316,10 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10X Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
-      "sample_indexing_kit": "Dual Index Kit TT Set A, 96 rxns PN-1000215",
-      "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Next GEM Chip G Single Cell Kit"
+      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
+      "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns PN-1000215",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip G Single Cell Kit"
     }
   },
 {
@@ -329,7 +329,7 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "NextSeq 500/550 High Output Kit v2.5 (150 Cycles); PN 20024907"
+      "sequencing_reagent_kit": "Illumina; NextSeq 500/550 High Output Kit v2.5 (150 Cycles); PN 20024907"
     }
   },
 {
@@ -339,7 +339,7 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "NextSeq 2000 P3 Reagents (100 Cycles); PN 20040559"
+      "sequencing_reagent_kit": "Illumina; NextSeq 2000 P3 Reagents (100 Cycles); PN 20040559"
     }
   },
 {
@@ -349,7 +349,7 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "NextSeq 1000/2000 P2 Reagents (100 Cycles) v3; PN 20046811"
+      "sequencing_reagent_kit": "Illumina; NextSeq 1000/2000 P2 Reagents (100 Cycles) v3; PN 20046811"
     }
   },
 {
@@ -359,9 +359,9 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
-      "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit"
+      "sequencing_reagent_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
   },
 {
@@ -371,11 +371,11 @@
       ]
     },
     "then": {
-      "rnaseq_assay_method": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
-      "library_preparation_kit": "Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
-      "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit, 16 rxns PN-1000074",
-      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262"
+      "rnaseq_assay_method": "10x Genomics; Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns PN-1000075",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit, 16 rxns PN-1000074",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN-120262"
     }
   },
 {
@@ -386,10 +386,10 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
       "preparation_instrument_vendor": "10X Genomics",
-      "preparation_instrument_kit": "Chromium Single Cell B Chip Kit",
-      "sample_indexing_kit": "Chromium i7 Multiplex Kit, 96 rxns; PN-120262"
+      "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN-120262"
     }
   },
 {
@@ -457,7 +457,7 @@
       ]
     },
     "then": {
-      "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
 {
@@ -493,7 +493,7 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "NovaSeq 6000"
+      "acquisition_instrument_model": "Illumina; NovaSeq 6000"
     }
   },
 {
@@ -508,7 +508,7 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "NovaSeq 6000"
+      "acquisition_instrument_model": "Illumina; NovaSeq 6000"
     }
   },
 {
@@ -530,7 +530,66 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "NovaSeq 6000"
+      "acquisition_instrument_model": "Illumina; NovaSeq 6000"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bfwajpae" },
+        { "cell_barcode_size": "26"}
+      ]
+    },
+    "then": {
+      "cell_barcode_size" : "16"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bfwajpae" },
+        { "cell_barcode_offset": "1"}
+      ]
+    },
+    "then": {
+      "cell_barcode_offset": "0"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "cell_barcode_offset": null},
+        { "__should__": [
+          { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
+          { "rnaseq_assay_method": "10x Genomics; Chromium Single Cell 3' Reagent Kits v3.1" }
+        ]}
+      ]
+    },
+    "then": {
+      "cell_barcode_offset": "0"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "bulk RNA"}
+      ]
+    },
+    "then": {
+      "cell_barcode_offset": "0",
+      "cell_barcode_size": "0"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "sciRNAseq"}
+      ]
+    },
+    "then": {
+      "cell_barcode_offset": "0,14",
+      "cell_barcode_size": "10,10",
+      "cell_barcode_read": "R1"
     }
   }
 ]
