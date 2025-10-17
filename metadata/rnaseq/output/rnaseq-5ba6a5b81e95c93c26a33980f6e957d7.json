@@ -88,13 +88,13 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+    "sequencing_reagent_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
     "sequencing_read_format": "28,8,0,91",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10X Genomics",
-    "preparation_instrument_model": "Chromium Controller, PN: GCG-SR-1",
-    "preparation_instrument_kit": "Chromium Single Cell B Chip Kit",
+    "preparation_instrument_vendor": "10x Genomics",
+    "preparation_instrument_model": "Chromium Controller",
+    "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
@@ -120,9 +120,9 @@
     {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "15"},
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "15"},
     {"op": "add", "path": "/parent_sample_id", "value": "UFL0007-SP-1-2-2"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": "Chromium Single Cell B Chip Kit"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller, PN: GCG-SR-1"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10X Genomics"},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Single Cell B Chip Kit"},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.be79jhr6"},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
@@ -166,7 +166,7 @@
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "28,8,0,91"},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3"}
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3"}
   ],
   "processing_log": {
     "field_mappings": {

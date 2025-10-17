@@ -50,7 +50,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NextSeq 6000",
+    "acquisition_instrument_model": "NovaSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -157,7 +157,7 @@
     {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
     {"op": "remove", "path": "/tissue_id"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 6000"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "150,8,8,150"},
     {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"}
