@@ -1,0 +1,68 @@
+name: Transform Histology legacy metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyYAML
+          pip install -e tools/json-rules-engine
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/histology/histology-field-mappings.csv \
+            metadata/histology/histology-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/histology/latest/histology.yml" \
+            metadata/histology/histology-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/histology/histology-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/histology/histology-schema.json \
+            --patch-file metadata/histology/histology-patches.json \
+            --input-dir metadata/histology/input \
+            --output-dir metadata/histology/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/histology/output
+          git commit -m "Transform Histology legacy metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Find non-standard values
+        run: |
+          python scripts/find-nonstandard-values.py \
+            metadata/histology/output \
+            metadata/histology/histology-schema.json \
+            metadata/histology/histology-nonstandard-values.json
+
+      - name: Commit non-standard values
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/histology/histology-nonstandard-values.json
+          git commit -m "Find non-standard values in Histology metadata (automated)" || echo "No changes to commit"
+          git push

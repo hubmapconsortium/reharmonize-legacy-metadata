@@ -1,0 +1,4 @@
+Name,Description,Example
+assay_category,,
+assay_type,,
+is_cedar,Identifies whether the version is hosted by CEDAR,https://openview.metadatacenter.org/templates/https:%2F%2Frepo.metadatacenter.org%2Ftemplates%2F907d89c7-6cf4-4ec6-9edd-63cf0441d689
