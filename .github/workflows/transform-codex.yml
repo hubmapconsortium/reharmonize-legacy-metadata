@@ -1,0 +1,68 @@
+name: Transform CODEX legacy metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyYAML
+          pip install -e tools/json-rules-engine
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/codex/codex-field-mappings.csv \
+            metadata/codex/codex-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/codex/latest/codex.yml" \
+            metadata/codex/codex-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/codex/codex-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/codex/codex-schema.json \
+            --patch-file metadata/codex/codex-patches.json \
+            --input-dir metadata/codex/input \
+            --output-dir metadata/codex/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/codex/output
+          git commit -m "Transform CODEX legacy metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Find non-standard values
+        run: |
+          python scripts/find-nonstandard-values.py \
+            metadata/codex/output \
+            metadata/codex/codex-schema.json \
+            metadata/codex/codex-nonstandard-values.json
+
+      - name: Commit non-standard values
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/codex/codex-nonstandard-values.json
+          git commit -m "Find non-standard values in CODEX metadata (automated)" || echo "No changes to commit"
+          git push
