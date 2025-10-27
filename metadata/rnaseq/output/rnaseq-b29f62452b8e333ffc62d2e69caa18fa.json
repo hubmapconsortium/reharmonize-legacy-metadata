@@ -66,7 +66,7 @@
     "data_path": ".",
     "barcode_offset": null,
     "barcode_read": "Read 1 (R1)",
-    "barcode_size": null,
+    "barcode_size": "16",
     "umi_offset": null,
     "umi_read": null,
     "umi_size": null,
@@ -95,7 +95,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "Chromium Controller",
     "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
@@ -105,7 +105,7 @@
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
     {"op": "add", "path": "/barcode_offset", "value": null},
     {"op": "add", "path": "/barcode_read", "value": "Read 1 (R1)"},
-    {"op": "add", "path": "/barcode_size", "value": null},
+    {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
     {"op": "add", "path": "/contributors_path", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
@@ -124,7 +124,7 @@
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "13"},
     {"op": "add", "path": "/parent_sample_id", "value": "STAN0003-LI-4-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bfwajpae"},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
@@ -192,9 +192,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "NovaSeq6000": "NovaSeq 6000"
-      },
       "dataset_type": {
         "snRNAseq": "RNAseq"
       },
@@ -204,17 +201,11 @@
       "barcode_read": {
         "R1": "Read 1 (R1)"
       },
-      "barcode_size": {
-        "26": null
-      },
       "is_targeted": {
         "FALSE": "No"
       },
       "is_technical_replicate": {
         "FALSE": "No"
-      },
-      "assay_input_entity": {
-        "nuclei": "single nucleus"
       },
       "sequencing_read_format": {
         "101/8/8/101": "101,8,8,101"

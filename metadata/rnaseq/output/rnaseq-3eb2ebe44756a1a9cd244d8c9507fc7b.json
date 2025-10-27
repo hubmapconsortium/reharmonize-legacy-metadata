@@ -55,7 +55,7 @@
     "analyte_class": "RNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_model": "NovaSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -93,7 +93,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "Chromium Controller",
     "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
@@ -121,7 +121,7 @@
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "13"},
     {"op": "add", "path": "/parent_sample_id", "value": "CALT0013-HT-1-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bukqnuvw"},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
@@ -163,6 +163,7 @@
     {"op": "remove", "path": "/sequencing_phix_percent"},
     {"op": "remove", "path": "/sequencing_read_percent_q30"},
     {"op": "remove", "path": "/tissue_id"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "28,10,10,90"}
@@ -196,23 +197,11 @@
       "is_technical_replicate": {
         "FALSE": "No"
       },
-      "assay_input_entity": {
-        "nucleus": "single nucleus"
-      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
       }
     },
     "ambiguous_mappings": [
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NovaSeq",
-        "permissible_values": [
-          "NovaSeq 6000",
-          "NovaSeq X",
-          "NovaSeq X Plus"
-        ]
-      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq",

@@ -62,7 +62,7 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras//UFLA_10x_contributors.tsv",
     "data_path": ".",
-    "barcode_offset": null,
+    "barcode_offset": "0",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
     "umi_offset": null,
@@ -88,20 +88,20 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "S4",
+    "sequencing_reagent_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
     "sequencing_read_format": "28,8,0,91",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": null,
-    "preparation_instrument_model": null,
-    "preparation_instrument_kit": null,
+    "preparation_instrument_vendor": "10x Genomics",
+    "preparation_instrument_model": "Chromium Controller",
+    "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
     {"op": "add", "path": "/amount_of_input_analyte_unit", "value": null},
     {"op": "add", "path": "/amount_of_input_analyte_value", "value": "9912"},
     {"op": "add", "path": "/assay_input_entity", "value": "single cell"},
-    {"op": "add", "path": "/barcode_offset", "value": null},
+    {"op": "add", "path": "/barcode_offset", "value": "0"},
     {"op": "add", "path": "/barcode_read", "value": "Read 1 (R1)"},
     {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
@@ -120,9 +120,9 @@
     {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "15"},
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "15"},
     {"op": "add", "path": "/parent_sample_id", "value": "UFL0003-SP-1-2-1"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Single Cell B Chip Kit"},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.be79jhr6"},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
@@ -165,7 +165,8 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "28,8,0,91"}
+    {"op": "replace", "path": "/sequencing_read_format", "value": "28,8,0,91"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -187,9 +188,6 @@
       "dataset_type": {
         "scRNAseq-10xGenomics": "RNAseq"
       },
-      "barcode_offset": {
-        "1": null
-      },
       "barcode_read": {
         "R1": "Read 1 (R1)"
       },
@@ -199,23 +197,11 @@
       "is_technical_replicate": {
         "0": "No"
       },
-      "assay_input_entity": {
-        "whole cells": "single cell"
-      },
       "sequencing_read_format": {
         "28/8/0/91": "28,8,0,91"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "S4",
-        "permissible_values": [
-          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
-          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "sequence",
       "donor_id": "UFL0003",
