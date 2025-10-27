@@ -80,14 +80,14 @@
     "library_concentration_unit": "nM",
     "library_layout": "paired-end",
     "number_of_pcr_cycles_for_indexing": null,
-    "library_preparation_kit": null,
-    "sample_indexing_kit": null,
+    "library_preparation_kit": "Custom",
+    "sample_indexing_kit": "Illumina; IDT for Illumina Nextera DNA UD Index set",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
     "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313",
     "sequencing_read_format": "101,10,24,101",
-    "transposition_reagent_kit": "20034197",
+    "transposition_reagent_kit": "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Kits; PN 20034197",
     "transposition_method": "bulkATACseq",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -117,14 +117,14 @@
     {"op": "add", "path": "/preparation_instrument_model", "value": null},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.5jyl898brv2w/v1"},
-    {"op": "add", "path": "/sample_indexing_kit", "value": null},
+    {"op": "add", "path": "/sample_indexing_kit", "value": "Illumina; IDT for Illumina Nextera DNA UD Index set"},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "add", "path": "/transposition_reagent_kit", "value": "20034197"},
+    {"op": "add", "path": "/transposition_reagent_kit", "value": "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Kits; PN 20034197"},
     {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
     {"op": "add", "path": "/umi_read", "value": "Not applicable"},
     {"op": "add", "path": "/umi_size", "value": "Not applicable"},
@@ -155,7 +155,7 @@
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/library_preparation_kit", "value": null},
+    {"op": "replace", "path": "/library_preparation_kit", "value": "Custom"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "101,10,24,101"},
     {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"},
     {"op": "replace", "path": "/transposition_method", "value": "bulkATACseq"}
@@ -180,9 +180,6 @@
       "is_technical_replicate": {
         "False": "No"
       },
-      "library_preparation_kit": {
-        "IDT for Illumina - Nextera DNA UD Indexes Set C": null
-      },
       "sequencing_read_format": {
         "101/10/24/101": "101,10,24,101"
       },
@@ -193,17 +190,7 @@
         "Tagment DNA TDE1 Enzyme": "bulkATACseq"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "transposition_reagent_kit",
-        "value": "20034197",
-        "permissible_values": [
-          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
-          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 4 rxn; PN 1000285",
-          "Custom"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "sequence",
       "bulk_atac_cell_isolation_protocols_io_doi": "10.17504/protocols.io.kqdg3p2kel25/v1",
