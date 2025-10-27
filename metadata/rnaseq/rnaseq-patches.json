@@ -56,7 +56,7 @@
       "umi_read": "Read 1 (R1)",
       "umi_size": "10",
       "umi_offset": "16",
-      "": "10x Genomics",
+      "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell A Chip Kit"
     }
@@ -253,7 +253,7 @@
     "then": {
       "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns; PN-1000092",
       "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN-120262",
-      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
   },
@@ -267,7 +267,7 @@
     "then": {
       "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns; PN-1000269",
       "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215",
-      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip G Single Cell Kit"
     }
   },
@@ -289,7 +289,7 @@
       ]
     },
     "then": {
-      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
@@ -359,7 +359,7 @@
       ]
     },
     "then": {
-      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+      "sequencing_reagent_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
@@ -493,7 +493,7 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "Illumina; NovaSeq 6000"
+      "acquisition_instrument_model": "NovaSeq 6000"
     }
   },
 {
@@ -515,7 +515,7 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "Illumina; NovaSeq 6000"
+      "acquisition_instrument_model": "NovaSeq 6000"
     }
   },
 {
