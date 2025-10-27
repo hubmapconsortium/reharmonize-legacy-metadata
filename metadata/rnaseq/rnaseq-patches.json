@@ -545,7 +545,7 @@
       "__must__" : [
         { "__should__": [
           { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
-          { "rnaseq_assay_method": "10x Genomics; Chromium Single Cell 3' Reagent Kits v3.1" }
+          { "rnaseq_assay_method": "10x Genomics; Chromium Single Cell 3' Reagent Kits v3.1" },
           { "rnaseq_assay_method": "3'" }
         ]}
       ]
