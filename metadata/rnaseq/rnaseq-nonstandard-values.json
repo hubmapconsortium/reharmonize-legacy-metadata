@@ -1,8 +1,5 @@
 {
-  "barcode_offset": [
-    "",
-    "1"
-  ],
+  "acquisition_instrument_model": "Illumina; NovaSeq 6000",
   "sequencing_reagent_kit": [
     "10X_scRNASeq_protocol",
     "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
@@ -20,14 +17,6 @@
     "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
     "NovaSeq 6000 SP Reagent"
   ],
-  "preparation_instrument_kit": [
-    "10x Genomics; Chromium Next GEM Chip G Single Cell Kit",
-    "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
-    "10x Genomics; Chromium Single Cell A Chip Kit",
-    "10x Genomics; Chromium Single Cell B Chip Kit",
-    "10x Genomics; Chromium Single Cell B Chip Kit, 16 rxns PN-1000074"
-  ],
-  "acquisition_instrument_model": "Illumina; NovaSeq 6000",
   "library_preparation_kit": [
     "10x Genomics; Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269",
     "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
@@ -42,7 +31,15 @@
     "10x Genomics; Dual Index Kit TT Set A, 96 rxns PN-1000215",
     "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215"
   ],
+  "preparation_instrument_kit": [
+    "10x Genomics; Chromium Next GEM Chip G Single Cell Kit",
+    "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
+    "10x Genomics; Chromium Single Cell A Chip Kit",
+    "10x Genomics; Chromium Single Cell B Chip Kit",
+    "10x Genomics; Chromium Single Cell B Chip Kit, 16 rxns PN-1000074"
+  ],
   "preparation_instrument_vendor": "10X Genomics",
   "library_output_amount_unit": "",
-  "is_technical_replicate": ""
+  "is_technical_replicate": "",
+  "barcode_offset": "1"
 }
