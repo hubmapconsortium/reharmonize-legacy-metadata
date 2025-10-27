@@ -129,5 +129,27 @@
     "then": {
       "acquisition_instrument_model": "NovaSeq 6000"
     }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "transposition_method": "Tagment DNA TDE1 Enzyme" },
+        { "transposition_kit_number": "20034197" }
+      ]
+    },
+    "then": {
+      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Kits; PN 20034197"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.261gen52jg47/v1" }
+      ]
+    },
+    "then": {
+      "library_preparation_kit": "Custom",
+      "sample_indexing_kit": "Illumina; IDT for Illumina Nextera DNA UD Index set"
+    }
   }
 ]
