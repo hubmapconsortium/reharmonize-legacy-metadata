@@ -151,5 +151,52 @@
       "library_preparation_kit": "Custom",
       "sample_indexing_kit": "Illumina; IDT for Illumina Nextera DNA UD Index set"
     }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bvssn6ee" }
+      ]
+    },
+    "then": {
+      "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
+      "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_model": "Chromium Controler"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bf33jqqn" },
+        { "transposition_kit_number": "1000110" }
+      ]
+    },
+    "then": {
+      "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
+      "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_model": "Chromium Controler"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bf33jqqn" },
+        { "transposition_kit_number": "1000175" }
+      ]
+    },
+    "then": {
+      "transposition_reagent_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
+      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit",
+      "sample_indexing_kit": "10x Genomics; Single Index Kit N, Set A, 96 rxns PN-1000212",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_model": "Chromium Controler"
+    }
   }
 ]
