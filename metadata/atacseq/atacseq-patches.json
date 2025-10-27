@@ -138,7 +138,7 @@
       ]
     },
     "then": {
-      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Kits; PN 20034197"
+      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"
     }
   },
   {
@@ -164,7 +164,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
       "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -178,7 +178,7 @@
       "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
       "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
-      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controler"
     }
@@ -194,9 +194,35 @@
       "transposition_reagent_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
       "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit",
-      "sample_indexing_kit": "10x Genomics; Single Index Kit N, Set A, 96 rxns PN-1000212",
+      "sample_indexing_kit": "10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controler"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bvbmn2k6" },
+        { "transposition_kit_number": "1000280" }
+      ]
+    },
+    "then": {
+      "transposition_reagent_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+      "library_preparation_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
+      "sample_indexing_kit": "10x Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_model": "Chromium Controler"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "transposition_kit_number": "200034197" }
+      ]
+    },
+    "then": {
+      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"
     }
   }
 ]
