@@ -1,17 +1,25 @@
 {
-  "sample_indexing_kit": "Illumina; IDT for Illumina Nextera DNA UD Index set",
+  "sample_indexing_kit": [
+    "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+    "10x Genomics; Single Index Kit N, Set A, 96 rxns PN-1000212",
+    "Illumina; IDT for Illumina Nextera DNA UD Index set"
+  ],
   "transposition_reagent_kit": [
     "",
-    "1000075",
-    "1000110",
-    "1000175",
     "1000280",
+    "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
+    "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
     "163732",
     "200034197",
     "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Kits; PN 20034197"
   ],
   "acquisition_instrument_model": "NovaSeq",
   "barcode_size": "24",
+  "library_preparation_kit": [
+    "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
+    "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
+    "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit"
+  ],
   "sequencing_reagent_kit": [
     "Nextseq500",
     "NovaSeq",
@@ -21,5 +29,10 @@
     "Novaseq 6000 S1XP"
   ],
   "transposition_method": "snATACseq",
-  "library_preparation_kit": "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit"
+  "preparation_instrument_model": "Chromium Controler",
+  "preparation_instrument_kit": [
+    "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
+    "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
+    "10x Genomics; Chromium Next GEM Chip H Single Cell Kit"
+  ]
 }
