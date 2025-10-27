@@ -7,9 +7,10 @@ that are not in the standardized value set. These non-standard values require
 review by domain experts and data curators to determine if they should be added
 to the standard value set or corrected.
 
-The script uses two detection approaches:
+The script uses three detection approaches:
 1. Null mappings: Examines processing_log/value_mappings for values mapped to null
 2. Non-standard values: Checks modified_metadata against schema's standardized permissible values
+3. Missing required values: Detects null or empty values in required fields per schema
 
 Usage:
     python find-nonstandard-values.py <input_dir> <schema_file> <output_file>
@@ -23,18 +24,20 @@ import argparse
 import sys
 from pathlib import Path
 from collections import defaultdict
-from typing import Dict, Set, Any, Optional, List
+from typing import Dict, Set, Any, Optional, List, Tuple
 
 
-def load_schema(schema_file: str) -> Dict[str, List[Any]]:
+def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str]]:
     """
-    Load schema and extract standardized permissible values for each field.
+    Load schema and extract standardized permissible values and required fields.
 
     Args:
         schema_file: Path to the schema JSON file
 
     Returns:
-        Dictionary mapping field names to their standardized permissible values (if any)
+        Tuple containing:
+        - Dictionary mapping field names to their standardized permissible values (if any)
+        - Set of field names marked as required
     """
     try:
         with open(schema_file, 'r', encoding='utf-8') as f:
@@ -47,6 +50,7 @@ def load_schema(schema_file: str) -> Dict[str, List[Any]]:
         sys.exit(1)
 
     permissible_values_map = {}
+    required_fields_set = set()
 
     if isinstance(schema, list):
         for field in schema:
@@ -56,7 +60,11 @@ def load_schema(schema_file: str) -> Dict[str, List[Any]]:
                 if permissible_values is not None:
                     permissible_values_map[field_name] = permissible_values
 
-    return permissible_values_map
+                # Track required fields
+                if field.get('required') is True:
+                    required_fields_set.add(field_name)
+
+    return permissible_values_map, required_fields_set
 
 
 def find_null_mapped_values(data: Dict) -> Dict[str, Set[str]]:
@@ -139,16 +147,65 @@ def find_non_permissible_values(
     return non_permissible
 
 
-def merge_results(
-    null_mapped: Dict[str, Set[str]],
-    non_permissible: Dict[str, Set[str]]
+def find_missing_required_values(
+    data: Dict,
+    required_fields_set: Set[str]
 ) -> Dict[str, Set[str]]:
     """
-    Merge results from both detection approaches.
+    Find required fields with null or empty values in modified_metadata.
+
+    Args:
+        data: Parsed JSON data from a processed metadata file
+        required_fields_set: Set of field names marked as required in schema
+
+    Returns:
+        Dictionary mapping field names to sets of problematic value indicators
+    """
+    missing_required = defaultdict(set)
+
+    if 'modified_metadata' not in data:
+        return missing_required
+
+    modified_metadata = data['modified_metadata']
+
+    for field_name in required_fields_set:
+        # Check if field exists in modified_metadata
+        if field_name not in modified_metadata:
+            # Field completely missing - this is a problem
+            missing_required[field_name].add("MISSING_FIELD")
+            continue
+
+        value = modified_metadata[field_name]
+
+        # Check for null
+        if value is None:
+            missing_required[field_name].add("null")
+
+        # Check for empty string
+        elif isinstance(value, str) and value.strip() == "":
+            missing_required[field_name].add("")
+
+        # Check for empty list/dict (less common but possible)
+        elif isinstance(value, list) and len(value) == 0:
+            missing_required[field_name].add("[]")
+        elif isinstance(value, dict) and len(value) == 0:
+            missing_required[field_name].add("{}")
+
+    return missing_required
+
+
+def merge_results(
+    null_mapped: Dict[str, Set[str]],
+    non_permissible: Dict[str, Set[str]],
+    missing_required: Dict[str, Set[str]]
+) -> Dict[str, Set[str]]:
+    """
+    Merge results from all three detection approaches.
 
     Args:
         null_mapped: Values mapped to null
         non_permissible: Values not in the standardized value set
+        missing_required: Required fields with null or empty values
 
     Returns:
         Merged dictionary with all non-standard values requiring review
@@ -161,6 +218,10 @@ def merge_results(
 
     # Add non-permissible values
     for field_name, values in non_permissible.items():
+        merged[field_name].update(values)
+
+    # Add missing required values
+    for field_name, values in missing_required.items():
         merged[field_name].update(values)
 
     return merged
@@ -192,9 +253,10 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     """
     Find non-standard values from modified metadata for curator review.
 
-    Uses two detection approaches:
+    Uses three detection approaches:
     1. Null mappings in processing_log/value_mappings
     2. Non-standard values in modified_metadata vs schema's standardized value set
+    3. Missing required values in modified_metadata (null or empty for required fields)
 
     Args:
         input_dir: Directory containing processed JSON files
@@ -211,14 +273,15 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
         print(f"Error: '{input_dir}' is not a directory.", file=sys.stderr)
         sys.exit(1)
 
-    # Load schema with standardized value sets
-    permissible_values_map = load_schema(schema_file)
+    # Load schema with standardized value sets and required fields
+    permissible_values_map, required_fields_set = load_schema(schema_file)
 
     # Aggregate non-standard values across all files
     all_nonstandard_values = defaultdict(set)
     files_processed = 0
     null_mapping_count = 0
     non_standard_count = 0
+    missing_required_count = 0
 
     json_files = list(input_path.glob("*.json"))
 
@@ -236,8 +299,11 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
             # Approach 2: Find non-standard values
             non_standard = find_non_permissible_values(data, permissible_values_map)
 
+            # Approach 3: Find missing required values
+            missing_required = find_missing_required_values(data, required_fields_set)
+
             # Merge results for this file
-            file_results = merge_results(null_mapped, non_standard)
+            file_results = merge_results(null_mapped, non_standard, missing_required)
 
             # Aggregate to global results
             for field_name, values in file_results.items():
@@ -248,6 +314,8 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
                 null_mapping_count += 1
             if non_standard:
                 non_standard_count += 1
+            if missing_required:
+                missing_required_count += 1
 
             files_processed += 1
 
@@ -275,6 +343,7 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     print(f"  Files processed: {files_processed}")
     print(f"  Files with null mappings: {null_mapping_count}")
     print(f"  Files with non-standard values: {non_standard_count}")
+    print(f"  Files with missing required values: {missing_required_count}")
     print(f"  Fields with non-standard values: {len(result)}")
     total_values = sum(len(v) if isinstance(v, list) else 1 for v in result.values())
     print(f"  Total non-standard values found: {total_values}")
