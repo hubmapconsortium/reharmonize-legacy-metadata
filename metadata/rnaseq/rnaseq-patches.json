@@ -359,7 +359,7 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
@@ -387,7 +387,7 @@
     },
     "then": {
       "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
-      "preparation_instrument_vendor": "10X Genomics",
+      "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit",
       "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN-120262"
     }
@@ -546,6 +546,7 @@
         { "__should__": [
           { "rnaseq_assay_method": "Single Cell Multiome ATAC + Gene Expression - Chromium Next GEM Single Cell 3' v3.1 (dual index)" },
           { "rnaseq_assay_method": "10x Genomics; Chromium Single Cell 3' Reagent Kits v3.1" }
+          { "rnaseq_assay_method": "3'" }
         ]}
       ]
     },
