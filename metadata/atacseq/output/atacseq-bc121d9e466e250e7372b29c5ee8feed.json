@@ -96,7 +96,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": "10x Genomics",
-    "preparation_instrument_model": "Chromium Controler",
+    "preparation_instrument_model": "Chromium Controller",
     "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
     "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
   },
@@ -121,7 +121,7 @@
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "12"},
     {"op": "add", "path": "/parent_sample_id", "value": "UCSD0009-LK-2-1-2"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controler"},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bvssn6ee"},
     {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084"},

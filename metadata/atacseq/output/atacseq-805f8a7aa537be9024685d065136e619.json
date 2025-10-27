@@ -87,7 +87,7 @@
     "expected_entity_capture_count": null,
     "sequencing_reagent_kit": "Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283",
     "sequencing_read_format": "101,8,8,101",
-    "transposition_reagent_kit": "200034197",
+    "transposition_reagent_kit": "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197",
     "transposition_method": "bulkATACseq",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -125,7 +125,7 @@
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "add", "path": "/transposition_reagent_kit", "value": "200034197"},
+    {"op": "add", "path": "/transposition_reagent_kit", "value": "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"},
     {"op": "add", "path": "/umi_offset", "value": "Not applicable"},
     {"op": "add", "path": "/umi_read", "value": "Not applicable"},
     {"op": "add", "path": "/umi_size", "value": "Not applicable"},
@@ -191,17 +191,7 @@
         "HiSeq 3000/4000 PE Cluster Kit PE-410-1001": "Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "transposition_reagent_kit",
-        "value": "200034197",
-        "permissible_values": [
-          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
-          "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 4 rxn; PN 1000285",
-          "Custom"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "_from_metadatatsv": true,
       "assay_category": "sequence",
