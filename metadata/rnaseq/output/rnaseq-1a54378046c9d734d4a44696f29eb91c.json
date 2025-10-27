@@ -71,7 +71,7 @@
     "barcode_offset": "0",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": "16",
+    "umi_offset": null,
     "umi_read": "Read 1 (R1)",
     "umi_size": "12",
     "assay_input_entity": "single nucleus",
@@ -89,18 +89,18 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "6",
     "number_of_pcr_cycles_for_indexing": "16",
-    "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
-    "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "6000",
-    "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313",
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10x Genomics",
+    "preparation_instrument_vendor": null,
     "preparation_instrument_model": null,
-    "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
+    "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
@@ -120,17 +120,17 @@
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_output_amount_unit", "value": "ng"},
     {"op": "add", "path": "/library_output_amount_value", "value": "700.0"},
-    {"op": "add", "path": "/library_preparation_kit", "value": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle"},
+    {"op": "add", "path": "/library_preparation_kit", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
     {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": "1870000"},
     {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "6"},
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "16"},
     {"op": "add", "path": "/parent_sample_id", "value": "UCSDFR0012-PL-12"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit"},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
     {"op": "add", "path": "/preparation_instrument_model", "value": null},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.5qpvoby69l4o/v2"},
-    {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215"},
+    {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
@@ -172,8 +172,8 @@
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "28,10,10,90"},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "NovaSeq 6000 S4 Reagent Kit (200 Cycles)"},
-    {"op": "replace", "path": "/umi_offset", "value": "16"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"},
+    {"op": "replace", "path": "/umi_offset", "value": null},
     {"op": "replace", "path": "/umi_read", "value": "Read 1 (R1)"}
   ],
   "processing_log": {
@@ -197,14 +197,29 @@
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
       },
+      "barcode_read": {
+        "R1": "Read 1 (R1)"
+      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
       },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
+      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
+      },
+      "sequencing_reagent_kit": {
+        "NovaSeq S4 200 cycle": "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
+      },
+      "umi_offset": {
+        "17": null
+      },
+      "umi_read": {
+        "R1": "Read 1 (R1)"
       }
     },
     "ambiguous_mappings": [],

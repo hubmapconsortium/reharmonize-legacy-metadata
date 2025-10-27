@@ -65,12 +65,12 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras/snrnaseq-contributors.tsv",
     "data_path": ".",
-    "barcode_offset": "0",
+    "barcode_offset": "",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
-    "umi_offset": "16",
-    "umi_read": "Read 1 (R1)",
-    "umi_size": "12",
+    "umi_offset": null,
+    "umi_read": null,
+    "umi_size": null,
     "assay_input_entity": "single nucleus",
     "number_of_input_cells_or_nuclei": "613000",
     "amount_of_input_analyte_value": "14850",
@@ -86,8 +86,8 @@
     "library_layout": "paired-end",
     "number_of_iterations_of_cdna_amplification": "6",
     "number_of_pcr_cycles_for_indexing": "16",
-    "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
-    "sample_indexing_kit": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215",
+    "library_preparation_kit": null,
+    "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "5000",
@@ -95,16 +95,16 @@
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10x Genomics",
-    "preparation_instrument_model": "Chromium Controller",
-    "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
+    "preparation_instrument_vendor": null,
+    "preparation_instrument_model": null,
+    "preparation_instrument_kit": null,
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
     {"op": "add", "path": "/amount_of_input_analyte_unit", "value": null},
     {"op": "add", "path": "/amount_of_input_analyte_value", "value": "14850"},
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
-    {"op": "add", "path": "/barcode_offset", "value": "0"},
+    {"op": "add", "path": "/barcode_offset", "value": ""},
     {"op": "add", "path": "/barcode_read", "value": "Read 1 (R1)"},
     {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
@@ -117,26 +117,26 @@
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_output_amount_unit", "value": "ng"},
     {"op": "add", "path": "/library_output_amount_value", "value": "111.3"},
-    {"op": "add", "path": "/library_preparation_kit", "value": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle"},
+    {"op": "add", "path": "/library_preparation_kit", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
     {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": "613000"},
     {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "6"},
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "16"},
     {"op": "add", "path": "/parent_sample_id", "value": "STAN0009-LI-4-1"},
-    {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
+    {"op": "add", "path": "/preparation_instrument_kit", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bfwajpae"},
-    {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215"},
+    {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "add", "path": "/umi_offset", "value": "16"},
-    {"op": "add", "path": "/umi_read", "value": "Read 1 (R1)"},
-    {"op": "add", "path": "/umi_size", "value": "12"},
+    {"op": "add", "path": "/umi_offset", "value": null},
+    {"op": "add", "path": "/umi_read", "value": null},
+    {"op": "add", "path": "/umi_size", "value": null},
     {"op": "remove", "path": "/assay_category"},
     {"op": "remove", "path": "/assay_type"},
     {"op": "remove", "path": "/cell_barcode_offset"},
@@ -192,14 +192,23 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
+      "acquisition_instrument_model": {
+        "NovaSeq6000": "NovaSeq 6000"
+      },
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
+      },
+      "barcode_read": {
+        "R1": "Read 1 (R1)"
       },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
