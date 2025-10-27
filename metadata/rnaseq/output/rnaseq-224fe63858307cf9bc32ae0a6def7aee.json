@@ -98,7 +98,7 @@
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_instrument_vendor": "10x Genomics",
     "preparation_instrument_model": "Chromium Controller",
     "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
@@ -128,7 +128,7 @@
     {"op": "add", "path": "/parent_sample_id", "value": "UCSDFR0003-PL-12"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit"},
     {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10X Genomics"},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.5qpvoby69l4o/v2"},
     {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Dual Index Kit TT Set A, 96 rxns; PN-1000215"},
     {"op": "add", "path": "/sample_indexing_set", "value": null},

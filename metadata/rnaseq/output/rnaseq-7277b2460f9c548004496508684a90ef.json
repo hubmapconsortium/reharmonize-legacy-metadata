@@ -93,7 +93,7 @@
     "sequencing_read_format": "",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
-    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_instrument_vendor": "10x Genomics",
     "preparation_instrument_model": "Chromium Controller",
     "preparation_instrument_kit": "10x Genomics; Chromium Single Cell A Chip Kit",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
@@ -123,7 +123,7 @@
     {"op": "add", "path": "/parent_sample_id", "value": "HCA0002-LV-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Single Cell A Chip Kit"},
     {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
-    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10X Genomics"},
+    {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.btdpni5n"},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
