@@ -13,10 +13,10 @@ The script uses three detection approaches:
 3. Regex violations: Identifies values that don't match regex pattern constraints in schema
 
 Usage:
-    python find-nonstandard-values.py <input_dir> <schema_file> <output_file>
+    python find-nonstandard-values.py <input_dir> <schema_file> <output_file> <output_spreadsheet_file>
 
 Example:
-    python find-nonstandard-values.py metadata/rnaseq/output metadata/rnaseq/rnaseq-schema.json nonstandard-values.json
+    python find-nonstandard-values.py metadata/rnaseq/output metadata/rnaseq/rnaseq-schema.json nonstandard-values.json nonstandard-values.xlsx
 """
 
 import json
@@ -24,8 +24,15 @@ import argparse
 import sys
 from pathlib import Path
 from collections import defaultdict
-from typing import Dict, Set, Any, List, Tuple
+from typing import Dict, Set, Any, List, Tuple, Optional
 import re
+
+try:
+    import openpyxl
+    from openpyxl import Workbook
+    OPENPYXL_AVAILABLE = True
+except ImportError:
+    OPENPYXL_AVAILABLE = False
 
 
 def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str], Dict[str, str]]:
@@ -279,7 +286,120 @@ def format_output(nonstandard_values: Dict[str, Set[str]]) -> Dict[str, Any]:
     return result
 
 
-def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
+def write_sheet_with_grouping(
+    worksheet,
+    issue_data: Dict[str, Dict[str, Set]],
+    sheet_type: str
+) -> None:
+    """
+    Write data to a worksheet with proper grouping.
+
+    For each dataset with multiple issues, the first row shows Dataset ID and URL,
+    subsequent rows have None for these columns to create visual grouping.
+
+    Args:
+        worksheet: openpyxl worksheet object
+        issue_data: Dictionary mapping hubmap_id to {field_name: set([values])}
+        sheet_type: Type of sheet - 'non_permissible', 'missing_required', or 'regex_violations'
+    """
+    # Define columns based on sheet type
+    if sheet_type == 'missing_required':
+        # No "Current Value" column for missing required
+        columns = ['Dataset ID', 'Field Name', 'New Value', 'Dataset URL']
+        has_current_value = False
+    else:
+        # Include "Current Value" column for non-permissible and regex violations
+        columns = ['Dataset ID', 'Field Name', 'Current Value', 'New Value', 'Dataset URL']
+        has_current_value = True
+
+    # Write header row
+    worksheet.append(columns)
+
+    # Sort datasets alphabetically by hubmap_id
+    sorted_datasets = sorted(issue_data.keys())
+
+    # Write data rows
+    for hubmap_id in sorted_datasets:
+        field_issues = issue_data[hubmap_id]
+
+        # Sort fields alphabetically within each dataset
+        sorted_fields = sorted(field_issues.keys())
+
+        for idx, field_name in enumerate(sorted_fields):
+            values = field_issues[field_name]
+
+            # Get the first value (should only be one per dataset+field)
+            current_value = list(values)[0] if values else ""
+
+            # First row for this dataset: include Dataset ID and URL
+            # Subsequent rows: None for Dataset ID and URL
+            if idx == 0:
+                dataset_id = hubmap_id
+                dataset_url = f"https://portal.hubmapconsortium.org/browse/{hubmap_id}"
+            else:
+                dataset_id = None
+                dataset_url = None
+
+            # Build row based on sheet type
+            if has_current_value:
+                row = [dataset_id, field_name, current_value, "", dataset_url]
+            else:
+                row = [dataset_id, field_name, "", dataset_url]
+
+            worksheet.append(row)
+
+
+def generate_excel_report(
+    per_file_issues: Dict[str, Dict[str, Dict[str, Set]]],
+    output_file: str
+) -> None:
+    """
+    Generate Excel spreadsheet with 3 sheets for curator review.
+
+    Args:
+        per_file_issues: Dictionary with three keys (non_permissible, missing_required,
+                        regex_violations), each mapping to {hubmap_id: {field_name: set([values])}}
+        output_file: Path to output .xlsx file
+    """
+    if not OPENPYXL_AVAILABLE:
+        print("Warning: openpyxl not installed. Cannot generate Excel report.", file=sys.stderr)
+        print("Install with: pip install openpyxl", file=sys.stderr)
+        return
+
+    # Create workbook
+    wb = Workbook()
+
+    # Remove default sheet
+    if 'Sheet' in wb.sheetnames:
+        wb.remove(wb['Sheet'])
+
+    # Create three sheets
+    sheet_configs = [
+        ('Non-Standard Value', per_file_issues['non_permissible'], 'non_permissible'),
+        ('Missing Required Value', per_file_issues['missing_required'], 'missing_required'),
+        ('Invalid Input Pattern', per_file_issues['regex_violations'], 'regex_violations')
+    ]
+
+    for sheet_name, issue_data, sheet_type in sheet_configs:
+        ws = wb.create_sheet(title=sheet_name)
+        write_sheet_with_grouping(ws, issue_data, sheet_type)
+
+    # Save workbook
+    try:
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        wb.save(output_file)
+    except Exception as e:
+        print(f"Error writing Excel file: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+def find_nonstandard_values(
+    input_dir: str,
+    schema_file: str,
+    output_file: str,
+    spreadsheet_file: str
+):
     """
     Find non-standard values from modified metadata for curator review.
 
@@ -292,6 +412,7 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
         input_dir: Directory containing processed JSON files
         schema_file: Path to schema JSON file with standardized permissible values
         output_file: Path to output JSON file for non-standard values
+        spreadsheet_file: Path to output Excel (.xlsx) file for spreadsheet report
     """
     input_path = Path(input_dir)
 
@@ -306,8 +427,16 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     # Load schema with standardized value sets, required fields, and regex constraints
     permissible_values_map, required_fields_set, regex_constraints_map = load_schema(schema_file)
 
-    # Aggregate non-standard values across all files
+    # Aggregate non-standard values across all files (for JSON output)
     all_nonstandard_values = defaultdict(set)
+
+    # Per-file tracking for Excel export
+    per_file_issues = {
+        'non_permissible': defaultdict(lambda: defaultdict(set)),
+        'missing_required': defaultdict(lambda: defaultdict(set)),
+        'regex_violations': defaultdict(lambda: defaultdict(set))
+    }
+
     files_processed = 0
     non_standard_count = 0
     missing_required_count = 0
@@ -323,6 +452,9 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
             with open(json_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
+            # Extract hubmap_id for per-file tracking
+            hubmap_id = data.get('hubmap_id', 'UNKNOWN')
+
             # Approach 1: Find non-standard values
             non_standard = find_non_permissible_values(data, permissible_values_map)
 
@@ -332,12 +464,22 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
             # Approach 3: Find regex violations
             regex_violations = find_regex_violations(data, regex_constraints_map)
 
-            # Merge results for this file
+            # Merge results for this file (for JSON output)
             file_results = merge_results(non_standard, missing_required, regex_violations)
 
-            # Aggregate to global results
+            # Aggregate to global results (for JSON output)
             for field_name, values in file_results.items():
                 all_nonstandard_values[field_name].update(values)
+
+            # Store per-file issues (for Excel output)
+            for field_name, values in non_standard.items():
+                per_file_issues['non_permissible'][hubmap_id][field_name].update(values)
+
+            for field_name, values in missing_required.items():
+                per_file_issues['missing_required'][hubmap_id][field_name].update(values)
+
+            for field_name, values in regex_violations.items():
+                per_file_issues['regex_violations'][hubmap_id][field_name].update(values)
 
             # Track counts
             if non_standard:
@@ -357,7 +499,7 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     # Format output
     result = format_output(all_nonstandard_values)
 
-    # Write output
+    # Write JSON output
     output_path = Path(output_file)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -367,6 +509,10 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     except Exception as e:
         print(f"Error writing output file: {e}", file=sys.stderr)
         sys.exit(1)
+
+    # Generate Excel spreadsheet
+    generate_excel_report(per_file_issues, spreadsheet_file)
+    print(f"Excel spreadsheet saved to: {spreadsheet_file}")
 
     # Print summary
     print(f"Non-standard values saved to: {output_file}")
@@ -395,9 +541,29 @@ def main():
         "output_file",
         help="Output JSON file path for non-standard values"
     )
+    parser.add_argument(
+        "output_spreadsheet_file",
+        help="Output Excel (.xlsx) file path for spreadsheet report"
+    )
 
     args = parser.parse_args()
-    find_nonstandard_values(args.input_dir, args.schema_file, args.output_file)
+
+    # Validate spreadsheet file extension
+    if not args.output_spreadsheet_file.endswith('.xlsx'):
+        print("Error: Spreadsheet file must have .xlsx extension", file=sys.stderr)
+        sys.exit(1)
+
+    if not OPENPYXL_AVAILABLE:
+        print("Error: openpyxl not installed. Cannot generate Excel report.", file=sys.stderr)
+        print("Install with: pip install openpyxl", file=sys.stderr)
+        sys.exit(1)
+
+    find_nonstandard_values(
+        args.input_dir,
+        args.schema_file,
+        args.output_file,
+        args.output_spreadsheet_file
+    )
 
 
 if __name__ == "__main__":
