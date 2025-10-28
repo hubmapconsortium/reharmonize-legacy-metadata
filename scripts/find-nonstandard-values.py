@@ -7,11 +7,10 @@ that are not in the standardized value set. These non-standard values require
 review by domain experts and data curators to determine if they should be added
 to the standard value set or corrected.
 
-The script uses four detection approaches:
-1. Null mappings: Examines processing_log/value_mappings for values mapped to null
-2. Non-standard values: Checks modified_metadata against schema's standardized permissible values
-3. Missing required values: Detects null or empty values in required fields per schema
-4. Regex violations: Identifies values that don't match regex pattern constraints in schema
+The script uses three detection approaches:
+1. Non-standard values: Checks modified_metadata against schema's standardized permissible values
+2. Missing required values: Detects null or empty values in required fields per schema
+3. Regex violations: Identifies values that don't match regex pattern constraints in schema
 
 Usage:
     python find-nonstandard-values.py <input_dir> <schema_file> <output_file>
@@ -74,37 +73,6 @@ def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str], Dict[
                     regex_constraints_map[field_name] = regex_pattern
 
     return permissible_values_map, required_fields_set, regex_constraints_map
-
-
-def find_null_mapped_values(data: Dict) -> Dict[str, Set[str]]:
-    """
-    Find values mapped to null in processing_log/value_mappings.
-
-    Args:
-        data: Parsed JSON data from a processed metadata file
-
-    Returns:
-        Dictionary mapping field names to sets of null-mapped values
-    """
-    null_mapped = defaultdict(set)
-
-    if 'processing_log' not in data:
-        return null_mapped
-
-    if 'value_mappings' not in data['processing_log']:
-        return null_mapped
-
-    value_mappings = data['processing_log']['value_mappings']
-
-    for field_name, mappings in value_mappings.items():
-        if not isinstance(mappings, dict):
-            continue
-
-        for legacy_value, standard_value in mappings.items():
-            if standard_value is None:
-                null_mapped[field_name].add(str(legacy_value))
-
-    return null_mapped
 
 
 def find_non_permissible_values(
@@ -257,16 +225,14 @@ def find_regex_violations(
 
 
 def merge_results(
-    null_mapped: Dict[str, Set[str]],
     non_permissible: Dict[str, Set[str]],
     missing_required: Dict[str, Set[str]],
     regex_violations: Dict[str, Set[str]]
 ) -> Dict[str, Set[str]]:
     """
-    Merge results from all four detection approaches.
+    Merge results from all three detection approaches.
 
     Args:
-        null_mapped: Values mapped to null
         non_permissible: Values not in the standardized value set
         missing_required: Required fields with null or empty values
         regex_violations: Values that don't match regex constraints
@@ -275,10 +241,6 @@ def merge_results(
         Merged dictionary with all non-standard values requiring review
     """
     merged = defaultdict(set)
-
-    # Add null-mapped values
-    for field_name, values in null_mapped.items():
-        merged[field_name].update(values)
 
     # Add non-permissible values
     for field_name, values in non_permissible.items():
@@ -321,11 +283,10 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     """
     Find non-standard values from modified metadata for curator review.
 
-    Uses four detection approaches:
-    1. Null mappings in processing_log/value_mappings
-    2. Non-standard values in modified_metadata vs schema's standardized value set
-    3. Missing required values in modified_metadata (null or empty for required fields)
-    4. Regex violations in modified_metadata (values not matching regex constraints)
+    Uses three detection approaches:
+    1. Non-standard values in modified_metadata vs schema's standardized value set
+    2. Missing required values in modified_metadata (null or empty for required fields)
+    3. Regex violations in modified_metadata (values not matching regex constraints)
 
     Args:
         input_dir: Directory containing processed JSON files
@@ -348,7 +309,6 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     # Aggregate non-standard values across all files
     all_nonstandard_values = defaultdict(set)
     files_processed = 0
-    null_mapping_count = 0
     non_standard_count = 0
     missing_required_count = 0
     regex_violation_count = 0
@@ -363,28 +323,23 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
             with open(json_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
-            # Approach 1: Find null-mapped values
-            null_mapped = find_null_mapped_values(data)
-
-            # Approach 2: Find non-standard values
+            # Approach 1: Find non-standard values
             non_standard = find_non_permissible_values(data, permissible_values_map)
 
-            # Approach 3: Find missing required values
+            # Approach 2: Find missing required values
             missing_required = find_missing_required_values(data, required_fields_set)
 
-            # Approach 4: Find regex violations
+            # Approach 3: Find regex violations
             regex_violations = find_regex_violations(data, regex_constraints_map)
 
             # Merge results for this file
-            file_results = merge_results(null_mapped, non_standard, missing_required, regex_violations)
+            file_results = merge_results(non_standard, missing_required, regex_violations)
 
             # Aggregate to global results
             for field_name, values in file_results.items():
                 all_nonstandard_values[field_name].update(values)
 
             # Track counts
-            if null_mapped:
-                null_mapping_count += 1
             if non_standard:
                 non_standard_count += 1
             if missing_required:
@@ -416,11 +371,9 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     # Print summary
     print(f"Non-standard values saved to: {output_file}")
     print(f"  Files processed: {files_processed}")
-    print(f"  Files with null mappings: {null_mapping_count}")
     print(f"  Files with non-standard values: {non_standard_count}")
     print(f"  Files with missing required values: {missing_required_count}")
     print(f"  Files with regex violations: {regex_violation_count}")
-    print(f"  Fields with non-standard values: {len(result)}")
     total_values = sum(len(v) if isinstance(v, list) else 1 for v in result.values())
     print(f"  Total non-standard values found: {total_values}")
 
