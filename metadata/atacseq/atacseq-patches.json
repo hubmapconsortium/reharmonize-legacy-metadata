@@ -162,7 +162,7 @@
       "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
       "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
-      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller"
     }
