@@ -1,12 +1,9 @@
 {
   "ms_scan_mode": {
-    "MS/MS on pool sample": null,
-    "MS/MS": null,
     "MS": [
       "MS1",
       "MS2",
       "MS3"
-    ],
-    "full MS (all samples)": null
+    ]
   }
 }

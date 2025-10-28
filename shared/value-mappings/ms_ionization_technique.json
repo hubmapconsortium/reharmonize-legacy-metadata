@@ -1,6 +1,5 @@
 {
   "ms_ionization_technique": {
-    "nESI": "ESI",
-    "NanoSpray": null
+    "nESI": "ESI"
   }
 }

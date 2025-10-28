@@ -1,11 +1,6 @@
 {
   "preparation_instrument_model": {
-    "HM355S Automatic Microtome": null,
-    "prototype robot - Stanford/Nolan Lab": null,
-    "version 1 robot": null,
-    "custom Hyb Station": null,
     "M3 TM-Sprayer": "M3+ Sprayer",
-    "M5": "M5 Sprayer",
-    "Custom": null
+    "M5": "M5 Sprayer"
   }
 }
