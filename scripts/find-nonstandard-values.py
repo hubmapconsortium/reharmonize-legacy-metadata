@@ -7,10 +7,11 @@ that are not in the standardized value set. These non-standard values require
 review by domain experts and data curators to determine if they should be added
 to the standard value set or corrected.
 
-The script uses three detection approaches:
+The script uses four detection approaches:
 1. Null mappings: Examines processing_log/value_mappings for values mapped to null
 2. Non-standard values: Checks modified_metadata against schema's standardized permissible values
 3. Missing required values: Detects null or empty values in required fields per schema
+4. Regex violations: Identifies values that don't match regex pattern constraints in schema
 
 Usage:
     python find-nonstandard-values.py <input_dir> <schema_file> <output_file>
@@ -24,12 +25,13 @@ import argparse
 import sys
 from pathlib import Path
 from collections import defaultdict
-from typing import Dict, Set, Any, Optional, List, Tuple
+from typing import Dict, Set, Any, List, Tuple
+import re
 
 
-def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str]]:
+def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str], Dict[str, str]]:
     """
-    Load schema and extract standardized permissible values and required fields.
+    Load schema and extract standardized permissible values, required fields, and regex constraints.
 
     Args:
         schema_file: Path to the schema JSON file
@@ -38,6 +40,7 @@ def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str]]:
         Tuple containing:
         - Dictionary mapping field names to their standardized permissible values (if any)
         - Set of field names marked as required
+        - Dictionary mapping field names to their regex patterns (if any)
     """
     try:
         with open(schema_file, 'r', encoding='utf-8') as f:
@@ -51,6 +54,7 @@ def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str]]:
 
     permissible_values_map = {}
     required_fields_set = set()
+    regex_constraints_map = {}
 
     if isinstance(schema, list):
         for field in schema:
@@ -64,7 +68,12 @@ def load_schema(schema_file: str) -> Tuple[Dict[str, List[Any]], Set[str]]:
                 if field.get('required') is True:
                     required_fields_set.add(field_name)
 
-    return permissible_values_map, required_fields_set
+                # Track regex constraints
+                regex_pattern = field.get('regex')
+                if regex_pattern is not None and regex_pattern != "":
+                    regex_constraints_map[field_name] = regex_pattern
+
+    return permissible_values_map, required_fields_set, regex_constraints_map
 
 
 def find_null_mapped_values(data: Dict) -> Dict[str, Set[str]]:
@@ -194,18 +203,73 @@ def find_missing_required_values(
     return missing_required
 
 
+def find_regex_violations(
+    data: Dict,
+    regex_constraints_map: Dict[str, str]
+) -> Dict[str, Set[str]]:
+    """
+    Find values in modified_metadata that don't match their regex constraints.
+
+    Args:
+        data: Parsed JSON data from a processed metadata file
+        regex_constraints_map: Dictionary of field names to regex patterns from schema
+
+    Returns:
+        Dictionary mapping field names to sets of values that violate regex constraints
+    """
+    regex_violations = defaultdict(set)
+
+    if 'modified_metadata' not in data:
+        return regex_violations
+
+    modified_metadata = data['modified_metadata']
+
+    for field_name, regex_pattern in regex_constraints_map.items():
+        # Skip if field doesn't exist in modified_metadata
+        if field_name not in modified_metadata:
+            continue
+
+        value = modified_metadata[field_name]
+
+        # Skip null values (handled by missing_required check)
+        if value is None:
+            continue
+
+        # Convert value to string for regex matching
+        value_str = str(value)
+
+        # Skip empty strings (handled by missing_required check)
+        if value_str.strip() == "":
+            continue
+
+        # Try to match the regex pattern
+        try:
+            pattern = re.compile(regex_pattern)
+            if not pattern.fullmatch(value_str):
+                # Value doesn't match the regex pattern
+                regex_violations[field_name].add(value_str)
+        except re.error as e:
+            # Invalid regex pattern in schema - log but don't crash
+            print(f"Warning: Invalid regex pattern for field '{field_name}': {e}", file=sys.stderr)
+            continue
+
+    return regex_violations
+
+
 def merge_results(
     null_mapped: Dict[str, Set[str]],
     non_permissible: Dict[str, Set[str]],
-    missing_required: Dict[str, Set[str]]
+    missing_required: Dict[str, Set[str]],
+    regex_violations: Dict[str, Set[str]]
 ) -> Dict[str, Set[str]]:
     """
-    Merge results from all three detection approaches.
+    Merge results from all four detection approaches.
 
     Args:
         null_mapped: Values mapped to null
         non_permissible: Values not in the standardized value set
         missing_required: Required fields with null or empty values
+        regex_violations: Values that don't match regex constraints
 
     Returns:
         Merged dictionary with all non-standard values requiring review
@@ -222,6 +286,10 @@ def merge_results(
 
     # Add missing required values
     for field_name, values in missing_required.items():
+        merged[field_name].update(values)
+
+    # Add regex violations
+    for field_name, values in regex_violations.items():
         merged[field_name].update(values)
 
     return merged
@@ -253,10 +321,11 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     """
     Find non-standard values from modified metadata for curator review.
 
-    Uses three detection approaches:
+    Uses four detection approaches:
     1. Null mappings in processing_log/value_mappings
     2. Non-standard values in modified_metadata vs schema's standardized value set
     3. Missing required values in modified_metadata (null or empty for required fields)
+    4. Regex violations in modified_metadata (values not matching regex constraints)
 
     Args:
         input_dir: Directory containing processed JSON files
@@ -273,8 +342,8 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
         print(f"Error: '{input_dir}' is not a directory.", file=sys.stderr)
         sys.exit(1)
 
-    # Load schema with standardized value sets and required fields
-    permissible_values_map, required_fields_set = load_schema(schema_file)
+    # Load schema with standardized value sets, required fields, and regex constraints
+    permissible_values_map, required_fields_set, regex_constraints_map = load_schema(schema_file)
 
     # Aggregate non-standard values across all files
     all_nonstandard_values = defaultdict(set)
@@ -282,6 +351,7 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     null_mapping_count = 0
     non_standard_count = 0
     missing_required_count = 0
+    regex_violation_count = 0
 
     json_files = list(input_path.glob("*.json"))
 
@@ -302,8 +372,11 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
             # Approach 3: Find missing required values
             missing_required = find_missing_required_values(data, required_fields_set)
 
+            # Approach 4: Find regex violations
+            regex_violations = find_regex_violations(data, regex_constraints_map)
+
             # Merge results for this file
-            file_results = merge_results(null_mapped, non_standard, missing_required)
+            file_results = merge_results(null_mapped, non_standard, missing_required, regex_violations)
 
             # Aggregate to global results
             for field_name, values in file_results.items():
@@ -316,6 +389,8 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
                 non_standard_count += 1
             if missing_required:
                 missing_required_count += 1
+            if regex_violations:
+                regex_violation_count += 1
 
             files_processed += 1
 
@@ -344,6 +419,7 @@ def find_nonstandard_values(input_dir: str, schema_file: str, output_file: str):
     print(f"  Files with null mappings: {null_mapping_count}")
     print(f"  Files with non-standard values: {non_standard_count}")
     print(f"  Files with missing required values: {missing_required_count}")
+    print(f"  Files with regex violations: {regex_violation_count}")
     print(f"  Fields with non-standard values: {len(result)}")
     total_values = sum(len(v) if isinstance(v, list) else 1 for v in result.values())
     print(f"  Total non-standard values found: {total_values}")
