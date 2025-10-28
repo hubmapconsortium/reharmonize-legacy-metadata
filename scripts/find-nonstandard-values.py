@@ -13,10 +13,17 @@ The script uses three detection approaches:
 3. Regex violations: Identifies values that don't match regex pattern constraints in schema
 
 Usage:
-    python find-nonstandard-values.py <input_dir> <schema_file> <output_file> <output_spreadsheet_file>
+    python find-nonstandard-values.py <input_dir> <schema_file> <output_file>
 
 Example:
-    python find-nonstandard-values.py metadata/rnaseq/output metadata/rnaseq/rnaseq-schema.json nonstandard-values.json nonstandard-values.xlsx
+    python find-nonstandard-values.py metadata/rnaseq/output metadata/rnaseq/rnaseq-schema.json nonstandard-values.json
+
+    This will generate:
+    - nonstandard-values.json (aggregated JSON)
+    - todo/ folder with Excel files grouped by group_name:
+      - todo/University of California San Diego TMC (RNAseq).xlsx
+      - todo/Stanford TMC (RNAseq).xlsx
+      - etc.
 """
 
 import json
@@ -286,6 +293,24 @@ def format_output(nonstandard_values: Dict[str, Set[str]]) -> Dict[str, Any]:
     return result
 
 
+def slugify_group_name(group_name: str, dataset_type: str) -> str:
+    """
+    Convert group name and dataset type to slug format for filename.
+
+    Args:
+        group_name: Group name (e.g., "University of California San Diego TMC")
+        dataset_type: Dataset type (e.g., "RNAseq")
+
+    Returns:
+        Slug format (e.g., "university-of-california-san-diego-tmc-rnaseq")
+    """
+    # Convert to lowercase and replace spaces with hyphens
+    group_slug = group_name.lower().replace(' ', '-')
+    dataset_slug = dataset_type.lower()
+
+    return f"{group_slug}-{dataset_slug}"
+
+
 def write_sheet_with_grouping(
     worksheet,
     issue_data: Dict[str, Dict[str, Set]],
@@ -394,11 +419,48 @@ def generate_excel_report(
         sys.exit(1)
 
 
+def generate_grouped_excel_reports(
+    grouped_issues: Dict[str, Dict],
+    output_json_path: str
+) -> None:
+    """
+    Generate Excel reports grouped by group_name.
+
+    Args:
+        grouped_issues: Dictionary mapping group_slug to dict with 'issues' and 'metadata'
+        output_json_path: Path to JSON output file (used to determine todo folder location)
+    """
+    if not OPENPYXL_AVAILABLE:
+        print("Warning: openpyxl not installed. Cannot generate Excel reports.", file=sys.stderr)
+        print("Install with: pip install openpyxl", file=sys.stderr)
+        return
+
+    # Create todo folder next to JSON output
+    json_path = Path(output_json_path)
+    todo_dir = json_path.parent / "todo"
+    todo_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"\nGenerating Excel reports in {todo_dir}/")
+
+    # Generate one Excel file per group
+    for group_slug, group_data in grouped_issues.items():
+        per_file_issues = group_data['issues']
+        group_name = group_data['group_name']
+        dataset_type = group_data['dataset_type']
+
+        # Use readable format: "Group Name (DatasetType).xlsx"
+        excel_filename = f"{group_name} ({dataset_type}).xlsx"
+        excel_path = todo_dir / excel_filename
+
+        # Generate the Excel report
+        generate_excel_report(per_file_issues, str(excel_path))
+        print(f"  - {excel_filename}")
+
+
 def find_nonstandard_values(
     input_dir: str,
     schema_file: str,
-    output_file: str,
-    spreadsheet_file: str
+    output_file: str
 ):
     """
     Find non-standard values from modified metadata for curator review.
@@ -408,11 +470,14 @@ def find_nonstandard_values(
     2. Missing required values in modified_metadata (null or empty for required fields)
     3. Regex violations in modified_metadata (values not matching regex constraints)
 
+    Generates:
+    - JSON file with aggregated non-standard values
+    - todo/ folder with Excel files grouped by group_name
+
     Args:
         input_dir: Directory containing processed JSON files
         schema_file: Path to schema JSON file with standardized permissible values
         output_file: Path to output JSON file for non-standard values
-        spreadsheet_file: Path to output Excel (.xlsx) file for spreadsheet report
     """
     input_path = Path(input_dir)
 
@@ -430,12 +495,17 @@ def find_nonstandard_values(
     # Aggregate non-standard values across all files (for JSON output)
     all_nonstandard_values = defaultdict(set)
 
-    # Per-file tracking for Excel export
-    per_file_issues = {
-        'non_permissible': defaultdict(lambda: defaultdict(set)),
-        'missing_required': defaultdict(lambda: defaultdict(set)),
-        'regex_violations': defaultdict(lambda: defaultdict(set))
-    }
+    # Grouped issues by group_name for Excel export
+    # Structure: {group_slug: {'issues': {issue_type: ...}, 'group_name': str, 'dataset_type': str}}
+    grouped_issues = defaultdict(lambda: {
+        'issues': {
+            'non_permissible': defaultdict(lambda: defaultdict(set)),
+            'missing_required': defaultdict(lambda: defaultdict(set)),
+            'regex_violations': defaultdict(lambda: defaultdict(set))
+        },
+        'group_name': None,
+        'dataset_type': None
+    })
 
     files_processed = 0
     non_standard_count = 0
@@ -452,8 +522,13 @@ def find_nonstandard_values(
             with open(json_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
 
-            # Extract hubmap_id for per-file tracking
+            # Extract metadata for grouping
             hubmap_id = data.get('hubmap_id', 'UNKNOWN')
+            group_name = data.get('group_name', 'Unknown Group')
+            dataset_type = data.get('dataset_type', 'Unknown')
+
+            # Create group slug for Excel file naming
+            group_slug = slugify_group_name(group_name, dataset_type)
 
             # Approach 1: Find non-standard values
             non_standard = find_non_permissible_values(data, permissible_values_map)
@@ -471,15 +546,21 @@ def find_nonstandard_values(
             for field_name, values in file_results.items():
                 all_nonstandard_values[field_name].update(values)
 
-            # Store per-file issues (for Excel output)
+            # Store per-file issues grouped by group_name (for Excel output)
+            # Store metadata if not already set
+            if grouped_issues[group_slug]['group_name'] is None:
+                grouped_issues[group_slug]['group_name'] = group_name
+                grouped_issues[group_slug]['dataset_type'] = dataset_type
+
+            # Store issues
             for field_name, values in non_standard.items():
-                per_file_issues['non_permissible'][hubmap_id][field_name].update(values)
+                grouped_issues[group_slug]['issues']['non_permissible'][hubmap_id][field_name].update(values)
 
             for field_name, values in missing_required.items():
-                per_file_issues['missing_required'][hubmap_id][field_name].update(values)
+                grouped_issues[group_slug]['issues']['missing_required'][hubmap_id][field_name].update(values)
 
             for field_name, values in regex_violations.items():
-                per_file_issues['regex_violations'][hubmap_id][field_name].update(values)
+                grouped_issues[group_slug]['issues']['regex_violations'][hubmap_id][field_name].update(values)
 
             # Track counts
             if non_standard:
@@ -510,10 +591,6 @@ def find_nonstandard_values(
         print(f"Error writing output file: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # Generate Excel spreadsheet
-    generate_excel_report(per_file_issues, spreadsheet_file)
-    print(f"Excel spreadsheet saved to: {spreadsheet_file}")
-
     # Print summary
     print(f"Non-standard values saved to: {output_file}")
     print(f"  Files processed: {files_processed}")
@@ -522,6 +599,9 @@ def find_nonstandard_values(
     print(f"  Files with regex violations: {regex_violation_count}")
     total_values = sum(len(v) if isinstance(v, list) else 1 for v in result.values())
     print(f"  Total non-standard values found: {total_values}")
+
+    # Generate grouped Excel reports
+    generate_grouped_excel_reports(grouped_issues, output_file)
 
 
 def main():
@@ -541,28 +621,13 @@ def main():
         "output_file",
         help="Output JSON file path for non-standard values"
     )
-    parser.add_argument(
-        "output_spreadsheet_file",
-        help="Output Excel (.xlsx) file path for spreadsheet report"
-    )
 
     args = parser.parse_args()
-
-    # Validate spreadsheet file extension
-    if not args.output_spreadsheet_file.endswith('.xlsx'):
-        print("Error: Spreadsheet file must have .xlsx extension", file=sys.stderr)
-        sys.exit(1)
-
-    if not OPENPYXL_AVAILABLE:
-        print("Error: openpyxl not installed. Cannot generate Excel report.", file=sys.stderr)
-        print("Install with: pip install openpyxl", file=sys.stderr)
-        sys.exit(1)
 
     find_nonstandard_values(
         args.input_dir,
         args.schema_file,
-        args.output_file,
-        args.output_spreadsheet_file
+        args.output_file
     )
 
 
