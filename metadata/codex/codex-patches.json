@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "preparation_instrument_vendor": "CODEX" }
+      ]
+    },
+    "then": {
+      "preparation_instrument_vendor": "Akoya Biosciences"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "preparation_instrument_model": "version 1 robot" }
+      ]
+    },
+    "then": {
+      "preparation_instrument_model": "CODEX Instrument"
+    }
+  }
+]

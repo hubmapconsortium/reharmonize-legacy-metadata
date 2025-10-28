@@ -59,7 +59,7 @@
     "analyte_class": "DNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_model": "NovaSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -68,7 +68,7 @@
     "data_path": "BUKMAP_20200311_10X-C_BL4_L004",
     "barcode_offset": "0",
     "barcode_read": "Read 2 (R2)",
-    "barcode_size": "24",
+    "barcode_size": "16",
     "umi_offset": "Not applicable",
     "umi_read": "Not applicable",
     "umi_size": "Not applicable",
@@ -85,11 +85,11 @@
     "library_layout": "paired-end",
     "number_of_pcr_cycles_for_indexing": "12",
     "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
-    "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+    "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit",
     "sequencing_read_format": "101,8,16,101",
     "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
     "transposition_method": "snATACseq",
@@ -104,7 +104,7 @@
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
     {"op": "add", "path": "/barcode_offset", "value": "0"},
     {"op": "add", "path": "/barcode_read", "value": "Read 2 (R2)"},
-    {"op": "add", "path": "/barcode_size", "value": "24"},
+    {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "ATACseq"},
     {"op": "add", "path": "/expected_entity_capture_count", "value": null},
@@ -124,7 +124,7 @@
     {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bvssn6ee"},
-    {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084"},
+    {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084"},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
@@ -167,9 +167,11 @@
     {"op": "remove", "path": "/transposition_kit_number"},
     {"op": "remove", "path": "/transposition_transposase_source"},
     {"op": "remove", "path": "/version"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,16,101"}
+    {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,16,101"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 S4 Reagent Kit"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -203,25 +205,7 @@
         "snATACseq": "snATACseq"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NovaSeq",
-        "permissible_values": [
-          "NovaSeq 6000",
-          "NovaSeq X",
-          "NovaSeq X Plus"
-        ]
-      },
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "NovaSeq 6000 S4 Reagent",
-        "permissible_values": [
-          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
-          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "sequence",
       "description": "10X Genomics Single-Nucleus Assay of Transposase Accessible Chromatin-Sequencing for Epigenetic Profiling of Adult Human Kidney Tissue",

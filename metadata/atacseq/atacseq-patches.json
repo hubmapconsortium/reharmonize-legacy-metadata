@@ -8,7 +8,7 @@
     "then": {
       "assay_input_entity": "single nucleus",
       "barcode_read": "Read 2 (R2)",
-      "barcode_size": "24",
+      "barcode_size": "16",
       "barcode_offset": "0",
       "umi_read": "Not applicable",
       "umi_size": "Not applicable",
@@ -162,7 +162,7 @@
       "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
       "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
-      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn PN-1000084",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller"
     }
@@ -180,7 +180,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
       "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -196,7 +196,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit",
       "sample_indexing_kit": "10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -212,7 +212,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
       "sample_indexing_kit": "10x Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -223,6 +223,76 @@
     },
     "then": {
       "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "NovaSeq" }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "NovaSeq 6000"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "Nextseq500" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NextSeq 500 Reagent Kit"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent Kit"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "NovaSeq6000" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent Kit"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "Novaseq 6000 S1XP" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent Kit"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "NovaSeq" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent Kit"
     }
   }
 ]
