@@ -284,5 +284,15 @@
     "then": {
       "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent Kit"
     }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "NovaSeq" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent Kit"
+    }
   }
 ]
