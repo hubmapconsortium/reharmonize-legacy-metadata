@@ -180,7 +180,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
       "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -196,7 +196,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit",
       "sample_indexing_kit": "10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -212,7 +212,7 @@
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
       "sample_indexing_kit": "10x Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
-      "preparation_instrument_model": "Chromium Controler"
+      "preparation_instrument_model": "Chromium Controller"
     }
   },
   {
@@ -228,7 +228,7 @@
   {
     "when": {
       "__must__" : [
-        { "acquisition_instrument_model": "NovaSeq" },
+        { "acquisition_instrument_model": "NovaSeq" }
       ]
     },
     "then": {
@@ -238,7 +238,7 @@
   {
     "when": {
       "__must__" : [
-        { "sequencing_reagent_kit": "Nextseq500" },
+        { "sequencing_reagent_kit": "Nextseq500" }
       ]
     },
     "then": {
@@ -248,7 +248,7 @@
   {
     "when": {
       "__must__" : [
-        { "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent" },
+        { "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent" }
       ]
     },
     "then": {
@@ -258,7 +258,7 @@
   {
     "when": {
       "__must__" : [
-        { "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent" },
+        { "sequencing_reagent_kit": "NovaSeq 6000 SP Reagent" }
       ]
     },
     "then": {
@@ -268,7 +268,7 @@
   {
     "when": {
       "__must__" : [
-        { "sequencing_reagent_kit": "NovaSeq6000" },
+        { "sequencing_reagent_kit": "NovaSeq6000" }
       ]
     },
     "then": {
@@ -278,7 +278,7 @@
   {
     "when": {
       "__must__" : [
-        { "sequencing_reagent_kit": "Novaseq 6000 S1XP" },
+        { "sequencing_reagent_kit": "Novaseq 6000 S1XP" }
       ]
     },
     "then": {
