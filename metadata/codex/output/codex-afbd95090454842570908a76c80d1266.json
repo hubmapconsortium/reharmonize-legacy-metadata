@@ -52,7 +52,7 @@
     "contributors_path": "contributors.tsv",
     "data_path": "data",
     "antibodies_path": "antibodies.tsv",
-    "preparation_instrument_vendor": null,
+    "preparation_instrument_vendor": "Akoya Biosciences",
     "preparation_instrument_model": null,
     "total_run_time_value": null,
     "total_run_time_unit": null,
@@ -100,7 +100,7 @@
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
     {"op": "replace", "path": "/preparation_instrument_model", "value": null},
-    {"op": "replace", "path": "/preparation_instrument_vendor", "value": null}
+    {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Akoya Biosciences"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -118,9 +118,6 @@
       },
       "preparation_instrument_model": {
         "version 1 robot": null
-      },
-      "preparation_instrument_vendor": {
-        "CODEX": null
       }
     },
     "ambiguous_mappings": [],
