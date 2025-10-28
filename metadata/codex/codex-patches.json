@@ -2,7 +2,7 @@
   {
     "when": {
       "__must__" : [
-        { "preparation_instrument_vendor": "CODEX" },
+        { "preparation_instrument_vendor": "CODEX" }
       ]
     },
     "then": {
