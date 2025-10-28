@@ -64,7 +64,7 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": null,
     "data_path": ".",
-    "barcode_offset": null,
+    "barcode_offset": "1",
     "barcode_read": "Read 1 (R1)",
     "barcode_size": "16",
     "umi_offset": null,
@@ -103,7 +103,7 @@
     {"op": "add", "path": "/amount_of_input_analyte_unit", "value": null},
     {"op": "add", "path": "/amount_of_input_analyte_value", "value": "16020"},
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
-    {"op": "add", "path": "/barcode_offset", "value": null},
+    {"op": "add", "path": "/barcode_offset", "value": "1"},
     {"op": "add", "path": "/barcode_read", "value": "Read 1 (R1)"},
     {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
@@ -194,9 +194,6 @@
     "value_mappings": {
       "dataset_type": {
         "snRNAseq": "RNAseq"
-      },
-      "barcode_offset": {
-        "1": null
       },
       "barcode_read": {
         "R1": "Read 1 (R1)"
