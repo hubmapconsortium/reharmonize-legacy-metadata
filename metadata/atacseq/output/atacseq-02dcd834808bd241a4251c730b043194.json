@@ -89,7 +89,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "NovaSeq6000",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 Reagent Kit",
     "sequencing_read_format": "50,50,20,20",
     "transposition_reagent_kit": "",
     "transposition_method": "sciATACseq",
@@ -170,7 +170,8 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "50,50,20,20"}
+    {"op": "replace", "path": "/sequencing_read_format", "value": "50,50,20,20"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 Reagent Kit"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -204,22 +205,7 @@
         "50/50/20/20": "50,50,20,20"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "NovaSeq6000",
-        "permissible_values": [
-          "Illumina; NovaSeq 6000 S1 Reagent Kit (200 Cycles); PN 20012864",
-          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (100 Cycles); PN 20028319",
-          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (200 Cycles); PN 20028318",
-          "Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (300 Cycles); PN 20028317",
-          "Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (100 Cycles); PN 20028316",
-          "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
-          "Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313",
-          "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (100 Cycles); PN 20028401"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "sequence",
       "description": "sciATACseq on 105_ileum",

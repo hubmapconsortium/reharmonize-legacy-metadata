@@ -57,7 +57,7 @@
     "analyte_class": "DNA",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Illumina",
-    "acquisition_instrument_model": "NovaSeq",
+    "acquisition_instrument_model": "NovaSeq 6000",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -66,7 +66,7 @@
     "data_path": ".",
     "barcode_offset": "0",
     "barcode_read": "Read 2 (R2)",
-    "barcode_size": "24",
+    "barcode_size": "16",
     "umi_offset": "Not applicable",
     "umi_read": "Not applicable",
     "umi_size": "Not applicable",
@@ -94,7 +94,7 @@
     "sequencing_batch_id": null,
     "capture_batch_id": null,
     "preparation_instrument_vendor": "10x Genomics",
-    "preparation_instrument_model": "Chromium Controler",
+    "preparation_instrument_model": "Chromium Controller",
     "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit",
     "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
   },
@@ -102,7 +102,7 @@
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
     {"op": "add", "path": "/barcode_offset", "value": "0"},
     {"op": "add", "path": "/barcode_read", "value": "Read 2 (R2)"},
-    {"op": "add", "path": "/barcode_size", "value": "24"},
+    {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "ATACseq"},
     {"op": "add", "path": "/expected_entity_capture_count", "value": null},
@@ -119,7 +119,7 @@
     {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "9"},
     {"op": "add", "path": "/parent_sample_id", "value": "STAN0007-LI-3-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit"},
-    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controler"},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bf33jqqn"},
     {"op": "add", "path": "/sample_indexing_kit", "value": "10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212"},
@@ -163,6 +163,7 @@
     {"op": "remove", "path": "/transposition_input"},
     {"op": "remove", "path": "/transposition_kit_number"},
     {"op": "remove", "path": "/transposition_transposase_source"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "50,8,16,50"}
@@ -200,15 +201,6 @@
       }
     },
     "ambiguous_mappings": [
-      {
-        "field": "acquisition_instrument_model",
-        "value": "NovaSeq",
-        "permissible_values": [
-          "NovaSeq 6000",
-          "NovaSeq X",
-          "NovaSeq X Plus"
-        ]
-      },
       {
         "field": "sequencing_reagent_kit",
         "value": "NovaSeq",

@@ -89,7 +89,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Nextseq500",
+    "sequencing_reagent_kit": "Illumina; NextSeq 500 Reagent Kit",
     "sequencing_read_format": "50,50,20,20",
     "transposition_reagent_kit": "",
     "transposition_method": "sciATACseq",
@@ -172,7 +172,8 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "NextSeq 500"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
-    {"op": "replace", "path": "/sequencing_read_format", "value": "50,50,20,20"}
+    {"op": "replace", "path": "/sequencing_read_format", "value": "50,50,20,20"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NextSeq 500 Reagent Kit"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -206,17 +207,7 @@
         "50+50+20+20": "50,50,20,20"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "sequencing_reagent_kit",
-        "value": "Nextseq500",
-        "permissible_values": [
-          "Illumina; NextSeq 500/550 Hi Output Kit 150 Cycles; v2.5; PN 20024907",
-          "Illumina; NextSeq 500/550 Hi Output Kit 75 Cycles v2.5; PN 20024906",
-          "Illumina; NextSeq 500/550 Mid Output Kit 150 Cycles v2.5; PN 20024904"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "_from_metadatatsv": true,
       "assay_category": "sequence",
