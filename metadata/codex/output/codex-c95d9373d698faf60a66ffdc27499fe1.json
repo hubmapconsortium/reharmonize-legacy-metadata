@@ -53,7 +53,7 @@
     "data_path": ".",
     "antibodies_path": "extras/UFLA_antibodies_121120.tsv",
     "preparation_instrument_vendor": "Akoya Biosciences",
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "CODEX Instrument",
     "total_run_time_value": null,
     "total_run_time_unit": null,
     "number_of_antibodies": "28",
@@ -99,7 +99,7 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
-    {"op": "replace", "path": "/preparation_instrument_model", "value": null},
+    {"op": "replace", "path": "/preparation_instrument_model", "value": "CODEX Instrument"},
     {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Akoya Biosciences"}
   ],
   "processing_log": {
@@ -115,9 +115,6 @@
       },
       "is_targeted": {
         "True": "Yes"
-      },
-      "preparation_instrument_model": {
-        "version 1 robot": null
       }
     },
     "ambiguous_mappings": [],
