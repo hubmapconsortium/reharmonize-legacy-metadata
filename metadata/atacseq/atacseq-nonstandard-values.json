@@ -16,8 +16,7 @@
     "Illumina; NextSeq 500 Reagent Kit",
     "Illumina; NovaSeq 6000 Reagent Kit",
     "Illumina; NovaSeq 6000 S4 Reagent Kit",
-    "Illumina; NovaSeq 6000 SP Reagent Kit",
-    "NovaSeq"
+    "Illumina; NovaSeq 6000 SP Reagent Kit"
   ],
   "library_preparation_kit": [
     "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
