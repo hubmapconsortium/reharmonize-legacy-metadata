@@ -1,9 +1,9 @@
 {
-  "source_storage_duration_value": "null",
+  "is_staining_automated": "False",
   "is_image_preprocessing_required": "null",
+  "source_storage_duration_value": "null",
   "is_batch_staining_done": "null",
   "source_storage_duration_unit": "null",
-  "is_staining_automated": "null",
   "parent_sample_id": [
     "VAN0003-LK-32-21",
     "VAN0003-LK-33-2",
