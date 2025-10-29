@@ -1,0 +1,18 @@
+[
+  {
+    "group_name": "Purdue TTD",
+    "dataset_type": "DESI",
+    "datasets_with_non_standard_values": 13,
+    "datasets_with_missing_required_values": 13,
+    "datasets_with_invalid_input_patterns": 13,
+    "total_datasets_with_issues": 13
+  },
+  {
+    "group_name": "TTD - Penn State University and Columbia University",
+    "dataset_type": "DESI",
+    "datasets_with_non_standard_values": 2,
+    "datasets_with_missing_required_values": 2,
+    "datasets_with_invalid_input_patterns": 2,
+    "total_datasets_with_issues": 2
+  }
+]
