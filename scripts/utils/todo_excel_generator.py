@@ -7,6 +7,7 @@ data validation dropdowns for curator review. It creates workbooks with multiple
 sheets and a hidden validation sheet containing permissible values.
 """
 
+import json
 import sys
 from pathlib import Path
 from typing import Dict, Set, Any, List
@@ -253,6 +254,59 @@ def generate_excel_report(
         sys.exit(1)
 
 
+def generate_summary_report(
+    grouped_issues: Dict[str, Dict],
+    output_json_path: str
+) -> None:
+    """
+    Generate a JSON summary report showing the number of unique datasets with issues per group.
+
+    Args:
+        grouped_issues: Dictionary mapping group_slug to dict with 'issues' and 'metadata'
+        output_json_path: Path to JSON output file (used to determine summary file location)
+    """
+    json_path = Path(output_json_path)
+    todo_dir = json_path.parent / "todo"
+    summary_path = todo_dir / "summary-report.json"
+
+    summary_data = []
+
+    # Process each group
+    for group_slug, group_data in sorted(grouped_issues.items()):
+        per_file_issues = group_data['issues']
+        group_name = group_data['group_name']
+        dataset_type = group_data['dataset_type']
+
+        # Count unique datasets with issues in each category
+        non_standard_datasets = len(per_file_issues['non_permissible'])
+        missing_required_datasets = len(per_file_issues['missing_required'])
+        regex_violation_datasets = len(per_file_issues['regex_violations'])
+
+        # Create summary entry for this group
+        group_summary = {
+            "group_name": group_name,
+            "dataset_type": dataset_type,
+            "datasets_with_non_standard_values": non_standard_datasets,
+            "datasets_with_missing_required_values": missing_required_datasets,
+            "datasets_with_invalid_input_patterns": regex_violation_datasets,
+            "total_datasets_with_issues": len(set(
+                list(per_file_issues['non_permissible'].keys()) +
+                list(per_file_issues['missing_required'].keys()) +
+                list(per_file_issues['regex_violations'].keys())
+            ))
+        }
+
+        summary_data.append(group_summary)
+
+    # Write summary report
+    try:
+        with open(summary_path, 'w', encoding='utf-8') as f:
+            json.dump(summary_data, f, indent=2, ensure_ascii=False)
+        print(f"\nSummary report saved to: {summary_path}")
+    except Exception as e:
+        print(f"Error writing summary report: {e}", file=sys.stderr)
+
+
 def generate_todo_excel_reports(
     grouped_issues: Dict[str, Dict],
     output_json_path: str,
@@ -291,3 +345,6 @@ def generate_todo_excel_reports(
         # Generate the Excel report
         generate_excel_report(per_file_issues, str(excel_path), permissible_values_map)
         print(f"  - {excel_filename}")
+
+    # Generate summary report after all Excel files are created
+    generate_summary_report(grouped_issues, output_json_path)
