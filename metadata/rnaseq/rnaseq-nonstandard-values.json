@@ -11,13 +11,7 @@
     "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
     "NovaSeq 6000 SP Reagent"
   ],
-  "library_input_amount_value": "null",
-  "library_concentration_unit": "null",
-  "sample_indexing_kit": "null",
   "sample_indexing_set": "null",
-  "library_concentration_value": "null",
-  "library_input_amount_unit": "null",
-  "source_storage_duration_unit": "null",
   "library_preparation_kit": [
     "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
     "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
@@ -25,6 +19,12 @@
     "10x Genomics; Chromium Single Cell 3' Reagent Kits v3",
     "null"
   ],
+  "library_concentration_unit": "null",
+  "library_concentration_value": "null",
+  "library_input_amount_value": "null",
+  "library_input_amount_unit": "null",
+  "source_storage_duration_unit": "null",
+  "sample_indexing_kit": "null",
   "source_storage_duration_value": "null",
   "parent_sample_id": [
     "CALT0001-HT-2-2-1",
@@ -342,8 +342,8 @@
     "null"
   ],
   "library_adapter_sequence": "",
-  "library_average_fragment_size": "",
   "number_of_pcr_cycles_for_indexing": "",
   "sequencing_read_format": "",
+  "library_average_fragment_size": "",
   "barcode_offset": "1"
 }
