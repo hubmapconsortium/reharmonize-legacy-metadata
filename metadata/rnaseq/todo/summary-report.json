@@ -1,0 +1,58 @@
+[
+  {
+    "group_name": "California Institute of Technology TMC",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 12,
+    "datasets_with_invalid_input_patterns": 12,
+    "total_datasets_with_issues": 12
+  },
+  {
+    "group_name": "EXT - Human Cell Atlas",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 5,
+    "datasets_with_missing_required_values": 5,
+    "datasets_with_invalid_input_patterns": 5,
+    "total_datasets_with_issues": 5
+  },
+  {
+    "group_name": "Stanford TMC",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 81,
+    "datasets_with_missing_required_values": 92,
+    "datasets_with_invalid_input_patterns": 92,
+    "total_datasets_with_issues": 92
+  },
+  {
+    "group_name": "TMC - University of California San Diego focusing on female reproduction",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 24,
+    "datasets_with_missing_required_values": 24,
+    "datasets_with_invalid_input_patterns": 24,
+    "total_datasets_with_issues": 24
+  },
+  {
+    "group_name": "TMC - University of Connecticut and Scripps",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 15,
+    "datasets_with_missing_required_values": 15,
+    "datasets_with_invalid_input_patterns": 15,
+    "total_datasets_with_issues": 15
+  },
+  {
+    "group_name": "University of California San Diego TMC",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 465,
+    "datasets_with_missing_required_values": 465,
+    "datasets_with_invalid_input_patterns": 465,
+    "total_datasets_with_issues": 465
+  },
+  {
+    "group_name": "University of Florida TMC",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 26,
+    "datasets_with_missing_required_values": 26,
+    "datasets_with_invalid_input_patterns": 26,
+    "total_datasets_with_issues": 26
+  }
+]
