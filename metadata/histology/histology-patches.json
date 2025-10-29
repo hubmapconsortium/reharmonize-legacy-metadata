@@ -26,7 +26,7 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "Periodic acid-Schiff"
+      "stain_name": "Periodic acid-Schiff"
     }
   }
 ]
