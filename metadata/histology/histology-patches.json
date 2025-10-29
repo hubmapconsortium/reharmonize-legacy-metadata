@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_vendor": "Leica " }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_vendor": "Leica Biosystems"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "SCN-400" }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "SCN400"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "stain_name": "Periodic acid-Schiff " }
+      ]
+    },
+    "then": {
+      "stain_name": "Periodic acid-Schiff"
+    }
+  }
+]
