@@ -159,10 +159,10 @@
       ]
     },
     "then": {
-      "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
-      "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
-      "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit 48 rxns PN-1000155",
-      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
+      "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110",
+      "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit, 48 rxns; PN 1000155",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn; PN 1000084",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller"
     }
@@ -175,10 +175,10 @@
       ]
     },
     "then": {
-      "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
-      "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000110",
+      "transposition_reagent_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110",
       "preparation_instrument_kit": "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
-      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A (96 rxn); PN-1000084",
+      "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn; PN 1000084",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller"
     }
@@ -191,8 +191,8 @@
       ]
     },
     "then": {
-      "transposition_reagent_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
-      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns PN-1000175",
+      "transposition_reagent_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000175",
+      "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000175",
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip H Single Cell Kit",
       "sample_indexing_kit": "10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
