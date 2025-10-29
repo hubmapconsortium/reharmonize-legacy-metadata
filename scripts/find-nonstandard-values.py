@@ -37,6 +37,8 @@ import re
 try:
     import openpyxl
     from openpyxl import Workbook
+    from openpyxl.worksheet.datavalidation import DataValidation
+    from openpyxl.utils import get_column_letter
     OPENPYXL_AVAILABLE = True
 except ImportError:
     OPENPYXL_AVAILABLE = False
@@ -311,13 +313,34 @@ def slugify_group_name(group_name: str, dataset_type: str) -> str:
     return f"{group_slug}-{dataset_slug}"
 
 
+def get_or_create_validation_sheet(workbook):
+    """
+    Get or create the hidden validation data sheet.
+
+    Args:
+        workbook: openpyxl workbook object
+
+    Returns:
+        The validation sheet (hidden)
+    """
+    sheet_name = '_validation_data'
+    if sheet_name in workbook.sheetnames:
+        return workbook[sheet_name]
+    else:
+        sheet = workbook.create_sheet(sheet_name)
+        sheet.sheet_state = 'hidden'
+        return sheet
+
+
 def write_sheet_with_grouping(
     worksheet,
     issue_data: Dict[str, Dict[str, Set]],
-    sheet_type: str
+    sheet_type: str,
+    permissible_values_map: Dict[str, List[Any]],
+    validation_col_tracker: Dict[str, int]
 ) -> None:
     """
-    Write data to a worksheet with proper grouping.
+    Write data to a worksheet with proper grouping and add dropdown validations.
 
     For each dataset with multiple issues, the first row shows Dataset ID and URL,
     subsequent rows have None for these columns to create visual grouping.
@@ -326,6 +349,8 @@ def write_sheet_with_grouping(
         worksheet: openpyxl worksheet object
         issue_data: Dictionary mapping hubmap_id to {field_name: set([values])}
         sheet_type: Type of sheet - 'non_permissible', 'missing_required', or 'regex_violations'
+        permissible_values_map: Dictionary mapping field names to their permissible values
+        validation_col_tracker: Dictionary mapping field names to column numbers in hidden sheet
     """
     # Define columns based on sheet type
     if sheet_type == 'missing_required':
@@ -342,6 +367,10 @@ def write_sheet_with_grouping(
 
     # Sort datasets alphabetically by hubmap_id
     sorted_datasets = sorted(issue_data.keys())
+
+    # Track which fields appear in which rows (for dropdown validation)
+    field_to_rows = {}
+    current_row = 2  # Start after header row
 
     # Write data rows
     for hubmap_id in sorted_datasets:
@@ -373,10 +402,55 @@ def write_sheet_with_grouping(
 
             worksheet.append(row)
 
+            # Track this field's row number for dropdown validation
+            if field_name not in field_to_rows:
+                field_to_rows[field_name] = []
+            field_to_rows[field_name].append(current_row)
+            current_row += 1
+
+    # Add dropdown data validations for fields with permissible values
+    if not field_to_rows:
+        # No data rows, skip validation logic
+        return
+
+    # Determine which column is "New Value"
+    if has_current_value:
+        new_value_col_idx = 4  # Column D (Dataset ID, Field Name, Current Value, New Value, URL)
+    else:
+        new_value_col_idx = 3  # Column C (Dataset ID, Field Name, New Value, URL)
+
+    # Create and apply data validations for fields that have entries in validation_col_tracker
+    for field_name, row_numbers in field_to_rows.items():
+        if field_name not in validation_col_tracker:
+            continue
+
+        col_num = validation_col_tracker[field_name]
+        col_letter = get_column_letter(col_num)
+        pv = permissible_values_map[field_name]
+
+        # Create range reference to hidden sheet
+        range_ref = f"_validation_data!${col_letter}$1:${col_letter}${len(pv)}"
+
+        # Create data validation
+        dv = DataValidation(type="list", formula1=range_ref, allow_blank=True)
+        dv.error = 'Your entry is not in the list'
+        dv.errorTitle = 'Invalid Entry'
+        dv.prompt = 'Please select from the list'
+        dv.promptTitle = 'List Selection'
+
+        # Add to worksheet
+        worksheet.add_data_validation(dv)
+
+        # Apply to all rows containing this field in the "New Value" column
+        new_value_col_letter = get_column_letter(new_value_col_idx)
+        for row_num in row_numbers:
+            dv.add(f"{new_value_col_letter}{row_num}")
+
 
 def generate_excel_report(
     per_file_issues: Dict[str, Dict[str, Dict[str, Set]]],
-    output_file: str
+    output_file: str,
+    permissible_values_map: Dict[str, List[Any]]
 ) -> None:
     """
     Generate Excel spreadsheet with 3 sheets for curator review.
@@ -385,6 +459,7 @@ def generate_excel_report(
         per_file_issues: Dictionary with three keys (non_permissible, missing_required,
                         regex_violations), each mapping to {hubmap_id: {field_name: set([values])}}
         output_file: Path to output .xlsx file
+        permissible_values_map: Dictionary mapping field names to their permissible values
     """
     if not OPENPYXL_AVAILABLE:
         print("Warning: openpyxl not installed. Cannot generate Excel report.", file=sys.stderr)
@@ -398,6 +473,29 @@ def generate_excel_report(
     if 'Sheet' in wb.sheetnames:
         wb.remove(wb['Sheet'])
 
+    # Collect all unique fields across all issue types that have permissible values
+    all_fields = set()
+    for issue_type, issue_data in per_file_issues.items():
+        for hubmap_id, field_issues in issue_data.items():
+            for field_name in field_issues.keys():
+                if field_name in permissible_values_map:
+                    pv = permissible_values_map[field_name]
+                    if pv and len(pv) > 0:
+                        all_fields.add(field_name)
+
+    # Create hidden sheet and populate with all permissible values
+    validation_col_tracker = {}
+    if all_fields:
+        validation_sheet = get_or_create_validation_sheet(wb)
+
+        # Sort fields for consistent column assignment
+        sorted_fields = sorted(all_fields)
+        for col_num, field_name in enumerate(sorted_fields, start=1):
+            validation_col_tracker[field_name] = col_num
+            permissible_values = permissible_values_map[field_name]
+            for row_idx, value in enumerate(permissible_values, start=1):
+                validation_sheet.cell(row=row_idx, column=col_num, value=value)
+
     # Create three sheets
     sheet_configs = [
         ('Non-Standard Value', per_file_issues['non_permissible'], 'non_permissible'),
@@ -407,7 +505,7 @@ def generate_excel_report(
 
     for sheet_name, issue_data, sheet_type in sheet_configs:
         ws = wb.create_sheet(title=sheet_name)
-        write_sheet_with_grouping(ws, issue_data, sheet_type)
+        write_sheet_with_grouping(ws, issue_data, sheet_type, permissible_values_map, validation_col_tracker)
 
     # Save workbook
     try:
@@ -421,7 +519,8 @@ def generate_excel_report(
 
 def generate_grouped_excel_reports(
     grouped_issues: Dict[str, Dict],
-    output_json_path: str
+    output_json_path: str,
+    permissible_values_map: Dict[str, List[Any]]
 ) -> None:
     """
     Generate Excel reports grouped by group_name.
@@ -429,6 +528,7 @@ def generate_grouped_excel_reports(
     Args:
         grouped_issues: Dictionary mapping group_slug to dict with 'issues' and 'metadata'
         output_json_path: Path to JSON output file (used to determine todo folder location)
+        permissible_values_map: Dictionary mapping field names to their permissible values
     """
     if not OPENPYXL_AVAILABLE:
         print("Warning: openpyxl not installed. Cannot generate Excel reports.", file=sys.stderr)
@@ -453,7 +553,7 @@ def generate_grouped_excel_reports(
         excel_path = todo_dir / excel_filename
 
         # Generate the Excel report
-        generate_excel_report(per_file_issues, str(excel_path))
+        generate_excel_report(per_file_issues, str(excel_path), permissible_values_map)
         print(f"  - {excel_filename}")
 
 
@@ -601,7 +701,7 @@ def find_nonstandard_values(
     print(f"  Total non-standard values found: {total_values}")
 
     # Generate grouped Excel reports
-    generate_grouped_excel_reports(grouped_issues, output_file)
+    generate_grouped_excel_reports(grouped_issues, output_file, permissible_values_map)
 
 
 def main():
