@@ -23,7 +23,7 @@
     "then": {
       "acquisition_instrument_vendor": "Carl Zeiss Microscopy"
     }
-  }
+  },
   {
     "when": {
       "__must__" : [
