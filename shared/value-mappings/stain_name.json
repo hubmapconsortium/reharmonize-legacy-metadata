@@ -1,5 +1,6 @@
 {
   "stain_name": {
-    "Periodic acid-Schiff": "PAS"
+    "Periodic acid-Schiff": "PAS",
+    "Periodic acid-Schiff ": "PAS"
   }
 }

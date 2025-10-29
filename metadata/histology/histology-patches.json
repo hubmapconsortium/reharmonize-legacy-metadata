@@ -1,7 +1,8 @@
 [
   {
     "when": {
-      "__must__" : [
+      "__should__" : [
+        { "acquisition_instrument_vendor": "Leica" },
         { "acquisition_instrument_vendor": "Leica " }
       ]
     },
@@ -11,31 +12,9 @@
   },
   {
     "when": {
-      "__must__" : [
-        { "acquisition_instrument_model": "SCN-400" }
-      ]
-    },
-    "then": {
-      "acquisition_instrument_model": "SCN400"
-    }
-  },
-  {
-    "when": {
-      "__must__" : [
-        { "stain": "Periodic acid-Schiff " }
-      ]
-    },
-    "then": {
-      "stain": "Periodic acid-Schiff"
-    }
-  },
-  {
-    "when": {
-      "__must__" : [
-        { "__should__": [
-          { "protocols_io_doi": "10.17504/protocols.io.buaknscw" },
-          { "protocols_io_doi": "10.17504/protocols.io.4qngvve" }
-        ]}
+      "__should__": [
+        { "protocols_io_doi": "10.17504/protocols.io.buaknscw" },
+        { "protocols_io_doi": "10.17504/protocols.io.4qngvve" }
       ]
     },
     "then": {
