@@ -132,6 +132,13 @@ def write_sheet_with_grouping(
             field_to_rows[field_name].append(current_row)
             current_row += 1
 
+    # Enable AutoFilter on the header row for easier data filtering
+    if current_row > 2:  # Only add filter if there's at least one data row
+        # Get the range from A1 to the last column and last row
+        last_col_letter = get_column_letter(len(columns))
+        filter_range = f"A1:{last_col_letter}{current_row - 1}"
+        worksheet.auto_filter.ref = filter_range
+
     # Add dropdown data validations for fields with permissible values
     if not field_to_rows:
         # No data rows, skip validation logic
