@@ -17,22 +17,21 @@
     "when": {
       "__must__" : [
         { "assay_type": "AF" },
-        { "acquisition_instrument_vendor": "Zeiss" },
+        { "acquisition_instrument_vendor": "Zeiss" }
       ]
     },
     "then": {
       "acquisition_instrument_vendor": "Carl Zeiss Microscopy"
     }
-  }
+  },
   {
     "when": {
       "__must__" : [
-        { "assay_type": "AF" },
-        { "analyte_class": null },
+        { "assay_type": "AF" }
       ]
     },
     "then": {
-      "analyte_class": "endogenous fluorophores"
+      "analyte_class": "Endogenous fluorophore"
     }
   }
 ]

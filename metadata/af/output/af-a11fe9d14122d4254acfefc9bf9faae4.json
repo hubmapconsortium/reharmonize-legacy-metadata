@@ -37,7 +37,7 @@
     "lab_id": null,
     "preparation_protocol_doi": "10.17504/protocols.io.7e3hjgn",
     "dataset_type": "Auto-fluorescence",
-    "analyte_class": "",
+    "analyte_class": "Endogenous fluorophore",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Zeiss Microscopy",
     "acquisition_instrument_model": "Axio Scan.Z1",
@@ -98,6 +98,7 @@
     {"op": "remove", "path": "/resolution_z_value"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Zeiss Microscopy"},
+    {"op": "replace", "path": "/analyte_class", "value": "Endogenous fluorophore"},
     {"op": "replace", "path": "/is_targeted", "value": "No"}
   ],
   "processing_log": {
@@ -107,8 +108,11 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
+      "acquisition_instrument_model": {
+        "AxioScan.Z1": "Axio Scan.Z1"
+      },
       "acquisition_instrument_vendor": {
-        "Zeiss": "Zeiss Microscopy"
+        "Carl Zeiss Microscopy": "Zeiss Microscopy"
       },
       "dataset_type": {
         "AF": "Auto-fluorescence"
