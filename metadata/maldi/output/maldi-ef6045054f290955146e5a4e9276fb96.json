@@ -1,0 +1,208 @@
+{
+  "uuid": "ef6045054f290955146e5a4e9276fb96",
+  "hubmap_id": "HBM793.CTLW.723",
+  "status": "Published",
+  "group_name": "Vanderbilt TMC",
+  "dataset_type": "MALDI",
+  "metadata": {
+    "acquisition_instrument_model": "timsTOF fleX",
+    "acquisition_instrument_vendor": "Bruker Daltonics",
+    "analyte_class": "lipids",
+    "assay_category": "mass_spectrometry_imaging",
+    "assay_type": "MALDI-IMS",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "description": "MALDI Imaging MS data collected from the left kidney of a 65 year old White  donor by the Biomolecular Multimodal Imaging Center (BIOMC) at Vanderbilt University.  BIOMIC is a Tissue Mapping Center that is part of the NIH funded Human Biomolecular Atlas Program (HuBMAP).  Mass Spectrometry images of lipids were collected with a Bruker Daltonics MALDI timsTOF fleX at 10.000000 micron from m/z 150.000000-2000.000000 in positive ion mode.  Support was provided by the NIH Common Fund and National Institute of Diabetes and Digestive and Kidney Diseases (U54 DK120058).  Tissue was collected through the Cooperative Human Tissue Network with support provided by the NIH National Cancer Institute (5 UM1 CA183727-08).",
+    "desi_solvent": "",
+    "desi_solvent_flow_rate": "",
+    "desi_solvent_flow_rate_unit": "",
+    "donor_id": "VAN0044",
+    "execution_datetime": "2022-02-09 11:17",
+    "ion_mobility": "",
+    "is_targeted": "False",
+    "mass_resolving_power": "40000.0",
+    "ms_scan_mode": "MS",
+    "ms_source": "MALDI",
+    "mz_range_high_value": "2000.0",
+    "mz_range_low_value": "150.0",
+    "mz_resolving_power": "400.0",
+    "operator": "Elizabeth K Neumann",
+    "operator_email": "elizabeth.k.neumann@vanderbilt.edu",
+    "overall_protocols_io_doi": "10.17504/protocols.io.bfskjncw",
+    "pi": "Jeffrey M. Spraggins",
+    "pi_email": "jeff.spraggins@vanderbilt.edu",
+    "polarity": "positive ion mode",
+    "preparation_instrument_model": "M5 Sprayer",
+    "preparation_instrument_vendor": "HTX Technologies",
+    "preparation_maldi_matrix": "1,5-Diaminonapthalene",
+    "preparation_type": "Sprayed matrix",
+    "processing_protocols_io_doi": "",
+    "protocols_io_doi": "10.17504/protocols.io.7e3hjgn",
+    "resolution_x_unit": "um",
+    "resolution_x_value": "10.0",
+    "resolution_y_unit": "um",
+    "resolution_y_value": "10.0",
+    "section_prep_protocols_io_doi": "10.17504/protocols.io.bt8inrue",
+    "tissue_id": "VAN0044-LK-1-46",
+    "version": "2"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "VAN0044-LK-1-46",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.7e3hjgn",
+    "dataset_type": "MALDI",
+    "analyte_class": "Lipid",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Bruker",
+    "acquisition_instrument_model": "MALDI timsTOF Flex Prototype",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "ms_ionization_technique": "MALDI",
+    "ms_scan_mode": "MS",
+    "mass_analysis_polarity": "Positive ion mode",
+    "mass_to_charge_range_low_value": "150.0",
+    "mass_to_charge_range_high_value": "2000.0",
+    "mass_resolving_power": "40000.0",
+    "mass_to_charge_resolving_power": "400.0",
+    "ion_mobility": "",
+    "matrix_deposition_method": "Sprayed matrix",
+    "preparation_instrument_vendor": "HTX Technologies",
+    "preparation_instrument_model": "M5 Sprayer",
+    "preparation_matrix": "DAN (1,5-diaminonapthalene)",
+    "analysis_protocol_doi": null,
+    "metadata_schema_id": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"
+  },
+  "json_patch": [
+    {"op": "add", "path": "/analysis_protocol_doi", "value": null},
+    {"op": "add", "path": "/dataset_type", "value": "MALDI"},
+    {"op": "add", "path": "/lab_id", "value": null},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000.0"},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "150.0"},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "400.0"},
+    {"op": "add", "path": "/matrix_deposition_method", "value": "Sprayed matrix"},
+    {"op": "add", "path": "/metadata_schema_id", "value": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"},
+    {"op": "add", "path": "/ms_ionization_technique", "value": "MALDI"},
+    {"op": "add", "path": "/parent_sample_id", "value": "VAN0044-LK-1-46"},
+    {"op": "add", "path": "/preparation_matrix", "value": "DAN (1,5-diaminonapthalene)"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.7e3hjgn"},
+    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
+    {"op": "add", "path": "/source_storage_duration_value", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
+    {"op": "remove", "path": "/assay_category"},
+    {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/description"},
+    {"op": "remove", "path": "/desi_solvent"},
+    {"op": "remove", "path": "/desi_solvent_flow_rate"},
+    {"op": "remove", "path": "/desi_solvent_flow_rate_unit"},
+    {"op": "remove", "path": "/donor_id"},
+    {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/ms_source"},
+    {"op": "remove", "path": "/mz_range_high_value"},
+    {"op": "remove", "path": "/mz_range_low_value"},
+    {"op": "remove", "path": "/mz_resolving_power"},
+    {"op": "remove", "path": "/operator"},
+    {"op": "remove", "path": "/operator_email"},
+    {"op": "remove", "path": "/overall_protocols_io_doi"},
+    {"op": "remove", "path": "/pi"},
+    {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/polarity"},
+    {"op": "remove", "path": "/preparation_maldi_matrix"},
+    {"op": "remove", "path": "/preparation_type"},
+    {"op": "remove", "path": "/processing_protocols_io_doi"},
+    {"op": "remove", "path": "/protocols_io_doi"},
+    {"op": "remove", "path": "/resolution_x_unit"},
+    {"op": "remove", "path": "/resolution_x_value"},
+    {"op": "remove", "path": "/resolution_y_unit"},
+    {"op": "remove", "path": "/resolution_y_value"},
+    {"op": "remove", "path": "/section_prep_protocols_io_doi"},
+    {"op": "remove", "path": "/tissue_id"},
+    {"op": "remove", "path": "/version"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "MALDI timsTOF Flex Prototype"},
+    {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Bruker"},
+    {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
+    {"op": "replace", "path": "/is_targeted", "value": "No"}
+  ],
+  "processing_log": {
+    "field_mappings": {
+      "assay_type": "dataset_type",
+      "ms_source": "ms_ionization_technique",
+      "mz_range_high_value": "mass_to_charge_range_high_value",
+      "mz_range_low_value": "mass_to_charge_range_low_value",
+      "mz_resolving_power": "mass_to_charge_resolving_power",
+      "polarity": "mass_analysis_polarity",
+      "preparation_maldi_matrix": "preparation_matrix",
+      "preparation_type": "matrix_deposition_method",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "tissue_id": "parent_sample_id"
+    },
+    "value_mappings": {
+      "acquisition_instrument_model": {
+        "timsTOF fleX": "MALDI timsTOF Flex Prototype"
+      },
+      "acquisition_instrument_vendor": {
+        "Bruker Daltonics": "Bruker"
+      },
+      "analyte_class": {
+        "lipids": "Lipid"
+      },
+      "dataset_type": {
+        "MALDI-IMS": "MALDI"
+      },
+      "is_targeted": {
+        "False": "No"
+      },
+      "mass_analysis_polarity": {
+        "positive ion mode": "Positive ion mode"
+      },
+      "preparation_matrix": {
+        "1,5-Diaminonapthalene": "DAN (1,5-diaminonapthalene)"
+      }
+    },
+    "ambiguous_mappings": [
+      {
+        "field": "ms_scan_mode",
+        "value": "MS",
+        "permissible_values": [
+          "MS1",
+          "MS2",
+          "MS3"
+        ]
+      },
+      {
+        "field": "matrix_deposition_method",
+        "value": "Sprayed matrix",
+        "permissible_values": [
+          "Electrospray deposition",
+          "Robotic spraying"
+        ]
+      }
+    ],
+    "excluded_data": {
+      "assay_category": "mass_spectrometry_imaging",
+      "description": "MALDI Imaging MS data collected from the left kidney of a 65 year old White  donor by the Biomolecular Multimodal Imaging Center (BIOMC) at Vanderbilt University.  BIOMIC is a Tissue Mapping Center that is part of the NIH funded Human Biomolecular Atlas Program (HuBMAP).  Mass Spectrometry images of lipids were collected with a Bruker Daltonics MALDI timsTOF fleX at 10.000000 micron from m/z 150.000000-2000.000000 in positive ion mode.  Support was provided by the NIH Common Fund and National Institute of Diabetes and Digestive and Kidney Diseases (U54 DK120058).  Tissue was collected through the Cooperative Human Tissue Network with support provided by the NIH National Cancer Institute (5 UM1 CA183727-08).",
+      "desi_solvent": "",
+      "desi_solvent_flow_rate": "",
+      "desi_solvent_flow_rate_unit": "",
+      "donor_id": "VAN0044",
+      "execution_datetime": "2022-02-09 11:17",
+      "operator": "Elizabeth K Neumann",
+      "operator_email": "elizabeth.k.neumann@vanderbilt.edu",
+      "overall_protocols_io_doi": "10.17504/protocols.io.bfskjncw",
+      "pi": "Jeffrey M. Spraggins",
+      "pi_email": "jeff.spraggins@vanderbilt.edu",
+      "processing_protocols_io_doi": "",
+      "resolution_x_unit": "um",
+      "resolution_x_value": "10.0",
+      "resolution_y_unit": "um",
+      "resolution_y_value": "10.0",
+      "section_prep_protocols_io_doi": "10.17504/protocols.io.bt8inrue",
+      "version": "2"
+    }
+  }
+}

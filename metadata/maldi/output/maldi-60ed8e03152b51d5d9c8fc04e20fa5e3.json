@@ -1,0 +1,191 @@
+{
+  "uuid": "60ed8e03152b51d5d9c8fc04e20fa5e3",
+  "hubmap_id": "HBM253.WVWH.754",
+  "status": "Published",
+  "group_name": "Vanderbilt TMC",
+  "dataset_type": "MALDI",
+  "metadata": {
+    "_from_metadatatsv": true,
+    "acquisition_instrument_model": "MALDI timsTOF Flex Prototype",
+    "acquisition_instrument_vendor": "Bruker Daltonics",
+    "analyte_class": "lipids",
+    "assay_category": "mass_spectrometry",
+    "assay_type": "IMS negative",
+    "collectiontype": "single_metadatatsv",
+    "data_path": "/",
+    "donor_id": "VAN0016",
+    "execution_datetime": "11/18/19 18:02",
+    "is_targeted": "FALSE",
+    "metadata_path": "/metadata/",
+    "ms_source": "MALDI",
+    "mz_range_high_value": "2000",
+    "mz_range_low_value": "100",
+    "operator": "Elizabeth K. Neumann",
+    "operator_email": "elizabeth.neumann@vanderbilt.edu",
+    "overall_protocols_io_doi": "10\\.17504/protocols.io.bfskjncw",
+    "pi": "Jeffrey M. Spraggins",
+    "pi_email": "jeff.spraggins@vanderbilt.edu",
+    "polarity": "Negative Ion Mode",
+    "preparation_instrument_model": "M3 TM-Sprayer",
+    "preparation_instrument_vendor": "HTX Imaging",
+    "preparation_maldi_matrix": "1,5-Diaminonaphthalene",
+    "preparation_type": "Sprayed",
+    "protocols_io_doi": "10.17504/protocols.io.7gdhjs6",
+    "resolution_x_unit": "um",
+    "resolution_x_value": "10",
+    "resolution_y_unit": "um",
+    "resolution_y_value": "10",
+    "section_prep_protocols_io_doi": "10.17504/protocols.io.4srgwd6",
+    "tissue_id": "VAN0016-LK-202-89"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "VAN0016-LK-202-89",
+    "lab_id": null,
+    "preparation_protocol_doi": "10.17504/protocols.io.7gdhjs6",
+    "dataset_type": "MALDI",
+    "analyte_class": "Lipid",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Bruker",
+    "acquisition_instrument_model": "MALDI timsTOF Flex Prototype",
+    "source_storage_duration_value": null,
+    "source_storage_duration_unit": null,
+    "time_since_acquisition_instrument_calibration_value": null,
+    "time_since_acquisition_instrument_calibration_unit": null,
+    "contributors_path": null,
+    "data_path": "/",
+    "ms_ionization_technique": "MALDI",
+    "ms_scan_mode": null,
+    "mass_analysis_polarity": "Negative ion mode",
+    "mass_to_charge_range_low_value": "100",
+    "mass_to_charge_range_high_value": "2000",
+    "mass_resolving_power": null,
+    "mass_to_charge_resolving_power": null,
+    "ion_mobility": null,
+    "matrix_deposition_method": "Sprayed",
+    "preparation_instrument_vendor": "HTX Technologies",
+    "preparation_instrument_model": "M3+ Sprayer",
+    "preparation_matrix": "DAN (1,5-diaminonapthalene)",
+    "analysis_protocol_doi": null,
+    "metadata_schema_id": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"
+  },
+  "json_patch": [
+    {"op": "add", "path": "/analysis_protocol_doi", "value": null},
+    {"op": "add", "path": "/contributors_path", "value": null},
+    {"op": "add", "path": "/dataset_type", "value": "MALDI"},
+    {"op": "add", "path": "/ion_mobility", "value": null},
+    {"op": "add", "path": "/lab_id", "value": null},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "Negative ion mode"},
+    {"op": "add", "path": "/mass_resolving_power", "value": null},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "100"},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": null},
+    {"op": "add", "path": "/matrix_deposition_method", "value": "Sprayed"},
+    {"op": "add", "path": "/metadata_schema_id", "value": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"},
+    {"op": "add", "path": "/ms_ionization_technique", "value": "MALDI"},
+    {"op": "add", "path": "/ms_scan_mode", "value": null},
+    {"op": "add", "path": "/parent_sample_id", "value": "VAN0016-LK-202-89"},
+    {"op": "add", "path": "/preparation_matrix", "value": "DAN (1,5-diaminonapthalene)"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.7gdhjs6"},
+    {"op": "add", "path": "/source_storage_duration_unit", "value": null},
+    {"op": "add", "path": "/source_storage_duration_value", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
+    {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
+    {"op": "remove", "path": "/_from_metadatatsv"},
+    {"op": "remove", "path": "/assay_category"},
+    {"op": "remove", "path": "/assay_type"},
+    {"op": "remove", "path": "/collectiontype"},
+    {"op": "remove", "path": "/donor_id"},
+    {"op": "remove", "path": "/execution_datetime"},
+    {"op": "remove", "path": "/metadata_path"},
+    {"op": "remove", "path": "/ms_source"},
+    {"op": "remove", "path": "/mz_range_high_value"},
+    {"op": "remove", "path": "/mz_range_low_value"},
+    {"op": "remove", "path": "/operator"},
+    {"op": "remove", "path": "/operator_email"},
+    {"op": "remove", "path": "/overall_protocols_io_doi"},
+    {"op": "remove", "path": "/pi"},
+    {"op": "remove", "path": "/pi_email"},
+    {"op": "remove", "path": "/polarity"},
+    {"op": "remove", "path": "/preparation_maldi_matrix"},
+    {"op": "remove", "path": "/preparation_type"},
+    {"op": "remove", "path": "/protocols_io_doi"},
+    {"op": "remove", "path": "/resolution_x_unit"},
+    {"op": "remove", "path": "/resolution_x_value"},
+    {"op": "remove", "path": "/resolution_y_unit"},
+    {"op": "remove", "path": "/resolution_y_value"},
+    {"op": "remove", "path": "/section_prep_protocols_io_doi"},
+    {"op": "remove", "path": "/tissue_id"},
+    {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Bruker"},
+    {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/preparation_instrument_model", "value": "M3+ Sprayer"},
+    {"op": "replace", "path": "/preparation_instrument_vendor", "value": "HTX Technologies"}
+  ],
+  "processing_log": {
+    "field_mappings": {
+      "assay_type": "dataset_type",
+      "ms_source": "ms_ionization_technique",
+      "mz_range_high_value": "mass_to_charge_range_high_value",
+      "mz_range_low_value": "mass_to_charge_range_low_value",
+      "polarity": "mass_analysis_polarity",
+      "preparation_maldi_matrix": "preparation_matrix",
+      "preparation_type": "matrix_deposition_method",
+      "protocols_io_doi": "preparation_protocol_doi",
+      "tissue_id": "parent_sample_id"
+    },
+    "value_mappings": {
+      "acquisition_instrument_vendor": {
+        "Bruker Daltonics": "Bruker"
+      },
+      "analyte_class": {
+        "lipids": "Lipid"
+      },
+      "dataset_type": {
+        "IMS negative": "MALDI"
+      },
+      "is_targeted": {
+        "FALSE": "No"
+      },
+      "mass_analysis_polarity": {
+        "Negative Ion Mode": "Negative ion mode"
+      },
+      "preparation_instrument_model": {
+        "M3 TM-Sprayer": "M3+ Sprayer"
+      },
+      "preparation_instrument_vendor": {
+        "HTX Imaging": "HTX Technologies"
+      },
+      "preparation_matrix": {
+        "1,5-Diaminonaphthalene": "DAN (1,5-diaminonapthalene)"
+      }
+    },
+    "ambiguous_mappings": [
+      {
+        "field": "matrix_deposition_method",
+        "value": "Sprayed",
+        "permissible_values": [
+          "Electrospray deposition",
+          "Robotic spraying"
+        ]
+      }
+    ],
+    "excluded_data": {
+      "_from_metadatatsv": true,
+      "assay_category": "mass_spectrometry",
+      "collectiontype": "single_metadatatsv",
+      "donor_id": "VAN0016",
+      "execution_datetime": "11/18/19 18:02",
+      "metadata_path": "/metadata/",
+      "operator": "Elizabeth K. Neumann",
+      "operator_email": "elizabeth.neumann@vanderbilt.edu",
+      "overall_protocols_io_doi": "10\\.17504/protocols.io.bfskjncw",
+      "pi": "Jeffrey M. Spraggins",
+      "pi_email": "jeff.spraggins@vanderbilt.edu",
+      "resolution_x_unit": "um",
+      "resolution_x_value": "10",
+      "resolution_y_unit": "um",
+      "resolution_y_value": "10",
+      "section_prep_protocols_io_doi": "10.17504/protocols.io.4srgwd6"
+    }
+  }
+}
