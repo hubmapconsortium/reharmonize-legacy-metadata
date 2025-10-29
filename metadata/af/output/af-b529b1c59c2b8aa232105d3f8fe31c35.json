@@ -113,9 +113,6 @@
       "acquisition_instrument_vendor": {
         "Carl Zeiss Microscopy": "Zeiss Microscopy"
       },
-      "analyte_class": {
-        "endogenous fluorophores": "Endogenous fluorophore"
-      },
       "dataset_type": {
         "AF": "Auto-fluorescence"
       },
