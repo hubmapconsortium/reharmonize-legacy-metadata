@@ -67,3 +67,11 @@ jobs:
           git add metadata/af/af-nonstandard-values.json
           git commit -m "Find non-standard values in Auto-fluorescense metadata (automated)" || echo "No changes to commit"
           git push
+
+      - name: Commit Excel reports for curator review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/af/todo/
+          git commit -m "Generate Excel reports grouped by institution for Auto-fluorescense (automated)" || echo "No changes to commit"
+          git push

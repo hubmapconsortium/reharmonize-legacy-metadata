@@ -67,3 +67,11 @@ jobs:
           git add metadata/atacseq/atacseq-nonstandard-values.json
           git commit -m "Find non-standard values in ATACseq metadata (automated)" || echo "No changes to commit"
           git push
+
+      - name: Commit Excel reports for curator review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/atacseq/todo/
+          git commit -m "Generate Excel reports grouped by institution for ATACseq (automated)" || echo "No changes to commit"
+          git push

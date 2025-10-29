@@ -59,11 +59,19 @@ jobs:
             metadata/lcms/output \
             metadata/lcms/lcms-schema.json \
             metadata/lcms/lcms-nonstandard-values.json
-      
+
       - name: Commit non-standard values
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add metadata/lcms/lcms-nonstandard-values.json
           git commit -m "Find non-standard values in LC-MS metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Commit Excel reports for curator review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/lcms/todo/
+          git commit -m "Generate Excel reports grouped by institution for LC-MS (automated)" || echo "No changes to commit"
           git push
