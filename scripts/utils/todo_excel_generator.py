@@ -19,6 +19,16 @@ try:
 except ImportError:
     OPENPYXL_AVAILABLE = False
 
+# Import regex hints
+try:
+    from utils.regex_hints import get_regex_hint
+    REGEX_HINTS_AVAILABLE = True
+except ImportError:
+    REGEX_HINTS_AVAILABLE = False
+    def get_regex_hint(field_name: str) -> str:
+        """Fallback function if regex_hints module is not available."""
+        return ""
+
 
 def get_or_create_validation_sheet(workbook):
     """
@@ -64,10 +74,17 @@ def write_sheet_with_grouping(
         # No "Current Value" column for missing required
         columns = ['Dataset ID', 'Field Name', 'New Value', 'Dataset URL']
         has_current_value = False
+        has_regex_hint = False
+    elif sheet_type == 'regex_violations':
+        # Include "Current Value" and "Expected Input Hint" for regex violations
+        columns = ['Dataset ID', 'Field Name', 'Current Value', 'New Value', 'Expected Input Hint', 'Dataset URL']
+        has_current_value = True
+        has_regex_hint = True
     else:
-        # Include "Current Value" column for non-permissible and regex violations
+        # Include "Current Value" column for non-permissible
         columns = ['Dataset ID', 'Field Name', 'Current Value', 'New Value', 'Dataset URL']
         has_current_value = True
+        has_regex_hint = False
 
     # Write header row
     worksheet.append(columns)
@@ -102,9 +119,15 @@ def write_sheet_with_grouping(
                 dataset_url = None
 
             # Build row based on sheet type
-            if has_current_value:
+            if has_regex_hint:
+                # For regex violations: include Expected Input Hint column
+                regex_hint = get_regex_hint(field_name)
+                row = [dataset_id, field_name, current_value, "", regex_hint, dataset_url]
+            elif has_current_value:
+                # For non-permissible: include Current Value
                 row = [dataset_id, field_name, current_value, "", dataset_url]
             else:
+                # For missing required: no Current Value
                 row = [dataset_id, field_name, "", dataset_url]
 
             worksheet.append(row)
@@ -121,10 +144,15 @@ def write_sheet_with_grouping(
         return
 
     # Determine which column is "New Value"
-    if has_current_value:
-        new_value_col_idx = 4  # Column D (Dataset ID, Field Name, Current Value, New Value, URL)
+    if has_regex_hint:
+        # For regex violations: Dataset ID, Field Name, Current Value, New Value, Expected Input Hint, Dataset URL
+        new_value_col_idx = 4  # Column D
+    elif has_current_value:
+        # For non-permissible: Dataset ID, Field Name, Current Value, New Value, Dataset URL
+        new_value_col_idx = 4  # Column D
     else:
-        new_value_col_idx = 3  # Column C (Dataset ID, Field Name, New Value, URL)
+        # For missing required: Dataset ID, Field Name, New Value, Dataset URL
+        new_value_col_idx = 3  # Column C
 
     # Create and apply data validations for fields that have entries in validation_col_tracker
     for field_name, row_numbers in field_to_rows.items():
