@@ -17,7 +17,7 @@
     "when": {
       "__must__" : [
         { "assay_type": "AF" },
-        { "acquisition_instrument_vendor": "Zeiss" },
+        { "acquisition_instrument_vendor": "Zeiss" }
       ]
     },
     "then": {
