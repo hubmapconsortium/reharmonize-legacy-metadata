@@ -1,4 +1,5 @@
 cedar-imc-2d-v2.0.0,imc-v0,imc-v1
+parent_sample_id,tissue_id,tissue_id
 lab_id,,
 preparation_protocol_doi,protocols_io_doi,protocols_io_doi
 dataset_type,assay_type,assay_type
