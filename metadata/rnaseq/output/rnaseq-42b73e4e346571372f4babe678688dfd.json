@@ -91,7 +91,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
     "expected_entity_capture_count": "",
-    "sequencing_reagent_kit": "Illumina; NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811",
+    "sequencing_reagent_kit": "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811",
     "sequencing_read_format": "34,10,10,66",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -173,7 +173,7 @@
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "34,10,10,66"},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NextSeq 1000/2000 P2 Reagents (100 Cycles) v3, PN 20046811"}
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NextSeq 1000/2000 P2 Reagent v3 Kit (100 Cycles); PN 20046811"}
   ],
   "processing_log": {
     "field_mappings": {

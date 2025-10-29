@@ -83,7 +83,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": null,
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400",
     "sequencing_read_format": "150,8,8,150",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -160,7 +160,7 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/sequencing_read_format", "value": "150,8,8,150"},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 SP Reagent Kit v1.5 (300 cycles); PN 20028400"}
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400"}
   ],
   "processing_log": {
     "field_mappings": {
