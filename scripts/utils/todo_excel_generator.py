@@ -57,10 +57,9 @@ def write_sheet_with_grouping(
     validation_col_tracker: Dict[str, int]
 ) -> None:
     """
-    Write data to a worksheet with proper grouping and add dropdown validations.
+    Write data to a worksheet with dropdown validations.
 
-    For each dataset with multiple issues, the first row shows Dataset ID and URL,
-    subsequent rows have None for these columns to create visual grouping.
+    Dataset ID and URL appear in all rows to facilitate data filtering.
 
     Args:
         worksheet: openpyxl worksheet object
@@ -103,20 +102,15 @@ def write_sheet_with_grouping(
         # Sort fields alphabetically within each dataset
         sorted_fields = sorted(field_issues.keys())
 
-        for idx, field_name in enumerate(sorted_fields):
+        for field_name in sorted_fields:
             values = field_issues[field_name]
 
             # Get the first value (should only be one per dataset+field)
             current_value = list(values)[0] if values else ""
 
-            # First row for this dataset: include Dataset ID and URL
-            # Subsequent rows: None for Dataset ID and URL
-            if idx == 0:
-                dataset_id = hubmap_id
-                dataset_url = f"https://portal.hubmapconsortium.org/browse/{hubmap_id}"
-            else:
-                dataset_id = None
-                dataset_url = None
+            # Include Dataset ID and URL in all rows for easier filtering
+            dataset_id = hubmap_id
+            dataset_url = f"https://portal.hubmapconsortium.org/browse/{hubmap_id}"
 
             # Build row based on sheet type
             if has_regex_hint:
