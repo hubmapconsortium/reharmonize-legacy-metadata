@@ -40,7 +40,7 @@
     "dataset_type": "Histology",
     "analyte_class": "Polysaccharide",
     "is_targeted": "No",
-    "acquisition_instrument_vendor": "Leica ",
+    "acquisition_instrument_vendor": "Leica Biosystems",
     "acquisition_instrument_model": "SCN400",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
@@ -110,6 +110,7 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "SCN400"},
+    {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Leica Biosystems"},
     {"op": "replace", "path": "/analyte_class", "value": "Polysaccharide"},
     {"op": "replace", "path": "/is_targeted", "value": "No"}
   ],
@@ -121,9 +122,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "SCN-400": "SCN400"
-      },
       "analyte_class": {
         "polysaccharides": "Polysaccharide"
       },
