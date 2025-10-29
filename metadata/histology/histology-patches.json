@@ -22,11 +22,11 @@
   {
     "when": {
       "__must__" : [
-        { "stain_name": "Periodic acid-Schiff " }
+        { "stain": "Periodic acid-Schiff " }
       ]
     },
     "then": {
-      "stain_name": "Periodic acid-Schiff"
+      "stain": "Periodic acid-Schiff"
     }
   }
 ]
