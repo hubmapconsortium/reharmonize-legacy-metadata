@@ -27,12 +27,11 @@
   {
     "when": {
       "__must__" : [
-        { "assay_type": "AF" },
-        { "analyte_class": null },
+        { "assay_type": "AF" }
       ]
     },
     "then": {
-      "analyte_class": "endogenous fluorophores"
+      "analyte_class": "Endogenous fluorophore"
     }
   }
 ]
