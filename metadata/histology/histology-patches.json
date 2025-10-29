@@ -22,11 +22,24 @@
   {
     "when": {
       "__must__" : [
-        { "stain_name": "Periodic acid-Schiff " }
+        { "stain": "Periodic acid-Schiff " }
       ]
     },
     "then": {
-      "stain_name": "Periodic acid-Schiff"
+      "stain": "Periodic acid-Schiff"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "__should__": [
+          { "protocols_io_doi": "10.17504/protocols.io.buaknscw" },
+          { "protocols_io_doi": "10.17504/protocols.io.4qngvve" }
+        ]}
+      ]
+    },
+    "then": {
+      "is_staining_automated": "False"
     }
   }
 ]

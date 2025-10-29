@@ -49,7 +49,7 @@
     "contributors_path": null,
     "data_path": "processedMicroscopy",
     "is_image_preprocessing_required": null,
-    "stain_name": "Periodic acid-Schiff ",
+    "stain_name": "PAS",
     "stain_technique": null,
     "is_batch_staining_done": null,
     "is_staining_automated": null,
@@ -82,7 +82,7 @@
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
-    {"op": "add", "path": "/stain_name", "value": "Periodic acid-Schiff "},
+    {"op": "add", "path": "/stain_name", "value": "PAS"},
     {"op": "add", "path": "/stain_technique", "value": null},
     {"op": "add", "path": "/tile_configuration", "value": null},
     {"op": "add", "path": "/tiled_image_columns", "value": null},
@@ -130,6 +130,9 @@
       },
       "is_targeted": {
         "FALSE": "No"
+      },
+      "stain_name": {
+        "Periodic acid-Schiff": "PAS"
       }
     },
     "ambiguous_mappings": [],
