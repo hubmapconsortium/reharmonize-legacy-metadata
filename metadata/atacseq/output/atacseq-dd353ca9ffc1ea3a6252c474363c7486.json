@@ -80,7 +80,7 @@
     "library_concentration_unit": "nM",
     "library_layout": "paired-end",
     "number_of_pcr_cycles_for_indexing": null,
-    "library_preparation_kit": null,
+    "library_preparation_kit": "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit",
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
     "is_technical_replicate": "Yes",
@@ -157,7 +157,6 @@
     {"op": "remove", "path": "/transposition_transposase_source"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "Yes"},
-    {"op": "replace", "path": "/library_preparation_kit", "value": null},
     {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,8,101"},
     {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283"}
   ],
@@ -180,9 +179,6 @@
       },
       "is_technical_replicate": {
         "TRUE": "Yes"
-      },
-      "library_preparation_kit": {
-        "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit": null
       },
       "sequencing_read_format": {
         "101/8/8/101": "101,8,8,101"
