@@ -1,0 +1,10 @@
+[
+  {
+    "group_name": "University of Florida TMC",
+    "dataset_type": "2D Imaging Mass Cytometry",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 13,
+    "datasets_with_invalid_input_patterns": 13,
+    "total_datasets_with_issues": 13
+  }
+]
