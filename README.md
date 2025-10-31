@@ -16,18 +16,18 @@ The `metadata/` folder contains processed metadata organized by assay type. Each
 
 | Dataset Type | Input Files | Output Files | Description |
 |-------------|-------------|--------------|-------------|
-| **rnaseq** | 639 | 639 | RNA sequencing metadata |
-| **atacseq** | 567 | 567 | ATAC sequencing metadata |
-| **lcms** | 267 | 267 | Liquid chromatography-mass spectrometry metadata |
-| **mibi** | 211 | 211 | Multiplexed ion beam imaging metadata |
-| **af** | 136 | 136 | Auto-fluorescence imaging metadata |
-| **codex** | 133 | 133 | CODEX imaging metadata |
-| **maldi** | 93 | 93 | MALDI imaging mass spectrometry metadata |
-| **histology** | 77 | 77 | Histology imaging metadata |
-| **celldive** | 32 | 32 | Cell DIVE imaging metadata |
-| **desi** | 15 | 15 | DESI imaging mass spectrometry metadata |
-| **imc-2d** | 13 | 13 | Imaging mass cytometry 2D metadata |
-| **lightsheet** | 9 | 9 | Light sheet microscopy metadata |
+| **[rnaseq](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/rnaseq)** | 639 | 639 | RNA sequencing metadata |
+| **[atacseq](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/atacseq)** | 567 | 567 | ATAC sequencing metadata |
+| **[lcms](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lcms)** | 267 | 267 | Liquid chromatography-mass spectrometry metadata |
+| **[mibi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/mibi)** | 211 | 211 | Multiplexed ion beam imaging metadata |
+| **[af](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/af)** | 136 | 136 | Auto-fluorescence imaging metadata |
+| **[codex](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/codex)** | 133 | 133 | CODEX imaging metadata |
+| **[maldi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/maldi)** | 93 | 93 | MALDI imaging mass spectrometry metadata |
+| **[histology](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/histology)** | 77 | 77 | Histology imaging metadata |
+| **[celldive](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/celldive)** | 32 | 32 | Cell DIVE imaging metadata |
+| **[desi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/desi)** | 15 | 15 | DESI imaging mass spectrometry metadata |
+| **[imc-2d](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/imc-2d)** | 13 | 13 | Imaging mass cytometry 2D metadata |
+| **[lightsheet](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lightsheet)** | 9 | 9 | Light sheet microscopy metadata |
 
 ### Folder Structure
 
