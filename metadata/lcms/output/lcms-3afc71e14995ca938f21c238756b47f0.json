@@ -79,7 +79,7 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": null,
+    "ms_scan_mode": "MS/MS",
     "mass_analysis_polarity": "Negative and positive ion mode",
     "mass_to_charge_range_low_value": "50",
     "mass_to_charge_range_high_value": "1250",
@@ -88,7 +88,7 @@
     "ion_mobility": "",
     "data_collection_mode": "DIA",
     "label_name": "",
-    "lc_instrument_vendor": null,
+    "lc_instrument_vendor": "Shimadzu",
     "lc_instrument_model": "LC-30AD",
     "lc_column_vendor": "",
     "lc_column_model": "",
@@ -174,9 +174,7 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": null},
-    {"op": "replace", "path": "/ms_scan_mode", "value": null}
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -205,12 +203,6 @@
       },
       "is_targeted": {
         "True": "Yes"
-      },
-      "lc_instrument_vendor": {
-        "Shimadzu": null
-      },
-      "ms_scan_mode": {
-        "MS/MS": null
       },
       "mass_analysis_polarity": {
         "negative and positive ion mode": "Negative and positive ion mode"

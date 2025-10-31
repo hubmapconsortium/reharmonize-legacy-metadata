@@ -90,7 +90,7 @@
     "label_name": "",
     "lc_instrument_vendor": "Waters ",
     "lc_instrument_model": "2D Nano Acquity M class",
-    "lc_column_vendor": null,
+    "lc_column_vendor": "Sepex",
     "lc_column_model": "Self-Packed",
     "lc_resin": "Sepex GP-C18 1.8um, 120A",
     "lc_column_length_value": "25",
@@ -176,8 +176,7 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "Orbitrap Fusion Lumos Tribrid"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/lc_column_vendor", "value": null}
+    {"op": "replace", "path": "/is_targeted", "value": "No"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -215,9 +214,6 @@
       },
       "is_targeted": {
         "False": "No"
-      },
-      "lc_column_vendor": {
-        "Sepex": null
       },
       "mass_analysis_polarity": {
         "positive ion mode": "Positive ion mode"

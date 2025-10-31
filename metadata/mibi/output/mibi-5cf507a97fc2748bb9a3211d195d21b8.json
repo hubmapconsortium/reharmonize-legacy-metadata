@@ -157,12 +157,6 @@
       },
       "is_targeted": {
         "True": "Yes"
-      },
-      "preparation_instrument_model": {
-        "Custom": null
-      },
-      "preparation_instrument_vendor": {
-        "Ionpath": null
       }
     },
     "ambiguous_mappings": [],
@@ -185,8 +179,8 @@
       "pixel_size_x_value": "391",
       "pixel_size_y_unit": "nm",
       "pixel_size_y_value": "391",
-      "preparation_instrument_model": null,
-      "preparation_instrument_vendor": null,
+      "preparation_instrument_model": "Custom",
+      "preparation_instrument_vendor": "Ionpath",
       "primary_ion": "Xe",
       "primary_ion_current_unit": "pA",
       "primary_ion_current_value": "5000",

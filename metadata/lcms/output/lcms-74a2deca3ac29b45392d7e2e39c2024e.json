@@ -76,7 +76,7 @@
     "ion_mobility": null,
     "data_collection_mode": "",
     "label_name": null,
-    "lc_instrument_vendor": null,
+    "lc_instrument_vendor": "Shimadzu",
     "lc_instrument_model": "LC-30AD",
     "lc_column_vendor": "",
     "lc_column_model": "",
@@ -160,8 +160,7 @@
     {"op": "remove", "path": "/section_prep_protocols_io_doi"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": null}
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -190,9 +189,6 @@
       },
       "is_targeted": {
         "TRUE": "Yes"
-      },
-      "lc_instrument_vendor": {
-        "Shimadzu": null
       },
       "mass_analysis_polarity": {
         "positive and negative ion modes": "Negative and positive ion mode"

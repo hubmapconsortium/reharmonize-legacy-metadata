@@ -1,0 +1,26 @@
+[
+  {
+    "group_name": "Stanford TMC",
+    "dataset_type": "CODEX",
+    "datasets_with_non_standard_values": 67,
+    "datasets_with_missing_required_values": 67,
+    "datasets_with_invalid_input_patterns": 67,
+    "total_datasets_with_issues": 67
+  },
+  {
+    "group_name": "TMC - Children's Hospital of Philadelphia",
+    "dataset_type": "CODEX",
+    "datasets_with_non_standard_values": 5,
+    "datasets_with_missing_required_values": 5,
+    "datasets_with_invalid_input_patterns": 5,
+    "total_datasets_with_issues": 5
+  },
+  {
+    "group_name": "University of Florida TMC",
+    "dataset_type": "CODEX",
+    "datasets_with_non_standard_values": 61,
+    "datasets_with_missing_required_values": 61,
+    "datasets_with_invalid_input_patterns": 61,
+    "total_datasets_with_issues": 61
+  }
+]

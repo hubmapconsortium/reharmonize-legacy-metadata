@@ -1,0 +1,10 @@
+[
+  {
+    "group_name": "Stanford RTI",
+    "dataset_type": "MIBI",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 211,
+    "datasets_with_invalid_input_patterns": 211,
+    "total_datasets_with_issues": 211
+  }
+]

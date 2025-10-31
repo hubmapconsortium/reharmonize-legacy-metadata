@@ -55,7 +55,7 @@
     "data_path": ".",
     "antibodies_path": "extras/antibodies.tsv",
     "preparation_instrument_vendor": "Akoya Biosciences",
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "prototype robot - Stanford/Nolan Lab",
     "total_run_time_value": null,
     "total_run_time_unit": null,
     "number_of_antibodies": "52",
@@ -103,7 +103,6 @@
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
-    {"op": "replace", "path": "/preparation_instrument_model", "value": null},
     {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Akoya Biosciences"}
   ],
   "processing_log": {
@@ -119,9 +118,6 @@
       },
       "is_targeted": {
         "TRUE": "Yes"
-      },
-      "preparation_instrument_model": {
-        "prototype robot - Stanford/Nolan Lab": null
       }
     },
     "ambiguous_mappings": [],

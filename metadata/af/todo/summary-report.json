@@ -1,0 +1,10 @@
+[
+  {
+    "group_name": "Vanderbilt TMC",
+    "dataset_type": "Auto-fluorescence",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 136,
+    "datasets_with_invalid_input_patterns": 136,
+    "total_datasets_with_issues": 136
+  }
+]

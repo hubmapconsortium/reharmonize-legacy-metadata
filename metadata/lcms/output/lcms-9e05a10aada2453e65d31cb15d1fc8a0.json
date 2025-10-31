@@ -78,7 +78,7 @@
     "label_name": null,
     "lc_instrument_vendor": "Thermo Fisher Scientific",
     "lc_instrument_model": "Ultimate 3000 RSD",
-    "lc_column_vendor": null,
+    "lc_column_vendor": "Agilent Technologies",
     "lc_column_model": "Zorbax Sbaq",
     "lc_resin": "C18",
     "lc_column_length_value": "50",
@@ -162,7 +162,6 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Metabolite"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/lc_column_vendor", "value": null},
     {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"}
   ],
   "processing_log": {
@@ -195,9 +194,6 @@
       },
       "is_targeted": {
         "FALSE": "No"
-      },
-      "lc_column_vendor": {
-        "Agilent Technologies": null
       },
       "lc_instrument_vendor": {
         "Thermo Fisher": "Thermo Fisher Scientific"
