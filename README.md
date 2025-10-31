@@ -1,91 +1,139 @@
-# Task Instructions: Metadata Transformation Evaluation
+# HubMAP Legacy Metadata Standardization
 
-**Goal:**
-Evaluate the modified metadata from legacy records to determine whether they have been correctly and accurately transformed according to the current schema.
+## Overview
 
-The deliverables are organized in the [metadata](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata) folder by dataset type (e.g., `rnaseq`, `atacseq`). Each dataset directory contains:
-- `input/` - Original legacy metadata
-- `output/` - Transformed metadata files
-- `glossary/` - Field definitions for the legacy schema
-- `field-mapping.csv` - Field mapping table
-- `patches.json` - Metadata transformation patches
+This project standardizes legacy metadata from 12 different assay types into schema-compliant formats for the Human BioMolecular Atlas Program (HubMAP). The transformation ensures data quality, consistency, and compliance with current metadata standards.
 
-Shared resources are stored in the `shared/` directory:
-- [shared/value-mappings](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/shared/value-mappings) - Value mappings for each field name
-- [shared/field-definitions](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/shared/field-definitions) - Field definitions for the new standardized schemas
+**Per October 31, 2025**: 2,192 legacy metadata files processed across 12 assay types
 
-For detailed guidance on creating or updating field mappings, value mappings, metadata patches, and understanding the output file structure, see the **[project wiki](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/wiki)**.
+---
 
-## Task Details
+## Deliverable 1: Standardized Metadata by Dataset Type
 
-Focus on the following four areas:
+The `metadata/` folder contains processed metadata organized by assay type. Each subfolder represents a distinct experimental methodology:
 
-1. Validate **field mappings**
-2. Validate **value mappings**
-3. Resolve **ambiguous mappings**
-4. Confirm that **excluded data** is legitimately discarded
+### Dataset Types
 
-### 1. Validate Field Mappings
-- **How to check:**
-  - Review the `field-mapping.csv` file in each dataset directory under `metadata/`.
-  - Verify that field mappings are correct and justified.
-- **Making changes:**
-  - Update the `field-mapping.csv` file in the appropriate dataset directory.
-  - Include the rationale for the change in the Git commit message.
+| Dataset Type | Input Files | Output Files | Description |
+|-------------|-------------|--------------|-------------|
+| **rnaseq** | 639 | 639 | RNA sequencing metadata |
+| **atacseq** | 567 | 567 | ATAC sequencing metadata |
+| **lcms** | 267 | 267 | Liquid chromatography-mass spectrometry metadata |
+| **mibi** | 211 | 211 | Multiplexed ion beam imaging metadata |
+| **af** | 136 | 136 | Auto-fluorescence imaging metadata |
+| **codex** | 133 | 133 | CODEX imaging metadata |
+| **maldi** | 93 | 93 | MALDI imaging mass spectrometry metadata |
+| **histology** | 77 | 77 | Histology imaging metadata |
+| **celldive** | 32 | 32 | Cell DIVE imaging metadata |
+| **desi** | 15 | 15 | DESI imaging mass spectrometry metadata |
+| **imc-2d** | 13 | 13 | Imaging mass cytometry 2D metadata |
+| **lightsheet** | 9 | 9 | Light sheet microscopy metadata |
 
-### 2. Validate Value Mappings
-- **How to check:**
-  - Review the value mappings in the `shared/value-mappings/` directory.
-  - If the mapped value is **not null**: Verify that the translation is accurate and makes sense.
-  - If the mapped value is **null**: Assess whether the legacy value should be added to the new schema or whether it has no valid equivalent, taking the field name into account.
-- **Making changes:**
-  - Update the value mapping files in `shared/value-mappings/`.
-  - Document the reasoning in the Git commit message.
+### Folder Structure
 
-### 3. Resolve Ambiguous Mappings
-- **How to check:**
-  - Identify mappings where multiple options are possible in the `output` files.
-  - Suggest the most appropriate mapping, or determine if the legacy value should be included in the new schema.
-- **Making changes:**
-  - Record your resolution in the `patches.json` file in the appropriate dataset directory.
-  - Refer to the **[project wiki](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/wiki)** for patch object structure.
+Each dataset type folder contains:
 
-### 4. Confirm Excluded Data
-- **How to check:**
-  - Verify that excluded data truly has no place in the new schema and is safe to discard.
-- **Making changes:**
-  - No changes are required—this is a verification step only.
+```
+metadata/{dataset-type}/
+├── input/                          # Original legacy metadata files
+├── output/                         # Transformed, schema-compliant files
+├── todo/                           # Excel reports for curator review (grouped by institution)
+│   ├── {Institution Name}.xlsx    # Institution-specific review spreadsheet
+│   └── summary-report.json        # Aggregated statistics
+├── {dataset-type}-field-mappings.csv    # Field name mapping rules
+├── {dataset-type}-patches.json    # Conditional transformation rules
+└── {dataset-type}-nonstandard-values.json  # Quality assurance analysis results
+```
 
-## Running the Transformation Workflow
+#### Input Folder (`input/`)
+Contains original legacy metadata JSON files with inconsistent field names and value formats from various data providers.
 
-After making changes to field mappings, value mappings, or patches, you can run the GitHub Actions workflow to regenerate the transformed metadata:
+#### Output Folder (`output/`)
+Contains standardized metadata JSON files with:
+- Schema-compliant field names and values
+- Full transformation provenance (processing logs)
+- JSON patches applied during transformation
+- Both original and modified metadata for comparison
 
-### Step-by-Step Instructions:
+Each output file includes:
+```json
+{
+  "uuid": "...",
+  "hubmap_id": "...",
+  "metadata": { /* original legacy metadata */ },
+  "modified_metadata": { /* standardized metadata */ },
+  "json_patch": [ /* transformation operations applied */ ],
+  "processing_log": {
+    /* complete audit trail of:
+       - field name changes
+       - value standardizations
+       - excluded data
+       - transformation decisions */
+  }
+}
+```
 
-1. **Navigate to the Actions tab**: Click on the **Actions** tab at the top of the page
+#### Todo Folder (`todo/`)
+Contains Excel spreadsheets grouped by institution for data provider review. Each spreadsheet identifies:
+- **Non-standard values:** Legacy values with no current schema equivalent
+- **Missing required data:** Required fields that are null or empty
+- **Validation issues:** Values that don't meet schema constraints (e.g., regex patterns)
 
-1. **Select the appropriate workflow**
-   - In the left sidebar, choose the workflow for the dataset type you modified, for example:
-     - `Transform RNAseq legacy metadata`
-     - `Transform ATACseq legacy metadata`
-     - `Transform MIBI legacy metadata`
+Data providers use these spreadsheets to:
+1. Review flagged values and determine appropriate actions
+2. Update value mappings to include new standard equivalents
+3. Request missing data from data providers
+4. Propose schema updates for legitimate legacy values
 
-2. **Trigger the workflow**
-   - Click the **Run workflow** button (gray button on the right side)
-   - A dropdown will appear—ensure `main` branch is selected
-   - Click the green **Run workflow** button to start the process
+---
 
-3. **Monitor the workflow progress**
-   - The workflow will appear in the list with a yellow dot indicating it's running
-   - Click on the workflow run to see detailed progress
-   - Wait for the workflow to complete (green checkmark) or fail (red X)
+## Deliverable 2: Metadata Processing System
 
-4. **Review the results**
-   - Check the `metadata/<dataset-type>/output/` directory for updated transformed metadata files
-   - The workflow automatically commits and pushes the transformed files
+### Overview
+An automated, rule-based transformation pipeline with quality assurance analysis.
 
-## Deliverables
-- Updated `field-mapping.csv` files in dataset directories as needed
-- Updated `value-mapping.csv` files in `shared/value-mappings` directory as needed
-- Updated `patches.json` files when resolving ambiguities
-- Clear Git commit messages explaining the rationale for every change
+### Components
+
+#### Core Transformation Tools (`tools/`)
+
+**metadata-transformer** (v1.2.0)
+- Command-line tool for 4-phase metadata transformation
+- Phases: Conditional patching → Field mapping → Value standardization → Schema compliance
+- Comprehensive logging for full traceability
+
+**json-rules-engine** (v1.0.0)
+- Conditional transformation engine
+- Supports complex if/then logic for context-dependent transformations
+
+#### Analysis Scripts (`scripts/`)
+
+**generate-field-mapping.py**
+- Converts human-readable CSV field mappings to machine-readable JSON format
+
+**generate-target-schema.py**
+- Fetches and converts schemas from HubMAP repository
+- Ensures alignment with current metadata standards
+
+**find-nonstandard-values.py**
+- Quality assurance analysis after transformation
+- Identifies values requiring curator review
+- Generates institution-grouped Excel reports
+
+### Transformation Pipeline
+
+```
+Legacy Metadata → [4-Phase Transformation] → Standardized Metadata → [QA Analysis] → Data Provider Review
+```
+
+**Phase 0:** Apply conditional patches (complex transformations)
+**Phase 1:** Rename fields (legacy → standard names)
+**Phase 2:** Standardize values (legacy → standard values)
+**Phase 3:** Apply schema (ensure all required fields present)
+**Phase 4:** Generate logs (complete audit trail)
+
+### Automation
+
+GitHub Actions workflows automate the complete transformation and analysis pipeline for each dataset type:
+- Triggered manually via workflow dispatch
+- Steps: Generate mappings → Transform → Analyze → Commit results
+- Ensures reproducible, version-controlled transformations
