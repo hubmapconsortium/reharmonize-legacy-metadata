@@ -1,18 +1,10 @@
 {
-  "acquisition_instrument_vendor": "Waters Corp.",
-  "acquisition_instrument_model": "Synapt G2-Si",
-  "ms_scan_mode": "MS",
-  "matrix_deposition_method": "",
+  "ion_mobility": "",
   "preparation_instrument_vendor": "",
   "preparation_instrument_model": "",
-  "preparation_matrix": "",
-  "desorption_solvent": [
-    "methanol: water 95:5 (v/v) with 0.01 percent formic acid and 20pg/ul leucine enkephalin",
-    "methanol: water 95:5 (v/v) with 0.01% formic acid and 20pg/ul leucine enkephalin"
-  ],
-  "source_storage_duration_unit": "null",
-  "analysis_protocol_doi": "",
+  "preparation_matrix": "Not applicable",
   "source_storage_duration_value": "null",
+  "source_storage_duration_unit": "null",
   "parent_sample_id": [
     "CALT0013-HT-2",
     "CALT0013-HT-3",
@@ -27,5 +19,9 @@
     "VAN0037-RK-1-106",
     "VAN0040-LK-4-90"
   ],
-  "ion_mobility": ""
+  "acquisition_instrument_vendor": "Waters",
+  "acquisition_instrument_model": "Synapt G2-Si",
+  "ms_scan_mode": "MS",
+  "desorption_solvent": "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin",
+  "analysis_protocol_doi": ""
 }
