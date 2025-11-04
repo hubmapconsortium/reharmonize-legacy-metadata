@@ -19,7 +19,9 @@
     },
     "then": {
       "matrix_deposition_method": "Not applicable",
-      "preparation_matrix": "Not applicable"
+      "preparation_matrix": "Not applicable",
+      "preparation_instrument_vendor" : "Not applicable",
+      "preparation_instrument_model" : "Not applicable"
     }
   }
 ]
