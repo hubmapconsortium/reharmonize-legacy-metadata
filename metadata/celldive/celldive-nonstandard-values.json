@@ -1,8 +1,8 @@
 {
   "acquisition_instrument_vendor": "Leica",
-  "cell_boundary_marker_or_stain": "null",
-  "source_storage_duration_value": "null",
   "nuclear_marker_or_stain": "null",
+  "source_storage_duration_value": "null",
+  "cell_boundary_marker_or_stain": "null",
   "source_storage_duration_unit": "null",
   "slide_id": "null",
   "parent_sample_id": [
