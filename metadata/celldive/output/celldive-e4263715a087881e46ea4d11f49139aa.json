@@ -42,7 +42,7 @@
     "dataset_type": "Cell DIVE",
     "analyte_class": "Protein",
     "is_targeted": "Yes",
-    "acquisition_instrument_vendor": "Leica",
+    "acquisition_instrument_vendor": "Leica Microsystems",
     "acquisition_instrument_model": "Cell DIVE",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
@@ -57,7 +57,7 @@
     "number_of_total_imaging_rounds": "4",
     "slide_id": null,
     "cell_boundary_marker_or_stain": null,
-    "nuclear_marker_or_stain": null,
+    "nuclear_marker_or_stain": "DAPI",
     "metadata_schema_id": "6f9eee7b-7ef1-4f32-a34e-706bbbbb09bf"
   },
   "json_patch": [
@@ -65,7 +65,7 @@
     {"op": "add", "path": "/dataset_type", "value": "Cell DIVE"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "6f9eee7b-7ef1-4f32-a34e-706bbbbb09bf"},
-    {"op": "add", "path": "/nuclear_marker_or_stain", "value": null},
+    {"op": "add", "path": "/nuclear_marker_or_stain", "value": "DAPI"},
     {"op": "add", "path": "/number_of_biomarker_imaging_rounds", "value": "2"},
     {"op": "add", "path": "/number_of_total_imaging_rounds", "value": "4"},
     {"op": "add", "path": "/parent_sample_id", "value": "CALT0001-HT-2-5-1"},
@@ -96,6 +96,7 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "Cell DIVE"},
+    {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Leica Microsystems"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"}
   ],
