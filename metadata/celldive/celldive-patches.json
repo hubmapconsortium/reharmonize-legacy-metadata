@@ -12,7 +12,7 @@
   {
     "when": {
       "__must__" : [
-        { "acquisition_instrument_vendor": "Leica" }
+        { "acquisition_instrument_vendor": "Leica" },
         { "acquisition_instrument_model": "Cell DIVE imager" }
       ]
     },
