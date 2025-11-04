@@ -1,9 +1,7 @@
 {
-  "acquisition_instrument_vendor": "Leica",
-  "nuclear_marker_or_stain": "null",
   "source_storage_duration_value": "null",
-  "cell_boundary_marker_or_stain": "null",
   "source_storage_duration_unit": "null",
+  "cell_boundary_marker_or_stain": "null",
   "slide_id": "null",
   "parent_sample_id": [
     "CALT0001-HT-2-4-1",
