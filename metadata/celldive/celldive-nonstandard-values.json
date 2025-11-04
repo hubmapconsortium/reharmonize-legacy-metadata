@@ -1,8 +1,10 @@
 {
-  "slide_id": "null",
-  "source_storage_duration_unit": "null",
+  "acquisition_instrument_vendor": "Leica",
   "cell_boundary_marker_or_stain": "null",
   "source_storage_duration_value": "null",
+  "nuclear_marker_or_stain": "null",
+  "source_storage_duration_unit": "null",
+  "slide_id": "null",
   "parent_sample_id": [
     "CALT0001-HT-2-4-1",
     "CALT0001-HT-2-5-1",
@@ -35,6 +37,5 @@
     "VAN0060-LK-1-37",
     "VAN0061-LK-2-20",
     "VAN0061-LK-2-21"
-  ],
-  "acquisition_instrument_vendor": "Leica"
+  ]
 }
