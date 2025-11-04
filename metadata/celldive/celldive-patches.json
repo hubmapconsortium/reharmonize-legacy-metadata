@@ -11,6 +11,17 @@
   },
   {
     "when": {
+      "__must__" : [
+        { "acquisition_instrument_vendor": "Leica" }
+        { "acquisition_instrument_model": "Cell DIVE imager" }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_vendor": "Leica Microsystems"
+    }
+  },
+  {
+    "when": {
       "__should__" : [
         { "protocols_io_doi": "10.17504/protocols.io.bqjimuke" },
         { "protocols_io_doi": "10.17504/protocols.io.kqdg39k41g25/v1" },
