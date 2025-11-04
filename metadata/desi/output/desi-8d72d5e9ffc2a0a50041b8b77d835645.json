@@ -62,17 +62,17 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "nanoDESI",
-    "ms_scan_mode": "MS",
+    "ms_scan_mode": "MS2",
     "mass_analysis_polarity": "Positive ion mode",
     "mass_to_charge_range_low_value": "133",
     "mass_to_charge_range_high_value": "1999",
     "mass_resolving_power": "60000",
     "mass_to_charge_resolving_power": "60000",
     "ion_mobility": "",
-    "matrix_deposition_method": "",
+    "matrix_deposition_method": "Not applicable",
     "preparation_instrument_vendor": "",
     "preparation_instrument_model": "",
-    "preparation_matrix": "",
+    "preparation_matrix": "Not applicable",
     "desorption_solvent": "Methanol:Water (MeOH:H2O)",
     "desorption_solvent_flow_rate_value": "1.3",
     "desorption_solvent_flow_rate_unit": "uL/min",
@@ -90,11 +90,11 @@
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1999"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "133"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "60000"},
-    {"op": "add", "path": "/matrix_deposition_method", "value": ""},
+    {"op": "add", "path": "/matrix_deposition_method", "value": "Not applicable"},
     {"op": "add", "path": "/metadata_schema_id", "value": "01d909d8-84a8-4362-9e42-782bc4da0eec"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "nanoDESI"},
     {"op": "add", "path": "/parent_sample_id", "value": "CALT0013-HT-5"},
-    {"op": "add", "path": "/preparation_matrix", "value": ""},
+    {"op": "add", "path": "/preparation_matrix", "value": "Not applicable"},
     {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bmwik7ce"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
@@ -132,7 +132,8 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "Orbitrap Fusion Lumos Tribrid"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"}
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -177,17 +178,7 @@
         "positive ion mode": "Positive ion mode"
       }
     },
-    "ambiguous_mappings": [
-      {
-        "field": "ms_scan_mode",
-        "value": "MS",
-        "permissible_values": [
-          "MS1",
-          "MS2",
-          "MS3"
-        ]
-      }
-    ],
+    "ambiguous_mappings": [],
     "excluded_data": {
       "assay_category": "mass_spectrometry_imaging",
       "description": "nanoDESI MSI",
