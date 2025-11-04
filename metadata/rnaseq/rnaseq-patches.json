@@ -359,7 +359,7 @@
       ]
     },
     "then": {
-      "sequencing_reagent_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
+      "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_kit": "10x Genomics; Chromium Single Cell B Chip Kit"
     }
@@ -573,6 +573,16 @@
       "cell_barcode_offset": "0,14",
       "cell_barcode_size": "10,10",
       "cell_barcode_read": "R1"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "sequencing_reagent_kit": "10X_scRNASeq_protocol" }
+      ]
+    },
+    "then": {
+      "sequencing_reagent_kit": "HiSeq 2500 Reagent kit"
     }
   }
 ]
