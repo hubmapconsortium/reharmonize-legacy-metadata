@@ -89,7 +89,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "10X_scRNASeq_protocol",
+    "sequencing_reagent_kit": "HiSeq 2500 Reagent kit",
     "sequencing_read_format": "",
     "sequencing_batch_id": null,
     "capture_batch_id": null,
@@ -166,7 +166,8 @@
     {"op": "remove", "path": "/source_project"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/library_layout", "value": "single-end"}
+    {"op": "replace", "path": "/library_layout", "value": "single-end"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "HiSeq 2500 Reagent kit"}
   ],
   "processing_log": {
     "field_mappings": {
