@@ -45,6 +45,8 @@
     "NextSeq550": "NextSeq 550",
     "NextSeq2000": "NextSeq 2000",
     "Nextseq500-NS500488": "NextSeq 500",
-    "Zyla 4.2 USB3": "Zyla 4.2 sCMOS"
+    "Zyla 4.2 USB3": "Zyla 4.2 sCMOS",
+    "Cell DIVE Imager" : "Cell DIVE",
+    "Cell DIVE imager" : "Cell DIVE"
   }
 }
