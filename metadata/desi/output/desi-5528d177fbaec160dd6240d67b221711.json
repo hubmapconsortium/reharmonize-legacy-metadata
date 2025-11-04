@@ -70,8 +70,8 @@
     "mass_to_charge_resolving_power": "554",
     "ion_mobility": "TWIMS",
     "matrix_deposition_method": "Not applicable",
-    "preparation_instrument_vendor": "",
-    "preparation_instrument_model": "",
+    "preparation_instrument_vendor": "Not applicable",
+    "preparation_instrument_model": "Not applicable",
     "preparation_matrix": "Not applicable",
     "desorption_solvent": "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin",
     "desorption_solvent_flow_rate_value": "1.5",
@@ -131,7 +131,9 @@
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Waters"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid + metabolite"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"}
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/preparation_instrument_model", "value": "Not applicable"},
+    {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Not applicable"}
   ],
   "processing_log": {
     "field_mappings": {

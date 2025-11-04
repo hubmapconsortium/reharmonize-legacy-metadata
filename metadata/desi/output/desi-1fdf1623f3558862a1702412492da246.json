@@ -70,8 +70,8 @@
     "mass_to_charge_resolving_power": "60000",
     "ion_mobility": "",
     "matrix_deposition_method": "Not applicable",
-    "preparation_instrument_vendor": "",
-    "preparation_instrument_model": "",
+    "preparation_instrument_vendor": "Not applicable",
+    "preparation_instrument_model": "Not applicable",
     "preparation_matrix": "Not applicable",
     "desorption_solvent": "Methanol:Water (MeOH:H2O)",
     "desorption_solvent_flow_rate_value": "1.3",
@@ -133,7 +133,9 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"},
+    {"op": "replace", "path": "/preparation_instrument_model", "value": "Not applicable"},
+    {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Not applicable"}
   ],
   "processing_log": {
     "field_mappings": {
