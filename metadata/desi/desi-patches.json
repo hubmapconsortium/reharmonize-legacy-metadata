@@ -1,13 +1,25 @@
 [
   {
     "when": {
+      "__must__" : [
+        { "assay_type": "NanoDESI" }
+      ]
+    },
+    "then": {
+      "ms_scan_mode": "MS2",
+      "analysis_protocol_doi": "10.17504/protocols.io.bmwik7ce"
+    }
+  },
+  {
+    "when": {
       "__should__" : [
         { "assay_type": "DESI" },
         { "assay_type": "NanoDESI" }
       ]
     },
     "then": {
-      "matrix_deposition_method": "Not applicable"
+      "matrix_deposition_method": "Not applicable",
+      "preparation_matrix": "Not applicable"
     }
   }
 ]
