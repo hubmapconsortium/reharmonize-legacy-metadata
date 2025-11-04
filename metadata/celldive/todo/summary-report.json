@@ -2,7 +2,7 @@
   {
     "group_name": "General Electric RTI",
     "dataset_type": "Cell DIVE",
-    "datasets_with_non_standard_values": 2,
+    "datasets_with_non_standard_values": 10,
     "datasets_with_missing_required_values": 32,
     "datasets_with_invalid_input_patterns": 32,
     "total_datasets_with_issues": 32
