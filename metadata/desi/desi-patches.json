@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "when": {
+      "__should__" : [
+        { "assay_type": "DESI" },
+        { "assay_type": "NanoDESI" }
+      ]
+    },
+    "then": {
+      "matrix_deposition_method": "Not applicable"
+    }
+  }
+]
