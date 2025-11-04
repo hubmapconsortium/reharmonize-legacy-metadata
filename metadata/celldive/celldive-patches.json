@@ -1,1 +1,25 @@
-[]
+[  
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "IN Cell Analyzer 2200" }
+      ]
+    },
+    "then": {
+      "acquisition_instrument_vendor": "GE Healthcare"
+    }
+  },
+  {
+    "when": {
+      "__should__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bqjimuke" },
+        { "protocols_io_doi": "10.17504/protocols.io.kqdg39k41g25/v1" },
+        { "protocols_io_doi": "10.17504/protocols.io.b4kgqutw" },
+        { "protocols_io_doi": "10.17504/protocols.io.3byl4bwmzvo5/v1" }
+      ]
+    },
+    "then": {
+      "nuclear_marker_or_stain": "DAPI"
+    }
+  }
+]
