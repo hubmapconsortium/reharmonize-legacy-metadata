@@ -21,11 +21,11 @@ The `metadata/` folder contains processed metadata organized by assay type. Each
 | **[lcms](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lcms)** | 267 | Liquid chromatography-mass spectrometry metadata | ✅ | |
 | **[mibi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/mibi)** | 211 | Multiplexed ion beam imaging metadata | ✅ | |
 | **[af](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/af)** | 136 | Auto-fluorescence imaging metadata | ✅ | ✅ |
-| **[codex](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/codex)** | 133 | CODEX imaging metadata | ✅ | |
+| **[codex](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/codex)** | 133 | CODEX imaging metadata | ✅ | ✅ |
 | **[maldi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/maldi)** | 93 | MALDI imaging mass spectrometry metadata | ✅ | |
-| **[histology](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/histology)** | 77 | Histology imaging metadata | ✅ | |
-| **[celldive](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/celldive)** | 32 | Cell DIVE imaging metadata | ✅ | |
-| **[desi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/desi)** | 15 | DESI imaging mass spectrometry metadata | ✅ | |
+| **[histology](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/histology)** | 77 | Histology imaging metadata | ✅ | ✅ |
+| **[celldive](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/celldive)** | 32 | Cell DIVE imaging metadata | ✅ | ✅ |
+| **[desi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/desi)** | 15 | DESI imaging mass spectrometry metadata | ✅ | ✅ |
 | **[imc-2d](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/imc-2d)** | 13 | Imaging mass cytometry 2D metadata | ✅ | |
 | **[lightsheet](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lightsheet)** | 9 | Light sheet microscopy metadata | ✅ | |
 
