@@ -44,7 +44,7 @@
     "analyte_class": "Protein",
     "is_targeted": "Yes",
     "acquisition_instrument_vendor": "Zeiss Microscopy",
-    "acquisition_instrument_model": "Axio Scan.Z1",
+    "acquisition_instrument_model": "Zeiss LightSheet Z.1",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -101,7 +101,7 @@
     {"op": "remove", "path": "/step_z_value"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Axio Scan.Z1"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Zeiss LightSheet Z.1"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Zeiss Microscopy"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"}
@@ -113,9 +113,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "Z.1": "Axio Scan.Z1"
-      },
       "acquisition_instrument_vendor": {
         "Zeiss": "Zeiss Microscopy"
       },
@@ -147,7 +144,8 @@
       "resolution_y_unit": "um",
       "resolution_y_value": "4658.75",
       "step_z_value": "2366",
-      "version": "2"
+      "version": "2",
+      "illumination_mode": "Dual-sided fusion pivot scan"
     }
   }
 }
