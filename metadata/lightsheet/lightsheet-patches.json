@@ -1,1 +1,13 @@
-[]
+[  
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "Light Sheet" },
+        { "acquisition_instrument_model": "Z.1"}
+      ]
+    },
+    "then": {
+      "acquisition_instrument_model": "Zeiss LightSheet Z.1"
+    }
+  }
+]
