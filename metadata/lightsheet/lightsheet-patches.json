@@ -9,5 +9,16 @@
     "then": {
       "acquisition_instrument_model": "Zeiss LightSheet Z.1"
     }
-  }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "assay_type": "Light Sheet" },
+        { "protocols_io_doi": "10.17504/protocols.io.bqaamsae" }
+      ]
+    },
+    "then": {
+      "illumination_mode": "Dual-sided fusion pivot scan"
+    }
+  },
 ]
