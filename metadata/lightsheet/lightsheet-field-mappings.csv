@@ -22,6 +22,7 @@ tiled_image_columns,,,
 tiled_image_count,,,
 intended_tile_overlap_percentage,,,
 metadata_schema_id,,,
+illumination_mode,,,,
 ,assay_category,assay_category,assay_category
 ,,description,description
 ,donor_id,donor_id,donor_id
@@ -43,4 +44,5 @@ metadata_schema_id,,,
 ,,,increment_z_unit
 ,,,increment_z_value
 ,,,step_z_value
+
 ,,version,version
