@@ -20,6 +20,5 @@
   "acquisition_instrument_vendor": "Waters",
   "acquisition_instrument_model": "Synapt G2-Si",
   "ms_scan_mode": "MS",
-  "desorption_solvent": "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin",
   "analysis_protocol_doi": ""
 }
