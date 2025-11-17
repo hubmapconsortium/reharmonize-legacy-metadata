@@ -73,7 +73,7 @@
     "preparation_instrument_vendor": "Not applicable",
     "preparation_instrument_model": "Not applicable",
     "preparation_matrix": "Not applicable",
-    "desorption_solvent": "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin",
+    "desorption_solvent": "Methanol:Water (MeOH:H2O)",
     "desorption_solvent_flow_rate_value": "1.5",
     "desorption_solvent_flow_rate_unit": "uL/min",
     "analysis_protocol_doi": "",
@@ -82,7 +82,7 @@
   "json_patch": [
     {"op": "add", "path": "/analysis_protocol_doi", "value": ""},
     {"op": "add", "path": "/dataset_type", "value": "DESI"},
-    {"op": "add", "path": "/desorption_solvent", "value": "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin"},
+    {"op": "add", "path": "/desorption_solvent", "value": "Methanol:Water (MeOH:H2O)"},
     {"op": "add", "path": "/desorption_solvent_flow_rate_unit", "value": "uL/min"},
     {"op": "add", "path": "/desorption_solvent_flow_rate_value", "value": "1.5"},
     {"op": "add", "path": "/lab_id", "value": null},
@@ -160,7 +160,7 @@
         "lipids and metabolites": "Lipid + metabolite"
       },
       "desorption_solvent": {
-        "methanol: water 95:5 (v/v) with 0.01 percent formic acid and 20pg/ul leucine enkephalin": "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin"
+        "methanol: water 95:5 (v/v) with 0.01 percent formic acid and 20pg/ul leucine enkephalin": "Methanol:Water (MeOH:H2O)"
       },
       "desorption_solvent_flow_rate_unit": {
         "uL/minute": "uL/min"
