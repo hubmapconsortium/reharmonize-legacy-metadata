@@ -138,7 +138,7 @@
       ]
     },
     "then": {
-      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"
+      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Small Kit; PN 20034197"
     }
   },
   {
@@ -210,7 +210,7 @@
       "transposition_reagent_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
       "library_preparation_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
       "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
-      "sample_indexing_kit": "10x Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
+      "sample_indexing_kit": "10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
       "preparation_instrument_vendor": "10x Genomics",
       "preparation_instrument_model": "Chromium Controller"
     }
@@ -222,7 +222,7 @@
       ]
     },
     "then": {
-      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"
+      "transposition_reagent_kit" : "Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Small Kit; PN 20034197"
     }
   },
   {

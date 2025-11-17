@@ -1,7 +1,7 @@
 {
   "desorption_solvent": {
     "MeOH/H20 9/1": "Methanol:Water (MeOH:H2O)",
-    "methanol: water 95:5 (v/v) with 0.01 percent formic acid and 20pg/ul leucine enkephalin" : "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin",
-    "methanol: water 95:5 (v/v) with 0.01% formic acid and 20pg/ul leucine enkephalin" : "Methanol:Water (MeOH:H2O); Formic Acid and Leu-enkephalin"
+    "methanol: water 95:5 (v/v) with 0.01 percent formic acid and 20pg/ul leucine enkephalin" : "Methanol:Water (MeOH:H2O)",
+    "methanol: water 95:5 (v/v) with 0.01% formic acid and 20pg/ul leucine enkephalin" : "Methanol:Water (MeOH:H2O)"
   }
 }
