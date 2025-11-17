@@ -1,18 +1,12 @@
 {
   "sample_indexing_kit": [
-    "10x Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212",
     "Illumina; IDT for Illumina Nextera DNA UD Index set",
     "null"
   ],
-  "transposition_reagent_kit": [
-    "",
-    "163732",
-    "Illumina; Illumina Tagment DNA Enzyme and Buffer Small Kit; PN 20034197"
-  ],
-  "source_storage_duration_unit": "null",
-  "source_storage_duration_value": "null",
-  "number_of_pcr_cycles_for_indexing": "null",
   "sample_indexing_set": "null",
+  "source_storage_duration_value": "null",
+  "source_storage_duration_unit": "null",
+  "number_of_pcr_cycles_for_indexing": "null",
   "parent_sample_id": [
     "CALT0001-HT-1",
     "CALT0001-HT-2",
@@ -265,12 +259,16 @@
     "Illumina; NovaSeq 6000 SP Reagent Kit"
   ],
   "library_concentration_value": "null",
+  "contributors_path": "null",
   "library_preparation_kit": [
     "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit",
     "null"
   ],
-  "contributors_path": "null",
   "library_concentration_unit": "null",
+  "transposition_reagent_kit": [
+    "",
+    "163732"
+  ],
   "transposition_method": "snATACseq",
   "preparation_instrument_kit": [
     "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
