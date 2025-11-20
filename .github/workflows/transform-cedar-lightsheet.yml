@@ -1,0 +1,77 @@
+name: Transform Light Sheet legacy CEDAR metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyYAML
+          pip install openpyxl
+          pip install -e tools/json-rules-engine
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/cedar-lightsheet/lightsheet-field-mappings.csv \
+            metadata/cedar-lightsheet/lightsheet-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/lightsheet/latest/lightsheet.yml" \
+            metadata/cedar-lightsheet/lightsheet-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/cedar-lightsheet/lightsheet-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/cedar-lightsheet/lightsheet-schema.json \
+            --patch-file metadata/cedar-lightsheet/lightsheet-patches.json \
+            --input-dir metadata/cedar-lightsheet/input \
+            --output-dir metadata/cedar-lightsheet/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-lightsheet/output
+          git commit -m "Transform Light Sheet legacy CEDAR metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Find non-standard values
+        run: |
+          python scripts/find-nonstandard-values.py \
+            metadata/cedar-lightsheet/output \
+            metadata/cedar-lightsheet/lightsheet-schema.json \
+            metadata/cedar-lightsheet/lightsheet-nonstandard-values.json
+
+      - name: Commit non-standard values
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-lightsheet/lightsheet-nonstandard-values.json
+          git commit -m "Find non-standard values in Light Sheet metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Commit Excel reports for curator review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-lightsheet/todo/
+          git commit -m "Generate Excel reports grouped by institution for Light Sheet (automated)" || echo "No changes to commit"
+          git push

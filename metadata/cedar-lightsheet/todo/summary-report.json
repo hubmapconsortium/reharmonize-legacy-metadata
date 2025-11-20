@@ -1,0 +1,10 @@
+[
+  {
+    "group_name": "Washington University Kidney TMC",
+    "dataset_type": "Light Sheet",
+    "datasets_with_non_standard_values": 8,
+    "datasets_with_missing_required_values": 0,
+    "datasets_with_invalid_input_patterns": 0,
+    "total_datasets_with_issues": 8
+  }
+]

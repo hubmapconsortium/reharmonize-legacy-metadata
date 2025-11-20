@@ -1,0 +1,70 @@
+{
+  "uuid": "3408e648a1050b03c004b73a1657a2cd",
+  "hubmap_id": "HBM349.RQVX.686",
+  "status": "QA",
+  "group_name": "Washington University Kidney TMC",
+  "dataset_type": "Light Sheet",
+  "metadata": {
+    "acquisition_instrument_model": "Lightsheet 7",
+    "acquisition_instrument_vendor": "Zeiss Microscopy",
+    "analyte_class": "Nucleic acid and protein",
+    "antibodies_path": "extras/antibodies.tsv",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "Light Sheet",
+    "intended_tile_overlap_percentage": "5",
+    "is_image_preprocessing_required": "Yes",
+    "is_targeted": "Yes",
+    "lab_id": "LS-20230223_sk1_20X_FOV3",
+    "metadata_schema_id": "a4ff738c-a7e9-40c1-966e-22cf9c885fad",
+    "parent_sample_id": "HBM647.NWBR.538",
+    "preparation_protocol_doi": "https://www.protocols.io/view/light-sheet-fluorescence-microscopy-of-human-kidne-eq2lyjxmqlx9/v1",
+    "scan_direction": "Right-and-down",
+    "slide_id": "",
+    "source_storage_duration_unit": "day",
+    "source_storage_duration_value": "372",
+    "tile_configuration": "Snake-by-rows",
+    "tiled_image_columns": "2",
+    "tiled_image_count": "4",
+    "time_since_acquisition_instrument_calibration_unit": "",
+    "time_since_acquisition_instrument_calibration_value": ""
+  },
+  "modified_metadata": {
+    "parent_sample_id": "HBM647.NWBR.538",
+    "lab_id": "LS-20230223_sk1_20X_FOV3",
+    "preparation_protocol_doi": "https://www.protocols.io/view/light-sheet-fluorescence-microscopy-of-human-kidne-eq2lyjxmqlx9/v1",
+    "dataset_type": "Light Sheet",
+    "analyte_class": "Nucleic acid + protein",
+    "is_targeted": "Yes",
+    "acquisition_instrument_vendor": "Zeiss Microscopy",
+    "acquisition_instrument_model": "Lightsheet 7",
+    "source_storage_duration_value": "372",
+    "source_storage_duration_unit": "day",
+    "time_since_acquisition_instrument_calibration_value": "",
+    "time_since_acquisition_instrument_calibration_unit": "",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "antibodies_path": "extras/antibodies.tsv",
+    "is_image_preprocessing_required": "Yes",
+    "slide_id": "",
+    "tile_configuration": "Snake-by-rows",
+    "scan_direction": "Right-and-down",
+    "tiled_image_columns": "2",
+    "tiled_image_count": "4",
+    "intended_tile_overlap_percentage": "5",
+    "metadata_schema_id": "a4ff738c-a7e9-40c1-966e-22cf9c885fad"
+  },
+  "json_patch": [
+    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"}
+  ],
+  "processing_log": {
+    "field_mappings": {},
+    "value_mappings": {
+      "analyte_class": {
+        "Nucleic acid and protein": "Nucleic acid + protein"
+      }
+    },
+    "ambiguous_mappings": [],
+    "excluded_data": {}
+  }
+}
