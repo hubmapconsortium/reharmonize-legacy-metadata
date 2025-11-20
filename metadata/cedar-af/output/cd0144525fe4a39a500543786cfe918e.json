@@ -1,0 +1,74 @@
+{
+  "uuid": "cd0144525fe4a39a500543786cfe918e",
+  "hubmap_id": "HBM338.KTVL.932",
+  "status": "Published",
+  "group_name": "Vanderbilt TMC",
+  "dataset_type": "Auto-fluorescence",
+  "metadata": {
+    "acquisition_instrument_model": "Axio Scan.Z1",
+    "acquisition_instrument_vendor": "Zeiss Microscopy",
+    "analyte_class": "endogenous fluorophores",
+    "antibodies_path": "extras/antibodies.tsv",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "Auto-fluorescence",
+    "intended_tile_overlap_percentage": "0",
+    "is_image_preprocessing_required": "",
+    "is_targeted": "no",
+    "lab_id": "VAN0066-PA-3-1",
+    "metadata_schema_id": "c9c6a02b-010e-4217-96dc-f7ef71dd14c4",
+    "parent_sample_id": "HBM937.LZKQ.642",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.eq2lyp5nelx9/v2",
+    "scan_direction": "",
+    "slide_id": "VAN0066-PA-3-1_AF",
+    "source_storage_duration_unit": "day",
+    "source_storage_duration_value": "14",
+    "tile_configuration": "",
+    "tiled_image_columns": "0",
+    "tiled_image_count": "0",
+    "time_since_acquisition_instrument_calibration_unit": "",
+    "time_since_acquisition_instrument_calibration_value": "0"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "HBM937.LZKQ.642",
+    "lab_id": "VAN0066-PA-3-1",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.eq2lyp5nelx9/v2",
+    "dataset_type": "Auto-fluorescence",
+    "analyte_class": "Endogenous fluorophore",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Zeiss Microscopy",
+    "acquisition_instrument_model": "Axio Scan.Z1",
+    "source_storage_duration_value": "14",
+    "source_storage_duration_unit": "day",
+    "time_since_acquisition_instrument_calibration_value": "0",
+    "time_since_acquisition_instrument_calibration_unit": "",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "antibodies_path": "extras/antibodies.tsv",
+    "is_image_preprocessing_required": "",
+    "slide_id": "VAN0066-PA-3-1_AF",
+    "tile_configuration": "",
+    "scan_direction": "",
+    "tiled_image_columns": "0",
+    "tiled_image_count": "0",
+    "intended_tile_overlap_percentage": "0",
+    "metadata_schema_id": "c9c6a02b-010e-4217-96dc-f7ef71dd14c4"
+  },
+  "json_patch": [
+    {"op": "replace", "path": "/analyte_class", "value": "Endogenous fluorophore"},
+    {"op": "replace", "path": "/is_targeted", "value": "No"}
+  ],
+  "processing_log": {
+    "field_mappings": {},
+    "value_mappings": {
+      "analyte_class": {
+        "endogenous fluorophores": "Endogenous fluorophore"
+      },
+      "is_targeted": {
+        "no": "No"
+      }
+    },
+    "ambiguous_mappings": [],
+    "excluded_data": {}
+  }
+}
