@@ -1,0 +1,82 @@
+{
+  "uuid": "bae7726744880f0d066980e617f1fff3",
+  "hubmap_id": "HBM679.KXJK.793",
+  "status": "Published",
+  "group_name": "University of Rochester Medical Center TMC",
+  "dataset_type": "Histology",
+  "metadata": {
+    "acquisition_instrument_model": "PhenoImager Fusion",
+    "acquisition_instrument_vendor": "Akoya Biosciences",
+    "analyte_class": "Nucleic acid and protein",
+    "contributors_path": "extras/1052_contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "Histology",
+    "intended_tile_overlap_percentage": "",
+    "is_batch_staining_done": "Yes",
+    "is_image_preprocessing_required": "No",
+    "is_staining_automated": "No",
+    "is_targeted": "No",
+    "lab_id": "Tonsil_11_5",
+    "metadata_schema_id": "907d89c7-6cf4-4ec6-9edd-63cf0441d689",
+    "non_global_files": "",
+    "parent_sample_id": "HBM335.TMBW.274",
+    "preparation_instrument_model": "",
+    "preparation_instrument_vendor": "",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.36wgqjnq3vk5/v4",
+    "scan_direction": "",
+    "slide_id": "",
+    "source_storage_duration_unit": "day",
+    "source_storage_duration_value": "3",
+    "stain_name": "H&E",
+    "stain_technique": "Progressive staining",
+    "tile_configuration": "",
+    "tiled_image_columns": "",
+    "tiled_image_count": "",
+    "time_since_acquisition_instrument_calibration_unit": "day",
+    "time_since_acquisition_instrument_calibration_value": "5"
+  },
+  "modified_metadata": {
+    "parent_sample_id": "HBM335.TMBW.274",
+    "lab_id": "Tonsil_11_5",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.36wgqjnq3vk5/v4",
+    "dataset_type": "Histology",
+    "analyte_class": "Nucleic acid + protein",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Akoya Biosciences",
+    "acquisition_instrument_model": "PhenoImager Fusion",
+    "source_storage_duration_value": "3",
+    "source_storage_duration_unit": "day",
+    "time_since_acquisition_instrument_calibration_value": "5",
+    "time_since_acquisition_instrument_calibration_unit": "day",
+    "contributors_path": "extras/1052_contributors.tsv",
+    "data_path": ".",
+    "is_image_preprocessing_required": "No",
+    "stain_name": "H&E",
+    "stain_technique": "Progressive staining",
+    "is_batch_staining_done": "Yes",
+    "is_staining_automated": "No",
+    "preparation_instrument_vendor": "",
+    "preparation_instrument_model": "",
+    "slide_id": "",
+    "tile_configuration": "",
+    "scan_direction": "",
+    "tiled_image_columns": "",
+    "tiled_image_count": "",
+    "intended_tile_overlap_percentage": "",
+    "non_global_files": "",
+    "metadata_schema_id": "907d89c7-6cf4-4ec6-9edd-63cf0441d689"
+  },
+  "json_patch": [
+    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"}
+  ],
+  "processing_log": {
+    "field_mappings": {},
+    "value_mappings": {
+      "analyte_class": {
+        "Nucleic acid and protein": "Nucleic acid + protein"
+      }
+    },
+    "ambiguous_mappings": [],
+    "excluded_data": {}
+  }
+}

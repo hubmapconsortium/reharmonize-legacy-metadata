@@ -1,0 +1,77 @@
+name: Transform Histology legacy CEDAR metadata
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install PyYAML
+          pip install openpyxl
+          pip install -e tools/json-rules-engine
+          pip install -e tools/metadata-transformer
+
+      - name: Generate field mapping
+        run: |
+          python scripts/generate-field-mapping.py \
+            metadata/cedar-histology/histology-field-mappings.csv \
+            metadata/cedar-histology/histology-field-mappings.json
+
+      - name: Generate target schema
+        run: |
+          python scripts/generate-target-schema.py \
+            "https://raw.githubusercontent.com/hubmapconsortium/dataset-metadata-spreadsheet/refs/heads/main/histology/latest/histology.yml" \
+            metadata/cedar-histology/histology-schema.json
+
+      - name: Transform metadata
+        run: |
+          metadata-transform \
+            --field-mapping-file metadata/cedar-histology/histology-field-mappings.json \
+            --value-mapping-dir shared/value-mappings \
+            --target-schema-file metadata/cedar-histology/histology-schema.json \
+            --patch-file metadata/cedar-histology/histology-patches.json \
+            --input-dir metadata/cedar-histology/input \
+            --output-dir metadata/cedar-histology/output
+
+      - name: Commit transformed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-histology/output
+          git commit -m "Transform Histology legacy CEDAR metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Find non-standard values
+        run: |
+          python scripts/find-nonstandard-values.py \
+            metadata/cedar-histology/output \
+            metadata/cedar-histology/histology-schema.json \
+            metadata/cedar-histology/histology-nonstandard-values.json
+
+      - name: Commit non-standard values
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-histology/histology-nonstandard-values.json
+          git commit -m "Find non-standard values in Histology metadata (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Commit Excel reports for curator review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-histology/todo/
+          git commit -m "Generate Excel reports grouped by institution for Histology (automated)" || echo "No changes to commit"
+          git push

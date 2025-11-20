@@ -1,0 +1,82 @@
+{
+  "uuid": "4e6c75e2eebad9c246f7d990fca2f11e",
+  "hubmap_id": "HBM943.KNBG.869",
+  "status": "Published",
+  "group_name": "Stanford TMC",
+  "dataset_type": "Histology",
+  "metadata": {
+    "acquisition_instrument_model": "BZ-X710",
+    "acquisition_instrument_vendor": "Keyence",
+    "analyte_class": "Nucleic acid and protein",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "Histology",
+    "intended_tile_overlap_percentage": "",
+    "is_batch_staining_done": "No",
+    "is_image_preprocessing_required": "No",
+    "is_staining_automated": "No",
+    "is_targeted": "No",
+    "lab_id": "STAN0013-SI-1-1",
+    "metadata_schema_id": "907d89c7-6cf4-4ec6-9edd-63cf0441d689",
+    "non_global_files": "",
+    "parent_sample_id": "HBM675.PWLX.852",
+    "preparation_instrument_model": "",
+    "preparation_instrument_vendor": "",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.be8qjhvw",
+    "scan_direction": "",
+    "slide_id": "",
+    "source_storage_duration_unit": "year",
+    "source_storage_duration_value": "1.337",
+    "stain_name": "H&E",
+    "stain_technique": "",
+    "tile_configuration": "",
+    "tiled_image_columns": "",
+    "tiled_image_count": "",
+    "time_since_acquisition_instrument_calibration_unit": "",
+    "time_since_acquisition_instrument_calibration_value": ""
+  },
+  "modified_metadata": {
+    "parent_sample_id": "HBM675.PWLX.852",
+    "lab_id": "STAN0013-SI-1-1",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.be8qjhvw",
+    "dataset_type": "Histology",
+    "analyte_class": "Nucleic acid + protein",
+    "is_targeted": "No",
+    "acquisition_instrument_vendor": "Keyence",
+    "acquisition_instrument_model": "BZ-X710",
+    "source_storage_duration_value": "1.337",
+    "source_storage_duration_unit": "year",
+    "time_since_acquisition_instrument_calibration_value": "",
+    "time_since_acquisition_instrument_calibration_unit": "",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "is_image_preprocessing_required": "No",
+    "stain_name": "H&E",
+    "stain_technique": "",
+    "is_batch_staining_done": "No",
+    "is_staining_automated": "No",
+    "preparation_instrument_vendor": "",
+    "preparation_instrument_model": "",
+    "slide_id": "",
+    "tile_configuration": "",
+    "scan_direction": "",
+    "tiled_image_columns": "",
+    "tiled_image_count": "",
+    "intended_tile_overlap_percentage": "",
+    "non_global_files": "",
+    "metadata_schema_id": "907d89c7-6cf4-4ec6-9edd-63cf0441d689"
+  },
+  "json_patch": [
+    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"}
+  ],
+  "processing_log": {
+    "field_mappings": {},
+    "value_mappings": {
+      "analyte_class": {
+        "Nucleic acid and protein": "Nucleic acid + protein"
+      }
+    },
+    "ambiguous_mappings": [],
+    "excluded_data": {}
+  }
+}
