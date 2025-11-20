@@ -1,0 +1,12 @@
+[
+  {
+    "when": {
+      "__must__": [
+        { "barcode_size": "14-17,14,14" }
+      ]
+    },
+    "then": {
+      "barcode_size": "14"
+    }
+  }
+]

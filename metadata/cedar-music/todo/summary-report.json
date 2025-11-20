@@ -1,0 +1,10 @@
+[
+  {
+    "group_name": "TTD - University of San Diego and City of Hope",
+    "dataset_type": "MUSIC",
+    "datasets_with_non_standard_values": 14,
+    "datasets_with_missing_required_values": 0,
+    "datasets_with_invalid_input_patterns": 0,
+    "total_datasets_with_issues": 14
+  }
+]
