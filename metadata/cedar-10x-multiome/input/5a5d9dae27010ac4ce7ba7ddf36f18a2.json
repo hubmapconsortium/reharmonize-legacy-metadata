@@ -1,0 +1,21 @@
+{
+  "uuid": "5a5d9dae27010ac4ce7ba7ddf36f18a2",
+  "hubmap_id": "HBM794.HVLQ.852",
+  "status": "QA",
+  "group_name": "Washington University Kidney TMC",
+  "dataset_type": "10X Multiome",
+  "metadata": {
+    "capture_batch_id": "HuBMAP_20220825",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "10X Multiome",
+    "lab_id": "3723_K2100272_2_D2_N1",
+    "metadata_schema_id": "63c06fb2-4638-4979-aa97-5aff2a840156",
+    "number_of_pre_amplification_pcr_cycles": "7",
+    "parent_sample_id": "HBM852.VDKJ.863",
+    "preparation_instrument_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+    "preparation_instrument_model": "Chromium X",
+    "preparation_instrument_vendor": "10x Genomics",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.568g9hw"
+  }
+}

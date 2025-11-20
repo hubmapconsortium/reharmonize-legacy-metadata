@@ -1,0 +1,18 @@
+[
+  {
+    "group_name": "TMC - University of Pennsylvania",
+    "dataset_type": "10X Multiome",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 0,
+    "datasets_with_invalid_input_patterns": 0,
+    "total_datasets_with_issues": 0
+  },
+  {
+    "group_name": "Washington University Kidney TMC",
+    "dataset_type": "10X Multiome",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 0,
+    "datasets_with_invalid_input_patterns": 0,
+    "total_datasets_with_issues": 0
+  }
+]

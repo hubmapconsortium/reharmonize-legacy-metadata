@@ -1,0 +1,21 @@
+{
+  "uuid": "bd213f2d4dbdbfc1a37e6ea188daba32",
+  "hubmap_id": "HBM687.XPWQ.335",
+  "status": "QA",
+  "group_name": "Washington University Kidney TMC",
+  "dataset_type": "10X Multiome",
+  "metadata": {
+    "capture_batch_id": "HuBMAP_20230328",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "10X Multiome",
+    "lab_id": "3704_K2100138/139_1_D1_N1",
+    "metadata_schema_id": "63c06fb2-4638-4979-aa97-5aff2a840156",
+    "number_of_pre_amplification_pcr_cycles": "7",
+    "parent_sample_id": "HBM372.NBXN.726",
+    "preparation_instrument_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+    "preparation_instrument_model": "Chromium X",
+    "preparation_instrument_vendor": "10x Genomics",
+    "preparation_protocol_doi": "https://www.protocols.io/view/preparation-of-adult-human-kidney-tissue-for-singl-yxmvm78xbv3p/v1"
+  }
+}

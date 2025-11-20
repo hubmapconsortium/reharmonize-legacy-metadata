@@ -1,0 +1,21 @@
+{
+  "uuid": "206343bcf59e9a2234455915cac9719e",
+  "hubmap_id": "HBM283.FHHX.898",
+  "status": "QA",
+  "group_name": "TMC - University of Pennsylvania",
+  "dataset_type": "10X Multiome",
+  "metadata": {
+    "capture_batch_id": "Penn-Batch_0056",
+    "contributors_path": "extras/contributors.tsv",
+    "data_path": ".",
+    "dataset_type": "10X Multiome",
+    "lab_id": "17-111",
+    "metadata_schema_id": "63c06fb2-4638-4979-aa97-5aff2a840156",
+    "number_of_pre_amplification_pcr_cycles": "7",
+    "parent_sample_id": "HBM275.PPKF.354",
+    "preparation_instrument_kit": "10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283",
+    "preparation_instrument_model": "Chromium Controller",
+    "preparation_instrument_vendor": "10X Genomics",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.yxmvmndx6g3p/v1"
+  }
+}
