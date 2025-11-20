@@ -1,0 +1,18 @@
+[
+  {
+    "group_name": "General Electric RTI",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 0,
+    "datasets_with_missing_required_values": 0,
+    "datasets_with_invalid_input_patterns": 0,
+    "total_datasets_with_issues": 0
+  },
+  {
+    "group_name": "TMC - University of California San Diego focusing on female reproduction",
+    "dataset_type": "RNAseq",
+    "datasets_with_non_standard_values": 38,
+    "datasets_with_missing_required_values": 0,
+    "datasets_with_invalid_input_patterns": 0,
+    "total_datasets_with_issues": 38
+  }
+]
