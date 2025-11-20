@@ -54,6 +54,7 @@
       ]
     },
     "then": {
+      "dataset_type": "ATACseq",
       "assay_input_entity": "single nucleus",
       "barcode_read": "Read 2 (R2)",
       "barcode_size": "8,8,8",

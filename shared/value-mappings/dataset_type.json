@@ -26,7 +26,6 @@
     "TMT (proteomics)": "LC-MS",
     "cell-dive": "Cell DIVE",
     "LC-MS (metabolomics)": "LC-MS",
-    "AF": "Auto-fluorescence",
-    "SNARE-seq2": "ATACseq"
+    "AF": "Auto-fluorescence"
   }
 }
