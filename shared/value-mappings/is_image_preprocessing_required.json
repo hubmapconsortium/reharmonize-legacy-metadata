@@ -1,0 +1,6 @@
+{
+  "is_image_preprocessing_required": {
+    "yes": "Yes",
+    "no": "No"
+  }
+}

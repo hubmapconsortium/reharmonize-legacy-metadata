@@ -1,5 +1,6 @@
 {
   "preparation_instrument_vendor": {
-    "HTX Imaging": "HTX Technologies"
+    "HTX Imaging": "HTX Technologies",
+    "10X Genomics": "10x Genomics"
   }
 }

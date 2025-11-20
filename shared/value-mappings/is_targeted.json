@@ -3,6 +3,8 @@
     "TRUE": "Yes",
     "True": "Yes",
     "FALSE": "No",
-    "False": "No"
+    "False": "No",
+    "yes": "Yes",
+    "no": "No"
   }
 }
