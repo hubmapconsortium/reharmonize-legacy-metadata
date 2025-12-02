@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATACseq - Metadata Transformation Summary</title>
+    <style>
+        :root {
+            --hubmap-primary: #444A65;
+            --hubmap-light: #e8e9ed;
+            --hubmap-dark: #363b52;
+            --gray-light: #f5f5f5;
+            --gray-border: #ddd;
+            --text-dark: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .page-header {
+            background-color: var(--hubmap-primary);
+            padding: 15px 0;
+            margin-bottom: 0;
+        }
+
+        .page-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .page-header-logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+        }
+
+        h1 {
+            color: var(--hubmap-primary);
+            border-bottom: 3px solid var(--hubmap-primary);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--hubmap-dark);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 750px;
+            margin-bottom: 20px;
+        }
+
+        .table-container th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table-container table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--hubmap-primary);
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--hubmap-dark);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid var(--gray-border);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--gray-light);
+        }
+
+        tr:hover {
+            background-color: var(--hubmap-light);
+        }
+
+        /* Field mappings table */
+        .field-mappings-container {
+            max-height: 750px;
+            overflow: auto;
+            border: 1px solid var(--gray-border);
+            border-radius: 4px;
+        }
+
+        .field-mappings-container table {
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: max-content;
+        }
+
+        .field-mappings-container th,
+        .field-mappings-container td {
+            min-width: 150px;
+        }
+
+        .field-mappings-container th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .field-mappings-container .target-header {
+            position: sticky;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            background-color: var(--hubmap-dark);
+            box-shadow: -4px 0 8px rgba(0,0,0,0.15);
+        }
+
+        .field-mappings-container .target-cell {
+            position: sticky;
+            right: 0;
+            background-color: #e8e9ed;
+            font-weight: 500;
+            box-shadow: -4px 0 8px rgba(0,0,0,0.1);
+        }
+
+        .field-mappings-container tr:nth-child(even) .target-cell {
+            background-color: #d8dae0;
+        }
+
+        .field-mappings-container tr:hover .target-cell {
+            background-color: #c8cad0;
+        }
+
+        .empty-cell {
+            color: #999;
+            font-style: italic;
+        }
+
+        .patch-list {
+            list-style-type: none;
+            padding: 0;
+            max-height: 750px;
+            overflow-y: auto;
+        }
+
+        .patch-item {
+            background-color: var(--gray-light);
+            border-left: 4px solid var(--hubmap-primary);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .patch-item:hover {
+            background-color: var(--hubmap-light);
+        }
+
+        .patch-number {
+            color: var(--hubmap-primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .patch-action {
+            color: var(--hubmap-dark);
+            font-weight: 500;
+        }
+
+        .patch-context {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .patch-actions-list {
+            margin: 10px 0 0 20px;
+            padding-left: 0;
+            list-style-type: disc;
+        }
+
+        .patch-actions-list li {
+            margin-bottom: 5px;
+        }
+
+        code {
+            background-color: var(--hubmap-light);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            font-size: 13px;
+        }
+
+        .summary-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background-color: var(--hubmap-light);
+            border: 1px solid var(--hubmap-primary);
+            border-radius: 8px;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .stat-box:hover {
+            background-color: var(--hubmap-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .stat-box:hover .stat-number,
+        .stat-box:hover .stat-label {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--hubmap-primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .intro {
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header-inner">
+            <div class="page-header-logo">HuBMAP</div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h1>ATACseq - Metadata Transformation Summary</h1>
+
+        <div class="summary-stats">
+        <a href="#field-mappings" class="stat-box">
+            <div class="stat-number">70</div>
+            <div class="stat-label">Field Mappings</div>
+        </a>
+        <a href="#value-mappings" class="stat-box">
+            <div class="stat-number">55</div>
+            <div class="stat-label">Value Mappings</div>
+        </a>
+        <a href="#patches" class="stat-box">
+            <div class="stat-number">23</div>
+            <div class="stat-label">Conditional Patches</div>
+        </a>
+    </div>
+
+    <div class="intro">
+        <p>This report documents the transformation rules applied to convert legacy ATACseq metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
+    </div>
+
+    <div class="section" id="field-mappings">
+        <h2>1. Field Mappings</h2>
+        <p>Maps legacy field names to target schema field names across different schema versions.</p>
+        <div class="field-mappings-container">
+            <table>
+                <thead>
+                    <tr>
+                        
+                        <th>Bulk ATACseq (v0)</th>
+                        
+                        <th>Bulk ATACseq (v1)</th>
+                        
+                        <th>scatactseq-v0</th>
+                        
+                        <th>scatactseq-v1</th>
+                        
+                        <th class="target-header">ATACseq (v5.0.0-CEDAR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        
+                        <td><code>tissue_id</code></td>
+                        
+                        <td><code>tissue_id</code></td>
+                        
+                        <td><code>tissue_id</code></td>
+                        
+                        <td><code>tissue_id</code></td>
+                        
+                        <td class="target-cell"><code>parent_sample_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>lab_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>protocols_io_doi</code></td>
+                        
+                        <td><code>protocols_io_doi</code></td>
+                        
+                        <td><code>protocols_io_doi</code></td>
+                        
+                        <td><code>protocols_io_doi</code></td>
+                        
+                        <td class="target-cell"><code>preparation_protocol_doi</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>assay_type</code></td>
+                        
+                        <td><code>assay_type</code></td>
+                        
+                        <td><code>assay_type</code></td>
+                        
+                        <td><code>assay_type</code></td>
+                        
+                        <td class="target-cell"><code>dataset_type</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>analyte_class</code></td>
+                        
+                        <td><code>analyte_class</code></td>
+                        
+                        <td><code>analyte_class</code></td>
+                        
+                        <td><code>analyte_class</code></td>
+                        
+                        <td class="target-cell"><code>analyte_class</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>is_targeted</code></td>
+                        
+                        <td><code>is_targeted</code></td>
+                        
+                        <td><code>is_targeted</code></td>
+                        
+                        <td><code>is_targeted</code></td>
+                        
+                        <td class="target-cell"><code>is_targeted</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        
+                        <td class="target-cell"><code>acquisition_instrument_vendor</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>acquisition_instrument_model</code></td>
+                        
+                        <td><code>acquisition_instrument_model</code></td>
+                        
+                        <td><code>acquisition_instrument_model</code></td>
+                        
+                        <td><code>acquisition_instrument_model</code></td>
+                        
+                        <td class="target-cell"><code>acquisition_instrument_model</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>source_storage_duration_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>source_storage_duration_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>time_since_acquisition_instrument_calibration_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>time_since_acquisition_instrument_calibration_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>contributors_path</code></td>
+                        
+                        <td><code>contributors_path</code></td>
+                        
+                        <td><code>contributors_path</code></td>
+                        
+                        <td><code>contributors_path</code></td>
+                        
+                        <td class="target-cell"><code>contributors_path</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>data_path</code></td>
+                        
+                        <td><code>data_path</code></td>
+                        
+                        <td><code>data_path</code></td>
+                        
+                        <td><code>data_path</code></td>
+                        
+                        <td class="target-cell"><code>data_path</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>cell_barcode_offset</code></td>
+                        
+                        <td><code>cell_barcode_offset</code></td>
+                        
+                        <td class="target-cell"><code>barcode_offset</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>cell_barcode_read</code></td>
+                        
+                        <td><code>cell_barcode_read</code></td>
+                        
+                        <td class="target-cell"><code>barcode_read</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>cell_barcode_size</code></td>
+                        
+                        <td><code>cell_barcode_size</code></td>
+                        
+                        <td class="target-cell"><code>barcode_size</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>umi_offset</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>umi_read</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>umi_size</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sc_isolation_entity</code></td>
+                        
+                        <td><code>sc_isolation_entity</code></td>
+                        
+                        <td class="target-cell"><code>assay_input_entity</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>bulk_transposition_input_number_nuclei</code></td>
+                        
+                        <td><code>bulk_transposition_input_number_nuclei</code></td>
+                        
+                        <td><code>transposition_input</code></td>
+                        
+                        <td><code>transposition_input</code></td>
+                        
+                        <td class="target-cell"><code>number_of_input_cells_or_nuclei</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_adapter_sequence</code></td>
+                        
+                        <td><code>library_adapter_sequence</code></td>
+                        
+                        <td><code>library_adapter_sequence</code></td>
+                        
+                        <td><code>library_adapter_sequence</code></td>
+                        
+                        <td class="target-cell"><code>library_adapter_sequence</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_average_fragment_size</code></td>
+                        
+                        <td><code>library_average_fragment_size</code></td>
+                        
+                        <td><code>library_average_fragment_size</code></td>
+                        
+                        <td><code>library_average_fragment_size</code></td>
+                        
+                        <td class="target-cell"><code>library_average_fragment_size</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>library_input_amount_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>library_input_amount_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_final_yield_value</code></td>
+                        
+                        <td><code>library_final_yield_value</code></td>
+                        
+                        <td><code>library_final_yield</code></td>
+                        
+                        <td><code>library_final_yield</code></td>
+                        
+                        <td class="target-cell"><code>library_output_amount_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_final_yield_unit</code></td>
+                        
+                        <td><code>library_final_yield_unit</code></td>
+                        
+                        <td><code>library_final_yield_unit</code></td>
+                        
+                        <td><code>library_final_yield_unit</code></td>
+                        
+                        <td class="target-cell"><code>library_output_amount_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_concentration_value</code></td>
+                        
+                        <td><code>library_concentration_value</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>library_concentration_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_concentration_unit</code></td>
+                        
+                        <td><code>library_concentration_unit</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>library_concentration_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_layout</code></td>
+                        
+                        <td><code>library_layout</code></td>
+                        
+                        <td><code>library_layout</code></td>
+                        
+                        <td><code>library_layout</code></td>
+                        
+                        <td class="target-cell"><code>library_layout</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_pcr_cycles_for_sample_index</code></td>
+                        
+                        <td><code>library_pcr_cycles_for_sample_index</code></td>
+                        
+                        <td><code>library_pcr_cycles_for_sample_index</code></td>
+                        
+                        <td><code>library_pcr_cycles_for_sample_index</code></td>
+                        
+                        <td class="target-cell"><code>number_of_pcr_cycles_for_indexing</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_preparation_kit</code></td>
+                        
+                        <td><code>library_preparation_kit</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>library_preparation_kit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>sample_indexing_kit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>sample_indexing_set</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>is_technical_replicate</code></td>
+                        
+                        <td><code>is_technical_replicate</code></td>
+                        
+                        <td><code>is_technical_replicate</code></td>
+                        
+                        <td><code>is_technical_replicate</code></td>
+                        
+                        <td class="target-cell"><code>is_technical_replicate</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>expected_entity_capture_count</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>sequencing_reagent_kit</code></td>
+                        
+                        <td><code>sequencing_reagent_kit</code></td>
+                        
+                        <td><code>sequencing_reagent_kit</code></td>
+                        
+                        <td><code>sequencing_reagent_kit</code></td>
+                        
+                        <td class="target-cell"><code>sequencing_reagent_kit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>sequencing_read_format</code></td>
+                        
+                        <td><code>sequencing_read_format</code></td>
+                        
+                        <td><code>sequencing_read_format</code></td>
+                        
+                        <td><code>sequencing_read_format</code></td>
+                        
+                        <td class="target-cell"><code>sequencing_read_format</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>transposition_kit_number</code></td>
+                        
+                        <td><code>transposition_kit_number</code></td>
+                        
+                        <td><code>transposition_kit_number</code></td>
+                        
+                        <td><code>transposition_kit_number</code></td>
+                        
+                        <td class="target-cell"><code>transposition_reagent_kit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>transposition_method</code></td>
+                        
+                        <td><code>transposition_method</code></td>
+                        
+                        <td><code>transposition_method</code></td>
+                        
+                        <td><code>transposition_method</code></td>
+                        
+                        <td class="target-cell"><code>transposition_method</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>sequencing_batch_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>capture_batch_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>preparation_instrument_vendor</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>preparation_instrument_model</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>preparation_instrument_kit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>metadata_schema_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>assay_category</code></td>
+                        
+                        <td><code>assay_category</code></td>
+                        
+                        <td><code>assay_category</code></td>
+                        
+                        <td><code>assay_category</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_construction_protocols_io_doi</code></td>
+                        
+                        <td><code>library_construction_protocols_io_doi</code></td>
+                        
+                        <td><code>library_construction_protocols_io_doi</code></td>
+                        
+                        <td><code>library_construction_protocols_io_doi</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_creation_date</code></td>
+                        
+                        <td><code>library_creation_date</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_id</code></td>
+                        
+                        <td><code>library_id</code></td>
+                        
+                        <td><code>library_id</code></td>
+                        
+                        <td><code>library_id</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>pi</code></td>
+                        
+                        <td><code>pi</code></td>
+                        
+                        <td><code>pi</code></td>
+                        
+                        <td><code>pi</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>sample_quality_metric</code></td>
+                        
+                        <td><code>sample_quality_metric</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>library_pcr_cycles</code></td>
+                        
+                        <td><code>library_pcr_cycles</code></td>
+                        
+                        <td><code>library_pcr_cycles</code></td>
+                        
+                        <td><code>library_pcr_cycles</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>bulk_atac_cell_isolation_protocols_io_doi</code></td>
+                        
+                        <td><code>bulk_atac_cell_isolation_protocols_io_doi</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sc_isolation_enrichment</code></td>
+                        
+                        <td><code>sc_isolation_enrichment</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sc_isolation_protocols_io_doi</code></td>
+                        
+                        <td><code>sc_isolation_protocols_io_doi</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sc_isolation_quality_metric</code></td>
+                        
+                        <td><code>sc_isolation_quality_metric</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sc_isolation_tissue_dissociation</code></td>
+                        
+                        <td><code>sc_isolation_tissue_dissociation</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sc_isolation_cell_number</code></td>
+                        
+                        <td><code>sc_isolation_cell_number</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>sequencing_read_percent_q30</code></td>
+                        
+                        <td><code>sequencing_read_percent_q30</code></td>
+                        
+                        <td><code>sequencing_read_percent_q30</code></td>
+                        
+                        <td><code>sequencing_read_percent_q30</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>transposition_transposase_source</code></td>
+                        
+                        <td><code>transposition_transposase_source</code></td>
+                        
+                        <td><code>transposition_transposase_source</code></td>
+                        
+                        <td><code>transposition_transposase_source</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>version</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>version</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>description</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>description</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section" id="value-mappings">
+        <h2>2. Value Mappings</h2>
+        <p>Standardizes field values from legacy formats to target schema values.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Original Value</th>
+                        <th>Standardized Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Nextseq500-NS500488</code></td>
+                        <td><code>NextSeq 500</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6000</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6001</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6002</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6003</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6004</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6005</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6006</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6007</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6008</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6009</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6010</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6011</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6012</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6013</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6014</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6015</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6016</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6017</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6018</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6019</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6020</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6021</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Novaseq6022</code></td>
+                        <td><code>NovaSeq 6000</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>dataset_type</code></td>
+                        <td><code>SNARE-seq2</code></td>
+                        <td><code>ATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>dataset_type</code></td>
+                        <td><code>bulkATACseq</code></td>
+                        <td><code>ATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>dataset_type</code></td>
+                        <td><code>sciATACseq</code></td>
+                        <td><code>ATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>dataset_type</code></td>
+                        <td><code>snATACseq</code></td>
+                        <td><code>ATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_targeted</code></td>
+                        <td><code>FALSE</code></td>
+                        <td><code>No</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_targeted</code></td>
+                        <td><code>False</code></td>
+                        <td><code>No</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_technical_replicate</code></td>
+                        <td><code>FALSE</code></td>
+                        <td><code>No</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_technical_replicate</code></td>
+                        <td><code>False</code></td>
+                        <td><code>No</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_technical_replicate</code></td>
+                        <td><code>TRUE</code></td>
+                        <td><code>Yes</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_technical_replicate</code></td>
+                        <td><code>True</code></td>
+                        <td><code>Yes</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>101/10/24/101</code></td>
+                        <td><code>101,10,24,101</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>101/8/16/101</code></td>
+                        <td><code>101,8,16,101</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>101/8/8/101</code></td>
+                        <td><code>101,8,8,101</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50+16+8+49</code></td>
+                        <td><code>50,16,8,49</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50+50+20+20</code></td>
+                        <td><code>50,50,20,20</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50+8+16+50</code></td>
+                        <td><code>50,8,16,50</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50/50/20/20</code></td>
+                        <td><code>50,50,20,20</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50/8/16/49</code></td>
+                        <td><code>50,8,16,49</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50/8/24/49</code></td>
+                        <td><code>50,8,24,49</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>50/8/24/50</code></td>
+                        <td><code>50,8,24,50</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>51/8/16/51</code></td>
+                        <td><code>51,8,16,51</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>75+94+8+75</code></td>
+                        <td><code>75,94,8,75</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_read_format</code></td>
+                        <td><code>75/94/8/75</code></td>
+                        <td><code>75,94,8,75</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_reagent_kit</code></td>
+                        <td><code>HiSeq 3000/4000 PE Cluster Kit PE-410-1001</code></td>
+                        <td><code>Illumina; HiSeq 3000/4000 PE Cluster Kit PE-410-1001; PN 1000283</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_reagent_kit</code></td>
+                        <td><code>NovaSeq 6000 S4 Reagent Kit v1.5 (200 cycles)</code></td>
+                        <td><code>Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>sequencing_reagent_kit</code></td>
+                        <td><code>NovaSeq S4 200 cycle</code></td>
+                        <td><code>Illumina; NovaSeq 6000 S4 Reagent v1.5 Kit (200 Cycles); PN 20028313</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>transposition_method</code></td>
+                        <td><code>SNARE-Seq2-AC</code></td>
+                        <td><code>sciATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>transposition_method</code></td>
+                        <td><code>Tagment DNA TDE1 Enzyme</code></td>
+                        <td><code>bulkATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>transposition_method</code></td>
+                        <td><code>snATACseq</code></td>
+                        <td><code>snATACseq</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>transposition_reagent_kit</code></td>
+                        <td><code>1000283</code></td>
+                        <td><code>10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>transposition_reagent_kit</code></td>
+                        <td><code>na</code></td>
+                        <td><code>Not applicable</code></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section" id="patches">
+        <h2>3. Conditional Patches</h2>
+        <p>Rule-based transformations applied when specific conditions are met.</p>
+        <ul class="patch-list">
+            
+            <li class="patch-item">
+                <span class="patch-number">#1</span>
+                <span class='patch-context'>When the assay type is '<code>snATACseq</code>':</span><ul class='patch-actions-list'><li>Set input entity to '<code>single nucleus</code>'</li><li>Set barcode read to '<code>Read 2 (R2)</code>'</li><li>Set barcode size to '<code>16</code>'</li><li>Set barcode offset to '<code>0</code>'</li><li>Set UMI read to '<code>Not applicable</code>'</li><li>Set UMI size to '<code>Not applicable</code>'</li><li>Set UMI offset to '<code>Not applicable</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#2</span>
+                <span class='patch-context'>When the assay type is '<code>bulkATACseq</code>':</span><ul class='patch-actions-list'><li>Set input entity to '<code>tissue (bulk)</code>'</li><li>Set barcode read to '<code>Not applicable</code>'</li><li>Set barcode size to '<code>Not applicable</code>'</li><li>Set barcode offset to '<code>Not applicable</code>'</li><li>Set UMI read to '<code>Not applicable</code>'</li><li>Set UMI size to '<code>Not applicable</code>'</li><li>Set UMI offset to '<code>Not applicable</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#3</span>
+                <span class='patch-context'>When the assay type is '<code>sciATACseq</code>':</span><ul class='patch-actions-list'><li>Set input entity to '<code>single cell</code>'</li><li>Set barcode read to '<code>Not applicable</code>'</li><li>Set barcode size to '<code>Not applicable</code>'</li><li>Set barcode offset to '<code>Not applicable</code>'</li><li>Set UMI read to '<code>Not applicable</code>'</li><li>Set UMI size to '<code>Not applicable</code>'</li><li>Set UMI offset to '<code>Not applicable</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#4</span>
+                <span class='patch-context'>When the assay type is '<code>SNARE-seq2</code>':</span><ul class='patch-actions-list'><li>Set dataset type to '<code>ATACseq</code>'</li><li>Set input entity to '<code>single nucleus</code>'</li><li>Set barcode read to '<code>Read 2 (R2)</code>'</li><li>Set barcode size to '<code>8,8,8</code>'</li><li>Set barcode offset to '<code>0,38,76</code>'</li><li>Set UMI read to '<code>Not applicable</code>'</li><li>Set UMI size to '<code>Not applicable</code>'</li><li>Set UMI offset to '<code>Not applicable</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#5</span>
+                When the assay type is '<code>SNARE-seq2</code>' and the reagent kit is '<code>NovaSeq 6000 S4 Reagent</code>' and the read format is one of ['<code>75/94/8/75</code>', '<code>75+94+8+75</code>']: <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#6</span>
+                When the assay type is '<code>SNARE-seq2</code>' and the read format is '<code>75,94,8,75</code>' and the reagent kit is '<code>NovaSeq 6000 S1 Reagent</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 S1 Reagent v1.5 Kit (300 Cycles); PN 20028317</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#7</span>
+                When the assay type is '<code>SNARE-seq2</code>' and the read format is '<code>75,94,8,75</code>' and the reagent kit is '<code>NovaSeq 6000 S2 Reagent</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 S2 Reagent v1.5 Kit (300 Cycles); PN 20028314</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#8</span>
+                When the assay type is '<code>SNARE-seq2</code>' and the read format is '<code>75,94,8,75</code>' and the reagent kit is '<code>NovaSeq 6000 SP Reagent</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 SP Reagent v1.5 Kit (300 Cycles); PN 20028400</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#9</span>
+                When the assay type is '<code>SNARE-seq2</code>' and the reagent kit is one of ['<code>NovaSeq 6000 SP Reagent</code>', '<code>NovaSeq 6000 S2 Reagent</code>', '<code>NovaSeq 6000 S1 Reagent</code>', '<code>NovaSeq 6000 S4 Reagent</code>']: <span class='patch-action'>Sets</span> acquisition instrument model as '<code>NovaSeq 6000</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#10</span>
+                When the transposition method is '<code>Tagment DNA TDE1 Enzyme</code>' and the transposition kit number is '<code>20034197</code>': <span class='patch-action'>Sets</span> transposition reagent kit as '<code>Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Small Kit; PN 20034197</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#11</span>
+                When the library construction protocol is '<code>10.17504/protocols.io.261gen52jg47/v1</code>': <span class='patch-action'>Sets</span> library prep kit as '<code>Custom</code>', sample indexing kit as '<code>Illumina; IDT for Illumina Nextera DNA UD Index set</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#12</span>
+                <span class='patch-context'>When the library construction protocol is '<code>10.17504/protocols.io.bvssn6ee</code>':</span><ul class='patch-actions-list'><li>Set transposition reagent kit to '<code>10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110</code>'</li><li>Set library prep kit to '<code>10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110</code>'</li><li>Set preparation instrument kit to '<code>10x Genomics; Chromium Chip E Single Cell ATAC Kit, 48 rxns; PN 1000155</code>'</li><li>Set sample indexing kit to '<code>10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn; PN 1000084</code>'</li><li>Set preparation instrument vendor to '<code>10x Genomics</code>'</li><li>Set preparation instrument model to '<code>Chromium Controller</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#13</span>
+                <span class='patch-context'>When the library construction protocol is '<code>10.17504/protocols.io.bf33jqqn</code>' and the transposition kit number is '<code>1000110</code>':</span><ul class='patch-actions-list'><li>Set transposition reagent kit to '<code>10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110</code>'</li><li>Set library prep kit to '<code>10x Genomics; Chromium Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000110</code>'</li><li>Set preparation instrument kit to '<code>10x Genomics; Chromium Chip E Single Cell ATAC Kit</code>'</li><li>Set sample indexing kit to '<code>10x Genomics; Chromium i7 Multiplex Kit N, Set A, 96 rxn; PN 1000084</code>'</li><li>Set preparation instrument vendor to '<code>10x Genomics</code>'</li><li>Set preparation instrument model to '<code>Chromium Controller</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#14</span>
+                <span class='patch-context'>When the library construction protocol is '<code>10.17504/protocols.io.bf33jqqn</code>' and the transposition kit number is '<code>1000175</code>':</span><ul class='patch-actions-list'><li>Set transposition reagent kit to '<code>10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000175</code>'</li><li>Set library prep kit to '<code>10x Genomics; Chromium Next GEM Single Cell ATAC Library & Gel Bead Kit, 16 rxns; PN 1000175</code>'</li><li>Set preparation instrument kit to '<code>10x Genomics; Chromium Next GEM Chip H Single Cell Kit</code>'</li><li>Set sample indexing kit to '<code>10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212</code>'</li><li>Set preparation instrument vendor to '<code>10x Genomics</code>'</li><li>Set preparation instrument model to '<code>Chromium Controller</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#15</span>
+                <span class='patch-context'>When the library construction protocol is '<code>10.17504/protocols.io.bvbmn2k6</code>' and the transposition kit number is '<code>1000280</code>':</span><ul class='patch-actions-list'><li>Set transposition reagent kit to '<code>10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283</code>'</li><li>Set library prep kit to '<code>10X Genomics; Chromium NextGem Single Cell Multiome ATAC + Gene Expression Reagent Bundle, 16 rxn; PN 1000283</code>'</li><li>Set preparation instrument kit to '<code>10x Genomics; Chromium Next GEM Chip J Single Cell Kit</code>'</li><li>Set sample indexing kit to '<code>10X Genomics; Single Index Kit N, Set A (96 rxn); PN 1000212</code>'</li><li>Set preparation instrument vendor to '<code>10x Genomics</code>'</li><li>Set preparation instrument model to '<code>Chromium Controller</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#16</span>
+                When the transposition kit number is '<code>200034197</code>': <span class='patch-action'>Sets</span> transposition reagent kit as '<code>Illumina; Illumina Tagment DNA TDE1 Enzyme and Buffer Small Kit; PN 20034197</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#17</span>
+                When the acquisition instrument model is '<code>NovaSeq</code>': <span class='patch-action'>Sets</span> acquisition instrument model as '<code>NovaSeq 6000</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#18</span>
+                When the reagent kit is '<code>Nextseq500</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NextSeq 500 Reagent Kit</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#19</span>
+                When the reagent kit is '<code>NovaSeq 6000 S4 Reagent</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 S4 Reagent Kit</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#20</span>
+                When the reagent kit is '<code>NovaSeq 6000 SP Reagent</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 SP Reagent Kit</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#21</span>
+                When the reagent kit is '<code>NovaSeq6000</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 Reagent Kit</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#22</span>
+                When the reagent kit is '<code>Novaseq 6000 S1XP</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 Reagent Kit</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#23</span>
+                When the reagent kit is '<code>NovaSeq</code>': <span class='patch-action'>Sets</span> reagent kit as '<code>Illumina; NovaSeq 6000 Reagent Kit</code>'.
+            </li>
+            
+        </ul>
+    </div>
+
+    </div>
+</body>
+</html>

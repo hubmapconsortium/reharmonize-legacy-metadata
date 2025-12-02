@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC-2D - Metadata Transformation Summary</title>
+    <style>
+        :root {
+            --hubmap-primary: #444A65;
+            --hubmap-light: #e8e9ed;
+            --hubmap-dark: #363b52;
+            --gray-light: #f5f5f5;
+            --gray-border: #ddd;
+            --text-dark: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .page-header {
+            background-color: var(--hubmap-primary);
+            padding: 15px 0;
+            margin-bottom: 0;
+        }
+
+        .page-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .page-header-logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+        }
+
+        h1 {
+            color: var(--hubmap-primary);
+            border-bottom: 3px solid var(--hubmap-primary);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--hubmap-dark);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 750px;
+            margin-bottom: 20px;
+        }
+
+        .table-container th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table-container table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--hubmap-primary);
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--hubmap-dark);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid var(--gray-border);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--gray-light);
+        }
+
+        tr:hover {
+            background-color: var(--hubmap-light);
+        }
+
+        /* Field mappings table */
+        .field-mappings-container {
+            max-height: 750px;
+            overflow: auto;
+            border: 1px solid var(--gray-border);
+            border-radius: 4px;
+        }
+
+        .field-mappings-container table {
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: max-content;
+        }
+
+        .field-mappings-container th,
+        .field-mappings-container td {
+            min-width: 150px;
+        }
+
+        .field-mappings-container th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .field-mappings-container .target-header {
+            position: sticky;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            background-color: var(--hubmap-dark);
+            box-shadow: -4px 0 8px rgba(0,0,0,0.15);
+        }
+
+        .field-mappings-container .target-cell {
+            position: sticky;
+            right: 0;
+            background-color: #e8e9ed;
+            font-weight: 500;
+            box-shadow: -4px 0 8px rgba(0,0,0,0.1);
+        }
+
+        .field-mappings-container tr:nth-child(even) .target-cell {
+            background-color: #d8dae0;
+        }
+
+        .field-mappings-container tr:hover .target-cell {
+            background-color: #c8cad0;
+        }
+
+        .empty-cell {
+            color: #999;
+            font-style: italic;
+        }
+
+        .patch-list {
+            list-style-type: none;
+            padding: 0;
+            max-height: 750px;
+            overflow-y: auto;
+        }
+
+        .patch-item {
+            background-color: var(--gray-light);
+            border-left: 4px solid var(--hubmap-primary);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .patch-item:hover {
+            background-color: var(--hubmap-light);
+        }
+
+        .patch-number {
+            color: var(--hubmap-primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .patch-action {
+            color: var(--hubmap-dark);
+            font-weight: 500;
+        }
+
+        .patch-context {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .patch-actions-list {
+            margin: 10px 0 0 20px;
+            padding-left: 0;
+            list-style-type: disc;
+        }
+
+        .patch-actions-list li {
+            margin-bottom: 5px;
+        }
+
+        code {
+            background-color: var(--hubmap-light);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            font-size: 13px;
+        }
+
+        .summary-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background-color: var(--hubmap-light);
+            border: 1px solid var(--hubmap-primary);
+            border-radius: 8px;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .stat-box:hover {
+            background-color: var(--hubmap-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .stat-box:hover .stat-number,
+        .stat-box:hover .stat-label {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--hubmap-primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .intro {
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header-inner">
+            <div class="page-header-logo">HuBMAP</div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h1>IMC-2D - Metadata Transformation Summary</h1>
+
+        <div class="summary-stats">
+        <a href="#field-mappings" class="stat-box">
+            <div class="stat-number">52</div>
+            <div class="stat-label">Field Mappings</div>
+        </a>
+        <a href="#value-mappings" class="stat-box">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Value Mappings</div>
+        </a>
+        <a href="#patches" class="stat-box">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Conditional Patches</div>
+        </a>
+    </div>
+
+    <div class="intro">
+        <p>This report documents the transformation rules applied to convert legacy IMC-2D metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
+    </div>
+
+    <div class="section" id="field-mappings">
+        <h2>1. Field Mappings</h2>
+        <p>Maps legacy field names to target schema field names across different schema versions.</p>
+        <div class="field-mappings-container">
+            <table>
+                <thead>
+                    <tr>
+                        
+                        <th>IMC (v0)</th>
+                        
+                        <th>IMC (v1)</th>
+                        
+                        <th class="target-header">IMC 2D (v2.0.0-CEDAR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        
+                        <td><code>tissue_id</code></td>
+                        
+                        <td><code>tissue_id</code></td>
+                        
+                        <td class="target-cell"><code>parent_sample_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>lab_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>protocols_io_doi</code></td>
+                        
+                        <td><code>protocols_io_doi</code></td>
+                        
+                        <td class="target-cell"><code>preparation_protocol_doi</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>assay_type</code></td>
+                        
+                        <td><code>assay_type</code></td>
+                        
+                        <td class="target-cell"><code>dataset_type</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>analyte_class</code></td>
+                        
+                        <td><code>analyte_class</code></td>
+                        
+                        <td class="target-cell"><code>analyte_class</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>is_targeted</code></td>
+                        
+                        <td><code>is_targeted</code></td>
+                        
+                        <td class="target-cell"><code>is_targeted</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        
+                        <td class="target-cell"><code>acquisition_instrument_vendor</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>acquisition_instrument_model</code></td>
+                        
+                        <td><code>acquisition_instrument_model</code></td>
+                        
+                        <td class="target-cell"><code>acquisition_instrument_model</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>source_storage_duration_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>source_storage_duration_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>time_since_acquisition_instrument_calibration_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>time_since_acquisition_instrument_calibration_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>contributors_path</code></td>
+                        
+                        <td><code>contributors_path</code></td>
+                        
+                        <td class="target-cell"><code>contributors_path</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>data_path</code></td>
+                        
+                        <td><code>data_path</code></td>
+                        
+                        <td class="target-cell"><code>data_path</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>total_run_time_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>total_run_time_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>number_of_antibodies</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>number_of_channels</code></td>
+                        
+                        <td><code>number_of_channels</code></td>
+                        
+                        <td class="target-cell"><code>number_of_channels</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>slide_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>data_precision_bytes</code></td>
+                        
+                        <td><code>data_precision_bytes</code></td>
+                        
+                        <td class="target-cell"><code>data_precision_bytes</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>ablation_frequency_value</code></td>
+                        
+                        <td><code>ablation_frequency_value</code></td>
+                        
+                        <td class="target-cell"><code>ablation_frequency_value</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>ablation_frequency_unit</code></td>
+                        
+                        <td><code>ablation_frequency_unit</code></td>
+                        
+                        <td class="target-cell"><code>ablation_frequency_unit</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>antibodies_path</code></td>
+                        
+                        <td class="target-cell"><code>antibodies_path</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><code>metadata_schema_id</code></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>ablation_distance_between_shots_x_units</code></td>
+                        
+                        <td><code>ablation_distance_between_shots_x_units</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>ablation_distance_between_shots_x_value</code></td>
+                        
+                        <td><code>ablation_distance_between_shots_x_value</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>ablation_distance_between_shots_y_units</code></td>
+                        
+                        <td><code>ablation_distance_between_shots_y_units</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>ablation_distance_between_shots_y_value</code></td>
+                        
+                        <td><code>ablation_distance_between_shots_y_value</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>acquisition_id</code></td>
+                        
+                        <td><code>acquisition_id</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>assay_category</code></td>
+                        
+                        <td><code>assay_category</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>description</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>dual_count_start</code></td>
+                        
+                        <td><code>dual_count_start</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>end_datetime</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>max_x_width_unit</code></td>
+                        
+                        <td><code>max_x_width_unit</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>max_x_width_value</code></td>
+                        
+                        <td><code>max_x_width_value</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>max_y_height_unit</code></td>
+                        
+                        <td><code>max_y_height_unit</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>max_y_height_value</code></td>
+                        
+                        <td><code>max_y_height_value</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>pi</code></td>
+                        
+                        <td><code>pi</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>preparation_instrument_model</code></td>
+                        
+                        <td><code>preparation_instrument_model</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>preparation_instrument_vendor</code></td>
+                        
+                        <td><code>preparation_instrument_vendor</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>reagent_prep_protocols_io_doi</code></td>
+                        
+                        <td><code>reagent_prep_protocols_io_doi</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>roi_description</code></td>
+                        
+                        <td><code>roi_description</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>roi_id</code></td>
+                        
+                        <td><code>roi_id</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>segment_data_format</code></td>
+                        
+                        <td><code>segment_data_format</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>signal_type</code></td>
+                        
+                        <td><code>signal_type</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><code>start_datetime</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>version</code></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section" id="value-mappings">
+        <h2>2. Value Mappings</h2>
+        <p>Standardizes field values from legacy formats to target schema values.</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Original Value</th>
+                        <th>Standardized Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_vendor</code></td>
+                        <td><code>Fluidigm</code></td>
+                        <td><code>Standard BioTools (Fluidigm)</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>analyte_class</code></td>
+                        <td><code>protein</code></td>
+                        <td><code>Protein</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>dataset_type</code></td>
+                        <td><code>Imaging Mass Cytometry</code></td>
+                        <td><code>2D Imaging Mass Cytometry</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>is_targeted</code></td>
+                        <td><code>TRUE</code></td>
+                        <td><code>Yes</code></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section" id="patches">
+        <h2>3. Conditional Patches</h2>
+        <p>Rule-based transformations applied when specific conditions are met.</p>
+        <ul class="patch-list">
+            
+        </ul>
+    </div>
+
+    </div>
+</body>
+</html>
