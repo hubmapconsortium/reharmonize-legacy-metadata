@@ -412,6 +412,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             color: #666;
             text-align: center;
         }
+
+        .intro {
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
@@ -430,6 +436,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <div class="stat-number">{{ patches | length }}</div>
             <div class="stat-label">Conditional Patches</div>
         </a>
+    </div>
+
+    <div class="intro">
+        <p>This report documents the transformation rules applied to convert legacy {{ title }} metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
     </div>
 
     <div class="section" id="field-mappings">
