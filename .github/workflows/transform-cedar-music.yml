@@ -1,4 +1,4 @@
-name: Transform MUSIC legacy CEDAR metadata
+name: [CEDAR Legacy] Transform MUSIC legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only

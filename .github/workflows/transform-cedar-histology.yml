@@ -1,4 +1,4 @@
-name: Transform Histology legacy CEDAR metadata
+name: [CEDAR Legacy] Transform Histology legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only

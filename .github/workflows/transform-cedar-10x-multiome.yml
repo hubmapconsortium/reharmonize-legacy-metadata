@@ -1,4 +1,4 @@
-name: Transform 10X Multiome legacy CEDAR metadata
+name: [CEDAR] Transform 10X Multiome legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only

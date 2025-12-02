@@ -1,4 +1,4 @@
-name: Transform Light Sheet legacy CEDAR metadata
+name: [CEDAR Legacy] Transform Light Sheet legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only

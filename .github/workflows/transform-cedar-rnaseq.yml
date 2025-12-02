@@ -1,4 +1,4 @@
-name: Transform RNAseq legacy CEDAR metadata
+name: [CEDAR Legacy] Transform RNAseq legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only

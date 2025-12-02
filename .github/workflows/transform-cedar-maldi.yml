@@ -1,4 +1,4 @@
-name: Transform MALDI legacy CEDAR metadata
+name: [CEDAR Legacy] Transform MALDI legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only
