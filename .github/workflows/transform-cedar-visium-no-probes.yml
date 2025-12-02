@@ -1,4 +1,4 @@
-name: [CEDAR Legacy] Transform Visium (no probes) legacy metadata
+name: CEDAR Legacy - Transform Visium (no probes) legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only

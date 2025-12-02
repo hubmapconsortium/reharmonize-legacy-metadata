@@ -1,4 +1,4 @@
-name: [CEDAR Legacy] Transform AF legacy metadata
+name: CEDAR Legacy - Transform AF legacy metadata
 
 on:
   workflow_dispatch:  # Manual trigger only
