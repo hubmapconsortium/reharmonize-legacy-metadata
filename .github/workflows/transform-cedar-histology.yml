@@ -20,6 +20,7 @@ jobs:
         run: |
           pip install PyYAML
           pip install openpyxl
+          pip install jinja2
           pip install -e tools/json-rules-engine
           pip install -e tools/metadata-transformer
 
@@ -74,4 +75,21 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add metadata/cedar-histology/todo/
           git commit -m "Generate Excel reports grouped by institution for Histology (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Generate transformation summary
+        run: |
+          python scripts/generate-transformation-summary.py \
+            --field-mapping-csv metadata/cedar-histology/histology-field-mappings.csv \
+            --output-dir metadata/cedar-histology/output \
+            --patch-file metadata/cedar-histology/histology-patches.json \
+            --title "Histology (CEDAR)" \
+            --output-file metadata/cedar-histology/transformation-summary.html
+
+      - name: Commit transformation summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-histology/transformation-summary.html
+          git commit -m "Generate transformation summary for Histology (automated)" || echo "No changes to commit"
           git push

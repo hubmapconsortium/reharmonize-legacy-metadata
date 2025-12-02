@@ -20,6 +20,7 @@ jobs:
         run: |
           pip install PyYAML
           pip install openpyxl
+          pip install jinja2
           pip install -e tools/json-rules-engine
           pip install -e tools/metadata-transformer
 
@@ -74,4 +75,21 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add metadata/imc-2d/todo/
           git commit -m "Generate Excel reports grouped by institution for IMC-2D (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Generate transformation summary
+        run: |
+          python scripts/generate-transformation-summary.py \
+            --field-mapping-csv metadata/imc-2d/imc-2d-field-mappings.csv \
+            --output-dir metadata/imc-2d/output \
+            --patch-file metadata/imc-2d/imc-2d-patches.json \
+            --title "IMC-2D" \
+            --output-file metadata/imc-2d/transformation-summary.html
+
+      - name: Commit transformation summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/imc-2d/transformation-summary.html
+          git commit -m "Generate transformation summary for IMC-2D (automated)" || echo "No changes to commit"
           git push

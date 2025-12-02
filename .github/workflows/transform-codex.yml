@@ -20,6 +20,7 @@ jobs:
         run: |
           pip install PyYAML
           pip install openpyxl
+          pip install jinja2
           pip install -e tools/json-rules-engine
           pip install -e tools/metadata-transformer
 
@@ -74,4 +75,21 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add metadata/codex/todo/
           git commit -m "Generate Excel reports grouped by institution for CODEX (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Generate transformation summary
+        run: |
+          python scripts/generate-transformation-summary.py \
+            --field-mapping-csv metadata/codex/codex-field-mappings.csv \
+            --output-dir metadata/codex/output \
+            --patch-file metadata/codex/codex-patches.json \
+            --title "CODEX" \
+            --output-file metadata/codex/transformation-summary.html
+
+      - name: Commit transformation summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/codex/transformation-summary.html
+          git commit -m "Generate transformation summary for CODEX (automated)" || echo "No changes to commit"
           git push

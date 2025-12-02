@@ -20,6 +20,7 @@ jobs:
         run: |
           pip install PyYAML
           pip install openpyxl
+          pip install jinja2
           pip install -e tools/json-rules-engine
           pip install -e tools/metadata-transformer
 
@@ -74,4 +75,21 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add metadata/cedar-lightsheet/todo/
           git commit -m "Generate Excel reports grouped by institution for Light Sheet (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Generate transformation summary
+        run: |
+          python scripts/generate-transformation-summary.py \
+            --field-mapping-csv metadata/cedar-lightsheet/lightsheet-field-mappings.csv \
+            --output-dir metadata/cedar-lightsheet/output \
+            --patch-file metadata/cedar-lightsheet/lightsheet-patches.json \
+            --title "Light Sheet (CEDAR)" \
+            --output-file metadata/cedar-lightsheet/transformation-summary.html
+
+      - name: Commit transformation summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/cedar-lightsheet/transformation-summary.html
+          git commit -m "Generate transformation summary for Light Sheet (automated)" || echo "No changes to commit"
           git push

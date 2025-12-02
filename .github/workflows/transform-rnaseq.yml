@@ -20,6 +20,7 @@ jobs:
         run: |
           pip install PyYAML
           pip install openpyxl
+          pip install jinja2
           pip install -e tools/json-rules-engine
           pip install -e tools/metadata-transformer
 
@@ -74,4 +75,21 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add metadata/rnaseq/todo/
           git commit -m "Generate Excel reports grouped by institution for RNAseq (automated)" || echo "No changes to commit"
+          git push
+
+      - name: Generate transformation summary
+        run: |
+          python scripts/generate-transformation-summary.py \
+            --field-mapping-csv metadata/rnaseq/rnaseq-field-mappings.csv \
+            --output-dir metadata/rnaseq/output \
+            --patch-file metadata/rnaseq/rnaseq-patches.json \
+            --title "RNAseq" \
+            --output-file metadata/rnaseq/transformation-summary.html
+
+      - name: Commit transformation summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metadata/rnaseq/transformation-summary.html
+          git commit -m "Generate transformation summary for RNAseq (automated)" || echo "No changes to commit"
           git push
