@@ -161,6 +161,77 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             background-color: var(--hubmap-light);
         }
 
+        /* Field mappings table with fixed target column */
+        .field-mappings-wrapper {
+            display: flex;
+            max-width: 100%;
+            border: 1px solid var(--gray-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .field-mappings-scroll {
+            overflow-x: auto;
+            flex: 1;
+        }
+
+        .field-mappings-scroll table {
+            border-collapse: collapse;
+            min-width: max-content;
+        }
+
+        .field-mappings-scroll th,
+        .field-mappings-scroll td {
+            min-width: 150px;
+            border-right: 1px solid var(--gray-border);
+        }
+
+        .field-mappings-fixed {
+            flex-shrink: 0;
+            width: auto;
+            border-left: 3px solid var(--hubmap-primary);
+            box-shadow: -4px 0 8px rgba(0,0,0,0.15);
+        }
+
+        .field-mappings-fixed table {
+            width: auto;
+        }
+
+        .field-mappings-fixed th {
+            background-color: var(--hubmap-dark);
+            white-space: nowrap;
+        }
+
+        .field-mappings-scroll .parent-header,
+        .field-mappings-fixed .parent-header {
+            text-align: center;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .field-mappings-scroll .parent-header {
+            background-color: var(--hubmap-primary);
+        }
+
+        .field-mappings-fixed .parent-header {
+            background-color: #2a2e3d;
+        }
+
+        .field-mappings-fixed td {
+            background-color: #e8e9ed;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .field-mappings-fixed tr:nth-child(even) td {
+            background-color: #d8dae0;
+        }
+
+        .field-mappings-fixed tr:hover td {
+            background-color: #c8cad0;
+        }
+
         .empty-cell {
             color: #999;
             font-style: italic;
@@ -289,25 +360,49 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="section" id="field-mappings">
         <h2>1. Field Mappings</h2>
         <p>Maps legacy field names to target schema field names across different schema versions.</p>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        {% for header in field_mapping_headers %}
-                        <th>{{ header }}</th>
+        <div class="field-mappings-wrapper">
+            <div class="field-mappings-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="parent-header" colspan="{{ field_mapping_headers[1:] | length }}">Legacy Fields</th>
+                        </tr>
+                        <tr>
+                            {% for header in field_mapping_headers[1:] %}
+                            <th>{{ header }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in field_mappings %}
+                        <tr>
+                            {% for cell in row[1:] %}
+                            <td>{% if cell %}<code>{{ cell }}</code>{% else %}<span class="empty-cell">-</span>{% endif %}</td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in field_mappings %}
-                    <tr>
-                        {% for cell in row %}
-                        <td>{% if cell %}<code>{{ cell }}</code>{% else %}<span class="empty-cell">-</span>{% endif %}</td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="field-mappings-fixed">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="parent-header">Target Field</th>
+                        </tr>
+                        <tr>
+                            <th>{{ field_mapping_headers[0] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in field_mappings %}
+                        <tr>
+                            <td>{% if row[0] %}<code>{{ row[0] }}</code>{% else %}<span class="empty-cell">-</span>{% endif %}</td>
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
