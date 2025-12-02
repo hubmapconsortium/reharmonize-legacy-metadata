@@ -43,19 +43,19 @@ except ImportError:
 # Used for both conditions and actions in patch narration
 FIELD_LABELS = {
     # Condition fields (used in 'when' clause)
-    "acquisition_instrument_model": "instrument model",
-    "acquisition_instrument_vendor": "instrument vendor",
+    "acquisition_instrument_model": "acquisition instrument model",
+    "acquisition_instrument_vendor": "acquisition instrument vendor",
     "assay_type": "assay type",
     "barcode_size": "barcode size",
     "cell_barcode_offset": "cell barcode offset",
     "cell_barcode_size": "cell barcode size",
-    "execution_datetime": "execution date/time",
+    "execution_datetime": "execution datetime",
     "lc_instrument_model": "LC instrument model",
     "library_construction_protocols_io_doi": "library construction protocol",
     "library_preparation_kit": "library prep kit",
     "preparation_instrument_model": "preparation instrument model",
     "preparation_instrument_vendor": "preparation instrument vendor",
-    "protocols_io_doi": "protocol",
+    "protocols_io_doi": "protocol DOI",
     "rnaseq_assay_method": "RNAseq assay method",
     "sequencing_read_format": "read format",
     "sequencing_reagent_kit": "reagent kit",
@@ -71,11 +71,86 @@ FIELD_LABELS = {
     "preparation_instrument_kit": "preparation instrument kit",
     "sample_indexing_kit": "sample indexing kit",
     "sample_indexing_set": "sample indexing set",
-    "metadata_schema_id": "schema ID",
+    "metadata_schema_id": "metadata schema ID",
 }
 
 # Threshold for using bullet-point format (Option C) vs inline format (Option B)
 COMPLEX_PATCH_THRESHOLD = 4  # If 4+ actions, use bullet points
+
+# Human-readable labels for schema version headers in field mappings table
+HEADER_LABELS = {
+    # Special
+    "CEDAR Field": "CEDAR Field",
+    # CEDAR target schemas (format: "AssayType (vX.X.X-CEDAR)")
+    "cedar-10x-multiome-v1.0.0": "10x Multiome (v1.0.0-CEDAR)",
+    "cedar-10x-multiome-v2.0.0": "10x Multiome (v2.0.0-CEDAR)",
+    "cedar-af-v2.0.0": "Autofluorescence (v2.0.0-CEDAR)",
+    "cedar-af-v2.1.0": "Autofluorescence (v2.1.0-CEDAR)",
+    "cedar-atacseq-v5.0.0": "ATACseq (v5.0.0-CEDAR)",
+    "cedar-celldive-v2.2.0": "Cell DIVE (v2.2.0-CEDAR)",
+    "cedar-codex-v2.0.0": "CODEX (v2.0.0-CEDAR)",
+    "cedar-desi-v2.0.0": "DESI (v2.0.0-CEDAR)",
+    "cedar-histology-v2.0.0": "Histology (v2.0.0-CEDAR)",
+    "cedar-histology-v2.1.0": "Histology (v2.1.0-CEDAR)",
+    "cedar-histology-v2.2.0": "Histology (v2.2.0-CEDAR)",
+    "cedar-imc-2d-v2.0.0": "IMC 2D (v2.0.0-CEDAR)",
+    "cedar-lightsheet-v3.0.0": "Light Sheet (v3.0.0-CEDAR)",
+    "cedar-lightsheet-v3.1.0": "Light Sheet (v3.1.0-CEDAR)",
+    "cedar-maldi-v1.0.0": "MALDI (v1.0.0-CEDAR)",
+    "cedar-maldi-v2.0.0": "MALDI (v2.0.0-CEDAR)",
+    "cedar-mibi-v2.0.0": "MIBI (v2.0.0-CEDAR)",
+    "cedar-music-v1.0.0": "MUSIC (v1.0.0-CEDAR)",
+    "cedar-music-v2.0.0": "MUSIC (v2.0.0-CEDAR)",
+    "cedar-rnaseq-v4.0.0": "RNAseq (v4.0.0-CEDAR)",
+    "cedar-rnaseq-v5.0.0": "RNAseq (v5.0.0-CEDAR)",
+    "cedar-visium-no-probes-v1.0.0": "Visium No Probes (v1.0.0-CEDAR)",
+    "cedar-visium-no-probes-v3.0.0": "Visium No Probes (v3.0.0-CEDAR)",
+    "cedar-lcms-v2.0.0": "LC-MS (v2.0.0-CEDAR)",
+    # Legacy RNAseq schemas
+    "bulkrnaseq-v0": "Bulk RNAseq (v0)",
+    "bulkrnaseq-v1": "Bulk RNAseq (v1)",
+    "scrnaseq-v0": "scRNAseq (v0)",
+    "scrnaseq-v1": "scRNAseq (v1)",
+    "scrnaseq-v2": "scRNAseq (v2)",
+    "scrnaseq-v3": "scRNAseq (v3)",
+    # Legacy ATACseq schemas
+    "bulkatacseq-v0": "Bulk ATACseq (v0)",
+    "bulkatacseq-v1": "Bulk ATACseq (v1)",
+    "scatacseq-v0": "scATACseq (v0)",
+    "scatacseq-v1": "scATACseq (v1)",
+    # Legacy imaging schemas
+    "af-v0": "Autofluorescence (v0)",
+    "af-v1": "Autofluorescence (v1)",
+    "celldive-v0": "Cell DIVE (v0)",
+    "celldive-v1": "Cell DIVE (v1)",
+    "codex-v0": "CODEX (v0)",
+    "codex-v1": "CODEX (v1)",
+    "imc-v0": "IMC (v0)",
+    "imc-v1": "IMC (v1)",
+    "lightsheet-v0": "Light Sheet (v0)",
+    "lightsheet-v1": "Light Sheet (v1)",
+    "lightsheet-v2": "Light Sheet (v2)",
+    "mibi-v1": "MIBI (v1)",
+    "stained-v0": "Histology (v0)",
+    "stained-v1": "Histology (v1)",
+    # Legacy mass spec imaging schemas
+    "ims-desi-v0": "IMS DESI (v0)",
+    "ims-desi-v1": "IMS DESI (v1)",
+    "ims-desi-v2": "IMS DESI (v2)",
+    "ims-maldi-v0": "IMS MALDI (v0)",
+    "ims-maldi-v1": "IMS MALDI (v1)",
+    "ims-maldi-v2": "IMS MALDI (v2)",
+    # Legacy LC-MS schemas
+    "lcms-v0": "LC-MS (v0)",
+    "lcms-v1": "LC-MS (v1)",
+    "lcms-v2": "LC-MS (v2)",
+    "lcms-v3": "LC-MS (v3)",
+}
+
+
+def get_header_label(header: str) -> str:
+    """Get human-readable label for a schema version header."""
+    return HEADER_LABELS.get(header, header)
 
 
 # HTML template with HuBMAP color scheme
@@ -765,9 +840,12 @@ def generate_html(
     """
     template = Template(HTML_TEMPLATE)
 
+    # Transform headers to human-readable labels
+    display_headers = [get_header_label(h) for h in field_mapping_headers]
+
     return template.render(
         title=title,
-        field_mapping_headers=field_mapping_headers,
+        field_mapping_headers=display_headers,
         field_mappings=field_mappings,
         value_mappings=value_mappings,
         patches=patches
