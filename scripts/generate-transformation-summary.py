@@ -230,6 +230,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             border-radius: 8px;
             padding: 15px 25px;
             text-align: center;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .stat-box:hover {
+            background-color: var(--hubmap-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .stat-box:hover .stat-number,
+        .stat-box:hover .stat-label {
+            color: white;
         }
 
         .stat-number {
@@ -257,21 +272,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <h1>{{ title }} - Metadata Transformation Summary</h1>
 
     <div class="summary-stats">
-        <div class="stat-box">
+        <a href="#field-mappings" class="stat-box">
             <div class="stat-number">{{ field_mappings | length }}</div>
             <div class="stat-label">Field Mappings</div>
-        </div>
-        <div class="stat-box">
+        </a>
+        <a href="#value-mappings" class="stat-box">
             <div class="stat-number">{{ value_mappings | length }}</div>
             <div class="stat-label">Value Mappings</div>
-        </div>
-        <div class="stat-box">
+        </a>
+        <a href="#patches" class="stat-box">
             <div class="stat-number">{{ patches | length }}</div>
             <div class="stat-label">Conditional Patches</div>
-        </div>
+        </a>
     </div>
 
-    <div class="section">
+    <div class="section" id="field-mappings">
         <h2>1. Field Mappings</h2>
         <p>Maps legacy field names to target schema field names across different schema versions.</p>
         <div class="table-container">
@@ -296,7 +311,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="value-mappings">
         <h2>2. Value Mappings</h2>
         <p>Standardizes field values from legacy formats to target schema values.</p>
         <div class="table-container">
@@ -321,7 +336,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="patches">
         <h2>3. Conditional Patches</h2>
         <p>Rule-based transformations applied when specific conditions are met.</p>
         <ul class="patch-list">
