@@ -1,4 +1,4 @@
-cedar-atacseq-v5.0.0,bulkatacseq-v0,bulkatacseq-v1,scatactseq-v0,scatactseq-v1
+cedar-atacseq-v5.0.0,bulkatacseq-v0,bulkatacseq-v1,scatacseq-v0,scatacseq-v1
 parent_sample_id,tissue_id,tissue_id,tissue_id,tissue_id
 lab_id,,,,
 preparation_protocol_doi,protocols_io_doi,protocols_io_doi,protocols_io_doi,protocols_io_doi
