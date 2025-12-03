@@ -2,6 +2,7 @@
   "lc_instrument_vendor": {
     "EvoSep": "Evosep",
     "Thermo": "Thermo Fisher Scientific",
-    "Thermo Fisher": "Thermo Fisher Scientific"
+    "Thermo Fisher": "Thermo Fisher Scientific",
+    "Waters ": "Waters"
   }
 }
