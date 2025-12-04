@@ -37,6 +37,8 @@ The `metadata/` folder contains processed metadata organized by assay type. Each
 | **[lightsheet](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/cedar-lightsheet)** | 8 | Light sheet microscopy metadata (from CEDAR instances) | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/cedar-lightsheet/todo) | [link](https://github-html-preview.dohyeon5626.com/?https://github.com/hubmapconsortium/reharmonize-legacy-metadata/blob/main/metadata/cedar-lightsheet/transformation-summary.html) |
 | **[maldi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/cedar-maldi)** | 3 | MALDI imaging mass spectrometry metadata (from CEDAR instances) | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/cedar-maldi/todo) | [link](https://github-html-preview.dohyeon5626.com/?https://github.com/hubmapconsortium/reharmonize-legacy-metadata/blob/main/metadata/cedar-maldi/transformation-summary.html) |
 
+**Acknowledgement**: Metadata review conducted by Jean G. Rosario ([jrosar7](https://github.com/jrosar7)) at University of Pennsylvania.
+
 ### Folder Structure
 
 Each dataset type folder contains:
