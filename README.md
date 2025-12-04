@@ -14,20 +14,20 @@ The `metadata/` folder contains processed metadata organized by assay type. Each
 
 ### Dataset Types
 
-| Dataset Type | # of Files | Description | Processed | Reviewed |
-|-------------|------------|-------------|:---------:|:--------:|
-| **[rnaseq](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/rnaseq)** | 639 | RNA sequencing metadata | ✅ | ✅ |
-| **[atacseq](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/atacseq)** | 567 | ATAC sequencing metadata | ✅ | ✅ |
-| **[lcms](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lcms)** | 267 | Liquid chromatography-mass spectrometry metadata | ✅ | |
-| **[mibi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/mibi)** | 211 | Multiplexed ion beam imaging metadata | ✅ | |
-| **[af](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/af)** | 136 | Auto-fluorescence imaging metadata | ✅ | ✅ |
-| **[codex](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/codex)** | 133 | CODEX imaging metadata | ✅ | ✅ |
-| **[maldi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/maldi)** | 93 | MALDI imaging mass spectrometry metadata | ✅ | |
-| **[histology](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/histology)** | 77 | Histology imaging metadata | ✅ | ✅ |
-| **[celldive](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/celldive)** | 32 | Cell DIVE imaging metadata | ✅ | ✅ |
-| **[desi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/desi)** | 15 | DESI imaging mass spectrometry metadata | ✅ | ✅ |
-| **[imc-2d](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/imc-2d)** | 13 | Imaging mass cytometry 2D metadata | ✅ | |
-| **[lightsheet](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lightsheet)** | 9 | Light sheet microscopy metadata | ✅ | |
+| Dataset Type | # of Files | Description | Processed | Reviewed | Todo |
+|-------------|------------|-------------|:---------:|:--------:|:----:|
+| **[rnaseq](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/rnaseq)** | 639 | RNA sequencing metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/rnaseq/todo) |
+| **[atacseq](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/atacseq)** | 567 | ATAC sequencing metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/atacseq/todo) |
+| **[lcms](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lcms)** | 267 | Liquid chromatography-mass spectrometry metadata | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lcms/todo) |
+| **[mibi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/mibi)** | 211 | Multiplexed ion beam imaging metadata | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/mibi/todo) |
+| **[af](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/af)** | 136 | Auto-fluorescence imaging metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/af/todo) |
+| **[codex](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/codex)** | 133 | CODEX imaging metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/codex/todo) |
+| **[maldi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/maldi)** | 93 | MALDI imaging mass spectrometry metadata | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/maldi/todo) |
+| **[histology](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/histology)** | 77 | Histology imaging metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/histology/todo) |
+| **[celldive](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/celldive)** | 32 | Cell DIVE imaging metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/celldive/todo) |
+| **[desi](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/desi)** | 15 | DESI imaging mass spectrometry metadata | ✅ | ✅ | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/desi/todo) |
+| **[imc-2d](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/imc-2d)** | 13 | Imaging mass cytometry 2D metadata | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/imc-2d/todo) |
+| **[lightsheet](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lightsheet)** | 9 | Light sheet microscopy metadata | ✅ | | [link](https://github.com/hubmapconsortium/reharmonize-legacy-metadata/tree/main/metadata/lightsheet/todo) |
 
 ### Folder Structure
 
