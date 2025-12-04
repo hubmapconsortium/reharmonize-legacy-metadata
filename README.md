@@ -96,6 +96,14 @@ Data providers use these spreadsheets to:
 3. Request missing data from data providers
 4. Propose schema updates for legitimate legacy values
 
+#### Transformation Summary (`transformation-summary.html`)
+An HTML report providing a comprehensive overview of all transformations applied to the dataset type. The report includes:
+- **Field mappings table:** Shows the mapping from legacy field names to target schema field names
+- **Value mappings table:** Aggregated and deduplicated value standardizations extracted from output files
+- **Patches list:** Human-readable narration of conditional transformation rules applied
+
+This report serves as documentation for reviewers to understand exactly what transformations were performed without needing to inspect individual output files.
+
 ---
 
 ## Deliverable 2: Metadata Processing System
@@ -129,6 +137,11 @@ An automated, rule-based transformation pipeline with quality assurance analysis
 - Quality assurance analysis after transformation
 - Identifies values requiring curator review
 - Generates institution-grouped Excel reports
+
+**generate-transformation-summary.py**
+- Generates HTML report summarizing all transformations for a dataset type
+- Aggregates field mappings, value mappings, and conditional patches
+- Produces human-readable narration of patch rules using templates
 
 ### Transformation Pipeline
 
