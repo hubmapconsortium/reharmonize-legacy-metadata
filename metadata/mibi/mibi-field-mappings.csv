@@ -25,6 +25,9 @@ data_precision_bytes,data_precision_bytes
 pixel_dwell_time_value,pixel_dwell_time_value
 pixel_dwell_time_unit,pixel_dwell_time_unit
 antibodies_path,antibodies_path
+primary_ion,primary_ion
+primary_ion_current_unit,primary_ion_current_unit
+primary_ion_current_value,primary_ion_current_value
 metadata_schema_id,
 ,assay_category
 ,description
@@ -43,9 +46,6 @@ metadata_schema_id,
 ,dual_count_start
 ,start_datetime
 ,end_datetime
-,primary_ion
-,primary_ion_current_unit
-,primary_ion_current_value
 ,resolution_x_unit
 ,resolution_x_value
 ,resolution_y_unit
@@ -60,4 +60,5 @@ metadata_schema_id,
 ,pixel_size_y_value
 ,resolution_x_value
 ,resolution_y_value
+
 ,version
