@@ -50,7 +50,8 @@ metadata/{dataset-type}/
 │   └── summary-report.json        # Aggregated statistics
 ├── {dataset-type}-field-mappings.csv    # Field name mapping rules
 ├── {dataset-type}-patches.json    # Conditional transformation rules
-└── {dataset-type}-nonstandard-values.json  # Quality assurance analysis results
+├── {dataset-type}-nonstandard-values.json  # Quality assurance analysis results
+└── transformation-summary.html    # HTML report summarizing all transformations
 ```
 
 #### Input Folder (`input/`)
