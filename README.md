@@ -2,9 +2,10 @@
 
 ## Overview
 
-This project standardizes legacy metadata from 12 different assay types into schema-compliant formats for the Human BioMolecular Atlas Program (HubMAP). The transformation ensures data quality, consistency, and compliance with current metadata standards.
+This project standardizes legacy metadata from 17 different assay types into schema-compliant formats for the Human BioMolecular Atlas Program (HubMAP). The transformation ensures data quality, consistency, and compliance with current metadata standards.
 
 **Per October 31, 2025**: 2,192 legacy metadata files processed across 12 assay types
+**Per December 4, 2025**: 2,568 legacy metadata files processed across 17 assay types
 
 ---
 
