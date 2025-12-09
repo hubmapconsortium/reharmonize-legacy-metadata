@@ -24,5 +24,28 @@
       "lc_column_vendor": "Waters|Sepax Technologies",
       "lc_resin" : "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"
     }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf4ujqww" },
+        { "acquisition_instrument_model" : "Q Exactive" }
+      ]
+    },
+    "then": {
+      "lc_column_model": "Agilent Technologies; Zorbax SBaq column 2.1 x 50 mm, 1.7 μm, 100Å",
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf4ujqww" },
+        { "acquisition_instrument_model" : "Q Exactive HF" }
+      ]
+    },
+    "then": {
+      "lc_column_model": "Milipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447",
+      "lc_column_vendor": "Milipore Sigma"
+    }
   }
 ]
