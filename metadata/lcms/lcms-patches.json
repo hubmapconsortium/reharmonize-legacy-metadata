@@ -9,5 +9,20 @@
       "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System",
       "lc_instrument_vendor" : "Thermo Fisher Scientific"
     }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf6bjran" },
+        { "acquisition_instrument_model" : "Orbitrap Lumos" }
+      ]
+    },
+    "then": {
+      "lc_instrument_model": "Waters; ACQUITY UPLC M-Class System with 2D Technology",
+      "lc_instrument_vendor": "Waters",
+      "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm)|In-House",
+      "lc_column_vendor": "Waters|Sepax Technologies",
+      "lc_resin" : "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"
+    }
   }
 ]
