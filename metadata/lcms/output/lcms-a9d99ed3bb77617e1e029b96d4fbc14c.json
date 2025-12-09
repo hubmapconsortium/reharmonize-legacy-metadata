@@ -88,7 +88,7 @@
     "ion_mobility": "",
     "data_collection_mode": "DDA",
     "label_name": "",
-    "lc_instrument_vendor": "Waters ",
+    "lc_instrument_vendor": "Waters",
     "lc_instrument_model": "2D Nano Acquity M class",
     "lc_column_vendor": "Sepex",
     "lc_column_model": "Self-Packed",
@@ -176,7 +176,8 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "Orbitrap Fusion Lumos Tribrid"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"}
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Waters"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -214,6 +215,9 @@
       },
       "is_targeted": {
         "False": "No"
+      },
+      "lc_instrument_vendor": {
+        "Waters ": "Waters"
       },
       "mass_analysis_polarity": {
         "positive ion mode": "Positive ion mode"
