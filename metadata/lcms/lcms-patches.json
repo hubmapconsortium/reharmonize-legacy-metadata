@@ -47,5 +47,16 @@
       "lc_column_model": "Milipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447",
       "lc_column_vendor": "Milipore Sigma"
     }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf4vjqw6" },
+        { "lc_instrument_model" : "LC-30AD" }
+      ]
+    },
+    "then": {
+      "dataset_type": "FIA-MS"
+    }
   }
 ]
