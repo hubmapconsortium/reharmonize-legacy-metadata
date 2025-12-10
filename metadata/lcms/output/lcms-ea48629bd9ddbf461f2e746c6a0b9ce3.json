@@ -68,13 +68,13 @@
     "data_path": ".",
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS2",
-    "mass_analysis_polarity": "Negative and positive ion mode",
+    "mass_analysis_polarity": "positive and negative ion modes",
     "mass_to_charge_range_low_value": "",
     "mass_to_charge_range_high_value": "",
     "mass_resolving_power": null,
     "mass_to_charge_resolving_power": null,
     "ion_mobility": null,
-    "data_collection_mode": "DIA",
+    "data_collection_mode": "",
     "label_name": null,
     "lc_instrument_vendor": "Shimadzu",
     "lc_instrument_model": "LC-30AD",
@@ -114,7 +114,7 @@
     {"op": "add", "path": "/lc_inner_diameter_value", "value": ""},
     {"op": "add", "path": "/lc_temperature_unit", "value": ""},
     {"op": "add", "path": "/lc_temperature_value", "value": ""},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Negative and positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive and negative ion modes"},
     {"op": "add", "path": "/mass_resolving_power", "value": null},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": ""},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": ""},
@@ -160,7 +160,6 @@
     {"op": "remove", "path": "/section_prep_protocols_io_doi"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
-    {"op": "replace", "path": "/data_collection_mode", "value": "DIA"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"}
   ],
   "processing_log": {
@@ -185,11 +184,11 @@
       "analyte_class": {
         "lipids": "Lipid"
       },
+      "dataset_type": {
+        "MS (shotgun lipidomics)": "LC-MS"
+      },
       "is_targeted": {
         "TRUE": "Yes"
-      },
-      "mass_analysis_polarity": {
-        "positive and negative ion modes": "Negative and positive ion mode"
       }
     },
     "ambiguous_mappings": [],

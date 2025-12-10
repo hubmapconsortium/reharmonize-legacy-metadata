@@ -79,8 +79,8 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": "MS2",
-    "mass_analysis_polarity": "Negative and positive ion mode",
+    "ms_scan_mode": "MS/MS",
+    "mass_analysis_polarity": "negative and positive ion mode",
     "mass_to_charge_range_low_value": "50",
     "mass_to_charge_range_high_value": "1250",
     "mass_resolving_power": "",
@@ -123,7 +123,7 @@
     {"op": "add", "path": "/lc_inner_diameter_value", "value": ""},
     {"op": "add", "path": "/lc_temperature_unit", "value": ""},
     {"op": "add", "path": "/lc_temperature_value", "value": ""},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Negative and positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "negative and positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1250"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "50"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": ""},
@@ -174,8 +174,7 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
-    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -204,9 +203,6 @@
       },
       "is_targeted": {
         "True": "Yes"
-      },
-      "mass_analysis_polarity": {
-        "negative and positive ion mode": "Negative and positive ion mode"
       }
     },
     "ambiguous_mappings": [],

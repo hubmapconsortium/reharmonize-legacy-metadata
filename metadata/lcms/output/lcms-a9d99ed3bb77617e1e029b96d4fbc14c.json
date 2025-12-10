@@ -80,7 +80,7 @@
     "data_path": ".",
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS3",
-    "mass_analysis_polarity": "Positive ion mode",
+    "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "400",
     "mass_to_charge_range_high_value": "1500",
     "mass_resolving_power": "120000",
@@ -89,10 +89,10 @@
     "data_collection_mode": "DDA",
     "label_name": "",
     "lc_instrument_vendor": "Waters",
-    "lc_instrument_model": "Waters; ACQUITY UPLC M-Class System with 2D Technology",
-    "lc_column_vendor": "Waters;Sepax Technologies",
-    "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House",
-    "lc_resin": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A",
+    "lc_instrument_model": "2D Nano Acquity M class",
+    "lc_column_vendor": "Sepex",
+    "lc_column_model": "Self-Packed",
+    "lc_resin": "Sepex GP-C18 1.8um, 120A",
     "lc_column_length_value": "25",
     "lc_column_length_unit": "cm",
     "lc_temperature_value": "45",
@@ -123,7 +123,7 @@
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
     {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
     {"op": "add", "path": "/lc_temperature_value", "value": "45"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1500"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "400"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
@@ -177,11 +177,7 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/lc_column_model", "value": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House"},
-    {"op": "replace", "path": "/lc_column_vendor", "value": "Waters;Sepax Technologies"},
-    {"op": "replace", "path": "/lc_instrument_model", "value": "Waters; ACQUITY UPLC M-Class System with 2D Technology"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Waters"},
-    {"op": "replace", "path": "/lc_resin", "value": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"}
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Waters"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -220,8 +216,8 @@
       "is_targeted": {
         "False": "No"
       },
-      "mass_analysis_polarity": {
-        "positive ion mode": "Positive ion mode"
+      "lc_instrument_vendor": {
+        "Waters ": "Waters"
       }
     },
     "ambiguous_mappings": [],
