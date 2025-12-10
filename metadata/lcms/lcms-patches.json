@@ -80,7 +80,8 @@
       ]
     },
     "then": {
-      "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid"
+      "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid",
+      "assay_type": "LC-MS"
     }
-  },
+  }
 ]
