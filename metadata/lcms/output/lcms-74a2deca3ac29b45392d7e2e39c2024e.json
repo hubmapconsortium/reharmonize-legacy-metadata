@@ -74,7 +74,7 @@
     "mass_resolving_power": null,
     "mass_to_charge_resolving_power": null,
     "ion_mobility": null,
-    "data_collection_mode": "",
+    "data_collection_mode": "DIA",
     "label_name": null,
     "lc_instrument_vendor": "Shimadzu",
     "lc_instrument_model": "LC-30AD",
@@ -160,6 +160,7 @@
     {"op": "remove", "path": "/section_prep_protocols_io_doi"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
+    {"op": "replace", "path": "/data_collection_mode", "value": "DIA"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"}
   ],
   "processing_log": {
@@ -183,9 +184,6 @@
     "value_mappings": {
       "analyte_class": {
         "lipids": "Lipid"
-      },
-      "dataset_type": {
-        "MS (shotgun lipidomics)": "LC-MS"
       },
       "is_targeted": {
         "TRUE": "Yes"

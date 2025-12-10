@@ -71,7 +71,7 @@
     "analyte_class": "Protein",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Thermo Fisher Scientific",
-    "acquisition_instrument_model": "Orbitrap Fusion Lumos Tribrid",
+    "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -88,7 +88,7 @@
     "ion_mobility": "",
     "data_collection_mode": "DDA",
     "label_name": "",
-    "lc_instrument_vendor": "Dionex",
+    "lc_instrument_vendor": "Thermo Fisher Scientific",
     "lc_instrument_model": "Ultimate 3000 RSLCnano system",
     "lc_column_vendor": "Self-packed",
     "lc_column_model": "Pulled tip capillary",
@@ -173,10 +173,11 @@
     {"op": "remove", "path": "/spatial_type"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Orbitrap Fusion Lumos Tribrid"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Dionex; UltiMate 3000 RSLCnano UHPLC System"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"}
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -200,9 +201,6 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
-      "acquisition_instrument_model": {
-        "Fusion Lumos": "Orbitrap Fusion Lumos Tribrid"
-      },
       "acquisition_instrument_vendor": {
         "Thermo Scientific": "Thermo Fisher Scientific"
       },
