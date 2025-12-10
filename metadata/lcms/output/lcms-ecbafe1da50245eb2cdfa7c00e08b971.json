@@ -79,7 +79,7 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": "MS/MS",
+    "ms_scan_mode": "MS2",
     "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "500",
     "mass_to_charge_range_high_value": "2000",
@@ -178,6 +178,7 @@
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"},
     {"op": "replace", "path": "/spatial_sampling_type", "value": "Profiling"}
   ],
   "processing_log": {
