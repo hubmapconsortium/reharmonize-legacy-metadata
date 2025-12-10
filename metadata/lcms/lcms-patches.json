@@ -45,7 +45,7 @@
     },
     "then": {
       "lc_column_model": "Milipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447",
-      "lc_column_vendor": "Milipore Sigma"
+      "lc_column_vendor": "Milipore"
     }
   },
   {
@@ -56,9 +56,31 @@
       ]
     },
     "then": {
-      "dataset_type": "LC-MS",
+      "dataset_type": "FIA-MS",
       "data_collection_mode": "DIA",
       "ms_scan_mode": "MS2"
     }
-  }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bft3jnqn" }
+      ]
+    },
+    "then": {
+      "ms_scan_mode": "MS2",
+      "lc_column_vendor": "In-House"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf6bjran" },
+        { "acquisition_instrument_model": "Orbitrap Fusion Tribrid" } 
+      ]
+    },
+    "then": {
+      "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid"
+    }
+  },
 ]
