@@ -118,17 +118,12 @@
   "lc_column_vendor": [
     "",
     "Milipore",
-    "Self-packed",
-    "Waters;Sepax Technologies",
-    "self-packed"
+    "Waters;Sepax Technologies"
   ],
   "lc_column_length_unit": "",
   "lc_inner_diameter_unit": "",
   "lc_flow_rate_unit": "",
-  "acquisition_instrument_model": [
-    "Dionex; UltiMate 3000 RSLCnano UHPLC System",
-    "Orbitrap Fusion Tribrid"
-  ],
+  "acquisition_instrument_model": "Orbitrap Fusion Tribrid",
   "ms_ionization_technique": "NanoSpray",
   "data_collection_mode": "DIa",
   "data_path": [
