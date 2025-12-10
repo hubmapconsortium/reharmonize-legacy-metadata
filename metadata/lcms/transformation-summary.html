@@ -292,11 +292,11 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">34</div>
+            <div class="stat-number">27</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
-            <div class="stat-number">5</div>
+            <div class="stat-number">7</div>
             <div class="stat-label">Conditional Patches</div>
         </a>
     </div>
@@ -1192,7 +1192,7 @@
                     <tr>
                         <td><code>acquisition_instrument_model</code></td>
                         <td><code>Orbitrap Fusion Tribrid</code></td>
-                        <td><code>Orbitrap Fusion Lumos Tribrid</code></td>
+                        <td><code>Orbitrap Fusion Tribrid</code></td>
                     </tr>
                     
                     <tr>
@@ -1280,12 +1280,6 @@
                     </tr>
                     
                     <tr>
-                        <td><code>dataset_type</code></td>
-                        <td><code>TMT (proteomics)</code></td>
-                        <td><code>LC-MS</code></td>
-                    </tr>
-                    
-                    <tr>
                         <td><code>is_targeted</code></td>
                         <td><code>FALSE</code></td>
                         <td><code>No</code></td>
@@ -1334,42 +1328,6 @@
                     </tr>
                     
                     <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>negative and positive ion mode</code></td>
-                        <td><code>Negative and positive ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>negative ion mode</code></td>
-                        <td><code>Negative ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>negative mode</code></td>
-                        <td><code>Negative ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>positive and negative ion modes</code></td>
-                        <td><code>Negative and positive ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>positive ion mode</code></td>
-                        <td><code>Positive ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>positive mode</code></td>
-                        <td><code>Positive ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
                         <td><code>ms_ionization_technique</code></td>
                         <td><code>nESI</code></td>
                         <td><code>ESI</code></td>
@@ -1408,12 +1366,22 @@
             
             <li class="patch-item">
                 <span class="patch-number">#4</span>
-                When the protocol DOI is '<code>10.17504/protocols.io.bf4ujqww</code>' and the acquisition instrument model is '<code>Q Exactive HF</code>': <span class='patch-action'>Sets</span> lc column model as '<code>Milipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447</code>', lc column vendor as '<code>Milipore Sigma</code>'.
+                When the protocol DOI is '<code>10.17504/protocols.io.bf4ujqww</code>' and the acquisition instrument model is '<code>Q Exactive HF</code>': <span class='patch-action'>Sets</span> lc column model as '<code>Milipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447</code>', lc column vendor as '<code>Milipore</code>'.
             </li>
             
             <li class="patch-item">
                 <span class="patch-number">#5</span>
-                When the protocol DOI is '<code>10.17504/protocols.io.bf4vjqw6</code>' and the LC instrument model is '<code>LC-30AD</code>': <span class='patch-action'>Sets</span> dataset type as '<code>LC-MS</code>', data collection mode as '<code>DIA</code>', ms scan mode as '<code>MS2</code>'.
+                When the protocol DOI is '<code>10.17504/protocols.io.bf4vjqw6</code>' and the LC instrument model is '<code>LC-30AD</code>': <span class='patch-action'>Sets</span> dataset type as '<code>FIA-MS</code>', data collection mode as '<code>DIA</code>', ms scan mode as '<code>MS2</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#6</span>
+                When the protocol DOI is '<code>10.17504/protocols.io.bft3jnqn</code>': <span class='patch-action'>Sets</span> ms scan mode as '<code>MS2</code>', lc column vendor as '<code>In-House</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#7</span>
+                When the protocol DOI is '<code>10.17504/protocols.io.bf6bjran</code>' and the acquisition instrument model is '<code>Orbitrap Fusion Tribrid</code>': <span class='patch-action'>Sets</span> Orbitrap Fusion Tribrid as '<code>Orbitrap Fusion Lumos Tribrid</code>', assay type as '<code>LC-MS</code>'.
             </li>
             
         </ul>
