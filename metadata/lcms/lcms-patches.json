@@ -1,7 +1,7 @@
 [
 {
     "when": {
-      "__should__" : [
+      "__must__" : [
         { "lc_instrument_model": "Ultimate 3000 RSLCnano system" }
       ]
     },
@@ -86,8 +86,11 @@
   },
   {
     "when": {
-      "__must__" : [
-        { "protocols_io_doi": "10.17504/protocols.io.bs7hnhj6" }
+      "__should__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bs7hnhj6" },
+        { "protocols_io_doi": "10.17504/protocols.io.bttnnnme" },
+        { "protocols_io_doi": "10.17504/protocols.io.261ge3pw7l47/v1" },
+        { "protocols_io_doi": "10.17504/protocols.io.rm7vzy5e5lx1/v1" }
       ]
     },
     "then": {
