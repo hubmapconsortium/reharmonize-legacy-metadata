@@ -292,11 +292,11 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">27</div>
+            <div class="stat-number">31</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
-            <div class="stat-number">7</div>
+            <div class="stat-number">8</div>
             <div class="stat-label">Conditional Patches</div>
         </a>
     </div>
@@ -1179,6 +1179,18 @@
                     
                     <tr>
                         <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Eclipse</code></td>
+                        <td><code>Orbitrap Eclipse Tribrid</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
+                        <td><code>Fusion Lumos</code></td>
+                        <td><code>Orbitrap Fusion Lumos Tribrid</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>acquisition_instrument_model</code></td>
                         <td><code>Lumos</code></td>
                         <td><code>Orbitrap Fusion Lumos Tribrid</code></td>
                     </tr>
@@ -1310,6 +1322,18 @@
                     </tr>
                     
                     <tr>
+                        <td><code>lc_column_vendor</code></td>
+                        <td><code>Self-packed</code></td>
+                        <td><code>In-House</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>lc_column_vendor</code></td>
+                        <td><code>self-packed</code></td>
+                        <td><code>In-House</code></td>
+                    </tr>
+                    
+                    <tr>
                         <td><code>lc_instrument_vendor</code></td>
                         <td><code>EvoSep</code></td>
                         <td><code>Evosep</code></td>
@@ -1351,7 +1375,7 @@
             
             <li class="patch-item">
                 <span class="patch-number">#1</span>
-                When the LC instrument model is '<code>Ultimate 3000 RSLCnano system</code>': <span class='patch-action'>Sets</span> acquisition instrument model as '<code>Dionex; UltiMate 3000 RSLCnano UHPLC System</code>', lc instrument vendor as '<code>Thermo Fisher Scientific</code>'.
+                <span class='patch-action'>Sets</span> LC instrument model as '<code>UltiMate 3000 RSLCnano UHPLC System</code>', lc instrument vendor as '<code>Thermo Fisher Scientific</code>'.
             </li>
             
             <li class="patch-item">
@@ -1382,6 +1406,11 @@
             <li class="patch-item">
                 <span class="patch-number">#7</span>
                 When the protocol DOI is '<code>10.17504/protocols.io.bf6bjran</code>' and the acquisition instrument model is '<code>Orbitrap Fusion Tribrid</code>': <span class='patch-action'>Sets</span> Orbitrap Fusion Tribrid as '<code>Orbitrap Fusion Lumos Tribrid</code>', assay type as '<code>LC-MS</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#8</span>
+                When the protocol DOI is '<code>10.17504/protocols.io.bs7hnhj6</code>': <span class='patch-action'>Sets</span> ms scan mode as '<code>MS2</code>'.
             </li>
             
         </ul>
