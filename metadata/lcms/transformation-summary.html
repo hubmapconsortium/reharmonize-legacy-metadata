@@ -292,11 +292,11 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">35</div>
+            <div class="stat-number">34</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
-            <div class="stat-number">1</div>
+            <div class="stat-number">5</div>
             <div class="stat-label">Conditional Patches</div>
         </a>
     </div>
@@ -1281,12 +1281,6 @@
                     
                     <tr>
                         <td><code>dataset_type</code></td>
-                        <td><code>MS (shotgun lipidomics)</code></td>
-                        <td><code>LC-MS</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>dataset_type</code></td>
                         <td><code>TMT (proteomics)</code></td>
                         <td><code>LC-MS</code></td>
                     </tr>
@@ -1400,6 +1394,26 @@
             <li class="patch-item">
                 <span class="patch-number">#1</span>
                 When the LC instrument model is '<code>Ultimate 3000 RSLCnano system</code>': <span class='patch-action'>Sets</span> acquisition instrument model as '<code>Dionex; UltiMate 3000 RSLCnano UHPLC System</code>', lc instrument vendor as '<code>Thermo Fisher Scientific</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#2</span>
+                <span class='patch-context'>When the protocol DOI is '<code>10.17504/protocols.io.bf6bjran</code>' and the acquisition instrument model is '<code>Orbitrap Lumos</code>':</span><ul class='patch-actions-list'><li>Set LC instrument model to '<code>Waters; ACQUITY UPLC M-Class System with 2D Technology</code>'</li><li>Set lc instrument vendor to '<code>Waters</code>'</li><li>Set lc column model to '<code>Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House</code>'</li><li>Set lc column vendor to '<code>Waters;Sepax Technologies</code>'</li><li>Set lc resin to '<code>BEH|HPLC Column;Sepex GP-C18 1.8um, 120A</code>'</li></ul>
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#3</span>
+                When the protocol DOI is '<code>10.17504/protocols.io.bf4ujqww</code>' and the acquisition instrument model is '<code>Q Exactive</code>': <span class='patch-action'>Sets</span> lc column model as '<code>Agilent Technologies; Zorbax SBaq column 2.1 x 50 mm, 1.7 μm, 100A</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#4</span>
+                When the protocol DOI is '<code>10.17504/protocols.io.bf4ujqww</code>' and the acquisition instrument model is '<code>Q Exactive HF</code>': <span class='patch-action'>Sets</span> lc column model as '<code>Milipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447</code>', lc column vendor as '<code>Milipore Sigma</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#5</span>
+                When the protocol DOI is '<code>10.17504/protocols.io.bf4vjqw6</code>' and the LC instrument model is '<code>LC-30AD</code>': <span class='patch-action'>Sets</span> dataset type as '<code>LC-MS</code>', data collection mode as '<code>DIA</code>', ms scan mode as '<code>MS2</code>'.
             </li>
             
         </ul>
