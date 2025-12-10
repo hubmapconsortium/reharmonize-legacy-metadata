@@ -1,12 +1,12 @@
 [
 {
     "when": {
-      "__must__" : [
+      "__should__" : [
         { "lc_instrument_model": "Ultimate 3000 RSLCnano system" }
       ]
     },
     "then": {
-      "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System",
+      "lc_instrument_model": "UltiMate 3000 RSLCnano UHPLC System",
       "lc_instrument_vendor" : "Thermo Fisher Scientific"
     }
   },
@@ -82,6 +82,16 @@
     "then": {
       "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid",
       "assay_type": "LC-MS"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bs7hnhj6" }
+      ]
+    },
+    "then": {
+      "ms_scan_mode": "MS2"
     }
   }
 ]
