@@ -67,7 +67,7 @@
     "parent_sample_id": "STAN0008-LI-4-1",
     "lab_id": null,
     "preparation_protocol_doi": "10.17504/protocols.io.bf4tjqwn",
-    "dataset_type": "LC-MS",
+    "dataset_type": "FIA-MS",
     "analyte_class": "Lipid",
     "is_targeted": "Yes",
     "acquisition_instrument_vendor": "Sciex",
@@ -79,7 +79,7 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": "MS/MS",
+    "ms_scan_mode": "MS2",
     "mass_analysis_polarity": "negative and positive ion mode",
     "mass_to_charge_range_low_value": "50",
     "mass_to_charge_range_high_value": "1250",
@@ -113,7 +113,7 @@
   },
   "json_patch": [
     {"op": "add", "path": "/analysis_protocol_doi", "value": "10.17504/protocols.io.bf4xjqxn"},
-    {"op": "add", "path": "/dataset_type", "value": "LC-MS"},
+    {"op": "add", "path": "/dataset_type", "value": "FIA-MS"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/lc_column_length_unit", "value": ""},
     {"op": "add", "path": "/lc_column_length_value", "value": ""},
@@ -174,7 +174,8 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
     "field_mappings": {

@@ -191,9 +191,6 @@
       "analyte_class": {
         "protein": "Protein"
       },
-      "dataset_type": {
-        "TMT (proteomics)": "LC-MS"
-      },
       "is_targeted": {
         "FALSE": "No"
       },
@@ -216,7 +213,8 @@
       "pi": "Mike Snyder",
       "pi_email": "mpsnyder@stanford.edu",
       "processing_search": "Proteome Discoverer 2.1",
-      "protocols_io_doi": "10.17504/protocols.io.bf6bjran"
+      "protocols_io_doi": "10.17504/protocols.io.bf6bjran",
+      "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid"
     }
   }
 }
