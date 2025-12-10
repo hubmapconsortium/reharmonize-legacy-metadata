@@ -77,7 +77,7 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": "MS/MS",
+    "ms_scan_mode": "MS2",
     "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "375",
     "mass_to_charge_range_high_value": "1500",
@@ -176,7 +176,8 @@
     {"op": "replace", "path": "/analyte_class", "value": "Peptide"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
     {"op": "replace", "path": "/lc_column_vendor", "value": "Evosep"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Evosep"}
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Evosep"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
     "field_mappings": {
