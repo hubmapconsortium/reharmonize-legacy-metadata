@@ -20,16 +20,16 @@
     "then": {
       "lc_instrument_model": "Waters; ACQUITY UPLC M-Class System with 2D Technology",
       "lc_instrument_vendor": "Waters",
-      "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm)|In-House",
-      "lc_column_vendor": "Waters|Sepax Technologies",
-      "lc_resin" : "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"
+      "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House",
+      "lc_column_vendor": "Waters;Sepax Technologies",
+      "lc_resin": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"
     }
   },
 {
     "when": {
       "__must__" : [
         { "protocols_io_doi": "10.17504/protocols.io.bf4ujqww" },
-        { "acquisition_instrument_model" : "Q Exactive" }
+        { "acquisition_instrument_model": "Q Exactive" }
       ]
     },
     "then": {
@@ -40,7 +40,7 @@
     "when": {
       "__must__" : [
         { "protocols_io_doi": "10.17504/protocols.io.bf4ujqww" },
-        { "acquisition_instrument_model" : "Q Exactive HF" }
+        { "acquisition_instrument_model": "Q Exactive HF" }
       ]
     },
     "then": {
@@ -52,11 +52,13 @@
     "when": {
       "__must__" : [
         { "protocols_io_doi": "10.17504/protocols.io.bf4vjqw6" },
-        { "lc_instrument_model" : "LC-30AD" }
+        { "lc_instrument_model": "LC-30AD" }
       ]
     },
     "then": {
-      "dataset_type": "FIA-MS"
+      "dataset_type": "LC-MS",
+      "data_collection_mode": "DIA",
+      "ms_scan_mode": "MS2"
     }
   }
 ]
