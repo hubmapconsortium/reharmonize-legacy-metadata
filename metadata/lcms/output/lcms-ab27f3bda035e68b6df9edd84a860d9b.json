@@ -181,6 +181,7 @@
       "mz_range_low_value": "mass_to_charge_range_low_value",
       "polarity": "mass_analysis_polarity",
       "processing_protocols_io_doi": "analysis_protocol_doi",
+      "protocols_io_doi": "acquisition_protocol_doi",
       "section_prep_protocols_io_doi": "preparation_protocol_doi",
       "tissue_id": "parent_sample_id"
     },
@@ -219,7 +220,7 @@
       "pi": "Jeffrey M. Spraggins",
       "pi_email": "jeff.spraggins@VANderbilt.edu",
       "processing_search": "MaxQuant",
-      "protocols_io_doi": "10.17504/protocols.io.bft3jnqn"
+      "acquisition_protocol_doi": "10.17504/protocols.io.bft3jnqn"
     }
   }
 }
