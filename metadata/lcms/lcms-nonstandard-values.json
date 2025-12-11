@@ -15,9 +15,9 @@
     "",
     "C"
   ],
-  "contributors_path": "null",
   "source_storage_duration_unit": "null",
   "source_storage_duration_value": "null",
+  "contributors_path": "null",
   "parent_sample_id": [
     "CALT0012-HT-2",
     "CALT0013-HT-1",
@@ -117,7 +117,6 @@
   "lc_instrument_vendor": "Shimadzu",
   "lc_column_vendor": [
     "",
-    "Milipore",
     "Waters;Sepax Technologies"
   ],
   "lc_column_length_unit": "",
