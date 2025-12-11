@@ -84,7 +84,7 @@
     "lc_column_length_value": "100",
     "lc_column_length_unit": "mm",
     "lc_temperature_value": "40",
-    "lc_temperature_unit": "C",
+    "lc_temperature_unit": "celsius",
     "lc_inner_diameter_value": "2.1",
     "lc_inner_diameter_unit": "um",
     "lc_flow_rate_value": "0.5",
@@ -112,7 +112,7 @@
     {"op": "add", "path": "/lc_gradient_value", "value": "Chromeleon"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "2.1"},
-    {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
+    {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "40"},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "negative mode"},
     {"op": "add", "path": "/mass_resolving_power", "value": null},
@@ -199,6 +199,9 @@
       },
       "lc_instrument_vendor": {
         "Thermo Fisher": "Thermo Fisher Scientific"
+      },
+      "lc_temperature_unit": {
+        "C": "celsius"
       }
     },
     "ambiguous_mappings": [],

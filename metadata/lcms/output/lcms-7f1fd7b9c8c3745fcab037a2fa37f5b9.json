@@ -94,7 +94,7 @@
     "lc_column_length_value": "25",
     "lc_column_length_unit": "cm",
     "lc_temperature_value": "35",
-    "lc_temperature_unit": "C",
+    "lc_temperature_unit": "celsius",
     "lc_inner_diameter_value": "75",
     "lc_inner_diameter_unit": "um",
     "lc_flow_rate_value": "300",
@@ -120,7 +120,7 @@
     {"op": "add", "path": "/lc_gradient_value", "value": "0-10 min: 5% B; 10-12 min: 5% B; 12-62 min: 15-55% B; 62-67 min: 55-95% B; 67-72 min: 95% B; 72-75 min: 95-5% B; 75-90 min: 5% B"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "75"},
-    {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
+    {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "35"},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
@@ -219,6 +219,9 @@
       },
       "lc_column_vendor": {
         "Self-packed": "In-House"
+      },
+      "lc_temperature_unit": {
+        "C": "celsius"
       }
     },
     "ambiguous_mappings": [],

@@ -84,7 +84,7 @@
     "lc_column_length_value": "35",
     "lc_column_length_unit": "cm",
     "lc_temperature_value": "60",
-    "lc_temperature_unit": "C",
+    "lc_temperature_unit": "celsius",
     "lc_inner_diameter_value": "100",
     "lc_inner_diameter_unit": "um",
     "lc_flow_rate_value": "400",
@@ -112,7 +112,7 @@
     {"op": "add", "path": "/lc_gradient_value", "value": "0-2 min: 2% b; 2-102min: 2-20% b; 102-122min: 20-32% b; 122-123min: 32-95% b; 123-127min: 95% b"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
-    {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
+    {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "60"},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_resolving_power", "value": null},
@@ -203,6 +203,9 @@
       },
       "lc_instrument_vendor": {
         "Thermo": "Thermo Fisher Scientific"
+      },
+      "lc_temperature_unit": {
+        "C": "celsius"
       }
     },
     "ambiguous_mappings": [],
