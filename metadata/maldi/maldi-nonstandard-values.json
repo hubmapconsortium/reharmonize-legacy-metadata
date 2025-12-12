@@ -3,14 +3,15 @@
     "MS",
     "null"
   ],
-  "ion_mobility": "",
-  "matrix_deposition_method": [
-    "Sprayed",
-    "Sprayed matrix"
+  "mass_analysis_polarity": [
+    "Negative Ion Mode",
+    "Positive Ion Mode",
+    "negative ion mode",
+    "positive ion mode"
   ],
   "analysis_protocol_doi": "null",
-  "source_storage_duration_value": "null",
   "source_storage_duration_unit": "null",
+  "source_storage_duration_value": "null",
   "parent_sample_id": [
     "VAN0003-LK-32-21",
     "VAN0005-RK-1-1",
@@ -62,10 +63,11 @@
     "VAN0061-LK-2-21",
     "VAN0063-RK-1-41"
   ],
-  "mass_to_charge_resolving_power": "null",
   "contributors_path": "null",
+  "mass_to_charge_resolving_power": "null",
   "mass_resolving_power": "null",
   "data_path": "/",
   "acquisition_instrument_model": "UHMR with Spectroglyph source",
+  "ion_mobility": "",
   "preparation_matrix": ""
 }
