@@ -80,7 +80,7 @@
     "data_path": ".",
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS2",
-    "mass_analysis_polarity": "positive ion mode",
+    "mass_analysis_polarity": "Positive ion mode",
     "mass_to_charge_range_low_value": "500",
     "mass_to_charge_range_high_value": "2000",
     "mass_resolving_power": "120000",
@@ -90,7 +90,7 @@
     "label_name": "",
     "lc_instrument_vendor": "Waters",
     "lc_instrument_model": "NanoAcquity",
-    "lc_column_vendor": "In-House",
+    "lc_column_vendor": "self-packed",
     "lc_column_model": "21-11-04",
     "lc_resin": "SMT-C2 MEB2-3-300 (Separation Methods Technologies)",
     "lc_column_length_value": "50",
@@ -123,7 +123,7 @@
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
     {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "25"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "500"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
@@ -177,7 +177,6 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
     {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"},
     {"op": "replace", "path": "/spatial_sampling_type", "value": "Profiling"}
   ],
@@ -219,11 +218,11 @@
       "is_targeted": {
         "False": "No"
       },
-      "lc_column_vendor": {
-        "self-packed": "In-House"
-      },
       "lc_temperature_unit": {
         "C": "celsius"
+      },
+      "mass_analysis_polarity": {
+        "positive ion mode": "Positive ion mode"
       },
       "spatial_sampling_type": {
         "profiling": "Profiling"

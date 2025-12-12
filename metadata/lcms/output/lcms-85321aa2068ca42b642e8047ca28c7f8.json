@@ -78,7 +78,7 @@
     "data_path": ".",
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS2",
-    "mass_analysis_polarity": "positive ion mode",
+    "mass_analysis_polarity": "Positive ion mode",
     "mass_to_charge_range_low_value": "375",
     "mass_to_charge_range_high_value": "1500",
     "mass_resolving_power": "60000",
@@ -88,7 +88,7 @@
     "label_name": null,
     "lc_instrument_vendor": "Evosep",
     "lc_instrument_model": "EvoSep One",
-    "lc_column_vendor": "Evosep",
+    "lc_column_vendor": "EvoSep",
     "lc_column_model": "EV1074",
     "lc_resin": "Dr. Maisch C18 AQ, 120 Angstrom pore size 3 micron beads",
     "lc_column_length_value": "15",
@@ -122,7 +122,7 @@
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
     {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "21"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1500"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "375"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
@@ -175,7 +175,6 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Peptide"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
-    {"op": "replace", "path": "/lc_column_vendor", "value": "Evosep"},
     {"op": "replace", "path": "/lc_instrument_vendor", "value": "Evosep"},
     {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
@@ -217,14 +216,14 @@
       "is_targeted": {
         "True": "Yes"
       },
-      "lc_column_vendor": {
-        "EvoSep": "Evosep"
-      },
       "lc_instrument_vendor": {
         "EvoSep": "Evosep"
       },
       "lc_temperature_unit": {
         "C": "celsius"
+      },
+      "mass_analysis_polarity": {
+        "positive ion mode": "Positive ion mode"
       }
     },
     "ambiguous_mappings": [],
