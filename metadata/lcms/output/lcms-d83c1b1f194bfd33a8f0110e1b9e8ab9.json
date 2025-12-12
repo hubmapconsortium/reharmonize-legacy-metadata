@@ -78,7 +78,7 @@
     "label_name": null,
     "lc_instrument_vendor": "Waters",
     "lc_instrument_model": "Acquity M class 2D nano LC",
-    "lc_column_vendor": "Self-packed",
+    "lc_column_vendor": "In-House",
     "lc_column_model": "Pulled tip",
     "lc_resin": "Sepex GP-C18   1.8um, 120A",
     "lc_column_length_value": "25",
@@ -161,7 +161,8 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"}
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -194,6 +195,9 @@
       },
       "is_targeted": {
         "FALSE": "No"
+      },
+      "lc_column_vendor": {
+        "Self-packed": "In-House"
       },
       "lc_temperature_unit": {
         "C": "celsius"

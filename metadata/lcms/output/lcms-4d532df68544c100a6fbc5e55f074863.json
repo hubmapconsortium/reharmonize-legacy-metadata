@@ -90,7 +90,7 @@
     "label_name": "",
     "lc_instrument_vendor": "Waters",
     "lc_instrument_model": "NanoAcquity",
-    "lc_column_vendor": "self-packed",
+    "lc_column_vendor": "In-House",
     "lc_column_model": "21-11-04",
     "lc_resin": "SMT-C2 MEB2-3-300 (Separation Methods Technologies)",
     "lc_column_length_value": "50",
@@ -177,6 +177,7 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
     {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"},
     {"op": "replace", "path": "/spatial_sampling_type", "value": "Profiling"}
   ],
@@ -217,6 +218,9 @@
       },
       "is_targeted": {
         "False": "No"
+      },
+      "lc_column_vendor": {
+        "self-packed": "In-House"
       },
       "lc_temperature_unit": {
         "C": "celsius"

@@ -90,7 +90,7 @@
     "label_name": "",
     "lc_instrument_vendor": "Thermo Fisher Scientific",
     "lc_instrument_model": "UltiMate 3000 RSLCnano UHPLC System",
-    "lc_column_vendor": "Self-packed",
+    "lc_column_vendor": "In-House",
     "lc_column_model": "Pulled tip capillary",
     "lc_resin": "PLRP-S 5-micrometer particles (1,000-Angstrom-pore size; Agilent, cat. no. PL1912-1502)",
     "lc_column_length_value": "25",
@@ -177,6 +177,7 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
     {"op": "replace", "path": "/lc_instrument_model", "value": "UltiMate 3000 RSLCnano UHPLC System"},
     {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
@@ -218,6 +219,9 @@
       },
       "is_targeted": {
         "FALSE": "No"
+      },
+      "lc_column_vendor": {
+        "Self-packed": "In-House"
       },
       "lc_temperature_unit": {
         "C": "celsius"
