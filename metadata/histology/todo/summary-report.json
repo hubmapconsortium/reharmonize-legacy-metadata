@@ -2,7 +2,7 @@
   {
     "group_name": "Vanderbilt TMC",
     "dataset_type": "Histology",
-    "datasets_with_non_standard_values": 77,
+    "datasets_with_non_standard_values": 0,
     "datasets_with_missing_required_values": 77,
     "datasets_with_invalid_input_patterns": 77,
     "total_datasets_with_issues": 77

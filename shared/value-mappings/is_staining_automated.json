@@ -1,6 +1,10 @@
 {
   "is_staining_automated": {
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "true": "Yes",
+    "false": "No",
+    "True": "Yes",
+    "False": "No"
   }
 }
