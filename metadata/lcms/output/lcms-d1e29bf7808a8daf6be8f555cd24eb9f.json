@@ -80,7 +80,7 @@
     "data_path": "lcms",
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS/MS",
-    "mass_analysis_polarity": "positive ion mode",
+    "mass_analysis_polarity": "Positive ion mode",
     "mass_to_charge_range_low_value": "600",
     "mass_to_charge_range_high_value": "2000",
     "mass_resolving_power": "120000",
@@ -123,7 +123,7 @@
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "75"},
     {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "35"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "600"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
@@ -224,6 +224,9 @@
       },
       "lc_temperature_unit": {
         "C": "celsius"
+      },
+      "mass_analysis_polarity": {
+        "positive ion mode": "Positive ion mode"
       }
     },
     "ambiguous_mappings": [],
