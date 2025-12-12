@@ -90,7 +90,7 @@
     "label_name": "",
     "lc_instrument_vendor": "Waters",
     "lc_instrument_model": "Waters; ACQUITY UPLC M-Class System with 2D Technology",
-    "lc_column_vendor": "Waters;Sepax Technologies",
+    "lc_column_vendor": "Waters",
     "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House",
     "lc_resin": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A",
     "lc_column_length_value": "25",
@@ -178,7 +178,7 @@
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/lc_column_model", "value": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House"},
-    {"op": "replace", "path": "/lc_column_vendor", "value": "Waters;Sepax Technologies"},
+    {"op": "replace", "path": "/lc_column_vendor", "value": "Waters"},
     {"op": "replace", "path": "/lc_instrument_model", "value": "Waters; ACQUITY UPLC M-Class System with 2D Technology"},
     {"op": "replace", "path": "/lc_instrument_vendor", "value": "Waters"},
     {"op": "replace", "path": "/lc_resin", "value": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"}

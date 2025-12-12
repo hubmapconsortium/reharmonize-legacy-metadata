@@ -10,7 +10,7 @@
   {
     "group_name": "Stanford TMC",
     "dataset_type": "LC-MS",
-    "datasets_with_non_standard_values": 222,
+    "datasets_with_non_standard_values": 220,
     "datasets_with_missing_required_values": 222,
     "datasets_with_invalid_input_patterns": 222,
     "total_datasets_with_issues": 222

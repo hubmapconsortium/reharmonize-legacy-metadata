@@ -55,7 +55,7 @@
     "parent_sample_id": "STAN0003-SI-3-6",
     "lab_id": null,
     "preparation_protocol_doi": "10.17504/protocols.io.bf4tjqwn",
-    "dataset_type": "FIA-MS",
+    "dataset_type": "LC-MS",
     "analyte_class": "Lipid",
     "is_targeted": "Yes",
     "acquisition_instrument_vendor": "Sciex",
@@ -102,7 +102,7 @@
   "json_patch": [
     {"op": "add", "path": "/analysis_protocol_doi", "value": "10.17504/protocols.io.bf4xjqxn"},
     {"op": "add", "path": "/contributors_path", "value": null},
-    {"op": "add", "path": "/dataset_type", "value": "FIA-MS"},
+    {"op": "add", "path": "/dataset_type", "value": "LC-MS"},
     {"op": "add", "path": "/ion_mobility", "value": null},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/label_name", "value": null},
@@ -185,6 +185,9 @@
     "value_mappings": {
       "analyte_class": {
         "lipids": "Lipid"
+      },
+      "dataset_type": {
+        "MS (shotgun lipidomics)": "LC-MS"
       },
       "is_targeted": {
         "TRUE": "Yes"
