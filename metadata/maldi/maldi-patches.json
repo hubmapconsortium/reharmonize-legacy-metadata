@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "when": {
+      "__should__" : [
+        { "preparation_instrument_model": "M5 Sprayer" },
+        { "preparation_instrument_model": "M3 TM-Sprayer" }
+      ]
+    },
+    "then": {
+      "preparation_type": "Robotic spraying"
+    }
+  },
+  {
+    "when": {
+      "__should__" : [
+        { "acquisition_instrument_model": "timsTOF fleX" },
+        { "acquisition_instrument_model": "MALDI timsTOF Flex Prototype" }
+      ]
+    },
+    "then": {
+      "ion_mobility": "TIMS"
+    }
+  }
+]
