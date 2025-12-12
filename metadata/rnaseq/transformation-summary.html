@@ -292,7 +292,7 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">33</div>
+            <div class="stat-number">39</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
@@ -325,6 +325,8 @@
                         
                         <th>scRNAseq (v3)</th>
                         
+                        <th>RNAseq (v4.0.0-CEDAR)</th>
+                        
                         <th class="target-header">RNAseq (v5.0.0-CEDAR)</th>
                     </tr>
                 </thead>
@@ -344,6 +346,8 @@
                         
                         <td><code>tissue_id</code></td>
                         
+                        <td><code>parent_sample_id</code></td>
+                        
                         <td class="target-cell"><code>parent_sample_id</code></td>
                     </tr>
                     
@@ -360,6 +364,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>lab_id</code></td>
                         
                         <td class="target-cell"><code>lab_id</code></td>
                     </tr>
@@ -378,6 +384,8 @@
                         
                         <td><code>protocols_io_doi</code></td>
                         
+                        <td><code>preparation_protocol_doi</code></td>
+                        
                         <td class="target-cell"><code>preparation_protocol_doi</code></td>
                     </tr>
                     
@@ -395,10 +403,14 @@
                         
                         <td><code>assay_type</code></td>
                         
+                        <td><code>dataset_type</code></td>
+                        
                         <td class="target-cell"><code>dataset_type</code></td>
                     </tr>
                     
                     <tr>
+                        
+                        <td><code>analyte_class</code></td>
                         
                         <td><code>analyte_class</code></td>
                         
@@ -429,10 +441,14 @@
                         
                         <td><code>is_targeted</code></td>
                         
+                        <td><code>is_targeted</code></td>
+                        
                         <td class="target-cell"><code>is_targeted</code></td>
                     </tr>
                     
                     <tr>
+                        
+                        <td><code>acquisition_instrument_vendor</code></td>
                         
                         <td><code>acquisition_instrument_vendor</code></td>
                         
@@ -463,6 +479,8 @@
                         
                         <td><code>acquisition_instrument_model</code></td>
                         
+                        <td><code>acquisition_instrument_model</code></td>
+                        
                         <td class="target-cell"><code>acquisition_instrument_model</code></td>
                     </tr>
                     
@@ -479,6 +497,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>source_storage_duration_value</code></td>
                         
                         <td class="target-cell"><code>source_storage_duration_value</code></td>
                     </tr>
@@ -497,6 +517,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>source_storage_duration_unit</code></td>
+                        
                         <td class="target-cell"><code>source_storage_duration_unit</code></td>
                     </tr>
                     
@@ -513,6 +535,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>time_since_acquisition_instrument_calibration_value</code></td>
                         
                         <td class="target-cell"><code>time_since_acquisition_instrument_calibration_value</code></td>
                     </tr>
@@ -531,10 +555,14 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>time_since_acquisition_instrument_calibration_unit</code></td>
+                        
                         <td class="target-cell"><code>time_since_acquisition_instrument_calibration_unit</code></td>
                     </tr>
                     
                     <tr>
+                        
+                        <td><code>contributors_path</code></td>
                         
                         <td><code>contributors_path</code></td>
                         
@@ -565,6 +593,8 @@
                         
                         <td><code>data_path</code></td>
                         
+                        <td><code>data_path</code></td>
+                        
                         <td class="target-cell"><code>data_path</code></td>
                     </tr>
                     
@@ -581,6 +611,8 @@
                         <td><code>cell_barcode_offset</code></td>
                         
                         <td><code>cell_barcode_offset</code></td>
+                        
+                        <td><code>barcode_offset</code></td>
                         
                         <td class="target-cell"><code>barcode_offset</code></td>
                     </tr>
@@ -599,6 +631,8 @@
                         
                         <td><code>cell_barcode_read</code></td>
                         
+                        <td><code>barcode_read</code></td>
+                        
                         <td class="target-cell"><code>barcode_read</code></td>
                     </tr>
                     
@@ -616,6 +650,8 @@
                         
                         <td><code>cell_barcode_size</code></td>
                         
+                        <td><code>barcode_size</code></td>
+                        
                         <td class="target-cell"><code>barcode_size</code></td>
                     </tr>
                     
@@ -630,6 +666,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>umi_offset</code></td>
                         
                         <td><code>umi_offset</code></td>
                         
@@ -650,6 +688,8 @@
                         
                         <td><code>umi_read</code></td>
                         
+                        <td><code>umi_read</code></td>
+                        
                         <td class="target-cell"><code>umi_read</code></td>
                     </tr>
                     
@@ -664,6 +704,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>umi_size</code></td>
                         
                         <td><code>umi_size</code></td>
                         
@@ -684,6 +726,8 @@
                         
                         <td><code>sc_isolation_entity</code></td>
                         
+                        <td><code>assay_input_entity</code></td>
+                        
                         <td class="target-cell"><code>assay_input_entity</code></td>
                     </tr>
                     
@@ -700,6 +744,8 @@
                         <td><code>sc_isolation_cell_number</code></td>
                         
                         <td><code>sc_isolation_cell_number</code></td>
+                        
+                        <td><code>number_of_input_cells_or_nuclei</code></td>
                         
                         <td class="target-cell"><code>number_of_input_cells_or_nuclei</code></td>
                     </tr>
@@ -718,6 +764,8 @@
                         
                         <td><code>rnaseq_assay_input</code></td>
                         
+                        <td><code>amount_of_input_analyte_value</code></td>
+                        
                         <td class="target-cell"><code>amount_of_input_analyte_value</code></td>
                     </tr>
                     
@@ -735,10 +783,14 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>amount_of_input_analyte_unit</code></td>
+                        
                         <td class="target-cell"><code>amount_of_input_analyte_unit</code></td>
                     </tr>
                     
                     <tr>
+                        
+                        <td><code>library_adapter_sequence</code></td>
                         
                         <td><code>library_adapter_sequence</code></td>
                         
@@ -769,6 +821,8 @@
                         
                         <td><code>library_average_fragment_size</code></td>
                         
+                        <td><code>library_average_fragment_size</code></td>
+                        
                         <td class="target-cell"><code>library_average_fragment_size</code></td>
                     </tr>
                     
@@ -785,6 +839,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>library_input_amount_value</code></td>
                         
                         <td class="target-cell"><code>library_input_amount_value</code></td>
                     </tr>
@@ -803,6 +859,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>library_input_amount_unit</code></td>
+                        
                         <td class="target-cell"><code>library_input_amount_unit</code></td>
                     </tr>
                     
@@ -819,6 +877,8 @@
                         <td><code>library_final_yield_value</code></td>
                         
                         <td><code>library_final_yield_value</code></td>
+                        
+                        <td><code>library_output_amount_value</code></td>
                         
                         <td class="target-cell"><code>library_output_amount_value</code></td>
                     </tr>
@@ -837,6 +897,8 @@
                         
                         <td><code>library_final_yield_unit</code></td>
                         
+                        <td><code>library_output_amount_unit</code></td>
+                        
                         <td class="target-cell"><code>library_output_amount_unit</code></td>
                     </tr>
                     
@@ -853,6 +915,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>library_concentration_value</code></td>
                         
                         <td class="target-cell"><code>library_concentration_value</code></td>
                     </tr>
@@ -871,10 +935,14 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>library_concentration_unit</code></td>
+                        
                         <td class="target-cell"><code>library_concentration_unit</code></td>
                     </tr>
                     
                     <tr>
+                        
+                        <td><code>library_layout</code></td>
                         
                         <td><code>library_layout</code></td>
                         
@@ -905,6 +973,8 @@
                         
                         <td><code>library_pcr_cycles</code></td>
                         
+                        <td><code>number_of_iterations_of_cdna_amplification</code></td>
+                        
                         <td class="target-cell"><code>number_of_iterations_of_cdna_amplification</code></td>
                     </tr>
                     
@@ -921,6 +991,8 @@
                         <td><code>library_pcr_cycles_for_sample_index</code></td>
                         
                         <td><code>library_pcr_cycles_for_sample_index</code></td>
+                        
+                        <td><code>number_of_pcr_cycles_for_indexing</code></td>
                         
                         <td class="target-cell"><code>number_of_pcr_cycles_for_indexing</code></td>
                     </tr>
@@ -939,6 +1011,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>library_preparation_kit</code></td>
+                        
                         <td class="target-cell"><code>library_preparation_kit</code></td>
                     </tr>
                     
@@ -955,6 +1029,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sample_indexing_kit</code></td>
                         
                         <td class="target-cell"><code>sample_indexing_kit</code></td>
                     </tr>
@@ -973,6 +1049,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>sample_indexing_set</code></td>
+                        
                         <td class="target-cell"><code>sample_indexing_set</code></td>
                     </tr>
                     
@@ -981,6 +1059,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>is_technical_replicate</code></td>
                         
                         <td><code>is_technical_replicate</code></td>
                         
@@ -1007,10 +1087,14 @@
                         
                         <td><code>expected_cell_count</code></td>
                         
+                        <td><code>expected_entity_capture_count</code></td>
+                        
                         <td class="target-cell"><code>expected_entity_capture_count</code></td>
                     </tr>
                     
                     <tr>
+                        
+                        <td><code>sequencing_reagent_kit</code></td>
                         
                         <td><code>sequencing_reagent_kit</code></td>
                         
@@ -1041,6 +1125,8 @@
                         
                         <td><code>sequencing_read_format</code></td>
                         
+                        <td><code>sequencing_read_format</code></td>
+                        
                         <td class="target-cell"><code>sequencing_read_format</code></td>
                     </tr>
                     
@@ -1057,6 +1143,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>sequencing_batch_id</code></td>
                         
                         <td class="target-cell"><code>sequencing_batch_id</code></td>
                     </tr>
@@ -1075,6 +1163,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>capture_batch_id</code></td>
+                        
                         <td class="target-cell"><code>capture_batch_id</code></td>
                     </tr>
                     
@@ -1091,6 +1181,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>preparation_instrument_vendor</code></td>
                         
                         <td class="target-cell"><code>preparation_instrument_vendor</code></td>
                     </tr>
@@ -1109,6 +1201,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>preparation_instrument_model</code></td>
+                        
                         <td class="target-cell"><code>preparation_instrument_model</code></td>
                     </tr>
                     
@@ -1125,6 +1219,8 @@
                         <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
+                        
+                        <td><code>preparation_instrument_kit</code></td>
                         
                         <td class="target-cell"><code>preparation_instrument_kit</code></td>
                     </tr>
@@ -1143,6 +1239,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><code>metadata_schema_id</code></td>
+                        
                         <td class="target-cell"><code>metadata_schema_id</code></td>
                     </tr>
                     
@@ -1160,6 +1258,8 @@
                         
                         <td><code>assay_category</code></td>
                         
+                        <td><span class="empty-cell">-</span></td>
+                        
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
@@ -1168,6 +1268,8 @@
                         <td><code>bulk_rna_isolation_protocols_io_doi</code></td>
                         
                         <td><code>bulk_rna_isolation_protocols_io_doi</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
                         
@@ -1194,6 +1296,8 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
+                        <td><span class="empty-cell">-</span></td>
+                        
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
@@ -1202,6 +1306,8 @@
                         <td><code>bulk_rna_yield_units_per_tissue_unit</code></td>
                         
                         <td><code>bulk_rna_yield_units_per_tissue_unit</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td><span class="empty-cell">-</span></td>
                         
@@ -1228,29 +1334,31 @@
                         
                         <td><span class="empty-cell">-</span></td>
                         
-                        <td class="target-cell"><span class="empty-cell">-</span></td>
-                    </tr>
-                    
-                    <tr>
-                        
-                        <td><code>donor_id</code></td>
-                        
-                        <td><code>donor_id</code></td>
-                        
-                        <td><code>donor_id</code></td>
-                        
-                        <td><code>donor_id</code></td>
-                        
-                        <td><code>donor_id</code></td>
-                        
-                        <td><code>donor_id</code></td>
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
                     <tr>
                         
-                        <td><code>execution_datetime</code></td>
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><code>donor_id</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
                         
                         <td><code>execution_datetime</code></td>
                         
@@ -1261,6 +1369,10 @@
                         <td><code>execution_datetime</code></td>
                         
                         <td><code>execution_datetime</code></td>
+                        
+                        <td><code>execution_datetime</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1278,6 +1390,8 @@
                         <td><code>library_construction_protocols_io_doi</code></td>
                         
                         <td><code>library_construction_protocols_io_doi</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1296,29 +1410,31 @@
                         
                         <td><code>library_id</code></td>
                         
-                        <td class="target-cell"><span class="empty-cell">-</span></td>
-                    </tr>
-                    
-                    <tr>
-                        
-                        <td><code>operator</code></td>
-                        
-                        <td><code>operator</code></td>
-                        
-                        <td><code>operator</code></td>
-                        
-                        <td><code>operator</code></td>
-                        
-                        <td><code>operator</code></td>
-                        
-                        <td><code>operator</code></td>
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
                     <tr>
                         
-                        <td><code>operator_email</code></td>
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><code>operator</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
                         
                         <td><code>operator_email</code></td>
                         
@@ -1329,6 +1445,10 @@
                         <td><code>operator_email</code></td>
                         
                         <td><code>operator_email</code></td>
+                        
+                        <td><code>operator_email</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1347,29 +1467,31 @@
                         
                         <td><code>pi</code></td>
                         
-                        <td class="target-cell"><span class="empty-cell">-</span></td>
-                    </tr>
-                    
-                    <tr>
-                        
-                        <td><code>pi_email</code></td>
-                        
-                        <td><code>pi_email</code></td>
-                        
-                        <td><code>pi_email</code></td>
-                        
-                        <td><code>pi_email</code></td>
-                        
-                        <td><code>pi_email</code></td>
-                        
-                        <td><code>pi_email</code></td>
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
                     <tr>
                         
-                        <td><code>rnaseq_assay_method</code></td>
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><code>pi_email</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
                         
                         <td><code>rnaseq_assay_method</code></td>
                         
@@ -1380,6 +1502,10 @@
                         <td><code>rnaseq_assay_method</code></td>
                         
                         <td><code>rnaseq_assay_method</code></td>
+                        
+                        <td><code>rnaseq_assay_method</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1398,6 +1524,8 @@
                         
                         <td><code>sc_isolation_enrichment</code></td>
                         
+                        <td><span class="empty-cell">-</span></td>
+                        
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
@@ -1414,6 +1542,8 @@
                         <td><code>sc_isolation_protocols_io_doi</code></td>
                         
                         <td><code>sc_isolation_protocols_io_doi</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1432,6 +1562,8 @@
                         
                         <td><code>sc_isolation_quality_metric</code></td>
                         
+                        <td><span class="empty-cell">-</span></td>
+                        
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
@@ -1449,29 +1581,31 @@
                         
                         <td><code>sc_isolation_tissue_dissociation</code></td>
                         
-                        <td class="target-cell"><span class="empty-cell">-</span></td>
-                    </tr>
-                    
-                    <tr>
-                        
-                        <td><code>sequencing_phix_percent</code></td>
-                        
-                        <td><code>sequencing_phix_percent</code></td>
-                        
-                        <td><code>sequencing_phix_percent</code></td>
-                        
-                        <td><code>sequencing_phix_percent</code></td>
-                        
-                        <td><code>sequencing_phix_percent</code></td>
-                        
-                        <td><code>sequencing_phix_percent</code></td>
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
                     <tr>
                         
-                        <td><code>sequencing_read_percent_q30</code></td>
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><code>sequencing_phix_percent</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
+                        
+                        <td class="target-cell"><span class="empty-cell">-</span></td>
+                    </tr>
+                    
+                    <tr>
                         
                         <td><code>sequencing_read_percent_q30</code></td>
                         
@@ -1482,6 +1616,10 @@
                         <td><code>sequencing_read_percent_q30</code></td>
                         
                         <td><code>sequencing_read_percent_q30</code></td>
+                        
+                        <td><code>sequencing_read_percent_q30</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1500,6 +1638,8 @@
                         
                         <td><code>version</code></td>
                         
+                        <td><span class="empty-cell">-</span></td>
+                        
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
                     
@@ -1516,6 +1656,8 @@
                         <td><code>description</code></td>
                         
                         <td><code>description</code></td>
+                        
+                        <td><span class="empty-cell">-</span></td>
                         
                         <td class="target-cell"><span class="empty-cell">-</span></td>
                     </tr>
@@ -1558,8 +1700,44 @@
                     </tr>
                     
                     <tr>
+                        <td><code>assay_input_entity</code></td>
+                        <td><code>nuclei</code></td>
+                        <td><code>single nucleus</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>assay_input_entity</code></td>
+                        <td><code>nucleus</code></td>
+                        <td><code>single nucleus</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>assay_input_entity</code></td>
+                        <td><code>whole cell</code></td>
+                        <td><code>single cell</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>assay_input_entity</code></td>
+                        <td><code>whole cells</code></td>
+                        <td><code>single cell</code></td>
+                    </tr>
+                    
+                    <tr>
                         <td><code>barcode_read</code></td>
                         <td><code>R1</code></td>
+                        <td><code>Read 1 (R1)</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>barcode_read</code></td>
+                        <td><code>R2</code></td>
+                        <td><code>Read 2 (R2)</code></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><code>barcode_read</code></td>
+                        <td><code>Read 1</code></td>
                         <td><code>Read 1 (R1)</code></td>
                     </tr>
                     

@@ -2,7 +2,7 @@
   {
     "group_name": "California Institute of Technology TMC",
     "dataset_type": "RNAseq",
-    "datasets_with_non_standard_values": 0,
+    "datasets_with_non_standard_values": 12,
     "datasets_with_missing_required_values": 12,
     "datasets_with_invalid_input_patterns": 12,
     "total_datasets_with_issues": 12
@@ -18,7 +18,7 @@
   {
     "group_name": "Stanford TMC",
     "dataset_type": "RNAseq",
-    "datasets_with_non_standard_values": 81,
+    "datasets_with_non_standard_values": 84,
     "datasets_with_missing_required_values": 92,
     "datasets_with_invalid_input_patterns": 92,
     "total_datasets_with_issues": 92

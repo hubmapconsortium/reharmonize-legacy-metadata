@@ -68,8 +68,8 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras/SCRIPPS-scRNAmeniscus-BJH-rev-202212182312-contributors.tsv",
     "data_path": ".",
-    "barcode_offset": "0",
-    "barcode_read": "Read 1 (R1)",
+    "barcode_offset": "1",
+    "barcode_read": "02regAVASMEconHEAnm1_featurebcmatrixfiltered.tar",
     "barcode_size": "16",
     "umi_offset": "16",
     "umi_read": "Read 1 (R1)",
@@ -107,8 +107,8 @@
     {"op": "add", "path": "/amount_of_input_analyte_unit", "value": null},
     {"op": "add", "path": "/amount_of_input_analyte_value", "value": "16000"},
     {"op": "add", "path": "/assay_input_entity", "value": "single cell"},
-    {"op": "add", "path": "/barcode_offset", "value": "0"},
-    {"op": "add", "path": "/barcode_read", "value": "Read 1 (R1)"},
+    {"op": "add", "path": "/barcode_offset", "value": "1"},
+    {"op": "add", "path": "/barcode_read", "value": "02regAVASMEconHEAnm1_featurebcmatrixfiltered.tar"},
     {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
@@ -210,6 +210,9 @@
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "assay_input_entity": {
+        "whole cell": "single cell"
       },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"

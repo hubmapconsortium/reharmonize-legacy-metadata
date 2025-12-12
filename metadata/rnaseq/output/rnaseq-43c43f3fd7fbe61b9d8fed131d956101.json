@@ -189,6 +189,9 @@
       "dataset_type": {
         "scRNAseq-10xGenomics-v2": "RNAseq"
       },
+      "barcode_read": {
+        "Read 1": "Read 1 (R1)"
+      },
       "is_targeted": {
         "FALSE": "No"
       },

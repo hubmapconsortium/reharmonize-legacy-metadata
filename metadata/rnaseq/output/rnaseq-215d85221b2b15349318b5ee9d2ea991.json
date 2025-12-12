@@ -197,11 +197,17 @@
       "dataset_type": {
         "snRNAseq-10xGenomics-v3": "RNAseq"
       },
+      "barcode_read": {
+        "R1": "Read 1 (R1)"
+      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"

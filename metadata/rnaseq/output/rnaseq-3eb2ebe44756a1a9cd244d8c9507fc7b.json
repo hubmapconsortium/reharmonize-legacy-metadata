@@ -197,6 +197,9 @@
       "is_technical_replicate": {
         "FALSE": "No"
       },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
+      },
       "sequencing_read_format": {
         "28/10/10/90": "28,10,10,90"
       }

@@ -195,11 +195,17 @@
       "dataset_type": {
         "SNARE2-RNAseq": "RNAseq"
       },
+      "barcode_read": {
+        "R2": "Read 2 (R2)"
+      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "assay_input_entity": {
+        "nucleus": "single nucleus"
       },
       "sequencing_read_format": {
         "70/6/102": "70,6,102"

@@ -222,6 +222,9 @@
       "is_technical_replicate": {
         "FALSE": "No"
       },
+      "assay_input_entity": {
+        "whole cells": "single cell"
+      },
       "sequencing_read_format": {
         "28/8/0/91": "28,8,0,91"
       }
