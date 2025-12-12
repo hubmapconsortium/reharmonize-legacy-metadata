@@ -1,14 +1,13 @@
 {
-  "preparation_instrument_vendor": "Akoya Biosciences",
   "preparation_instrument_model": [
     "CODEX Instrument",
     "prototype robot - Stanford/Nolan Lab"
   ],
-  "source_storage_duration_value": "null",
+  "antibodies_path": "null",
   "source_storage_duration_unit": "null",
+  "source_storage_duration_value": "null",
   "contributors_path": "null",
   "number_of_total_imaging_rounds": "null",
-  "antibodies_path": "null",
   "parent_sample_id": [
     "CHOP0001-HT-8",
     "CHOP0001-HT-9",
