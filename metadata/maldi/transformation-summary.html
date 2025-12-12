@@ -292,11 +292,11 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">19</div>
+            <div class="stat-number">15</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
-            <div class="stat-number">0</div>
+            <div class="stat-number">2</div>
             <div class="stat-label">Conditional Patches</div>
         </a>
     </div>
@@ -877,30 +877,6 @@
                     </tr>
                     
                     <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>Negative Ion Mode</code></td>
-                        <td><code>Negative ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>Positive Ion Mode</code></td>
-                        <td><code>Positive ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>negative ion mode</code></td>
-                        <td><code>Negative ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>mass_analysis_polarity</code></td>
-                        <td><code>positive ion mode</code></td>
-                        <td><code>Positive ion mode</code></td>
-                    </tr>
-                    
-                    <tr>
                         <td><code>preparation_instrument_model</code></td>
                         <td><code>M3 TM-Sprayer</code></td>
                         <td><code>M3+ Sprayer</code></td>
@@ -939,6 +915,16 @@
         <h2>3. Conditional Patches</h2>
         <p>Rule-based transformations applied when specific conditions are met.</p>
         <ul class="patch-list">
+            
+            <li class="patch-item">
+                <span class="patch-number">#1</span>
+                <span class='patch-action'>Sets</span> preparation type as '<code>Robotic spraying</code>'.
+            </li>
+            
+            <li class="patch-item">
+                <span class="patch-number">#2</span>
+                <span class='patch-action'>Sets</span> ion mobility as '<code>TIMS</code>'.
+            </li>
             
         </ul>
     </div>

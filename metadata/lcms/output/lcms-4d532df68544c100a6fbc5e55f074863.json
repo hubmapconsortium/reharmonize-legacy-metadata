@@ -79,8 +79,8 @@
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": "MS/MS",
-    "mass_analysis_polarity": "Positive ion mode",
+    "ms_scan_mode": "MS2",
+    "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "500",
     "mass_to_charge_range_high_value": "2000",
     "mass_resolving_power": "120000",
@@ -90,13 +90,13 @@
     "label_name": "",
     "lc_instrument_vendor": "Waters",
     "lc_instrument_model": "NanoAcquity",
-    "lc_column_vendor": "self-packed",
+    "lc_column_vendor": "In-House",
     "lc_column_model": "21-11-04",
     "lc_resin": "SMT-C2 MEB2-3-300 (Separation Methods Technologies)",
     "lc_column_length_value": "50",
     "lc_column_length_unit": "cm",
     "lc_temperature_value": "25",
-    "lc_temperature_unit": "C",
+    "lc_temperature_unit": "celsius",
     "lc_inner_diameter_value": "100",
     "lc_inner_diameter_unit": "um",
     "lc_flow_rate_value": "300",
@@ -121,9 +121,9 @@
     {"op": "add", "path": "/lc_gradient_value", "value": "5% 0min, 10% 1min, 60% 90min 5% 100min (MPB)"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
-    {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
+    {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "25"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "500"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
@@ -177,6 +177,8 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"},
     {"op": "replace", "path": "/spatial_sampling_type", "value": "Profiling"}
   ],
   "processing_log": {
@@ -195,6 +197,7 @@
       "mz_resolving_power": "mass_to_charge_resolving_power",
       "polarity": "mass_analysis_polarity",
       "processing_protocols_io_doi": "analysis_protocol_doi",
+      "protocols_io_doi": "acquisition_protocol_doi",
       "section_prep_protocols_io_doi": "preparation_protocol_doi",
       "spatial_target": "spatial_sampling_target",
       "spatial_type": "spatial_sampling_technique",
@@ -216,8 +219,11 @@
       "is_targeted": {
         "False": "No"
       },
-      "mass_analysis_polarity": {
-        "positive ion mode": "Positive ion mode"
+      "lc_column_vendor": {
+        "self-packed": "In-House"
+      },
+      "lc_temperature_unit": {
+        "C": "celsius"
       },
       "spatial_sampling_type": {
         "profiling": "Profiling"
@@ -237,7 +243,7 @@
       "pi": "Ljiljana Pasa-Tolic",
       "pi_email": "Ljiljana.PasaTolic@pnnl.gov",
       "processing_search": "TopPIC,TDPortal",
-      "protocols_io_doi": "10.17504/protocols.io.rm7vzy5e5lx1/v1",
+      "acquisition_protocol_doi": "10.17504/protocols.io.rm7vzy5e5lx1/v1",
       "resolution_x_unit": "um",
       "resolution_x_value": "300",
       "resolution_y_unit": "um",

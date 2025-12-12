@@ -59,7 +59,7 @@
     "analyte_class": "Protein",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Thermo Fisher Scientific",
-    "acquisition_instrument_model": "Orbitrap Fusion Lumos Tribrid",
+    "acquisition_instrument_model": "Orbitrap Fusion Tribrid",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -67,8 +67,8 @@
     "contributors_path": null,
     "data_path": "/Proteomics/",
     "ms_ionization_technique": "NanoSpray",
-    "ms_scan_mode": "MS/MS",
-    "mass_analysis_polarity": "Positive ion mode",
+    "ms_scan_mode": "MS2",
+    "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "100",
     "mass_to_charge_range_high_value": "2000",
     "mass_resolving_power": null,
@@ -78,13 +78,13 @@
     "label_name": null,
     "lc_instrument_vendor": "Thermo Fisher Scientific",
     "lc_instrument_model": "Easy NanoLC 1000",
-    "lc_column_vendor": "Self-packed",
+    "lc_column_vendor": "In-House",
     "lc_column_model": "Pulled tip",
     "lc_resin": "Waters bEH C18 (1.7 micron particle size, 130 angstrom pore size)",
     "lc_column_length_value": "35",
     "lc_column_length_unit": "cm",
     "lc_temperature_value": "60",
-    "lc_temperature_unit": "C",
+    "lc_temperature_unit": "celsius",
     "lc_inner_diameter_value": "100",
     "lc_inner_diameter_unit": "um",
     "lc_flow_rate_value": "400",
@@ -112,9 +112,9 @@
     {"op": "add", "path": "/lc_gradient_value", "value": "0-2 min: 2% b; 2-102min: 2-20% b; 102-122min: 20-32% b; 122-123min: 32-95% b; 123-127min: 95% b"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
-    {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
+    {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "60"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_resolving_power", "value": null},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "100"},
@@ -159,11 +159,12 @@
     {"op": "remove", "path": "/protocols_io_doi"},
     {"op": "remove", "path": "/section_prep_protocols_io_doi"},
     {"op": "remove", "path": "/tissue_id"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Orbitrap Fusion Lumos Tribrid"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"}
+    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -180,12 +181,13 @@
       "mz_range_low_value": "mass_to_charge_range_low_value",
       "polarity": "mass_analysis_polarity",
       "processing_protocols_io_doi": "analysis_protocol_doi",
+      "protocols_io_doi": "acquisition_protocol_doi",
       "section_prep_protocols_io_doi": "preparation_protocol_doi",
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
       "acquisition_instrument_model": {
-        "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid"
+        "Orbitrap Fusion Tribrid": "Orbitrap Fusion Tribrid"
       },
       "acquisition_instrument_vendor": {
         "Thermo Scientific": "Thermo Fisher Scientific"
@@ -202,8 +204,8 @@
       "lc_instrument_vendor": {
         "Thermo": "Thermo Fisher Scientific"
       },
-      "mass_analysis_polarity": {
-        "positive ion mode": "Positive ion mode"
+      "lc_temperature_unit": {
+        "C": "celsius"
       }
     },
     "ambiguous_mappings": [],
@@ -221,7 +223,7 @@
       "pi": "Jeffrey M. Spraggins",
       "pi_email": "jeff.spraggins@VANderbilt.edu",
       "processing_search": "MaxQuant",
-      "protocols_io_doi": "10.17504/protocols.io.bft3jnqn"
+      "acquisition_protocol_doi": "10.17504/protocols.io.bft3jnqn"
     }
   }
 }

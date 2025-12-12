@@ -44,6 +44,7 @@ spatial_sampling_technique,,,spatial_type,spatial_type
 spatial_sampling_target,,,spatial_target,spatial_target
 spatial_sampling_type,,,spatial_sampling_type,spatial_sampling_type
 analysis_protocol_doi,processing_protocols_io_doi,processing_protocols_io_doi,processing_protocols_io_doi,processing_protocols_io_doi
+acquisition_protocol_doi,protocols_io_doi,protocols_io_doi,protocols_io_doi,protocols_io_doi
 metadata_schema_id,,,,
 ,assay_category,assay_category,assay_category,assay_category
 ,,description,description,description
@@ -62,4 +63,5 @@ metadata_schema_id,,,,
 ,,,resolution_x_value,resolution_x_value
 ,,,resolution_y_unit,resolution_y_unit
 ,,,resolution_y_value,resolution_y_value
+
 ,,version,version,version

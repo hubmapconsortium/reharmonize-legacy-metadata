@@ -1,5 +1,8 @@
 {
   "lc_column_vendor": {
-    "EvoSep": "Evosep"
+    "EvoSep": "Evosep",
+    "Sapax": "Sepax Technologies",
+    "Self-packed": "In-House",
+    "self-packed": "In-House"
   }
 }

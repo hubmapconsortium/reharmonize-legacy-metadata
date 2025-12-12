@@ -3,23 +3,17 @@
     "MS/MS",
     "full MS (all samples), MS/MS on pool sample"
   ],
-  "ion_mobility": "",
-  "lc_column_vendor": [
-    "",
-    "Agilent Technologies",
-    "Millipore",
-    "Self-packed",
-    "Sepex",
-    "self-packed"
+  "mass_analysis_polarity": [
+    "negative and positive ion mode",
+    "negative ion mode",
+    "negative mode",
+    "positive and negative ion modes",
+    "positive ion mode",
+    "positive mode"
   ],
-  "lc_temperature_unit": [
-    "",
-    "C"
-  ],
-  "spatial_sampling_technique": "",
-  "spatial_sampling_type": "",
   "source_storage_duration_unit": "null",
   "source_storage_duration_value": "null",
+  "contributors_path": "null",
   "parent_sample_id": [
     "CALT0012-HT-2",
     "CALT0013-HT-1",
@@ -112,22 +106,24 @@
     "VAN0035-LK-5-1,VAN0035-LK-5-2,VAN0035-LK-5-3,VAN0035-LK-5-4,VAN0035-LK-5-5,VAN0035-LK-5-6,VAN0035-LK-5-7",
     "VAN0039-PA-1"
   ],
-  "lc_instrument_vendor": [
-    "Shimadzu",
-    "Waters "
+  "ion_mobility": "",
+  "spatial_sampling_technique": "",
+  "spatial_sampling_type": "",
+  "dataset_type": "FIA-MS",
+  "lc_instrument_vendor": "Shimadzu",
+  "lc_column_vendor": [
+    "",
+    "Waters;Sepax Technologies"
   ],
   "lc_column_length_unit": "",
+  "lc_temperature_unit": "",
   "lc_inner_diameter_unit": "",
   "lc_flow_rate_unit": "",
-  "contributors_path": "null",
+  "acquisition_instrument_model": "Orbitrap Fusion Tribrid",
   "ms_ionization_technique": "NanoSpray",
-  "data_collection_mode": [
-    "",
-    "DIa"
-  ],
+  "data_collection_mode": "DIa",
   "data_path": [
     "/",
     "/Proteomics/"
-  ],
-  "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System"
+  ]
 }

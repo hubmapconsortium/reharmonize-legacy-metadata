@@ -6,8 +6,95 @@
       ]
     },
     "then": {
-      "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System",
+      "lc_instrument_model": "UltiMate 3000 RSLCnano UHPLC System",
       "lc_instrument_vendor" : "Thermo Fisher Scientific"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf6bjran" },
+        { "acquisition_instrument_model" : "Orbitrap Lumos" }
+      ]
+    },
+    "then": {
+      "lc_instrument_model": "Waters; ACQUITY UPLC M-Class System with 2D Technology",
+      "lc_instrument_vendor": "Waters",
+      "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House",
+      "lc_column_vendor": "Waters;Sepax Technologies",
+      "lc_resin": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"
+    }
+  },
+{
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf4ujqww" },
+        { "acquisition_instrument_model": "Q Exactive" }
+      ]
+    },
+    "then": {
+      "lc_column_model": "Agilent Technologies; Zorbax SBaq column 2.1 x 50 mm, 1.7 μm, 100A"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf4ujqww" },
+        { "acquisition_instrument_model": "Q Exactive HF" }
+      ]
+    },
+    "then": {
+      "lc_column_model": "Millipore Sigma; SeQuant ZIC-HILIC 200A (3.5 µm) HPLC Columns; PN 1.50447",
+      "lc_column_vendor": "Millipore"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf4vjqw6" },
+        { "lc_instrument_model": "LC-30AD" }
+      ]
+    },
+    "then": {
+      "dataset_type": "FIA-MS",
+      "data_collection_mode": "DIA",
+      "ms_scan_mode": "MS2"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bft3jnqn" }
+      ]
+    },
+    "then": {
+      "ms_scan_mode": "MS2",
+      "lc_column_vendor": "In-House"
+    }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bf6bjran" },
+        { "acquisition_instrument_model": "Orbitrap Fusion Tribrid" } 
+      ]
+    },
+    "then": {
+      "Orbitrap Fusion Tribrid": "Orbitrap Fusion Lumos Tribrid",
+      "assay_type": "LC-MS"
+    }
+  },
+  {
+    "when": {
+      "__should__" : [
+        { "protocols_io_doi": "10.17504/protocols.io.bs7hnhj6" },
+        { "protocols_io_doi": "10.17504/protocols.io.bttnnnme" },
+        { "protocols_io_doi": "10.17504/protocols.io.261ge3pw7l47/v1" },
+        { "protocols_io_doi": "10.17504/protocols.io.rm7vzy5e5lx1/v1" }
+      ]
+    },
+    "then": {
+      "ms_scan_mode": "MS2"
     }
   }
 ]

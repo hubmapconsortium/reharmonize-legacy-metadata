@@ -71,7 +71,7 @@
     "analyte_class": "Protein",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Thermo Fisher Scientific",
-    "acquisition_instrument_model": "Dionex; UltiMate 3000 RSLCnano UHPLC System",
+    "acquisition_instrument_model": "Orbitrap Fusion Lumos Tribrid",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -79,8 +79,8 @@
     "contributors_path": "contributors.tsv",
     "data_path": "lcms",
     "ms_ionization_technique": "ESI",
-    "ms_scan_mode": "MS/MS",
-    "mass_analysis_polarity": "Positive ion mode",
+    "ms_scan_mode": "MS2",
+    "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "600",
     "mass_to_charge_range_high_value": "2000",
     "mass_resolving_power": "120000",
@@ -89,14 +89,14 @@
     "data_collection_mode": "DDA",
     "label_name": "",
     "lc_instrument_vendor": "Thermo Fisher Scientific",
-    "lc_instrument_model": "Ultimate 3000 RSLCnano system",
-    "lc_column_vendor": "Self-packed",
+    "lc_instrument_model": "UltiMate 3000 RSLCnano UHPLC System",
+    "lc_column_vendor": "In-House",
     "lc_column_model": "Pulled tip capillary",
     "lc_resin": "PLRP-S 5-micrometer particles (1,000-Angstrom-pore size; Agilent, cat. no. PL1912-1502)",
     "lc_column_length_value": "25",
     "lc_column_length_unit": "cm",
     "lc_temperature_value": "35",
-    "lc_temperature_unit": "C",
+    "lc_temperature_unit": "celsius",
     "lc_inner_diameter_value": "75",
     "lc_inner_diameter_unit": "um",
     "lc_flow_rate_value": "300",
@@ -121,9 +121,9 @@
     {"op": "add", "path": "/lc_gradient_value", "value": "0-10 min: 5% B; 10-13 min: 5-15% B; 13-70 min: 15-45% B; 70-72 min: 45-95% B; 72-76 min: 95% B; 76-80 min: 95-5% B; 80-90 min: 5% B"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
     {"op": "add", "path": "/lc_inner_diameter_value", "value": "75"},
-    {"op": "add", "path": "/lc_temperature_unit", "value": "C"},
+    {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
     {"op": "add", "path": "/lc_temperature_value", "value": "35"},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "600"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
@@ -173,11 +173,14 @@
     {"op": "remove", "path": "/spatial_type"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
-    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Dionex; UltiMate 3000 RSLCnano UHPLC System"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "Orbitrap Fusion Lumos Tribrid"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"}
+    {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
+    {"op": "replace", "path": "/lc_instrument_model", "value": "UltiMate 3000 RSLCnano UHPLC System"},
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"},
+    {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
     "field_mappings": {
@@ -195,12 +198,16 @@
       "mz_resolving_power": "mass_to_charge_resolving_power",
       "polarity": "mass_analysis_polarity",
       "processing_protocols_io_doi": "analysis_protocol_doi",
+      "protocols_io_doi": "acquisition_protocol_doi",
       "section_prep_protocols_io_doi": "preparation_protocol_doi",
       "spatial_target": "spatial_sampling_target",
       "spatial_type": "spatial_sampling_technique",
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
+      "acquisition_instrument_model": {
+        "Fusion Lumos": "Orbitrap Fusion Lumos Tribrid"
+      },
       "acquisition_instrument_vendor": {
         "Thermo Scientific": "Thermo Fisher Scientific"
       },
@@ -213,8 +220,11 @@
       "is_targeted": {
         "FALSE": "No"
       },
-      "mass_analysis_polarity": {
-        "positive ion mode": "Positive ion mode"
+      "lc_column_vendor": {
+        "Self-packed": "In-House"
+      },
+      "lc_temperature_unit": {
+        "C": "celsius"
       }
     },
     "ambiguous_mappings": [],
@@ -231,7 +241,7 @@
       "pi": "Neil Kelleher",
       "pi_email": "n-kelleher@northwestern.edu",
       "processing_search": "TD Portal v4.0",
-      "protocols_io_doi": "10.17504/protocols.io.bttnnnme",
+      "acquisition_protocol_doi": "10.17504/protocols.io.bttnnnme",
       "resolution_x_unit": "",
       "resolution_x_value": "",
       "resolution_y_unit": "",
