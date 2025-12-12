@@ -63,13 +63,13 @@
     "data_path": ".",
     "ms_ionization_technique": "MALDI",
     "ms_scan_mode": "MS",
-    "mass_analysis_polarity": "Positive ion mode",
+    "mass_analysis_polarity": "positive ion mode",
     "mass_to_charge_range_low_value": "150.0",
     "mass_to_charge_range_high_value": "2000.0",
     "mass_resolving_power": "40000.0",
     "mass_to_charge_resolving_power": "400.0",
-    "ion_mobility": "",
-    "matrix_deposition_method": "Sprayed matrix",
+    "ion_mobility": "TIMS",
+    "matrix_deposition_method": "Robotic spraying",
     "preparation_instrument_vendor": "HTX Technologies",
     "preparation_instrument_model": "M5 Sprayer",
     "preparation_matrix": "DAN (1,5-diaminonapthalene)",
@@ -80,11 +80,11 @@
     {"op": "add", "path": "/analysis_protocol_doi", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "MALDI"},
     {"op": "add", "path": "/lab_id", "value": null},
-    {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
+    {"op": "add", "path": "/mass_analysis_polarity", "value": "positive ion mode"},
     {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000.0"},
     {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "150.0"},
     {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "400.0"},
-    {"op": "add", "path": "/matrix_deposition_method", "value": "Sprayed matrix"},
+    {"op": "add", "path": "/matrix_deposition_method", "value": "Robotic spraying"},
     {"op": "add", "path": "/metadata_schema_id", "value": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "MALDI"},
     {"op": "add", "path": "/parent_sample_id", "value": "VAN0044-LK-1-46"},
@@ -126,6 +126,7 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "MALDI timsTOF Flex Prototype"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Bruker"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
+    {"op": "replace", "path": "/ion_mobility", "value": "TIMS"},
     {"op": "replace", "path": "/is_targeted", "value": "No"}
   ],
   "processing_log": {
@@ -157,9 +158,6 @@
       "is_targeted": {
         "False": "No"
       },
-      "mass_analysis_polarity": {
-        "positive ion mode": "Positive ion mode"
-      },
       "preparation_matrix": {
         "1,5-Diaminonapthalene": "DAN (1,5-diaminonapthalene)"
       }
@@ -172,14 +170,6 @@
           "MS1",
           "MS2",
           "MS3"
-        ]
-      },
-      {
-        "field": "matrix_deposition_method",
-        "value": "Sprayed matrix",
-        "permissible_values": [
-          "Electrospray deposition",
-          "Robotic spraying"
         ]
       }
     ],
