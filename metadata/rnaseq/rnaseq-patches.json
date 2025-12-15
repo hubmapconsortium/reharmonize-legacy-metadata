@@ -584,5 +584,16 @@
     "then": {
       "sequencing_reagent_kit": "HiSeq 2500 Reagent kit"
     }
+  },
+{
+    "when": {
+      "__should__" : [
+        { "rnaseq_assay_method": "Chromium Next GEM Single Cell 3' Kit v3.1, 4 rxns PN-1000269" },
+        { "rnaseq_assay_method": "Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3, 4 rxns PN-1000092" }
+      ]
+    },
+    "then": {
+      "barcode_read": "Read 1 (R1)"
+    }
   }
 ]
