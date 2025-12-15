@@ -587,9 +587,11 @@
   },
   {
     "when": {
-      "__should__" : [
-        { "library_construction_protocols_io_doi": "10.17504/protocols.io.bp2l6175rvqe/v1" },
-        { "library_construction_protocols_io_doi": "10.17504/protocols.io.e6nvwkw32vmk/v1" }
+      "__must__" : [
+        { "__should__": [
+          { "library_construction_protocols_io_doi": "10.17504/protocols.io.bp2l6175rvqe/v1" },
+          { "library_construction_protocols_io_doi": "10.17504/protocols.io.e6nvwkw32vmk/v1" }
+        ]}
       ]
     },
     "then": {
