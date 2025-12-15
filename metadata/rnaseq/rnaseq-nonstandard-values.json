@@ -11,14 +11,8 @@
     "NovaSeq 6000 SP Reagent",
     "S4"
   ],
-  "source_storage_duration_unit": "null",
-  "library_concentration_unit": "null",
   "sample_indexing_set": "null",
-  "source_storage_duration_value": "null",
-  "sample_indexing_kit": "null",
   "library_concentration_value": "null",
-  "library_input_amount_unit": "null",
-  "library_input_amount_value": "null",
   "library_preparation_kit": [
     "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
     "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
@@ -26,6 +20,12 @@
     "10x Genomics; Chromium Single Cell 3' Reagent Kits v3",
     "null"
   ],
+  "library_concentration_unit": "null",
+  "library_input_amount_unit": "null",
+  "sample_indexing_kit": "null",
+  "source_storage_duration_unit": "null",
+  "library_input_amount_value": "null",
+  "source_storage_duration_value": "null",
   "parent_sample_id": [
     "CALT0001-HT-2-2-1",
     "CALT0001-HT-2-2-2",
@@ -322,16 +322,9 @@
     "UFL0008-SP-1-1-1",
     "UFL0008-SP-1-1-2"
   ],
-  "preparation_instrument_kit": [
-    "10x Genomics; Chromium Next GEM Chip G Single Cell Kit",
-    "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
-    "10x Genomics; Chromium Single Cell A Chip Kit",
-    "10x Genomics; Chromium Single Cell B Chip Kit"
-  ],
-  "umi_offset": "null",
-  "contributors_path": "null",
-  "umi_size": "null",
   "umi_read": "null",
+  "umi_size": "null",
+  "umi_offset": "null",
   "barcode_offset": [
     "",
     "0,14",
@@ -351,7 +344,15 @@
     "02regMENISconHEAnm7_featurebcmatrixfiltered.tar",
     "03regVASCMEconHEAnm1_featurebcmatrixfiltered.tar"
   ],
+  "preparation_instrument_kit": [
+    "10x Genomics; Chromium Next GEM Chip G Single Cell Kit",
+    "10x Genomics; Chromium Next GEM Chip J Single Cell Kit",
+    "10x Genomics; Chromium Single Cell A Chip Kit",
+    "10x Genomics; Chromium Single Cell B Chip Kit"
+  ],
   "barcode_size": "10,10",
+  "contributors_path": "null",
+  "library_output_amount_unit": "",
   "is_technical_replicate": [
     "",
     "null"
@@ -360,9 +361,8 @@
     "",
     "null"
   ],
-  "library_output_amount_unit": "",
+  "library_average_fragment_size": "",
   "number_of_pcr_cycles_for_indexing": "",
-  "sequencing_read_format": "",
   "library_adapter_sequence": "",
-  "library_average_fragment_size": ""
+  "sequencing_read_format": ""
 }
