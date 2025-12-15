@@ -2,7 +2,7 @@
   {
     "group_name": "University of Florida TMC",
     "dataset_type": "Light Sheet",
-    "datasets_with_non_standard_values": 9,
+    "datasets_with_non_standard_values": 0,
     "datasets_with_missing_required_values": 9,
     "datasets_with_invalid_input_patterns": 9,
     "total_datasets_with_issues": 9
