@@ -54,7 +54,7 @@
     "analyte_class": "Lipid + metabolite",
     "is_targeted": "No",
     "acquisition_instrument_vendor": "Waters",
-    "acquisition_instrument_model": "Synapt G2-Si",
+    "acquisition_instrument_model": "SYNAPT G2-Si",
     "source_storage_duration_value": null,
     "source_storage_duration_unit": null,
     "time_since_acquisition_instrument_calibration_value": null,
@@ -129,6 +129,7 @@
     {"op": "remove", "path": "/section_prep_protocols_io_doi"},
     {"op": "remove", "path": "/tissue_id"},
     {"op": "remove", "path": "/version"},
+    {"op": "replace", "path": "/acquisition_instrument_model", "value": "SYNAPT G2-Si"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Waters"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid + metabolite"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
@@ -153,6 +154,9 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
+      "acquisition_instrument_model": {
+        "Synapt G2-Si": "SYNAPT G2-Si"
+      },
       "acquisition_instrument_vendor": {
         "Waters Corp.": "Waters"
       },

@@ -1,6 +1,7 @@
 {
-  "ion_mobility": "",
+  "ms_scan_mode": "MS",
   "preparation_matrix": "Not applicable",
+  "analysis_protocol_doi": "",
   "source_storage_duration_value": "null",
   "source_storage_duration_unit": "null",
   "parent_sample_id": [
@@ -17,8 +18,5 @@
     "VAN0037-RK-1-106",
     "VAN0040-LK-4-90"
   ],
-  "acquisition_instrument_vendor": "Waters",
-  "acquisition_instrument_model": "Synapt G2-Si",
-  "ms_scan_mode": "MS",
-  "analysis_protocol_doi": ""
+  "ion_mobility": ""
 }
