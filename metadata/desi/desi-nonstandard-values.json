@@ -1,8 +1,8 @@
 {
   "ms_scan_mode": "MS",
   "preparation_matrix": "Not applicable",
-  "analysis_protocol_doi": "",
   "source_storage_duration_value": "null",
+  "analysis_protocol_doi": "",
   "source_storage_duration_unit": "null",
   "parent_sample_id": [
     "CALT0013-HT-2",
