@@ -57,9 +57,9 @@
     "VAN0061-LK-2-21",
     "VAN0063-RK-1-41"
   ],
-  "mass_resolving_power": "null",
-  "contributors_path": "null",
   "mass_to_charge_resolving_power": "null",
+  "contributors_path": "null",
+  "mass_resolving_power": "null",
   "data_path": "/",
   "acquisition_instrument_model": "UHMR with Spectroglyph source",
   "ion_mobility": "",
