@@ -6,8 +6,8 @@
   "ion_mobility": "",
   "spatial_sampling_technique": "",
   "spatial_sampling_type": "",
-  "source_storage_duration_unit": "null",
   "source_storage_duration_value": "null",
+  "source_storage_duration_unit": "null",
   "parent_sample_id": [
     "CALT0012-HT-2",
     "CALT0013-HT-1",
