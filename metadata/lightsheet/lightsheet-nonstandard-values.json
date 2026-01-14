@@ -1,6 +1,6 @@
 {
-  "source_storage_duration_unit": "null",
   "source_storage_duration_value": "null",
+  "source_storage_duration_unit": "null",
   "is_image_preprocessing_required": "null",
   "parent_sample_id": [
     "UFL0002-TH-1-4-1",
