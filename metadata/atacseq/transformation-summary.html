@@ -141,17 +141,33 @@
 
         .field-mappings-container th {
             position: sticky;
-            top: 0;
             z-index: 1;
+        }
+
+        .field-mappings-container .parent-header {
+            top: 0;
+            z-index: 3;
+        }
+
+        .field-mappings-container thead tr:nth-child(2) th {
+            top: 45px;
+            z-index: 2;
         }
 
         .field-mappings-container .target-header {
             position: sticky;
             right: 0;
-            top: 0;
-            z-index: 2;
+            top: 45px;
+            z-index: 4;
             background-color: var(--hubmap-dark);
             box-shadow: -4px 0 8px rgba(0,0,0,0.15);
+        }
+
+        .field-mappings-container .target-header.parent {
+            top: 0;
+            z-index: 5;
+            background-color: var(--hubmap-dark);
+            color: white;
         }
 
         .field-mappings-container .target-cell {
@@ -168,6 +184,20 @@
 
         .field-mappings-container tr:hover .target-cell {
             background-color: #c8cad0;
+        }
+
+        .parent-header {
+            background-color: var(--hubmap-primary);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 10px;
+            border: 1px solid var(--hubmap-dark);
+            font-size: 15px;
+        }
+
+        .parent-header.legacy {
+            border-right: 2px solid var(--hubmap-dark);
         }
 
         .empty-cell {
@@ -292,7 +322,7 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">55</div>
+            <div class="stat-number">54</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
@@ -311,6 +341,10 @@
         <div class="field-mappings-container">
             <table>
                 <thead>
+                    <tr>
+                        <th class="parent-header legacy" colspan="4">Legacy Schema</th>
+                        <th class="parent-header target-header parent">New Schema</th>
+                    </tr>
                     <tr>
                         
                         <th>Bulk ATACseq (v0)</th>
@@ -1397,12 +1431,6 @@
                         <td><code>acquisition_instrument_model</code></td>
                         <td><code>Novaseq6022</code></td>
                         <td><code>NovaSeq 6000</code></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><code>dataset_type</code></td>
-                        <td><code>SNARE-seq2</code></td>
-                        <td><code>ATACseq</code></td>
                     </tr>
                     
                     <tr>

@@ -190,9 +190,6 @@
       "transposition_kit_number": "transposition_reagent_kit"
     },
     "value_mappings": {
-      "dataset_type": {
-        "SNARE-seq2": "ATACseq"
-      },
       "is_targeted": {
         "False": "No"
       },
