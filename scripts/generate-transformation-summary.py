@@ -297,17 +297,33 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         .field-mappings-container th {
             position: sticky;
-            top: 0;
             z-index: 1;
+        }
+
+        .field-mappings-container .parent-header {
+            top: 0;
+            z-index: 3;
+        }
+
+        .field-mappings-container thead tr:nth-child(2) th {
+            top: 45px;
+            z-index: 2;
         }
 
         .field-mappings-container .target-header {
             position: sticky;
             right: 0;
-            top: 0;
-            z-index: 2;
+            top: 45px;
+            z-index: 4;
             background-color: var(--hubmap-dark);
             box-shadow: -4px 0 8px rgba(0,0,0,0.15);
+        }
+
+        .field-mappings-container .target-header.parent {
+            top: 0;
+            z-index: 5;
+            background-color: var(--hubmap-dark);
+            color: white;
         }
 
         .field-mappings-container .target-cell {
@@ -324,6 +340,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         .field-mappings-container tr:hover .target-cell {
             background-color: #c8cad0;
+        }
+
+        .parent-header {
+            background-color: var(--hubmap-primary);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 10px;
+            border: 1px solid var(--hubmap-dark);
+            font-size: 15px;
+        }
+
+        .parent-header.legacy {
+            border-right: 2px solid var(--hubmap-dark);
         }
 
         .empty-cell {
@@ -467,6 +497,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="field-mappings-container">
             <table>
                 <thead>
+                    <tr>
+                        <th class="parent-header legacy" colspan="{{ field_mapping_headers|length - 1 }}">Legacy Schema</th>
+                        <th class="parent-header target-header parent">New Schema</th>
+                    </tr>
                     <tr>
                         {% for header in field_mapping_headers[1:] %}
                         <th>{{ header }}</th>
