@@ -1,12 +1,12 @@
 {
-  "total_run_time_unit": "null",
-  "antibodies_path": "null",
-  "source_storage_duration_unit": "null",
-  "source_storage_duration_value": "null",
-  "total_run_time_value": "null",
   "number_of_antibodies": "null",
+  "total_run_time_value": "null",
   "contributors_path": "null",
   "slide_id": "null",
+  "total_run_time_unit": "null",
+  "source_storage_duration_unit": "null",
+  "source_storage_duration_value": "null",
+  "antibodies_path": "null",
   "parent_sample_id": [
     "UFL0001-LY08-1-1",
     "UFL0001-SP-3-8-1",
