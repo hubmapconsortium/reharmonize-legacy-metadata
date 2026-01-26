@@ -50,11 +50,11 @@
     "time_since_acquisition_instrument_calibration_unit": "",
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
-    "is_image_preprocessing_required": "No",
+    "is_image_preprocessing_required": "Yes",
     "stain_name": "PAS",
-    "stain_technique": "Not applicable",
+    "stain_technique": "Progressive staining",
     "is_batch_staining_done": "Yes",
-    "is_staining_automated": "No",
+    "is_staining_automated": "Not applicable",
     "preparation_instrument_vendor": "Not applicable",
     "preparation_instrument_model": "Not applicable",
     "slide_id": "VAN0042-RK-3-16",
@@ -67,7 +67,10 @@
     "metadata_schema_id": "907d89c7-6cf4-4ec6-9edd-63cf0441d689"
   },
   "json_patch": [
-    {"op": "replace", "path": "/analyte_class", "value": "Polysaccharide"}
+    {"op": "replace", "path": "/analyte_class", "value": "Polysaccharide"},
+    {"op": "replace", "path": "/is_image_preprocessing_required", "value": "Yes"},
+    {"op": "replace", "path": "/is_staining_automated", "value": "Not applicable"},
+    {"op": "replace", "path": "/stain_technique", "value": "Progressive staining"}
   ],
   "processing_log": {
     "field_mappings": {},

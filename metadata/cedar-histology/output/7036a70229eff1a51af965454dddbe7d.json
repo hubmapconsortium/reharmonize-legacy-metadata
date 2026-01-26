@@ -54,7 +54,7 @@
     "stain_name": "H&E",
     "stain_technique": "Progressive staining",
     "is_batch_staining_done": "No",
-    "is_staining_automated": "No",
+    "is_staining_automated": "Not applicable",
     "preparation_instrument_vendor": "Not applicable",
     "preparation_instrument_model": "Not applicable",
     "slide_id": "D115-RLL-10A3-38",
@@ -67,7 +67,8 @@
     "metadata_schema_id": "907d89c7-6cf4-4ec6-9edd-63cf0441d689"
   },
   "json_patch": [
-    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"}
+    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"},
+    {"op": "replace", "path": "/is_staining_automated", "value": "Not applicable"}
   ],
   "processing_log": {
     "field_mappings": {},
