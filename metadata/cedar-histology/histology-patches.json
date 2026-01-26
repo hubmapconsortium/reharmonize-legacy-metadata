@@ -10,6 +10,7 @@
       "preparation_instrument_vendor": "Not applicable"
     }
   },
+  {
     "when": {
       "__should__" : [
         { "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.be8qjhvw" },
