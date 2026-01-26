@@ -54,7 +54,7 @@
     "stain_name": "PAS",
     "stain_technique": "Progressive staining",
     "is_batch_staining_done": "Yes",
-    "is_staining_automated": "Not applicable",
+    "is_staining_automated": "No",
     "preparation_instrument_vendor": "Not applicable",
     "preparation_instrument_model": "Not applicable",
     "slide_id": "VAN0042-RK-3-19",
@@ -69,7 +69,6 @@
   "json_patch": [
     {"op": "replace", "path": "/analyte_class", "value": "Polysaccharide"},
     {"op": "replace", "path": "/is_image_preprocessing_required", "value": "Yes"},
-    {"op": "replace", "path": "/is_staining_automated", "value": "Not applicable"},
     {"op": "replace", "path": "/stain_technique", "value": "Progressive staining"}
   ],
   "processing_log": {

@@ -54,9 +54,9 @@
     "stain_name": "H&E",
     "stain_technique": "Progressive staining",
     "is_batch_staining_done": "No",
-    "is_staining_automated": "Not applicable",
+    "is_staining_automated": "No",
     "preparation_instrument_vendor": "Not applicable",
-    "preparation_instrument_model": "",
+    "preparation_instrument_model": "Not applicable",
     "slide_id": "",
     "tile_configuration": "",
     "scan_direction": "",
@@ -69,7 +69,7 @@
   "json_patch": [
     {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"},
     {"op": "replace", "path": "/is_image_preprocessing_required", "value": "Yes"},
-    {"op": "replace", "path": "/is_staining_automated", "value": "Not applicable"},
+    {"op": "replace", "path": "/preparation_instrument_model", "value": "Not applicable"},
     {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Not applicable"},
     {"op": "replace", "path": "/stain_technique", "value": "Progressive staining"}
   ],

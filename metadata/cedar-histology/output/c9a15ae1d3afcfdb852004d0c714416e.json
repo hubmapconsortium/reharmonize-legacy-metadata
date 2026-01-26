@@ -42,9 +42,9 @@
     "stain_name": "PAS",
     "stain_technique": null,
     "is_batch_staining_done": "No",
-    "is_staining_automated": "Not applicable",
+    "is_staining_automated": "No",
     "preparation_instrument_vendor": "Not applicable",
-    "preparation_instrument_model": null,
+    "preparation_instrument_model": "Not applicable",
     "slide_id": null,
     "tile_configuration": null,
     "scan_direction": null,
@@ -57,7 +57,7 @@
   "json_patch": [
     {"op": "add", "path": "/intended_tile_overlap_percentage", "value": null},
     {"op": "add", "path": "/non_global_files", "value": null},
-    {"op": "add", "path": "/preparation_instrument_model", "value": null},
+    {"op": "add", "path": "/preparation_instrument_model", "value": "Not applicable"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "Not applicable"},
     {"op": "add", "path": "/scan_direction", "value": null},
     {"op": "add", "path": "/slide_id", "value": null},
@@ -67,8 +67,7 @@
     {"op": "add", "path": "/tiled_image_count", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_value", "value": null},
-    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"},
-    {"op": "replace", "path": "/is_staining_automated", "value": "Not applicable"}
+    {"op": "replace", "path": "/analyte_class", "value": "Nucleic acid + protein"}
   ],
   "processing_log": {
     "field_mappings": {},
