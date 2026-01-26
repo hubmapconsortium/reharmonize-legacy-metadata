@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "AxioScan.Z1" }
+      ]
+    },
+    "then": {
+      "is_image_preprocessing_required": "Yes",
+      "tile_configuration": ""
+      "tiled_image_columns": ""
+      "tiled_image_count": ""
+      "intended_tile_overlap_percentage": ""
+    }
+  }
+]
