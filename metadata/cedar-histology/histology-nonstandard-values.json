@@ -1,9 +1,8 @@
 {
-  "preparation_instrument_vendor": "",
+  "time_since_acquisition_instrument_calibration_unit": "",
+  "is_staining_automated": "Not applicable",
   "preparation_instrument_model": "",
   "tile_configuration": "",
   "scan_direction": "",
-  "time_since_acquisition_instrument_calibration_unit": "",
-  "stain_technique": "",
-  "is_image_preprocessing_required": ""
+  "preparation_instrument_vendor": ""
 }
