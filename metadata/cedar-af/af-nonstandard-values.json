@@ -1,6 +1,6 @@
 {
   "time_since_acquisition_instrument_calibration_unit": "",
-  "scan_direction": "",
   "is_image_preprocessing_required": "",
-  "tile_configuration": ""
+  "tile_configuration": "",
+  "scan_direction": ""
 }
