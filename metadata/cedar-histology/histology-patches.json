@@ -6,7 +6,7 @@
       ]
     },
     "then": {
-      "is_staining_automated": "Not applicable",
+      "preparation_instrument_model": "Not applicable",
       "preparation_instrument_vendor": "Not applicable"
     }
   },
