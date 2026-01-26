@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "is_staining_automated": "No" }
+      ]
+    },
+    "then": {
+      "is_staining_automated": "Not applicable",
+      "preparation_instrument_vendor": "Not applicable"
+    }
+  },
+    "when": {
+      "__should__" : [
+        { "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.be8qjhvw" },
+        { "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.x54v98nkzl3e/v3" },
+        { "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.x54v9yw4pg3e/v1" },
+        { "preparation_protocol_doi": "https://protocols.io/private/8DA69578804511EA88340242AC110006" }
+      ]
+    },
+    "then": {
+      "stain_technique": "Progressive staining",
+      "is_image_preprocessing_required": "Yes"
+    }
+  }
+]
