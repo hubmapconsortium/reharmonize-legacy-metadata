@@ -2,7 +2,7 @@
   {
     "when": {
       "__must__" : [
-        { "library_preparation_kit": "custom" }
+        { "library_preparation_kit": "Custom" }
       ]
     },
     "then": {
