@@ -99,12 +99,15 @@
     "sequencing_read_format": "101,10,24,101",
     "sequencing_batch_id": "230314_A01535_0285_BHVVW3DSX5",
     "capture_batch_id": "",
-    "preparation_instrument_vendor": "",
-    "preparation_instrument_model": "",
-    "preparation_instrument_kit": "",
+    "preparation_instrument_vendor": "Not applicable",
+    "preparation_instrument_model": "Custom",
+    "preparation_instrument_kit": "Custom",
     "metadata_schema_id": "944e5fa0-f68b-4bdd-8664-74a3909429a9"
   },
   "json_patch": [
+    {"op": "replace", "path": "/preparation_instrument_kit", "value": "Custom"},
+    {"op": "replace", "path": "/preparation_instrument_model", "value": "Custom"},
+    {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Not applicable"}
   ],
   "processing_log": {
     "field_mappings": {},
