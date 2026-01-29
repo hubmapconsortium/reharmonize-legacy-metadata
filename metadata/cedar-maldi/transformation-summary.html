@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALDI - Metadata Transformation Summary</title>
+    <title>MALDI (CEDAR) - Metadata Transformation Summary</title>
     <style>
         :root {
             --hubmap-primary: #444A65;
@@ -141,17 +141,33 @@
 
         .field-mappings-container th {
             position: sticky;
-            top: 0;
             z-index: 1;
+        }
+
+        .field-mappings-container .parent-header {
+            top: 0;
+            z-index: 3;
+        }
+
+        .field-mappings-container thead tr:nth-child(2) th {
+            top: 45px;
+            z-index: 2;
         }
 
         .field-mappings-container .target-header {
             position: sticky;
             right: 0;
-            top: 0;
-            z-index: 2;
+            top: 45px;
+            z-index: 4;
             background-color: var(--hubmap-dark);
             box-shadow: -4px 0 8px rgba(0,0,0,0.15);
+        }
+
+        .field-mappings-container .target-header.parent {
+            top: 0;
+            z-index: 5;
+            background-color: var(--hubmap-dark);
+            color: white;
         }
 
         .field-mappings-container .target-cell {
@@ -168,6 +184,20 @@
 
         .field-mappings-container tr:hover .target-cell {
             background-color: #c8cad0;
+        }
+
+        .parent-header {
+            background-color: var(--hubmap-primary);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 10px;
+            border: 1px solid var(--hubmap-dark);
+            font-size: 15px;
+        }
+
+        .parent-header.legacy {
+            border-right: 2px solid var(--hubmap-dark);
         }
 
         .empty-cell {
@@ -284,7 +314,7 @@
     </header>
 
     <div class="main-content">
-        <h1>MALDI - Metadata Transformation Summary</h1>
+        <h1>MALDI (CEDAR) - Metadata Transformation Summary</h1>
 
         <div class="summary-stats">
         <a href="#field-mappings" class="stat-box">
@@ -296,13 +326,13 @@
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
-            <div class="stat-number">0</div>
+            <div class="stat-number">1</div>
             <div class="stat-label">Conditional Patches</div>
         </a>
     </div>
 
     <div class="intro">
-        <p>This report documents the transformation rules applied to convert legacy MALDI metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
+        <p>This report documents the transformation rules applied to convert legacy MALDI (CEDAR) metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
     </div>
 
     <div class="section" id="field-mappings">
@@ -311,6 +341,10 @@
         <div class="field-mappings-container">
             <table>
                 <thead>
+                    <tr>
+                        <th class="parent-header legacy" colspan="1">Legacy Schema</th>
+                        <th class="parent-header target-header parent">New Schema</th>
+                    </tr>
                     <tr>
                         
                         <th>MALDI (v1.0.0-CEDAR)</th>
@@ -544,6 +578,11 @@
         <h2>3. Conditional Patches</h2>
         <p>Rule-based transformations applied when specific conditions are met.</p>
         <ul class="patch-list">
+            
+            <li class="patch-item">
+                <span class="patch-number">#1</span>
+                When the acquisition instrument model is '<code>MALDI timsTOF Flex Prototype</code>': <span class='patch-action'>Sets</span> ion mobility as '<code>TIMS</code>', preparation instrument model as '<code>Custom</code>'.
+            </li>
             
         </ul>
     </div>
