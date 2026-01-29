@@ -1,5 +1,6 @@
 {
   "time_since_acquisition_instrument_calibration_unit": "",
+  "barcode_size": "14-17,14,14",
   "amount_of_input_analyte_unit": "",
   "preparation_instrument_vendor": "",
   "preparation_instrument_model": "",
