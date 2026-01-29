@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "library_preparation_kit": "custom" }
+      ]
+    },
+    "then": {
+      "preparation_instrument_vendor": "Not applicable",
+      "preparation_instrument_model": "Custom",
+      "preparation_instrument_kit": "Custom",
+    }
+  }
+]
