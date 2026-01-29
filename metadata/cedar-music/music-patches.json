@@ -8,5 +8,17 @@
     "then": {
       "barcode_size": "14"
     }
+  },
+  {
+    "when": {
+      "__must__" : [
+        { "dataset_type": "MUSIC" }
+      ]
+    },
+    "then": {
+      "preparation_instrument_vendor": "10x Genomics",
+      "preparation_instrument_model": "Chromium Controller",
+      "preparation_instrument_kit": "10x Genomics; Chromium Next GEM Chip G Single Cell Kit",
+    }
   }
 ]
