@@ -2,9 +2,9 @@
   {
     "group_name": "Vanderbilt TMC",
     "dataset_type": "MALDI",
-    "datasets_with_non_standard_values": 3,
+    "datasets_with_non_standard_values": 0,
     "datasets_with_missing_required_values": 0,
     "datasets_with_invalid_input_patterns": 0,
-    "total_datasets_with_issues": 3
+    "total_datasets_with_issues": 0
   }
 ]
