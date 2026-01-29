@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "when": {
+      "__must__" : [
+        { "acquisition_instrument_model": "MALDI timsTOF Flex Prototype" }
+      ]
+    },
+    "then": {
+      "ion_mobility": "TIMS",
+      "preparation_instrument_model": "Custom"
+    }
+  }
+]
