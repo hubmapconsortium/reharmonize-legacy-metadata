@@ -69,7 +69,7 @@
     "data_path": ".",
     "barcode_offset": "0,20-23,41-44",
     "barcode_read": "Read 2 (R2)",
-    "barcode_size": "14",
+    "barcode_size": "14-17,14,14",
     "umi_offset": "16",
     "umi_read": "Read 1 (R1)",
     "umi_size": "12",
@@ -101,7 +101,6 @@
     "metadata_schema_id": "5efe0d51-828c-457a-9b94-2ac8090fe14f"
   },
   "json_patch": [
-    {"op": "replace", "path": "/barcode_size", "value": "14"}
   ],
   "processing_log": {
     "field_mappings": {},
