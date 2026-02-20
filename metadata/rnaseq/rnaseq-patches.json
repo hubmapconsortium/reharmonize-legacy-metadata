@@ -477,7 +477,8 @@
       ]
     },
     "then": {
-      "rnaseq_assay_method": "SNARE-Seq2-RNA"
+      "library_preparation_kit": "Custom",
+      "sample_indexing_kit": "Custom"
     }
   },
   {
