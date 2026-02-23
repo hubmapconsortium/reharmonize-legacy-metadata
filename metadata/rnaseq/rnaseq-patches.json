@@ -471,7 +471,7 @@
   },
   {
     "when": {
-      "__must__" : [
+      "__should__" : [
         { "assay_type": "SNARE2-RNAseq" },
         { "rnaseq_assay_method": "SNARE2-RNAseq-RNA" }
       ]
