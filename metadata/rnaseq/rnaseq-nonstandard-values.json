@@ -11,13 +11,13 @@
     "NovaSeq 6000 SP Reagent",
     "S4"
   ],
-  "library_concentration_unit": "null",
-  "sample_indexing_set": "null",
-  "library_input_amount_unit": "null",
   "source_storage_duration_unit": "null",
-  "source_storage_duration_value": "null",
+  "sample_indexing_set": "null",
   "library_input_amount_value": "null",
   "library_concentration_value": "null",
+  "source_storage_duration_value": "null",
+  "library_input_amount_unit": "null",
+  "library_concentration_unit": "null",
   "parent_sample_id": [
     "CALT0001-HT-2-2-1",
     "CALT0001-HT-2-2-2",
@@ -320,7 +320,6 @@
     "1"
   ],
   "barcode_size": "10,10",
-  "sample_indexing_kit": "null",
   "library_preparation_kit": [
     "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
     "10x Genomics; Chromium Single Cell 3' GEM, Library & Gel Bead Kit v3",
@@ -328,9 +327,10 @@
     "10x Genomics; Chromium Single Cell 3' Reagent Kits v3",
     "null"
   ],
-  "umi_read": "null",
+  "sample_indexing_kit": "null",
   "umi_size": "null",
   "umi_offset": "null",
+  "umi_read": "null",
   "barcode_read": [
     "01regCARTIconHEAnm4_featurebcmatrixfiltered.tar",
     "01regCARTIconHEAnm5_featurebcmatrixfiltered.tar",
@@ -358,8 +358,8 @@
     "null"
   ],
   "library_output_amount_unit": "",
-  "library_adapter_sequence": "",
-  "sequencing_read_format": "",
+  "number_of_pcr_cycles_for_indexing": "null",
   "library_average_fragment_size": "",
-  "number_of_pcr_cycles_for_indexing": "null"
+  "sequencing_read_format": "",
+  "library_adapter_sequence": ""
 }
