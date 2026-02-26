@@ -38,7 +38,7 @@
   "modified_metadata": {
     "parent_sample_id": "CALT0001-HT-2-4-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.3byl4bwmzvo5/v1",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.3byl4bwmzvo5/v1",
     "dataset_type": "Cell DIVE",
     "analyte_class": "Protein",
     "is_targeted": "Yes",
@@ -51,10 +51,10 @@
     "contributors_path": "extras/ge_contributors.tsv",
     "data_path": ".",
     "antibodies_path": "extras/ge_antibodies.tsv",
-    "number_of_antibodies": "5",
-    "number_of_channels": "3",
-    "number_of_biomarker_imaging_rounds": "2",
-    "number_of_total_imaging_rounds": "4",
+    "number_of_antibodies": 5,
+    "number_of_channels": 3,
+    "number_of_biomarker_imaging_rounds": 2,
+    "number_of_total_imaging_rounds": 4,
     "slide_id": null,
     "cell_boundary_marker_or_stain": null,
     "nuclear_marker_or_stain": "DAPI",
@@ -66,10 +66,10 @@
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "6f9eee7b-7ef1-4f32-a34e-706bbbbb09bf"},
     {"op": "add", "path": "/nuclear_marker_or_stain", "value": "DAPI"},
-    {"op": "add", "path": "/number_of_biomarker_imaging_rounds", "value": "2"},
-    {"op": "add", "path": "/number_of_total_imaging_rounds", "value": "4"},
+    {"op": "add", "path": "/number_of_biomarker_imaging_rounds", "value": 2},
+    {"op": "add", "path": "/number_of_total_imaging_rounds", "value": 4},
     {"op": "add", "path": "/parent_sample_id", "value": "CALT0001-HT-2-4-1"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.3byl4bwmzvo5/v1"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.3byl4bwmzvo5/v1"},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
@@ -98,7 +98,9 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "Cell DIVE"},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Leica Microsystems"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
+    {"op": "replace", "path": "/number_of_antibodies", "value": 5},
+    {"op": "replace", "path": "/number_of_channels", "value": 3}
   ],
   "processing_log": {
     "field_mappings": {
@@ -117,6 +119,21 @@
       },
       "is_targeted": {
         "True": "Yes"
+      },
+      "number_of_antibodies": {
+        "5": 5
+      },
+      "number_of_channels": {
+        "3": 3
+      },
+      "number_of_biomarker_imaging_rounds": {
+        "2": 2
+      },
+      "number_of_total_imaging_rounds": {
+        "4": 4
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.3byl4bwmzvo5/v1": "https://dx.doi.org/10.17504/protocols.io.3byl4bwmzvo5/v1"
       }
     },
     "ambiguous_mappings": [],
