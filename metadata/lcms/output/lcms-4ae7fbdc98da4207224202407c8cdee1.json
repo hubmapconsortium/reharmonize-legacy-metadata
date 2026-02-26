@@ -66,7 +66,7 @@
   "modified_metadata": {
     "parent_sample_id": "STAN0007-LI-4-2",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.bf4tjqwn",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bf4tjqwn",
     "dataset_type": "LC-MS",
     "analyte_class": "Lipid",
     "is_targeted": "Yes",
@@ -81,10 +81,10 @@
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS2",
     "mass_analysis_polarity": "Negative and positive ion mode",
-    "mass_to_charge_range_low_value": "50",
-    "mass_to_charge_range_high_value": "1250",
-    "mass_resolving_power": "",
-    "mass_to_charge_resolving_power": "",
+    "mass_to_charge_range_low_value": 50,
+    "mass_to_charge_range_high_value": 1250,
+    "mass_resolving_power": null,
+    "mass_to_charge_resolving_power": null,
     "ion_mobility": "",
     "data_collection_mode": "DIA",
     "label_name": "",
@@ -93,13 +93,13 @@
     "lc_column_vendor": "",
     "lc_column_model": "",
     "lc_resin": "",
-    "lc_column_length_value": "",
+    "lc_column_length_value": null,
     "lc_column_length_unit": "",
-    "lc_temperature_value": "",
+    "lc_temperature_value": null,
     "lc_temperature_unit": "",
-    "lc_inner_diameter_value": "",
+    "lc_inner_diameter_value": null,
     "lc_inner_diameter_unit": "",
-    "lc_flow_rate_value": "",
+    "lc_flow_rate_value": null,
     "lc_flow_rate_unit": "",
     "lc_gradient_value": "",
     "lc_gradient_unit": null,
@@ -108,29 +108,29 @@
     "spatial_sampling_technique": "",
     "spatial_sampling_target": "",
     "spatial_sampling_type": "",
-    "analysis_protocol_doi": "10.17504/protocols.io.bf4xjqxn",
+    "analysis_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bf4xjqxn",
     "metadata_schema_id": "ef090376-4e19-43cb-92c1-91a1d758ee6e"
   },
   "json_patch": [
-    {"op": "add", "path": "/analysis_protocol_doi", "value": "10.17504/protocols.io.bf4xjqxn"},
+    {"op": "add", "path": "/analysis_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bf4xjqxn"},
     {"op": "add", "path": "/dataset_type", "value": "LC-MS"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/lc_column_length_unit", "value": ""},
-    {"op": "add", "path": "/lc_column_length_value", "value": ""},
+    {"op": "add", "path": "/lc_column_length_value", "value": null},
     {"op": "add", "path": "/lc_gradient_unit", "value": null},
     {"op": "add", "path": "/lc_gradient_value", "value": ""},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": ""},
-    {"op": "add", "path": "/lc_inner_diameter_value", "value": ""},
+    {"op": "add", "path": "/lc_inner_diameter_value", "value": null},
     {"op": "add", "path": "/lc_temperature_unit", "value": ""},
-    {"op": "add", "path": "/lc_temperature_value", "value": ""},
+    {"op": "add", "path": "/lc_temperature_value", "value": null},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "Negative and positive ion mode"},
-    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1250"},
-    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "50"},
-    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": ""},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": 1250},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": 50},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "ef090376-4e19-43cb-92c1-91a1d758ee6e"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "ESI"},
     {"op": "add", "path": "/parent_sample_id", "value": "STAN0007-LI-4-2"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bf4tjqwn"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bf4tjqwn"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/spatial_sampling_target", "value": ""},
@@ -175,6 +175,8 @@
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
+    {"op": "replace", "path": "/lc_flow_rate_value", "value": null},
+    {"op": "replace", "path": "/mass_resolving_power", "value": null},
     {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
@@ -206,8 +208,38 @@
       "is_targeted": {
         "True": "Yes"
       },
+      "lc_flow_rate_value": {
+        "": null
+      },
+      "lc_inner_diameter_value": {
+        "": null
+      },
+      "lc_column_length_value": {
+        "": null
+      },
+      "lc_temperature_value": {
+        "": null
+      },
+      "mass_resolving_power": {
+        "": null
+      },
+      "mass_to_charge_range_high_value": {
+        "1250": 1250
+      },
+      "mass_to_charge_range_low_value": {
+        "50": 50
+      },
+      "mass_to_charge_resolving_power": {
+        "": null
+      },
       "mass_analysis_polarity": {
         "negative and positive ion mode": "Negative and positive ion mode"
+      },
+      "analysis_protocol_doi": {
+        "10.17504/protocols.io.bf4xjqxn": "https://dx.doi.org/10.17504/protocols.io.bf4xjqxn"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.bf4tjqwn": "https://dx.doi.org/10.17504/protocols.io.bf4tjqwn"
       }
     },
     "ambiguous_mappings": [],

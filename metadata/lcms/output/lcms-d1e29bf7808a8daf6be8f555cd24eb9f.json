@@ -66,7 +66,7 @@
   "modified_metadata": {
     "parent_sample_id": "UCSD0015-RL-8",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.b5qxq5xn",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.b5qxq5xn",
     "dataset_type": "LC-MS",
     "analyte_class": "Protein",
     "is_targeted": "No",
@@ -81,10 +81,10 @@
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS/MS",
     "mass_analysis_polarity": "Positive ion mode",
-    "mass_to_charge_range_low_value": "600",
-    "mass_to_charge_range_high_value": "2000",
-    "mass_resolving_power": "120000",
-    "mass_to_charge_resolving_power": "200",
+    "mass_to_charge_range_low_value": 600,
+    "mass_to_charge_range_high_value": 2000,
+    "mass_resolving_power": 120000,
+    "mass_to_charge_resolving_power": 200,
     "ion_mobility": "",
     "data_collection_mode": "DDA",
     "label_name": "",
@@ -93,13 +93,13 @@
     "lc_column_vendor": "In-House",
     "lc_column_model": "Pulled tip capillary",
     "lc_resin": "PLRP-S 5-micrometer particles (1,000-Angstrom-pore size; Agilent, cat. no. PL1912-1502)",
-    "lc_column_length_value": "25",
+    "lc_column_length_value": 25,
     "lc_column_length_unit": "cm",
-    "lc_temperature_value": "35",
+    "lc_temperature_value": 35,
     "lc_temperature_unit": "celsius",
-    "lc_inner_diameter_value": "75",
+    "lc_inner_diameter_value": 75,
     "lc_inner_diameter_unit": "um",
-    "lc_flow_rate_value": "300",
+    "lc_flow_rate_value": 300,
     "lc_flow_rate_unit": "nL/min",
     "lc_gradient_value": "0-10 min: 5% B; 10-13 min: 5-15% B; 13-70 min: 15-45% B; 70-72 min: 45-95% B; 72-76 min: 95% B; 76-80 min: 95-5% B; 80-90 min: 5% B",
     "lc_gradient_unit": null,
@@ -108,29 +108,29 @@
     "spatial_sampling_technique": "",
     "spatial_sampling_target": "",
     "spatial_sampling_type": "",
-    "analysis_protocol_doi": "10.17504/protocols.io.bnicmcaw",
+    "analysis_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bnicmcaw",
     "metadata_schema_id": "ef090376-4e19-43cb-92c1-91a1d758ee6e"
   },
   "json_patch": [
-    {"op": "add", "path": "/analysis_protocol_doi", "value": "10.17504/protocols.io.bnicmcaw"},
+    {"op": "add", "path": "/analysis_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bnicmcaw"},
     {"op": "add", "path": "/dataset_type", "value": "LC-MS"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/lc_column_length_unit", "value": "cm"},
-    {"op": "add", "path": "/lc_column_length_value", "value": "25"},
+    {"op": "add", "path": "/lc_column_length_value", "value": 25},
     {"op": "add", "path": "/lc_gradient_unit", "value": null},
     {"op": "add", "path": "/lc_gradient_value", "value": "0-10 min: 5% B; 10-13 min: 5-15% B; 13-70 min: 15-45% B; 70-72 min: 45-95% B; 72-76 min: 95% B; 76-80 min: 95-5% B; 80-90 min: 5% B"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
-    {"op": "add", "path": "/lc_inner_diameter_value", "value": "75"},
+    {"op": "add", "path": "/lc_inner_diameter_value", "value": 75},
     {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
-    {"op": "add", "path": "/lc_temperature_value", "value": "35"},
+    {"op": "add", "path": "/lc_temperature_value", "value": 35},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
-    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000"},
-    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "600"},
-    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": 2000},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": 600},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": 200},
     {"op": "add", "path": "/metadata_schema_id", "value": "ef090376-4e19-43cb-92c1-91a1d758ee6e"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "ESI"},
     {"op": "add", "path": "/parent_sample_id", "value": "UCSD0015-RL-8"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.b5qxq5xn"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.b5qxq5xn"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/spatial_sampling_target", "value": ""},
@@ -178,8 +178,10 @@
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/lc_column_vendor", "value": "In-House"},
+    {"op": "replace", "path": "/lc_flow_rate_value", "value": 300},
     {"op": "replace", "path": "/lc_instrument_model", "value": "UltiMate 3000 RSLCnano UHPLC System"},
-    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"}
+    {"op": "replace", "path": "/lc_instrument_vendor", "value": "Thermo Fisher Scientific"},
+    {"op": "replace", "path": "/mass_resolving_power", "value": 120000}
   ],
   "processing_log": {
     "field_mappings": {
@@ -222,11 +224,41 @@
       "lc_column_vendor": {
         "Self-packed": "In-House"
       },
+      "lc_flow_rate_value": {
+        "300": 300
+      },
+      "lc_inner_diameter_value": {
+        "75": 75
+      },
+      "lc_column_length_value": {
+        "25": 25
+      },
       "lc_temperature_unit": {
         "C": "celsius"
       },
+      "lc_temperature_value": {
+        "35": 35
+      },
+      "mass_resolving_power": {
+        "120000": 120000
+      },
+      "mass_to_charge_range_high_value": {
+        "2000": 2000
+      },
+      "mass_to_charge_range_low_value": {
+        "600": 600
+      },
+      "mass_to_charge_resolving_power": {
+        "200": 200
+      },
       "mass_analysis_polarity": {
         "positive ion mode": "Positive ion mode"
+      },
+      "analysis_protocol_doi": {
+        "10.17504/protocols.io.bnicmcaw": "https://dx.doi.org/10.17504/protocols.io.bnicmcaw"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.b5qxq5xn": "https://dx.doi.org/10.17504/protocols.io.b5qxq5xn"
       }
     },
     "ambiguous_mappings": [],

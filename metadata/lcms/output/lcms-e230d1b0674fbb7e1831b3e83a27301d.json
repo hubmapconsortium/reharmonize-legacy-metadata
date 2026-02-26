@@ -66,7 +66,7 @@
   "modified_metadata": {
     "parent_sample_id": "STAN0009-LI-2-1,STAN0009-LI-1-1,STAN0009-LI-3-1,STAN0009-LI-4-1,STAN0009-SI-4-1,STAN0009-SI-4-1,STAN0009-SI-2-1,STAN0009-SI-3-1,STAN0009-SI-1-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.bf6bjran",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bf6bjran",
     "dataset_type": "LC-MS",
     "analyte_class": "Protein",
     "is_targeted": "No",
@@ -81,10 +81,10 @@
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS3",
     "mass_analysis_polarity": "Positive ion mode",
-    "mass_to_charge_range_low_value": "400",
-    "mass_to_charge_range_high_value": "1500",
-    "mass_resolving_power": "120000",
-    "mass_to_charge_resolving_power": "200",
+    "mass_to_charge_range_low_value": 400,
+    "mass_to_charge_range_high_value": 1500,
+    "mass_resolving_power": 120000,
+    "mass_to_charge_resolving_power": 200,
     "ion_mobility": "",
     "data_collection_mode": "DDA",
     "label_name": "",
@@ -93,13 +93,13 @@
     "lc_column_vendor": "Waters",
     "lc_column_model": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House",
     "lc_resin": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A",
-    "lc_column_length_value": "25",
+    "lc_column_length_value": 25,
     "lc_column_length_unit": "cm",
-    "lc_temperature_value": "45",
+    "lc_temperature_value": 45,
     "lc_temperature_unit": "celsius",
-    "lc_inner_diameter_value": "100",
+    "lc_inner_diameter_value": 100,
     "lc_inner_diameter_unit": "um",
-    "lc_flow_rate_value": "600",
+    "lc_flow_rate_value": 600,
     "lc_flow_rate_unit": "nL/min",
     "lc_gradient_value": "0-5 min: 5% B; 5-180min: 5-25% B; 180-188min: 25-40% B; 188-195min: 40-95% B; 195-200min: 5% B",
     "lc_gradient_unit": null,
@@ -108,29 +108,29 @@
     "spatial_sampling_technique": "",
     "spatial_sampling_target": "",
     "spatial_sampling_type": "",
-    "analysis_protocol_doi": "10.17504/protocols.io.bf6bjran",
+    "analysis_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bf6bjran",
     "metadata_schema_id": "ef090376-4e19-43cb-92c1-91a1d758ee6e"
   },
   "json_patch": [
-    {"op": "add", "path": "/analysis_protocol_doi", "value": "10.17504/protocols.io.bf6bjran"},
+    {"op": "add", "path": "/analysis_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bf6bjran"},
     {"op": "add", "path": "/dataset_type", "value": "LC-MS"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/lc_column_length_unit", "value": "cm"},
-    {"op": "add", "path": "/lc_column_length_value", "value": "25"},
+    {"op": "add", "path": "/lc_column_length_value", "value": 25},
     {"op": "add", "path": "/lc_gradient_unit", "value": null},
     {"op": "add", "path": "/lc_gradient_value", "value": "0-5 min: 5% B; 5-180min: 5-25% B; 180-188min: 25-40% B; 188-195min: 40-95% B; 195-200min: 5% B"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
-    {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
+    {"op": "add", "path": "/lc_inner_diameter_value", "value": 100},
     {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
-    {"op": "add", "path": "/lc_temperature_value", "value": "45"},
+    {"op": "add", "path": "/lc_temperature_value", "value": 45},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
-    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1500"},
-    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "400"},
-    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": 1500},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": 400},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": 200},
     {"op": "add", "path": "/metadata_schema_id", "value": "ef090376-4e19-43cb-92c1-91a1d758ee6e"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "ESI"},
     {"op": "add", "path": "/parent_sample_id", "value": "STAN0009-LI-2-1,STAN0009-LI-1-1,STAN0009-LI-3-1,STAN0009-LI-4-1,STAN0009-SI-4-1,STAN0009-SI-4-1,STAN0009-SI-2-1,STAN0009-SI-3-1,STAN0009-SI-1-1"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bf6bjran"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bf6bjran"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/spatial_sampling_target", "value": ""},
@@ -179,9 +179,11 @@
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/lc_column_model", "value": "Waters Xbridge C18 column (300µm x 5 cm, 5.0µm);In-House"},
     {"op": "replace", "path": "/lc_column_vendor", "value": "Waters"},
+    {"op": "replace", "path": "/lc_flow_rate_value", "value": 600},
     {"op": "replace", "path": "/lc_instrument_model", "value": "Waters; ACQUITY UPLC M-Class System with 2D Technology"},
     {"op": "replace", "path": "/lc_instrument_vendor", "value": "Waters"},
-    {"op": "replace", "path": "/lc_resin", "value": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"}
+    {"op": "replace", "path": "/lc_resin", "value": "BEH|HPLC Column;Sepex GP-C18 1.8um, 120A"},
+    {"op": "replace", "path": "/mass_resolving_power", "value": 120000}
   ],
   "processing_log": {
     "field_mappings": {
@@ -221,11 +223,41 @@
       "is_targeted": {
         "False": "No"
       },
+      "lc_flow_rate_value": {
+        "600": 600
+      },
+      "lc_inner_diameter_value": {
+        "100": 100
+      },
+      "lc_column_length_value": {
+        "25": 25
+      },
       "lc_temperature_unit": {
         "C": "celsius"
       },
+      "lc_temperature_value": {
+        "45": 45
+      },
+      "mass_resolving_power": {
+        "120000": 120000
+      },
+      "mass_to_charge_range_high_value": {
+        "1500": 1500
+      },
+      "mass_to_charge_range_low_value": {
+        "400": 400
+      },
+      "mass_to_charge_resolving_power": {
+        "200": 200
+      },
       "mass_analysis_polarity": {
         "positive ion mode": "Positive ion mode"
+      },
+      "analysis_protocol_doi": {
+        "10.17504/protocols.io.bf6bjran": "https://dx.doi.org/10.17504/protocols.io.bf6bjran"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.bf6bjran": "https://dx.doi.org/10.17504/protocols.io.bf6bjran"
       }
     },
     "ambiguous_mappings": [],

@@ -64,7 +64,7 @@
   "modified_metadata": {
     "parent_sample_id": "VAN0010-LK-152-1,VAN0010-LK-152-2,VAN0010-LK-152-3,VAN0010-LK-152-4,VAN0010-LK-152-5",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.7ethjen",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.7ethjen",
     "dataset_type": "LC-MS",
     "analyte_class": "Peptide",
     "is_targeted": "Yes",
@@ -79,10 +79,10 @@
     "ms_ionization_technique": "ESI",
     "ms_scan_mode": "MS2",
     "mass_analysis_polarity": "Positive ion mode",
-    "mass_to_charge_range_low_value": "375",
-    "mass_to_charge_range_high_value": "1500",
-    "mass_resolving_power": "60000",
-    "mass_to_charge_resolving_power": "200",
+    "mass_to_charge_range_low_value": 375,
+    "mass_to_charge_range_high_value": 1500,
+    "mass_resolving_power": 60000,
+    "mass_to_charge_resolving_power": 200,
     "ion_mobility": "",
     "data_collection_mode": "DDA",
     "label_name": null,
@@ -91,13 +91,13 @@
     "lc_column_vendor": "Evosep",
     "lc_column_model": "EV1074",
     "lc_resin": "Dr. Maisch C18 AQ, 120 Angstrom pore size 3 micron beads",
-    "lc_column_length_value": "15",
+    "lc_column_length_value": 15,
     "lc_column_length_unit": "cm",
-    "lc_temperature_value": "21",
+    "lc_temperature_value": 21,
     "lc_temperature_unit": "celsius",
-    "lc_inner_diameter_value": "100",
+    "lc_inner_diameter_value": 100,
     "lc_inner_diameter_unit": "um",
-    "lc_flow_rate_value": "500",
+    "lc_flow_rate_value": 500,
     "lc_flow_rate_unit": "nL/min",
     "lc_gradient_value": "44 min",
     "lc_gradient_unit": null,
@@ -106,30 +106,30 @@
     "spatial_sampling_technique": "",
     "spatial_sampling_target": "",
     "spatial_sampling_type": "",
-    "analysis_protocol_doi": "10.17504/protocols.io.bsu5ney6",
+    "analysis_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bsu5ney6",
     "metadata_schema_id": "ef090376-4e19-43cb-92c1-91a1d758ee6e"
   },
   "json_patch": [
-    {"op": "add", "path": "/analysis_protocol_doi", "value": "10.17504/protocols.io.bsu5ney6"},
+    {"op": "add", "path": "/analysis_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bsu5ney6"},
     {"op": "add", "path": "/dataset_type", "value": "LC-MS"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/label_name", "value": null},
     {"op": "add", "path": "/lc_column_length_unit", "value": "cm"},
-    {"op": "add", "path": "/lc_column_length_value", "value": "15"},
+    {"op": "add", "path": "/lc_column_length_value", "value": 15},
     {"op": "add", "path": "/lc_gradient_unit", "value": null},
     {"op": "add", "path": "/lc_gradient_value", "value": "44 min"},
     {"op": "add", "path": "/lc_inner_diameter_unit", "value": "um"},
-    {"op": "add", "path": "/lc_inner_diameter_value", "value": "100"},
+    {"op": "add", "path": "/lc_inner_diameter_value", "value": 100},
     {"op": "add", "path": "/lc_temperature_unit", "value": "celsius"},
-    {"op": "add", "path": "/lc_temperature_value", "value": "21"},
+    {"op": "add", "path": "/lc_temperature_value", "value": 21},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
-    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "1500"},
-    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "375"},
-    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "200"},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": 1500},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": 375},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": 200},
     {"op": "add", "path": "/metadata_schema_id", "value": "ef090376-4e19-43cb-92c1-91a1d758ee6e"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "ESI"},
     {"op": "add", "path": "/parent_sample_id", "value": "VAN0010-LK-152-1,VAN0010-LK-152-2,VAN0010-LK-152-3,VAN0010-LK-152-4,VAN0010-LK-152-5"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.7ethjen"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.7ethjen"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/spatial_sampling_target", "value": ""},
@@ -176,7 +176,9 @@
     {"op": "replace", "path": "/analyte_class", "value": "Peptide"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
     {"op": "replace", "path": "/lc_column_vendor", "value": "Evosep"},
+    {"op": "replace", "path": "/lc_flow_rate_value", "value": 500},
     {"op": "replace", "path": "/lc_instrument_vendor", "value": "Evosep"},
+    {"op": "replace", "path": "/mass_resolving_power", "value": 60000},
     {"op": "replace", "path": "/ms_scan_mode", "value": "MS2"}
   ],
   "processing_log": {
@@ -220,14 +222,44 @@
       "lc_column_vendor": {
         "EvoSep": "Evosep"
       },
+      "lc_flow_rate_value": {
+        "500": 500
+      },
+      "lc_inner_diameter_value": {
+        "100": 100
+      },
       "lc_instrument_vendor": {
         "EvoSep": "Evosep"
+      },
+      "lc_column_length_value": {
+        "15": 15
       },
       "lc_temperature_unit": {
         "C": "celsius"
       },
+      "lc_temperature_value": {
+        "21": 21
+      },
+      "mass_resolving_power": {
+        "60000": 60000
+      },
+      "mass_to_charge_range_high_value": {
+        "1500": 1500
+      },
+      "mass_to_charge_range_low_value": {
+        "375": 375
+      },
+      "mass_to_charge_resolving_power": {
+        "200": 200
+      },
       "mass_analysis_polarity": {
         "positive ion mode": "Positive ion mode"
+      },
+      "analysis_protocol_doi": {
+        "10.17504/protocols.io.bsu5ney6": "https://dx.doi.org/10.17504/protocols.io.bsu5ney6"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.7ethjen": "https://dx.doi.org/10.17504/protocols.io.7ethjen"
       }
     },
     "ambiguous_mappings": [],
