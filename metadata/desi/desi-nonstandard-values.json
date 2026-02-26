@@ -1,9 +1,8 @@
 {
-  "ms_scan_mode": "MS",
+  "ion_mobility": "",
   "preparation_matrix": "Not applicable",
-  "source_storage_duration_value": "null",
-  "analysis_protocol_doi": "",
   "source_storage_duration_unit": "null",
+  "source_storage_duration_value": "null",
   "parent_sample_id": [
     "CALT0013-HT-2",
     "CALT0013-HT-3",
@@ -18,5 +17,6 @@
     "VAN0037-RK-1-106",
     "VAN0040-LK-4-90"
   ],
-  "ion_mobility": ""
+  "ms_scan_mode": "MS",
+  "analysis_protocol_doi": "null"
 }
