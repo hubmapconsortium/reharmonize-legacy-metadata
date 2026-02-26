@@ -1,8 +1,8 @@
 {
-  "cell_boundary_marker_or_stain": "null",
-  "slide_id": "null",
   "source_storage_duration_value": "null",
   "source_storage_duration_unit": "null",
+  "slide_id": "null",
+  "cell_boundary_marker_or_stain": "null",
   "parent_sample_id": [
     "CALT0001-HT-2-4-1",
     "CALT0001-HT-2-5-1",
