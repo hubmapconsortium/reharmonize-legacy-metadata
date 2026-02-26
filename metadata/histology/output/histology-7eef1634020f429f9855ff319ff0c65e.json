@@ -36,7 +36,7 @@
   "modified_metadata": {
     "parent_sample_id": "VAN0007-LK-203-103",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.4qngvve",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.4qngvve",
     "dataset_type": "Histology",
     "analyte_class": "Polysaccharide",
     "is_targeted": "No",
@@ -77,7 +77,7 @@
     {"op": "add", "path": "/parent_sample_id", "value": "VAN0007-LK-203-103"},
     {"op": "add", "path": "/preparation_instrument_model", "value": null},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.4qngvve"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.4qngvve"},
     {"op": "add", "path": "/scan_direction", "value": null},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
@@ -130,6 +130,9 @@
       },
       "is_targeted": {
         "FALSE": "No"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.4qngvve": "https://dx.doi.org/10.17504/protocols.io.4qngvve"
       },
       "stain_name": {
         "Periodic acid-Schiff": "PAS"
