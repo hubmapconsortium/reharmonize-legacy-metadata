@@ -538,8 +538,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     {% for mapping in value_mappings %}
                     <tr>
                         <td><code>{{ mapping.field }}</code></td>
-                        <td><code>{{ mapping.old_value }}</code></td>
+                        <td><code>"{{ mapping.old_value }}"</code></td>
+                        {% if mapping.new_value_is_numeric %}
                         <td><code>{{ mapping.new_value }}</code></td>
+                        {% else %}
+                        <td><code>"{{ mapping.new_value }}"</code></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -618,8 +622,9 @@ def aggregate_value_mappings(output_dir: str) -> List[Dict[str, str]]:
         print(f"Error: '{output_dir}' is not a directory.", file=sys.stderr)
         sys.exit(1)
 
-    # Use a set of tuples for deduplication
-    seen_mappings: Set[Tuple[str, str, str]] = set()
+    # Use a dict keyed by (field, old_value, new_value_str) for deduplication
+    # while preserving the original type of new_value
+    seen_mappings: Dict[Tuple[str, str, str], object] = {}
 
     json_files = list(output_path.glob("*.json"))
 
@@ -637,7 +642,9 @@ def aggregate_value_mappings(output_dir: str) -> List[Dict[str, str]]:
             for field_name, mappings in value_mappings.items():
                 if isinstance(mappings, dict):
                     for old_value, new_value in mappings.items():
-                        seen_mappings.add((field_name, str(old_value), str(new_value)))
+                        key = (field_name, str(old_value), str(new_value))
+                        if key not in seen_mappings:
+                            seen_mappings[key] = new_value
 
         except json.JSONDecodeError as e:
             print(f"Warning: Failed to parse JSON file '{json_file}': {e}", file=sys.stderr)
@@ -646,8 +653,15 @@ def aggregate_value_mappings(output_dir: str) -> List[Dict[str, str]]:
 
     # Convert to list of dicts, sorted by field name then old value
     result = [
-        {"field": field, "old_value": old_val, "new_value": new_val}
-        for field, old_val, new_val in sorted(seen_mappings)
+        {
+            "field": field,
+            "old_value": old_val,
+            "new_value": str(new_val),
+            "new_value_is_numeric": isinstance(raw_new_val, (int, float)),
+        }
+        for (field, old_val, new_val), raw_new_val in sorted(
+            seen_mappings.items(), key=lambda item: item[0]
+        )
     ]
 
     return result
