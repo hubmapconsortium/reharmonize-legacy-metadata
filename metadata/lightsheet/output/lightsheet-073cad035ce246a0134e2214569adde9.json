@@ -39,7 +39,7 @@
   "modified_metadata": {
     "parent_sample_id": "UFL0007-SP-2-3-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.bqaamsae",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bqaamsae",
     "dataset_type": "Light Sheet",
     "analyte_class": "Protein",
     "is_targeted": "Yes",
@@ -68,7 +68,7 @@
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "a4ff738c-a7e9-40c1-966e-22cf9c885fad"},
     {"op": "add", "path": "/parent_sample_id", "value": "UFL0007-SP-2-3-1"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bqaamsae"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bqaamsae"},
     {"op": "add", "path": "/scan_direction", "value": null},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
@@ -121,6 +121,9 @@
       },
       "is_targeted": {
         "TRUE": "Yes"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.bqaamsae": "https://dx.doi.org/10.17504/protocols.io.bqaamsae"
       }
     },
     "ambiguous_mappings": [],
