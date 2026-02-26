@@ -3,11 +3,9 @@
     "CODEX Instrument",
     "prototype robot - Stanford/Nolan Lab"
   ],
-  "antibodies_path": "null",
-  "source_storage_duration_value": "null",
-  "contributors_path": "null",
   "source_storage_duration_unit": "null",
   "number_of_total_imaging_rounds": "null",
+  "source_storage_duration_value": "null",
   "parent_sample_id": [
     "CHOP0001-HT-8",
     "CHOP0001-HT-9",
@@ -135,5 +133,7 @@
     "UFL0015-LY01-1-1",
     "UFL0015-LY03-1-1",
     "UFL0015-SP-2-2-1"
-  ]
+  ],
+  "antibodies_path": "null",
+  "contributors_path": "null"
 }
