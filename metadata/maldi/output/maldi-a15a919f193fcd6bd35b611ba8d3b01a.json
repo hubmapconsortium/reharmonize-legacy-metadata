@@ -49,7 +49,7 @@
   "modified_metadata": {
     "parent_sample_id": "VAN0063-RK-1-41",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.7e3hjgn",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.7e3hjgn",
     "dataset_type": "MALDI",
     "analyte_class": "Lipid",
     "is_targeted": "No",
@@ -64,10 +64,10 @@
     "ms_ionization_technique": "MALDI",
     "ms_scan_mode": "MS",
     "mass_analysis_polarity": "Negative ion mode",
-    "mass_to_charge_range_low_value": "100.0",
-    "mass_to_charge_range_high_value": "2000.0",
-    "mass_resolving_power": "40000.0",
-    "mass_to_charge_resolving_power": "400.0",
+    "mass_to_charge_range_low_value": 100,
+    "mass_to_charge_range_high_value": 2000,
+    "mass_resolving_power": 40000,
+    "mass_to_charge_resolving_power": 400,
     "ion_mobility": "TIMS",
     "matrix_deposition_method": "Robotic spraying",
     "preparation_instrument_vendor": "HTX Technologies",
@@ -81,15 +81,15 @@
     {"op": "add", "path": "/dataset_type", "value": "MALDI"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "Negative ion mode"},
-    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "2000.0"},
-    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "100.0"},
-    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "400.0"},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": 2000},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": 100},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": 400},
     {"op": "add", "path": "/matrix_deposition_method", "value": "Robotic spraying"},
     {"op": "add", "path": "/metadata_schema_id", "value": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "MALDI"},
     {"op": "add", "path": "/parent_sample_id", "value": "VAN0063-RK-1-41"},
     {"op": "add", "path": "/preparation_matrix", "value": "DAN (1,5-diaminonapthalene)"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.7e3hjgn"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.7e3hjgn"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
@@ -127,7 +127,8 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Bruker"},
     {"op": "replace", "path": "/analyte_class", "value": "Lipid"},
     {"op": "replace", "path": "/ion_mobility", "value": "TIMS"},
-    {"op": "replace", "path": "/is_targeted", "value": "No"}
+    {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/mass_resolving_power", "value": 40000}
   ],
   "processing_log": {
     "field_mappings": {
@@ -158,11 +159,26 @@
       "is_targeted": {
         "False": "No"
       },
+      "mass_resolving_power": {
+        "40000.0": 40000
+      },
+      "mass_to_charge_range_high_value": {
+        "2000.0": 2000
+      },
+      "mass_to_charge_range_low_value": {
+        "100.0": 100
+      },
+      "mass_to_charge_resolving_power": {
+        "400.0": 400
+      },
       "mass_analysis_polarity": {
         "negative ion mode": "Negative ion mode"
       },
       "preparation_matrix": {
         "1,5-Diaminonapthalene": "DAN (1,5-diaminonapthalene)"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.7e3hjgn": "https://dx.doi.org/10.17504/protocols.io.7e3hjgn"
       }
     },
     "ambiguous_mappings": [

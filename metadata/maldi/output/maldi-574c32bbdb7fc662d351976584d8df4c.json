@@ -49,7 +49,7 @@
   "modified_metadata": {
     "parent_sample_id": "VAN0025-LK-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.4r3l2onz4v1y/v1",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.4r3l2onz4v1y/v1",
     "dataset_type": "MALDI",
     "analyte_class": "Protein",
     "is_targeted": "No",
@@ -64,10 +64,10 @@
     "ms_ionization_technique": "MALDI",
     "ms_scan_mode": "MS",
     "mass_analysis_polarity": "Positive ion mode",
-    "mass_to_charge_range_low_value": "4500",
-    "mass_to_charge_range_high_value": "20000",
-    "mass_resolving_power": "34443",
-    "mass_to_charge_resolving_power": "11306.38",
+    "mass_to_charge_range_low_value": 4500,
+    "mass_to_charge_range_high_value": 20000,
+    "mass_resolving_power": 34443,
+    "mass_to_charge_resolving_power": 11306.38,
     "ion_mobility": "",
     "matrix_deposition_method": "Robotic spraying",
     "preparation_instrument_vendor": "HTX Technologies",
@@ -81,15 +81,15 @@
     {"op": "add", "path": "/dataset_type", "value": "MALDI"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/mass_analysis_polarity", "value": "Positive ion mode"},
-    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": "20000"},
-    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": "4500"},
-    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": "11306.38"},
+    {"op": "add", "path": "/mass_to_charge_range_high_value", "value": 20000},
+    {"op": "add", "path": "/mass_to_charge_range_low_value", "value": 4500},
+    {"op": "add", "path": "/mass_to_charge_resolving_power", "value": 11306.38},
     {"op": "add", "path": "/matrix_deposition_method", "value": "Robotic spraying"},
     {"op": "add", "path": "/metadata_schema_id", "value": "2e35434f-e6ed-4e01-a54a-189ec0706a3d"},
     {"op": "add", "path": "/ms_ionization_technique", "value": "MALDI"},
     {"op": "add", "path": "/parent_sample_id", "value": "VAN0025-LK-1"},
     {"op": "add", "path": "/preparation_matrix", "value": ""},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.4r3l2onz4v1y/v1"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.4r3l2onz4v1y/v1"},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
     {"op": "add", "path": "/time_since_acquisition_instrument_calibration_unit", "value": null},
@@ -126,6 +126,7 @@
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Thermo Fisher Scientific"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
+    {"op": "replace", "path": "/mass_resolving_power", "value": 34443},
     {"op": "replace", "path": "/preparation_instrument_model", "value": "M5 Sprayer"}
   ],
   "processing_log": {
@@ -154,11 +155,26 @@
       "is_targeted": {
         "False": "No"
       },
+      "mass_resolving_power": {
+        "34443": 34443
+      },
+      "mass_to_charge_range_high_value": {
+        "20000": 20000
+      },
+      "mass_to_charge_range_low_value": {
+        "4500": 4500
+      },
+      "mass_to_charge_resolving_power": {
+        "11306.38": 11306.38
+      },
       "mass_analysis_polarity": {
         "positive ion mode": "Positive ion mode"
       },
       "preparation_instrument_model": {
         "M5": "M5 Sprayer"
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.4r3l2onz4v1y/v1": "https://dx.doi.org/10.17504/protocols.io.4r3l2onz4v1y/v1"
       }
     },
     "ambiguous_mappings": [
