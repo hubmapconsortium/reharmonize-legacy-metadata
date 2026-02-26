@@ -51,7 +51,7 @@
   "modified_metadata": {
     "parent_sample_id": "UFL0001-LY08-1-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.bgatjsen",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bgatjsen",
     "dataset_type": "2D Imaging Mass Cytometry",
     "analyte_class": "Protein",
     "is_targeted": "Yes",
@@ -66,10 +66,10 @@
     "total_run_time_value": null,
     "total_run_time_unit": null,
     "number_of_antibodies": null,
-    "number_of_channels": "45",
+    "number_of_channels": 45,
     "slide_id": null,
-    "data_precision_bytes": "4",
-    "ablation_frequency_value": "200",
+    "data_precision_bytes": 4,
+    "ablation_frequency_value": 200,
     "ablation_frequency_unit": "Hz",
     "antibodies_path": null,
     "metadata_schema_id": "ce5524be-dab6-4668-97c1-8a5a09325e5f"
@@ -82,7 +82,7 @@
     {"op": "add", "path": "/metadata_schema_id", "value": "ce5524be-dab6-4668-97c1-8a5a09325e5f"},
     {"op": "add", "path": "/number_of_antibodies", "value": null},
     {"op": "add", "path": "/parent_sample_id", "value": "UFL0001-LY08-1-1"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bgatjsen"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bgatjsen"},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
@@ -123,9 +123,12 @@
     {"op": "remove", "path": "/signal_type"},
     {"op": "remove", "path": "/start_datetime"},
     {"op": "remove", "path": "/tissue_id"},
+    {"op": "replace", "path": "/ablation_frequency_value", "value": 200},
     {"op": "replace", "path": "/acquisition_instrument_vendor", "value": "Standard BioTools (Fluidigm)"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
+    {"op": "replace", "path": "/data_precision_bytes", "value": 4},
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
+    {"op": "replace", "path": "/number_of_channels", "value": 45}
   ],
   "processing_log": {
     "field_mappings": {
@@ -134,6 +137,9 @@
       "tissue_id": "parent_sample_id"
     },
     "value_mappings": {
+      "ablation_frequency_value": {
+        "200": 200
+      },
       "acquisition_instrument_vendor": {
         "Fluidigm": "Standard BioTools (Fluidigm)"
       },
@@ -143,8 +149,17 @@
       "dataset_type": {
         "Imaging Mass Cytometry": "2D Imaging Mass Cytometry"
       },
+      "data_precision_bytes": {
+        "4": 4
+      },
       "is_targeted": {
         "TRUE": "Yes"
+      },
+      "number_of_channels": {
+        "45": 45
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.bgatjsen": "https://dx.doi.org/10.17504/protocols.io.bgatjsen"
       }
     },
     "ambiguous_mappings": [],
