@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2D Imaging Mass Cytometry - Metadata Transformation Summary</title>
+    <title>IMC-2D - Metadata Transformation Summary</title>
     <style>
         :root {
             --hubmap-primary: #444A65;
@@ -314,7 +314,7 @@
     </header>
 
     <div class="main-content">
-        <h1>2D Imaging Mass Cytometry - Metadata Transformation Summary</h1>
+        <h1>IMC-2D - Metadata Transformation Summary</h1>
 
         <div class="summary-stats">
         <a href="#field-mappings" class="stat-box">
@@ -322,7 +322,7 @@
             <div class="stat-label">Field Mappings</div>
         </a>
         <a href="#value-mappings" class="stat-box">
-            <div class="stat-number">4</div>
+            <div class="stat-number">9</div>
             <div class="stat-label">Value Mappings</div>
         </a>
         <a href="#patches" class="stat-box">
@@ -332,7 +332,7 @@
     </div>
 
     <div class="intro">
-        <p>This report documents the transformation rules applied to convert legacy 2D Imaging Mass Cytometry metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
+        <p>This report documents the transformation rules applied to convert legacy IMC-2D metadata into the current standardized schema. It provides transparency into how field names are mapped between schema versions, how values are standardized for consistency, and what conditional rules are applied to derive or correct metadata fields. Use this summary to understand the data lineage and transformation logic applied during the reharmonization process.</p>
     </div>
 
     <div class="section" id="field-mappings">
@@ -844,27 +844,75 @@
                 <tbody>
                     
                     <tr>
+                        <td><code>ablation_frequency_value</code></td>
+                        <td><code>"200"</code></td>
+                        
+                        <td><code>200</code></td>
+                        
+                    </tr>
+                    
+                    <tr>
                         <td><code>acquisition_instrument_vendor</code></td>
-                        <td><code>Fluidigm</code></td>
-                        <td><code>Standard BioTools (Fluidigm)</code></td>
+                        <td><code>"Fluidigm"</code></td>
+                        
+                        <td><code>"Standard BioTools (Fluidigm)"</code></td>
+                        
                     </tr>
                     
                     <tr>
                         <td><code>analyte_class</code></td>
-                        <td><code>protein</code></td>
-                        <td><code>Protein</code></td>
+                        <td><code>"protein"</code></td>
+                        
+                        <td><code>"Protein"</code></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td><code>data_precision_bytes</code></td>
+                        <td><code>"4"</code></td>
+                        
+                        <td><code>4</code></td>
+                        
                     </tr>
                     
                     <tr>
                         <td><code>dataset_type</code></td>
-                        <td><code>Imaging Mass Cytometry</code></td>
-                        <td><code>2D Imaging Mass Cytometry</code></td>
+                        <td><code>"Imaging Mass Cytometry"</code></td>
+                        
+                        <td><code>"2D Imaging Mass Cytometry"</code></td>
+                        
                     </tr>
                     
                     <tr>
                         <td><code>is_targeted</code></td>
-                        <td><code>TRUE</code></td>
-                        <td><code>Yes</code></td>
+                        <td><code>"TRUE"</code></td>
+                        
+                        <td><code>"Yes"</code></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td><code>number_of_channels</code></td>
+                        <td><code>"39"</code></td>
+                        
+                        <td><code>39</code></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td><code>number_of_channels</code></td>
+                        <td><code>"45"</code></td>
+                        
+                        <td><code>45</code></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td><code>preparation_protocol_doi</code></td>
+                        <td><code>"10.17504/protocols.io.bgatjsen"</code></td>
+                        
+                        <td><code>"https://dx.doi.org/10.17504/protocols.io.bgatjsen"</code></td>
+                        
                     </tr>
                     
                 </tbody>
