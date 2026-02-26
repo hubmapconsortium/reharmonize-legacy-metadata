@@ -35,7 +35,7 @@
   "modified_metadata": {
     "parent_sample_id": "VAN0008-RK-402-14",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.7e3hjgn",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.7e3hjgn",
     "dataset_type": "Auto-fluorescence",
     "analyte_class": "Endogenous fluorophore",
     "is_targeted": "No",
@@ -55,6 +55,7 @@
     "tiled_image_columns": null,
     "tiled_image_count": null,
     "intended_tile_overlap_percentage": null,
+    "non_global_files": null,
     "metadata_schema_id": "c9c6a02b-010e-4217-96dc-f7ef71dd14c4"
   },
   "json_patch": [
@@ -64,8 +65,9 @@
     {"op": "add", "path": "/is_image_preprocessing_required", "value": null},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "c9c6a02b-010e-4217-96dc-f7ef71dd14c4"},
+    {"op": "add", "path": "/non_global_files", "value": null},
     {"op": "add", "path": "/parent_sample_id", "value": "VAN0008-RK-402-14"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.7e3hjgn"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.7e3hjgn"},
     {"op": "add", "path": "/scan_direction", "value": null},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
@@ -118,6 +120,12 @@
       },
       "is_targeted": {
         "False": "No"
+      },
+      "number_of_channels": {
+        "3": 3
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.7e3hjgn": "https://dx.doi.org/10.17504/protocols.io.7e3hjgn"
       }
     },
     "ambiguous_mappings": [],
@@ -126,7 +134,7 @@
       "description": "Autofluorescence Microscopy collected from the right kidney of a 48 year old White male donorby the Biomolecular Multimodal Imaging Center (BIOMC) at Vanderbilt University. BIOMIC is a Tissue Mapping Centerthat is part of the NIH funded Human Biomolecular Atlas Program (HuBMAP). Autofluorescence images werecollected with a Carl Zeiss microscopy AxioScan.Z1 using 3 channels/filters --DAPI (excitation: 335-383 nm/emission: 420-470 nm), eGFP (excitation: 450-490 nm/emission: 500-550 nm),and dsRed (excitation: 538-562 nm/emission: 570-640 nm). Support was provided by the NIH Common Fundand National Institute of Diabetes and Digestive and Kidney Diseases (U54 DK120058). Tissue was collected throughthe Cooperative Human Tissue Network with support provided by the NIH National Cancer Institute (5 UM1 CA183727-08).",
       "donor_id": "VAN0008",
       "execution_datetime": "2021-11-19 16:47",
-      "number_of_channels": "3",
+      "number_of_channels": 3,
       "operator": "Jamie L Allen",
       "operator_email": "jamie.l.allen@vanderbilt.edu",
       "overall_protocols_io_doi": "10.17504/protocols.io.bfskjncw",
