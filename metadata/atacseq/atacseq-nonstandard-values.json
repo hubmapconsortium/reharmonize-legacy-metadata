@@ -1,27 +1,12 @@
 {
-  "sequencing_reagent_kit": [
-    "Illumina; NextSeq 500 Reagent Kit",
-    "Illumina; NovaSeq 6000 Reagent Kit",
-    "Illumina; NovaSeq 6000 S4 Reagent Kit",
-    "Illumina; NovaSeq 6000 SP Reagent Kit"
-  ],
-  "transposition_reagent_kit": [
-    "",
-    "163732"
-  ],
-  "source_storage_duration_unit": "null",
   "sample_indexing_kit": [
     "Illumina; IDT for Illumina Nextera DNA UD Index set",
     "null"
   ],
-  "library_preparation_kit": [
-    "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit",
-    "null"
-  ],
-  "library_concentration_value": "null",
-  "sample_indexing_set": "null",
+  "source_storage_duration_unit": "null",
   "source_storage_duration_value": "null",
-  "library_concentration_unit": "null",
+  "number_of_pcr_cycles_for_indexing": "null",
+  "sample_indexing_set": "null",
   "parent_sample_id": [
     "CALT0001-HT-1",
     "CALT0001-HT-2",
@@ -267,8 +252,23 @@
     "UCSDFR0012-PL-8",
     "UCSDFR0012-PL-9"
   ],
+  "sequencing_reagent_kit": [
+    "Illumina; NextSeq 500 Reagent Kit",
+    "Illumina; NovaSeq 6000 Reagent Kit",
+    "Illumina; NovaSeq 6000 S4 Reagent Kit",
+    "Illumina; NovaSeq 6000 SP Reagent Kit"
+  ],
+  "transposition_reagent_kit": [
+    "",
+    "163732"
+  ],
+  "library_concentration_value": "null",
+  "library_preparation_kit": [
+    "Illumina Tagment DNA TDE1 Enzyme and Buffer Kit",
+    "null"
+  ],
+  "library_concentration_unit": "null",
   "contributors_path": "null",
-  "number_of_pcr_cycles_for_indexing": "null",
   "transposition_method": "snATACseq",
   "preparation_instrument_kit": [
     "10x Genomics; Chromium Chip E Single Cell ATAC Kit",
