@@ -1,7 +1,8 @@
 {
-  "source_storage_duration_unit": "null",
   "source_storage_duration_value": "null",
+  "contributors_path": "null",
   "antibodies_path": "null",
+  "source_storage_duration_unit": "null",
   "parent_sample_id": [
     "VAN0003-LK-32-21",
     "VAN0003-LK-32-22",
@@ -136,6 +137,5 @@
     "VAN0063-RK-1-48",
     "VAN0063-RK-1-49"
   ],
-  "contributors_path": "null",
   "data_path": "/rawMicroscopy/"
 }
