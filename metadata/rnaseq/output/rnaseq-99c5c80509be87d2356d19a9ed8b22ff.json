@@ -50,7 +50,7 @@
   "modified_metadata": {
     "parent_sample_id": "UCSD0010-LK-1-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.86khzcw",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.86khzcw",
     "dataset_type": "RNAseq",
     "analyte_class": "RNA",
     "is_targeted": "No",
@@ -69,20 +69,20 @@
     "umi_read": null,
     "umi_size": null,
     "assay_input_entity": "single nucleus",
-    "number_of_input_cells_or_nuclei": "12475",
+    "number_of_input_cells_or_nuclei": 12475,
     "amount_of_input_analyte_value": null,
     "amount_of_input_analyte_unit": null,
     "library_adapter_sequence": "AGATCGGAAGAGC",
-    "library_average_fragment_size": "478",
+    "library_average_fragment_size": 478,
     "library_input_amount_value": null,
     "library_input_amount_unit": null,
-    "library_output_amount_value": "805.0",
+    "library_output_amount_value": 805.0,
     "library_output_amount_unit": "ng",
     "library_concentration_value": null,
     "library_concentration_unit": null,
     "library_layout": "paired-end",
-    "number_of_iterations_of_cdna_amplification": "12",
-    "number_of_pcr_cycles_for_indexing": "14",
+    "number_of_iterations_of_cdna_amplification": 12,
+    "number_of_pcr_cycles_for_indexing": 14,
     "library_preparation_kit": "10x Genomics; Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns; PN 1000075",
     "sample_indexing_kit": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN 120262",
     "sample_indexing_set": null,
@@ -113,17 +113,17 @@
     {"op": "add", "path": "/library_input_amount_unit", "value": null},
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_output_amount_unit", "value": "ng"},
-    {"op": "add", "path": "/library_output_amount_value", "value": "805.0"},
+    {"op": "add", "path": "/library_output_amount_value", "value": 805.0},
     {"op": "add", "path": "/library_preparation_kit", "value": "10x Genomics; Chromium Single Cell 3ʹ GEM, Library & Gel Bead Kit v3, 16 rxns; PN 1000075"},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
-    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": "12475"},
-    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "12"},
-    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "14"},
+    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": 12475},
+    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": 12},
+    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": 14},
     {"op": "add", "path": "/parent_sample_id", "value": "UCSD0010-LK-1-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Single Cell B Chip Kit, 16 rxns; PN 1000074"},
     {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.86khzcw"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.86khzcw"},
     {"op": "add", "path": "/sample_indexing_kit", "value": "10x Genomics; Chromium i7 Multiplex Kit, 96 rxns; PN 120262"},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
@@ -166,6 +166,7 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
+    {"op": "replace", "path": "/library_average_fragment_size", "value": 478},
     {"op": "replace", "path": "/sequencing_read_format", "value": "101,8,101"}
   ],
   "processing_log": {
@@ -195,6 +196,24 @@
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "library_average_fragment_size": {
+        "478": 478
+      },
+      "library_output_amount_value": {
+        "805.0": 805.0
+      },
+      "number_of_iterations_of_cdna_amplification": {
+        "12": 12
+      },
+      "number_of_pcr_cycles_for_indexing": {
+        "14": 14
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.86khzcw": "https://dx.doi.org/10.17504/protocols.io.86khzcw"
+      },
+      "number_of_input_cells_or_nuclei": {
+        "12475": 12475
       },
       "assay_input_entity": {
         "nucleus": "single nucleus"

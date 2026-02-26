@@ -51,7 +51,7 @@
   "modified_metadata": {
     "parent_sample_id": "HCA0002-LV-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.btdpni5n",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.btdpni5n",
     "dataset_type": "RNAseq",
     "analyte_class": "RNA",
     "is_targeted": "No",
@@ -70,20 +70,20 @@
     "umi_read": "Read 1 (R1)",
     "umi_size": "10",
     "assay_input_entity": "single cell",
-    "number_of_input_cells_or_nuclei": "",
+    "number_of_input_cells_or_nuclei": null,
     "amount_of_input_analyte_value": null,
     "amount_of_input_analyte_unit": null,
     "library_adapter_sequence": "",
     "library_average_fragment_size": "",
     "library_input_amount_value": null,
     "library_input_amount_unit": null,
-    "library_output_amount_value": "",
+    "library_output_amount_value": null,
     "library_output_amount_unit": "",
     "library_concentration_value": null,
     "library_concentration_unit": null,
     "library_layout": "single-end",
-    "number_of_iterations_of_cdna_amplification": "",
-    "number_of_pcr_cycles_for_indexing": "",
+    "number_of_iterations_of_cdna_amplification": null,
+    "number_of_pcr_cycles_for_indexing": null,
     "library_preparation_kit": "10x Genomics; Chromium Single Cell 3' Reagent Kits v2",
     "sample_indexing_kit": null,
     "sample_indexing_set": null,
@@ -114,17 +114,17 @@
     {"op": "add", "path": "/library_input_amount_unit", "value": null},
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_output_amount_unit", "value": ""},
-    {"op": "add", "path": "/library_output_amount_value", "value": ""},
+    {"op": "add", "path": "/library_output_amount_value", "value": null},
     {"op": "add", "path": "/library_preparation_kit", "value": "10x Genomics; Chromium Single Cell 3' Reagent Kits v2"},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
-    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": ""},
-    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": ""},
-    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": ""},
+    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": null},
+    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": null},
+    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": null},
     {"op": "add", "path": "/parent_sample_id", "value": "HCA0002-LV-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Single Cell A Chip Kit"},
     {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.btdpni5n"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.btdpni5n"},
     {"op": "add", "path": "/sample_indexing_kit", "value": null},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
@@ -194,8 +194,23 @@
       "is_targeted": {
         "FALSE": "No"
       },
+      "library_output_amount_value": {
+        "": null
+      },
       "library_layout": {
         "single": "single-end"
+      },
+      "number_of_iterations_of_cdna_amplification": {
+        "": null
+      },
+      "number_of_pcr_cycles_for_indexing": {
+        "": null
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.btdpni5n": "https://dx.doi.org/10.17504/protocols.io.btdpni5n"
+      },
+      "number_of_input_cells_or_nuclei": {
+        "": null
       }
     },
     "ambiguous_mappings": [],

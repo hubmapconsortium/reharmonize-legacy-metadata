@@ -50,7 +50,7 @@
   "modified_metadata": {
     "parent_sample_id": "UCSD0015-RL-6-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.be5gjg3w",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.be5gjg3w",
     "dataset_type": "RNAseq",
     "analyte_class": "RNA",
     "is_targeted": "No",
@@ -69,20 +69,20 @@
     "umi_read": "Read 2 (R2)",
     "umi_size": "10",
     "assay_input_entity": "single nucleus",
-    "number_of_input_cells_or_nuclei": "12700",
+    "number_of_input_cells_or_nuclei": 12700,
     "amount_of_input_analyte_value": null,
     "amount_of_input_analyte_unit": null,
     "library_adapter_sequence": "CTGTCTCTTATACACATCT",
-    "library_average_fragment_size": "700",
+    "library_average_fragment_size": 700,
     "library_input_amount_value": null,
     "library_input_amount_unit": null,
-    "library_output_amount_value": "1317",
+    "library_output_amount_value": 1317,
     "library_output_amount_unit": "ng",
     "library_concentration_value": null,
     "library_concentration_unit": null,
     "library_layout": "paired-end",
-    "number_of_iterations_of_cdna_amplification": "18",
-    "number_of_pcr_cycles_for_indexing": "12",
+    "number_of_iterations_of_cdna_amplification": 18,
+    "number_of_pcr_cycles_for_indexing": 12,
     "library_preparation_kit": "Custom",
     "sample_indexing_kit": "Custom",
     "sample_indexing_set": null,
@@ -113,17 +113,17 @@
     {"op": "add", "path": "/library_input_amount_unit", "value": null},
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_output_amount_unit", "value": "ng"},
-    {"op": "add", "path": "/library_output_amount_value", "value": "1317"},
+    {"op": "add", "path": "/library_output_amount_value", "value": 1317},
     {"op": "add", "path": "/library_preparation_kit", "value": "Custom"},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
-    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": "12700"},
-    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "18"},
-    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "12"},
+    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": 12700},
+    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": 18},
+    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": 12},
     {"op": "add", "path": "/parent_sample_id", "value": "UCSD0015-RL-6-1"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": null},
     {"op": "add", "path": "/preparation_instrument_model", "value": null},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": null},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.be5gjg3w"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.be5gjg3w"},
     {"op": "add", "path": "/sample_indexing_kit", "value": "Custom"},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
@@ -166,6 +166,7 @@
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "NovaSeq 6000"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
+    {"op": "replace", "path": "/library_average_fragment_size", "value": 700},
     {"op": "replace", "path": "/sequencing_read_format", "value": "70,6,104"}
   ],
   "processing_log": {
@@ -195,6 +196,24 @@
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "library_average_fragment_size": {
+        "700": 700
+      },
+      "library_output_amount_value": {
+        "1317": 1317
+      },
+      "number_of_iterations_of_cdna_amplification": {
+        "18": 18
+      },
+      "number_of_pcr_cycles_for_indexing": {
+        "12": 12
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.be5gjg3w": "https://dx.doi.org/10.17504/protocols.io.be5gjg3w"
+      },
+      "number_of_input_cells_or_nuclei": {
+        "12700": 12700
       },
       "assay_input_entity": {
         "nucleus": "single nucleus"

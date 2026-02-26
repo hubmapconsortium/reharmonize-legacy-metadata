@@ -56,7 +56,7 @@
   "modified_metadata": {
     "parent_sample_id": "UCSDFR0003-PL-12",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.5qpvoby69l4o/v2",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.5qpvoby69l4o/v2",
     "dataset_type": "RNAseq",
     "analyte_class": "RNA",
     "is_targeted": "No",
@@ -75,25 +75,25 @@
     "umi_read": "Read 1 (R1)",
     "umi_size": "12",
     "assay_input_entity": "single nucleus",
-    "number_of_input_cells_or_nuclei": "9660",
+    "number_of_input_cells_or_nuclei": 9660,
     "amount_of_input_analyte_value": null,
     "amount_of_input_analyte_unit": null,
     "library_adapter_sequence": "AGAGATCGGAAGAGCACACGTCTGAACTCCAGTCACATCGGAAGAGCACACGT",
-    "library_average_fragment_size": "540",
+    "library_average_fragment_size": 540,
     "library_input_amount_value": null,
     "library_input_amount_unit": null,
-    "library_output_amount_value": "172.2",
+    "library_output_amount_value": 172.2,
     "library_output_amount_unit": "ng",
     "library_concentration_value": null,
     "library_concentration_unit": null,
     "library_layout": "paired-end",
-    "number_of_iterations_of_cdna_amplification": "6",
-    "number_of_pcr_cycles_for_indexing": "16",
+    "number_of_iterations_of_cdna_amplification": 6,
+    "number_of_pcr_cycles_for_indexing": 16,
     "library_preparation_kit": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle",
     "sample_indexing_kit": "10X Genomics; Dual Index Kit TT, Set A (96 rxn); PN 1000215",
     "sample_indexing_set": null,
     "is_technical_replicate": "No",
-    "expected_entity_capture_count": "6000",
+    "expected_entity_capture_count": 6000,
     "sequencing_reagent_kit": "NovaSeq 6000 S4 Reagent Kit (200 Cycles)",
     "sequencing_read_format": "28,10,10,90",
     "sequencing_batch_id": null,
@@ -112,24 +112,24 @@
     {"op": "add", "path": "/barcode_size", "value": "16"},
     {"op": "add", "path": "/capture_batch_id", "value": null},
     {"op": "add", "path": "/dataset_type", "value": "RNAseq"},
-    {"op": "add", "path": "/expected_entity_capture_count", "value": "6000"},
+    {"op": "add", "path": "/expected_entity_capture_count", "value": 6000},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/library_concentration_unit", "value": null},
     {"op": "add", "path": "/library_concentration_value", "value": null},
     {"op": "add", "path": "/library_input_amount_unit", "value": null},
     {"op": "add", "path": "/library_input_amount_value", "value": null},
     {"op": "add", "path": "/library_output_amount_unit", "value": "ng"},
-    {"op": "add", "path": "/library_output_amount_value", "value": "172.2"},
+    {"op": "add", "path": "/library_output_amount_value", "value": 172.2},
     {"op": "add", "path": "/library_preparation_kit", "value": "10x Genomics; Chromium Next GEM Single Cell Multiome ATAC + Gene Expression Reagent Bundle"},
     {"op": "add", "path": "/metadata_schema_id", "value": "944e5fa0-f68b-4bdd-8664-74a3909429a9"},
-    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": "9660"},
-    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": "6"},
-    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": "16"},
+    {"op": "add", "path": "/number_of_input_cells_or_nuclei", "value": 9660},
+    {"op": "add", "path": "/number_of_iterations_of_cdna_amplification", "value": 6},
+    {"op": "add", "path": "/number_of_pcr_cycles_for_indexing", "value": 16},
     {"op": "add", "path": "/parent_sample_id", "value": "UCSDFR0003-PL-12"},
     {"op": "add", "path": "/preparation_instrument_kit", "value": "10x Genomics; Chromium Next GEM Chip J Single Cell Kit"},
     {"op": "add", "path": "/preparation_instrument_model", "value": "Chromium Controller"},
     {"op": "add", "path": "/preparation_instrument_vendor", "value": "10x Genomics"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.5qpvoby69l4o/v2"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.5qpvoby69l4o/v2"},
     {"op": "add", "path": "/sample_indexing_kit", "value": "10X Genomics; Dual Index Kit TT, Set A (96 rxn); PN 1000215"},
     {"op": "add", "path": "/sample_indexing_set", "value": null},
     {"op": "add", "path": "/sequencing_batch_id", "value": null},
@@ -171,6 +171,7 @@
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/is_targeted", "value": "No"},
     {"op": "replace", "path": "/is_technical_replicate", "value": "No"},
+    {"op": "replace", "path": "/library_average_fragment_size", "value": 540},
     {"op": "replace", "path": "/sequencing_read_format", "value": "28,10,10,90"},
     {"op": "replace", "path": "/sequencing_reagent_kit", "value": "NovaSeq 6000 S4 Reagent Kit (200 Cycles)"},
     {"op": "replace", "path": "/umi_offset", "value": "16"},
@@ -199,11 +200,32 @@
       "barcode_read": {
         "R1": "Read 1 (R1)"
       },
+      "expected_entity_capture_count": {
+        "6000": 6000
+      },
       "is_targeted": {
         "False": "No"
       },
       "is_technical_replicate": {
         "False": "No"
+      },
+      "library_average_fragment_size": {
+        "540": 540
+      },
+      "library_output_amount_value": {
+        "172.2": 172.2
+      },
+      "number_of_iterations_of_cdna_amplification": {
+        "6": 6
+      },
+      "number_of_pcr_cycles_for_indexing": {
+        "16": 16
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.5qpvoby69l4o/v2": "https://dx.doi.org/10.17504/protocols.io.5qpvoby69l4o/v2"
+      },
+      "number_of_input_cells_or_nuclei": {
+        "9660": 9660
       },
       "assay_input_entity": {
         "nucleus": "single nucleus"
