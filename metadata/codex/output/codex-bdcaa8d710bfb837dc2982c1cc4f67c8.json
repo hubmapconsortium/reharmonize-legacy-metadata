@@ -40,7 +40,7 @@
   "modified_metadata": {
     "parent_sample_id": "UFL0001-LY01-1-1",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.bdcbi2sn",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.bdcbi2sn",
     "dataset_type": "CODEX",
     "analyte_class": "Protein",
     "is_targeted": "Yes",
@@ -57,9 +57,9 @@
     "preparation_instrument_model": "CODEX Instrument",
     "total_run_time_value": null,
     "total_run_time_unit": null,
-    "number_of_antibodies": "18",
-    "number_of_channels": "4",
-    "number_of_biomarker_imaging_rounds": "9",
+    "number_of_antibodies": 18,
+    "number_of_channels": 4,
+    "number_of_biomarker_imaging_rounds": 9,
     "number_of_total_imaging_rounds": null,
     "slide_id": null,
     "metadata_schema_id": "47c6071a-2ec7-46c1-94d9-6b5e2d7ac982"
@@ -70,10 +70,10 @@
     {"op": "add", "path": "/dataset_type", "value": "CODEX"},
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "47c6071a-2ec7-46c1-94d9-6b5e2d7ac982"},
-    {"op": "add", "path": "/number_of_biomarker_imaging_rounds", "value": "9"},
+    {"op": "add", "path": "/number_of_biomarker_imaging_rounds", "value": 9},
     {"op": "add", "path": "/number_of_total_imaging_rounds", "value": null},
     {"op": "add", "path": "/parent_sample_id", "value": "UFL0001-LY01-1-1"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.bdcbi2sn"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.bdcbi2sn"},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
@@ -105,6 +105,8 @@
     {"op": "remove", "path": "/tissue_id"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
     {"op": "replace", "path": "/is_targeted", "value": "Yes"},
+    {"op": "replace", "path": "/number_of_antibodies", "value": 18},
+    {"op": "replace", "path": "/number_of_channels", "value": 4},
     {"op": "replace", "path": "/preparation_instrument_model", "value": "CODEX Instrument"},
     {"op": "replace", "path": "/preparation_instrument_vendor", "value": "Akoya Biosciences"}
   ],
@@ -121,6 +123,18 @@
       },
       "is_targeted": {
         "TRUE": "Yes"
+      },
+      "number_of_antibodies": {
+        "18": 18
+      },
+      "number_of_channels": {
+        "4": 4
+      },
+      "number_of_biomarker_imaging_rounds": {
+        "9": 9
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.bdcbi2sn": "https://dx.doi.org/10.17504/protocols.io.bdcbi2sn"
       }
     },
     "ambiguous_mappings": [],
