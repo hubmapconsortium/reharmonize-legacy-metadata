@@ -62,7 +62,7 @@
   "modified_metadata": {
     "parent_sample_id": "RTIST0020-PL-3",
     "lab_id": null,
-    "preparation_protocol_doi": "10.17504/protocols.io.byzrpx56",
+    "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.byzrpx56",
     "dataset_type": "MIBI",
     "analyte_class": "Protein",
     "is_targeted": "Yes",
@@ -74,16 +74,16 @@
     "time_since_acquisition_instrument_calibration_unit": null,
     "contributors_path": "extras/contributors.tsv",
     "data_path": ".",
-    "number_of_antibodies": "37",
-    "number_of_channels": "45",
+    "number_of_antibodies": 37,
+    "number_of_channels": 45,
     "slide_id": null,
     "roi_description": "decidua",
     "roi_id": "1",
     "acquisition_id": "8_31735_12_12",
-    "area_normalized_ion_dose_value": "7",
+    "area_normalized_ion_dose_value": 7,
     "area_normalized_ion_dose_unit": "nA*hr/mm2",
-    "data_precision_bytes": "2",
-    "pixel_dwell_time_value": "1",
+    "data_precision_bytes": 2,
+    "pixel_dwell_time_value": 1,
     "pixel_dwell_time_unit": "ms",
     "antibodies_path": "extras/antibodies.tsv",
     "metadata_schema_id": "784cfaa7-4a73-4173-b639-b24e0ed76155"
@@ -93,7 +93,7 @@
     {"op": "add", "path": "/lab_id", "value": null},
     {"op": "add", "path": "/metadata_schema_id", "value": "784cfaa7-4a73-4173-b639-b24e0ed76155"},
     {"op": "add", "path": "/parent_sample_id", "value": "RTIST0020-PL-3"},
-    {"op": "add", "path": "/preparation_protocol_doi", "value": "10.17504/protocols.io.byzrpx56"},
+    {"op": "add", "path": "/preparation_protocol_doi", "value": "https://dx.doi.org/10.17504/protocols.io.byzrpx56"},
     {"op": "add", "path": "/slide_id", "value": null},
     {"op": "add", "path": "/source_storage_duration_unit", "value": null},
     {"op": "add", "path": "/source_storage_duration_value", "value": null},
@@ -137,7 +137,12 @@
     {"op": "remove", "path": "/version"},
     {"op": "replace", "path": "/acquisition_instrument_model", "value": "MIBIscope"},
     {"op": "replace", "path": "/analyte_class", "value": "Protein"},
-    {"op": "replace", "path": "/is_targeted", "value": "Yes"}
+    {"op": "replace", "path": "/area_normalized_ion_dose_value", "value": 7},
+    {"op": "replace", "path": "/data_precision_bytes", "value": 2},
+    {"op": "replace", "path": "/is_targeted", "value": "Yes"},
+    {"op": "replace", "path": "/number_of_antibodies", "value": 37},
+    {"op": "replace", "path": "/number_of_channels", "value": 45},
+    {"op": "replace", "path": "/pixel_dwell_time_value", "value": 1}
   ],
   "processing_log": {
     "field_mappings": {
@@ -152,8 +157,26 @@
       "analyte_class": {
         "protein": "Protein"
       },
+      "area_normalized_ion_dose_value": {
+        "7": 7
+      },
+      "data_precision_bytes": {
+        "2": 2
+      },
       "is_targeted": {
         "True": "Yes"
+      },
+      "number_of_antibodies": {
+        "37": 37
+      },
+      "number_of_channels": {
+        "45": 45
+      },
+      "pixel_dwell_time_value": {
+        "1": 1
+      },
+      "preparation_protocol_doi": {
+        "10.17504/protocols.io.byzrpx56": "https://dx.doi.org/10.17504/protocols.io.byzrpx56"
       }
     },
     "ambiguous_mappings": [],
