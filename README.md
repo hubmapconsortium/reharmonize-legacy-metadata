@@ -6,7 +6,9 @@ This project standardizes legacy metadata from 17 different assay types into sch
 
 **Per October 31, 2025**: 2,192 legacy metadata files processed across 12 assay types
 
-**Per December 4, 2025**: 2,568 legacy metadata files processed across 17 assay types, and 2,192 are reviewed
+**Per December 4, 2025**: 2,568 legacy metadata files processed across 15 assay types, and 2,192 are reviewed
+
+**Per March 2, 2026**: 2,568 legacy metadata files processed and reviewed
 
 ---
 
