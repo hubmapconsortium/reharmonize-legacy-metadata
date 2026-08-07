@@ -52,6 +52,7 @@
     "transposition_transposase_source": "In-house"
   },
   "modified_metadata": {
+    "assay_description": null,
     "parent_sample_id": "UCSD0003-LK-2-2-1",
     "lab_id": null,
     "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.be5gjg3w",
@@ -89,7 +90,7 @@
     "sample_indexing_set": null,
     "is_technical_replicate": "Yes",
     "expected_entity_capture_count": null,
-    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit",
+    "sequencing_reagent_kit": "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312",
     "sequencing_read_format": "75,94,8,75",
     "transposition_reagent_kit": "Not applicable",
     "transposition_method": "sciATACseq",
@@ -101,6 +102,7 @@
     "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
   },
   "json_patch": [
+    {"op": "add", "path": "/assay_description", "value": null},
     {"op": "add", "path": "/assay_input_entity", "value": "single nucleus"},
     {"op": "add", "path": "/barcode_offset", "value": "0,38,76"},
     {"op": "add", "path": "/barcode_read", "value": "Read 2 (R2)"},
@@ -174,7 +176,7 @@
     {"op": "replace", "path": "/is_technical_replicate", "value": "Yes"},
     {"op": "replace", "path": "/library_average_fragment_size", "value": 650},
     {"op": "replace", "path": "/sequencing_read_format", "value": "75,94,8,75"},
-    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 S4 Reagent Kit"},
+    {"op": "replace", "path": "/sequencing_reagent_kit", "value": "Illumina; NovaSeq 6000 S4 Reagent Kit v1.5 (300 cycles); PN 20028312"},
     {"op": "replace", "path": "/transposition_method", "value": "sciATACseq"}
   ],
   "processing_log": {

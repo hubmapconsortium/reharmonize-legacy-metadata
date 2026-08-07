@@ -48,6 +48,7 @@
     "version": "1"
   },
   "modified_metadata": {
+    "assay_description": null,
     "parent_sample_id": "UCSDFR0008-PL-10",
     "lab_id": null,
     "preparation_protocol_doi": "https://dx.doi.org/10.17504/protocols.io.kxygxzyo4v8j/v1",
@@ -97,6 +98,7 @@
     "metadata_schema_id": "dd5e8653-81cf-470b-b71b-15cab421bb84"
   },
   "json_patch": [
+    {"op": "add", "path": "/assay_description", "value": null},
     {"op": "add", "path": "/assay_input_entity", "value": "tissue (bulk)"},
     {"op": "add", "path": "/barcode_offset", "value": "Not applicable"},
     {"op": "add", "path": "/barcode_read", "value": "Not applicable"},
